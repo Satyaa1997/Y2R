@@ -1424,148 +1424,917 @@
 }
 
 /* ==========================================================================
-   9. FLOOR PLANS PREVIEW (EQUAL HEIGHTS)
+   9. ARCHITECTURAL SCHEMATICS (3D STACKED BLUEPRINT DECK & SPLIT HEADINGS)
    ========================================================================== */
-.floor-plans-preview-grid {
+.floor-plans-preview-section {
+  padding: clamp(4rem, 8vh, 6.5rem) 0;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+.schematics-split-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-.plan-preview-col {
-  display: flex;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2rem;
+  align-items: center;
   width: 100%;
 }
 
-.plan-preview-tilt {
-  width: 100%;
-  height: 100%;
+.schematics-deck-col {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.plan-preview-inner {
-  background: #FFFFFF;
-  border: 1px solid rgba(102, 71, 1, 0.3);
-  padding: 2rem 1.5rem;
-  border-radius: 4px;
+.arch-wallet-deck-wrapper {
+  padding: 2rem 1rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* 3D Wallet / Pocket Deck Base */
+.arch-wallet {
+  position: relative;
+  width: 320px;
+  height: 250px;
+  cursor: pointer;
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.arch-wallet::after {
+  content: "Hover deck to fan out spatial tiers";
+  position: absolute;
+  bottom: -30px;
+  font-style: italic;
+  color: #664701;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.arch-wallet:hover::after {
+  opacity: 0.4;
+}
+
+/* Entry Animation */
+@keyframes slideIntoPocket {
+  0% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Wallet Back Foundation */
+.arch-wallet-back {
+  position: absolute;
+  bottom: 0;
+  width: 320px;
+  height: 220px;
+  background: #12141A;
+  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border-radius: 18px 18px 48px 48px;
+  z-index: 5;
+  box-shadow:
+    inset 0 25px 35px rgba(0, 0, 0, 0.6),
+    inset 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Stacked Architectural Cards */
+.arch-deck-card {
+  position: absolute;
+  width: 290px;
+  height: 150px;
+  left: 15px;
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: #FAF8F4;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+    0 -4px 15px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    z-index 0s,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  animation: slideIntoPocket 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  cursor: pointer;
+}
+
+.arch-card-inner {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-  transition: var(--transition);
-}
-
-.plan-preview-tilt:hover .plan-preview-inner {
-  border-color: var(--gold-dark);
-  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.2);
-}
-
-.plan-card-top {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  height: 100%;
 }
 
-.plan-floor-num {
-  font-size: 0.75rem;
+.arch-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arch-card-floor {
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #D5B779;
+}
+
+.arch-chip {
+  width: 28px;
+  height: 20px;
+  background: rgba(102, 71, 1, 0.3);
+  border-radius: 4px;
+  border: 1px solid rgba(102, 71, 1, 0.6);
+  position: relative;
+}
+
+.arch-chip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(102, 71, 1, 0.5);
+}
+
+.arch-card-middle {
+  margin: 2px 0;
+}
+
+.arch-card-purpose {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.arch-card-desc {
+  font-size: 0.68rem;
+  color: #C8C5BF;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arch-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.arch-spec-label {
+  font-size: 0.58rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  color: #9C988F;
+}
+
+.arch-spec-val {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #D5B779;
+  font-family: monospace;
+}
+
+.arch-card-code-wrap {
+  text-align: right;
+  position: relative;
+}
+
+.arch-code-hidden {
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  font-family: monospace;
+  color: #FAF8F4;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.arch-inspect-prompt {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #FAF8F4;
+  background: #664701;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-.blueprint-tag {
-  font-family: monospace;
-  font-size: 0.65rem;
-  color: var(--gold-dark);
-  border: 1px dashed rgba(102, 71, 1, 0.5);
-  padding: 2px 6px;
-  font-weight: 700;
+/* Card Stacking & Themes */
+.arch-card-1 {
+  background: linear-gradient(135deg, #1C1E24 0%, #101115 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.45);
+  bottom: 95px;
+  z-index: 10;
+  animation-delay: 0.1s;
 }
 
-.plan-purpose {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: #111112;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
+.arch-card-2 {
+  background: linear-gradient(135deg, #242730 0%, #15171D 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.55);
+  bottom: 70px;
+  z-index: 20;
+  animation-delay: 0.2s;
 }
 
-.plan-desc {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-  flex: 1;
+.arch-card-3 {
+  background: linear-gradient(135deg, #2C2F3A 0%, #181A22 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.65);
+  bottom: 45px;
+  z-index: 30;
+  animation-delay: 0.3s;
 }
 
-.plan-inspect-btn {
+.arch-card-4 {
+  background: linear-gradient(135deg, #343744 0%, #1D2028 100%);
+  border: 1.5px solid #7D5701;
+  bottom: 20px;
+  z-index: 40;
+  animation-delay: 0.4s;
+}
+
+/* Front Pocket */
+.arch-pocket {
+  position: absolute;
+  bottom: 0;
+  width: 320px;
+  height: 140px;
+  z-index: 50;
+  background: linear-gradient(180deg, #1E2128 0%, #0E0F12 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.6);
+  border-top: 3px solid #664701;
+  border-radius: 12px 12px 48px 48px;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
   display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.arch-pocket-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 6px;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
+  padding-top: 10px;
+}
+
+.arch-pocket-emblem {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(102, 71, 1, 0.2);
+  border: 1.5px solid #664701;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D5B779;
+  box-shadow: 0 0 12px rgba(102, 71, 1, 0.35);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.arch-pocket-title {
+  font-size: 0.68rem;
   font-weight: 700;
-  margin-top: auto;
+  letter-spacing: 0.15em;
+  color: #FAF8F4;
+  text-transform: uppercase;
+}
+
+.arch-pocket-level-badge {
+  position: relative;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pocket-hint-stars {
+  color: #D5B779;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.pocket-hint-real {
+  color: #FFFFFF;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 8px));
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  background: rgba(102, 71, 1, 0.6);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+/* Hover Interactions */
+.arch-wallet:hover {
+  transform: translateY(-5px);
+}
+
+.arch-wallet:hover .arch-pocket-emblem {
+  transform: rotate(45deg) scale(1.08);
+  border-color: #D5B779;
+}
+
+.arch-wallet:hover .pocket-hint-stars {
+  opacity: 0;
+}
+
+.arch-wallet:hover .pocket-hint-real {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* Hover effects fan out cards */
+.arch-wallet:hover .arch-card-1 {
+  transform: translateY(-85px) rotate(-6deg);
+}
+
+.arch-wallet:hover .arch-card-2 {
+  transform: translateY(-60px) rotate(-2deg);
+}
+
+.arch-wallet:hover .arch-card-3 {
+  transform: translateY(-38px) rotate(2deg);
+}
+
+.arch-wallet:hover .arch-card-4 {
+  transform: translateY(-16px) rotate(6deg);
+}
+
+/* Individual Card Hover Pull-Out */
+.arch-deck-card:hover {
+  z-index: 100 !important;
+  border-color: #D5B779 !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(102, 71, 1, 0.4) !important;
+}
+
+.arch-wallet:hover .arch-card-1:hover {
+  transform: translateY(-100px) scale(1.05) rotate(0deg) !important;
+}
+
+.arch-wallet:hover .arch-card-2:hover {
+  transform: translateY(-85px) scale(1.05) rotate(0deg) !important;
+}
+
+.arch-wallet:hover .arch-card-3:hover {
+  transform: translateY(-70px) scale(1.05) rotate(0deg) !important;
+}
+
+.arch-wallet:hover .arch-card-4:hover {
+  transform: translateY(-55px) scale(1.05) rotate(0deg) !important;
+}
+
+.arch-deck-card:hover .arch-code-hidden {
+  display: none;
+}
+
+.arch-deck-card:hover .arch-inspect-prompt {
+  display: inline-flex;
+}
+
+/* Right Side: Content & Levels List */
+.schematics-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-left: 0;
+  margin-left: -0.75rem;
+  max-width: 530px;
+}
+
+/* 1. Compact Animated Text Box */
+.schematics-text-anim-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 248, 244, 0.94) 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border-radius: 8px;
+  padding: 0.85rem 1.15rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(102, 71, 1, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: all 300ms ease;
+  animation: schematicsBoxPulse 6s ease-in-out infinite alternate;
+}
+
+.schematics-text-anim-box .section-heading {
+  margin-bottom: 0.25rem;
+}
+
+.schematics-text-anim-box .section-title {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  margin-bottom: 0.2rem;
+}
+
+.schematics-text-anim-box .section-subtitle {
+  font-size: 0.78rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.35;
+}
+
+.schematics-text-anim-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 71, 1, 0.05), rgba(213, 183, 121, 0.12), transparent);
+  transform: skewX(-25deg);
+  animation: schematicsShimmerSlide 7s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.schematics-text-anim-box:hover {
+  border-color: rgba(102, 71, 1, 0.65);
+  box-shadow: 0 10px 28px rgba(102, 71, 1, 0.12);
+  transform: translateY(-2px);
+}
+
+@keyframes schematicsBoxPulse {
+  0% {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(102, 71, 1, 0.1);
+  }
+  100% {
+    box-shadow: 0 10px 28px rgba(102, 71, 1, 0.1), 0 0 0 1.5px rgba(102, 71, 1, 0.3);
+  }
+}
+
+@keyframes schematicsShimmerSlide {
+  0%, 20% {
+    left: -100%;
+  }
+  60%, 100% {
+    left: 200%;
+  }
+}
+
+.schematics-lead-text {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+  font-weight: 450;
+}
+
+/* 2. Compact Animated 4-Boxes Container Wrapper */
+.schematics-boxes-anim-wrapper {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 245, 238, 0.95) 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border-radius: 8px;
+  padding: 0.75rem 0.95rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(102, 71, 1, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: all 300ms ease;
+  animation: schematicsBoxPulse 6s ease-in-out infinite alternate 1.5s;
+}
+
+.schematics-boxes-anim-wrapper:hover {
+  border-color: rgba(102, 71, 1, 0.65);
+  box-shadow: 0 10px 28px rgba(102, 71, 1, 0.12);
+}
+
+.schematics-levels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.65rem;
+}
+
+.schematic-alert-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid rgba(102, 71, 1, 0.2);
+  border-left: 4px solid #664701;
+  border-radius: 6px;
+  padding: 5px 9px;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.alert-box-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.schematic-alert-box:hover .alert-box-shimmer {
+  left: 150%;
+}
+
+.schematic-alert-box:hover {
+  transform: scale(1.02) translateX(4px);
+  box-shadow: 0 6px 18px rgba(102, 71, 1, 0.16);
+  background: #FAF6ED;
+  border-color: #664701;
+}
+
+.schematic-alert-box.alert-tier-1 {
+  background: #FAF8F4;
+  border-left-color: #664701;
+}
+
+.schematic-alert-box.alert-tier-1:hover {
+  background: #F5EFE0;
+  border-color: #664701;
+}
+
+.schematic-alert-box.alert-tier-2 {
+  background: #FFFFFF;
+  border-left-color: #7D5701;
+}
+
+.schematic-alert-box.alert-tier-2:hover {
+  background: #FAF8F4;
+  border-color: #7D5701;
+}
+
+.schematic-alert-box.alert-tier-3 {
+  background: #FAF8F4;
+  border-left-color: #664701;
+}
+
+.schematic-alert-box.alert-tier-3:hover {
+  background: #F5EFE0;
+  border-color: #664701;
+}
+
+.schematic-alert-box.alert-tier-4 {
+  background: #FFFFFF;
+  border-left-color: #4D3501;
+}
+
+.schematic-alert-box.alert-tier-4:hover {
+  background: #FAF8F4;
+  border-color: #4D3501;
+}
+
+.alert-box-svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #664701;
+  transition: transform 250ms ease;
+}
+
+.schematic-alert-box:hover .alert-box-svg {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.alert-box-num {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #664701;
+  background: rgba(102, 71, 1, 0.1);
+  border: 1px solid rgba(102, 71, 1, 0.3);
+  border-radius: 3px;
+  padding: 1px 4px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.alert-box-info {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.alert-box-floor {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0A0B0D;
+  line-height: 1.2;
+}
+
+.alert-box-purpose {
+  font-size: 0.68rem;
+  color: #664701;
+  font-weight: 600;
+}
+
+.alert-box-arrow {
+  color: #664701;
+  opacity: 0.6;
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  transition: all 200ms ease;
+}
+
+.schematic-alert-box:hover .alert-box-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.schematics-cta-wrap {
+  margin-top: 0.1rem;
+}
+
+.schematics-cta-wrap .btn-primary {
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+/* Responsive Split */
+@media (max-width: 900px) {
+  .schematics-split-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .schematics-deck-col {
+    order: 1;
+  }
+
+  .schematics-content-col {
+    order: 2;
+  }
 }
 
 /* ==========================================================================
-   10. WHY Y2R SECTION (EQUAL HEIGHTS)
+   10. WHY Y2R SECTION (FULL 3D 360° ROTATING COIN CARDS)
    ========================================================================== */
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  align-items: stretch;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  justify-items: center;
+  align-items: center;
+  padding: 1.5rem 0 2.5rem;
 }
 
 .why-col {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-.why-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(102, 71, 1, 0.25);
-  padding: 2.25rem 1.75rem;
-  border-radius: 4px;
+.coin-3d-wrapper {
   position: relative;
+  width: 260px;
+  height: 260px;
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+/* 3D 360° Rotating Coin Card */
+.coin-rotating-card {
   width: 100%;
   height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spin360CoinCard 8s linear infinite;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.75));
+}
+
+.coin-3d-wrapper:hover .coin-rotating-card {
+  animation-play-state: paused;
+  filter: drop-shadow(0 0 30px rgba(102, 71, 1, 0.95)) drop-shadow(0 16px 36px rgba(0, 0, 0, 0.85));
+}
+
+@keyframes spin360CoinCard {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Dual Sides (Front and Back) */
+.coin-side {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* Front Face (Heads) */
+.coin-front {
+  background: radial-gradient(circle at 35% 35%, #FFF5DB 0%, #D5B779 30%, #664701 70%, #201400 100%);
+  border: 3px solid #FFF5DB;
+  box-shadow:
+    inset 0 0 15px rgba(0, 0, 0, 0.6),
+    0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* Back Face (Tails) */
+.coin-back {
+  background: radial-gradient(circle at 35% 35%, #FFF5DB 0%, #D5B779 30%, #7D5701 70%, #201400 100%);
+  border: 3px solid #FFF5DB;
+  box-shadow:
+    inset 0 0 15px rgba(0, 0, 0, 0.6),
+    0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Inner Core Disc */
+.coin-inner-disc {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #222633 0%, #111319 75%, #060709 100%);
+  border: 2px solid #664701;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.15rem 1rem;
+  box-sizing: border-box;
+  user-select: none;
 }
 
-.why-number {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--gold-dark);
-  display: block;
-  margin-bottom: 1rem;
+/* Front Side Typography */
+.coin-front-badge {
+  font-size: 0.62rem;
+  font-weight: 900;
+  color: #FFF5DB;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: #664701;
+  border: 1px solid #D5B779;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 6px;
 }
 
-.why-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: #111112;
-  margin-bottom: 0.75rem;
-  font-weight: 700;
+.coin-gold-medallion {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFF5DB 0%, #D5B779 40%, #664701 100%);
+  border: 2px solid #FFF5DB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  box-shadow: 0 0 14px rgba(102, 71, 1, 0.7);
 }
 
-.why-desc {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  font-weight: 400;
-  flex: 1;
+.coin-medallion-text {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #12141A;
+  letter-spacing: -0.02em;
+}
+
+.coin-title-text {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 4px;
+  max-width: 185px;
+}
+
+.coin-sub-tag {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #D5B779;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.coin-loc-text {
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: #9C988F;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Back Side Typography */
+.coin-back-pillar {
+  font-size: 0.62rem;
+  font-weight: 900;
+  color: #D5B779;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.coin-back-heading {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #FFF5DB;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  max-width: 190px;
+  text-transform: uppercase;
+}
+
+.coin-gold-divider {
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #664701, #D5B779, #664701, transparent);
+  margin-bottom: 8px;
+}
+
+.coin-back-description {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: #FAF8F4;
+  font-weight: 500;
+  margin-bottom: 8px;
+  max-width: 195px;
+}
+
+.coin-rera-stamp {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #FFF5DB;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(102, 71, 1, 0.45);
+  border: 1px solid #D5B779;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+@media (max-width: 1200px) and (min-width: 821px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 }
 
 /* ==========================================================================

@@ -6,6 +6,7 @@ import {
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
+  Compass,
   Store,
   Briefcase,
   Home as HomeIcon,
@@ -825,58 +826,150 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          10. FLOOR PLANS PREVIEW
+          10. ARCHITECTURAL SCHEMATICS (3D STACKED BLUEPRINT DECK & SPLIT HEADINGS)
           ========================================================================= */}
       <section className="section-padding theme-section-light floor-plans-preview-section">
         <ArchitecturalBg variant="home_floorplans" />
         <div className="container-custom">
-          <SectionHeading
-            number="09"
-            badge="Architectural Schematics"
-            title="A Space for Every Ambition."
-            subtitle="Structured vertical integration from Lower Ground to Rooftop Terrace."
-            align="center"
-            theme="light"
-          />
+          <div className="schematics-split-container">
+            {/* Left Column: Interactive 3D Stacked Wallet / Pocket Deck */}
+            <div className="schematics-deck-col">
+              <RevealOnScroll animation="fade-right">
+                <div className="arch-wallet-deck-wrapper">
+                  <div className="arch-wallet">
+                    {/* Wallet Back Foundation */}
+                    <div className="arch-wallet-back" />
 
-          <div className="floor-plans-preview-grid">
-            {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => (
-              <RevealOnScroll
-                key={plan.id}
-                animation="fade-up"
-                delay={idx * 100}
-                className="plan-preview-col"
-              >
-                <TiltCard
-                  maxTilt={10}
-                  scale={1.03}
-                  className="plan-preview-tilt cursor-pointer"
-                  onClick={() => onSelectFloorPlan(plan)}
-                >
-                  <div className="plan-preview-inner blueprint-grid">
-                    <div className="plan-card-top">
-                      <span className="plan-floor-num">{plan.floor}</span>
-                      <span className="blueprint-tag">SCHEMATIC</span>
-                    </div>
+                    {/* 4 Stacked Architectural Blueprint Cards */}
+                    {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => {
+                      const cardClassNames = ['arch-card-1', 'arch-card-2', 'arch-card-3', 'arch-card-4'];
+                      const cardClass = cardClassNames[idx] || `arch-card-${idx + 1}`;
+                      const floorCode = idx === 0 ? 'LGF/UGF' : idx === 1 ? '1ST-FLR' : idx === 2 ? '2ND-FLR' : '3RD-7TH';
 
-                    <h3 className="plan-purpose">{plan.purpose}</h3>
-                    <p className="plan-desc">{plan.description}</p>
+                      return (
+                        <div
+                          key={plan.id}
+                          className={`arch-deck-card ${cardClass}`}
+                          onClick={() => onSelectFloorPlan(plan)}
+                          role="button"
+                          tabIndex={0}
+                          aria-label={`Inspect blueprint for ${plan.floor}`}
+                        >
+                          <div className="arch-card-inner">
+                            <div className="arch-card-top">
+                              <span className="arch-card-floor">{plan.floor}</span>
+                              <div className="arch-chip" />
+                            </div>
 
-                    <div className="plan-inspect-btn">
-                      <span>Inspect Blueprint</span>
-                      <ArrowUpRight size={14} />
+                            <div className="arch-card-middle">
+                              <h4 className="arch-card-purpose">{plan.purpose}</h4>
+                              <p className="arch-card-desc">{plan.description}</p>
+                            </div>
+
+                            <div className="arch-card-bottom">
+                              <div className="arch-card-spec">
+                                <span className="arch-spec-label">CAD SPEC</span>
+                                <span className="arch-spec-val">SCHEMATIC v2.4</span>
+                              </div>
+                              <div className="arch-card-code-wrap">
+                                <span className="arch-code-hidden">•••• •••• {floorCode}</span>
+                                <span className="arch-inspect-prompt">
+                                  <span>Inspect</span>
+                                  <ArrowUpRight size={13} />
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {/* Front Architectural Pocket */}
+                    <div className="arch-pocket">
+                      <div className="arch-pocket-content">
+                        <div className="arch-pocket-emblem">
+                          <Compass size={22} className="arch-pocket-icon" />
+                        </div>
+                        <div className="arch-pocket-title">Y2R ARCHITECTURAL DECK</div>
+                        <div className="arch-pocket-level-badge">
+                          <span className="pocket-hint-stars">4 CORE SPATIAL LEVELS</span>
+                          <span className="pocket-hint-real">CLICK CARD TO INSPECT</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </TiltCard>
+                </div>
               </RevealOnScroll>
-            ))}
-          </div>
+            </div>
 
-          <div className="text-center mt-10">
-            <Link to="/floor-plans" className="btn-primary">
-              <span>View All 7 Spatial Levels</span>
-              <ArrowRight size={16} />
-            </Link>
+            {/* Right Column: Headings, Spatial Level Breakdowns, & Actions */}
+            <div className="schematics-content-col">
+              <RevealOnScroll animation="fade-left">
+                {/* 1. Animated Text Box */}
+                <div className="schematics-text-anim-box">
+                  <SectionHeading
+                    number="09"
+                    badge="Architectural Schematics"
+                    title="A Space for Every Ambition."
+                    subtitle="Structured vertical integration from Lower Ground to Rooftop Terrace."
+                    align="left"
+                    theme="light"
+                  />
+
+                  <p className="schematics-lead-text">
+                    Y2R Heights is engineered with precision spatial zoning—separating vibrant high-footfall retail, dynamic commercial office suites, expansive banquets, and serene residential studios into seamless vertical tiers.
+                  </p>
+                </div>
+
+                {/* 2. Animated 4-Boxes Container */}
+                <div className="schematics-boxes-anim-wrapper">
+                  <div className="schematics-levels-list">
+                    {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => (
+                      <div
+                        key={`level-row-${plan.id}`}
+                        className={`schematic-alert-box alert-tier-${idx + 1}`}
+                        onClick={() => onSelectFloorPlan(plan)}
+                        role="alert"
+                        tabIndex={0}
+                        aria-label={`${plan.floor} - ${plan.purpose}`}
+                      >
+                        <div className="alert-box-shimmer" />
+                        <svg
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          className="alert-box-svg"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M13 16h-1v-4h1m0-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            strokeWidth="2"
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+
+                        <div className="alert-box-num">0{idx + 1}</div>
+
+                        <div className="alert-box-info">
+                          <span className="alert-box-floor">{plan.floor}</span>
+                          <span className="alert-box-purpose">{plan.purpose}</span>
+                        </div>
+
+                        <ArrowUpRight size={15} className="alert-box-arrow" />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="schematics-cta-wrap">
+                    <Link to="/floor-plans" className="btn-primary">
+                      <span>View All 7 Spatial Levels</span>
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
+              </RevealOnScroll>
+            </div>
           </div>
         </div>
       </section>
@@ -904,10 +997,34 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                 delay={idx * 100}
                 className="why-col"
               >
-                <div className="why-card">
-                  <span className="why-number">{pt.id}</span>
-                  <h3 className="why-title">{pt.title}</h3>
-                  <p className="why-desc">{pt.description}</p>
+                <div className="coin-3d-wrapper">
+                  <div className="coin-rotating-card" role="article" aria-label={`${pt.title} - ${pt.description}`}>
+                    {/* Front Face (Heads) */}
+                    <div className="coin-side coin-front">
+                      <div className="coin-inner-disc">
+                        <span className="coin-front-badge">PILLAR {pt.id}</span>
+                        <div className="coin-gold-medallion">
+                          <span className="coin-medallion-text">{pt.id}</span>
+                        </div>
+                        <h3 className="coin-title-text">{pt.title}</h3>
+                        <span className="coin-sub-tag">VALUE PROPOSITION</span>
+                        <span className="coin-loc-text">Y2R HEIGHTS • LUCKNOW</span>
+                      </div>
+                    </div>
+
+                    {/* Back Face (Tails) */}
+                    <div className="coin-side coin-back">
+                      <div className="coin-inner-disc">
+                        <span className="coin-back-pillar">PILLAR {pt.id}</span>
+                        <h4 className="coin-back-heading">{pt.title}</h4>
+                        <div className="coin-gold-divider" />
+                        <p className="coin-back-description">{pt.description}</p>
+                        <div className="coin-rera-stamp">
+                          <span>UP RERA APPROVED</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </RevealOnScroll>
             ))}

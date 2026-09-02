@@ -138,15 +138,44 @@ export default function Retail({ onOpenEnquiry }) {
                   delay={idx * 80}
                   className="retail-card-col"
                 >
-                  <TiltCard maxTilt={8} scale={1.02} className="retail-feat-card">
-                    <div className="retail-feat-inner">
-                      <div className="feat-icon-box">
-                        <IconComp size={24} className="text-gold" />
+                  <div className="sombrero-card" role="article" aria-label={`${feat.title} - ${feat.desc}`}>
+                    <div className="sombrero-content">
+                      {/* Back Side (Initial unhovered face with rotating neon border) */}
+                      <div className="sombrero-back">
+                        <div className="sombrero-back-content">
+                          <div className="sombrero-icon-box">
+                            <IconComp size={28} className="sombrero-icon" />
+                          </div>
+                          <div className="sombrero-back-meta">
+                            <span className="sombrero-num-badge">0{idx + 1}</span>
+                            <strong className="sombrero-back-title">{feat.title}</strong>
+                          </div>
+                          <span className="sombrero-hover-hint">Hover to explore ↻</span>
+                        </div>
                       </div>
-                      <h3 className="feat-title">{feat.title}</h3>
-                      <p className="feat-desc">{feat.desc}</p>
+
+                      {/* Front Side (Flipped face on hover with animated floating orbs and full specs) */}
+                      <div className="sombrero-front">
+                        <div className="sombrero-img">
+                          <div className="sombrero-circle" />
+                          <div className="sombrero-circle" id="sombrero-right" />
+                          <div className="sombrero-circle" id="sombrero-bottom" />
+                        </div>
+                        <div className="sombrero-front-content">
+                          <small className="sombrero-badge">SPECIFICATION 0{idx + 1}</small>
+                          <div className="sombrero-description">
+                            <div className="sombrero-title-row">
+                              <p className="sombrero-title-text">
+                                <strong>{feat.title}</strong>
+                              </p>
+                              <IconComp size={16} className="sombrero-desc-icon" />
+                            </div>
+                            <p className="sombrero-card-footer">{feat.desc}</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </TiltCard>
+                  </div>
                 </RevealOnScroll>
               );
             })}

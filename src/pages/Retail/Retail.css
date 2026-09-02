@@ -78,71 +78,286 @@
   font-weight: 600;
 }
 
-/* Equal Height Cards */
+/* ==========================================================================
+   RETAIL SPECIFICATIONS CARDS (FROM UIVERSE.IO BY ELSOMBRERO2)
+   ========================================================================== */
 .retail-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
   align-items: stretch;
+  padding: 1.5rem 0;
 }
 
-.retail-feat-card {
-  width: 100%;
-  height: 100%;
+.retail-card-col {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.retail-feat-inner {
-  background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.28);
-  padding: 1.25rem 1.15rem;
-  border-radius: 6px;
+/* From Uiverse.io by ElSombrero2 */
+.sombrero-card {
+  overflow: visible;
+  width: 240px;
+  height: 290px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.sombrero-content {
   width: 100%;
   height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.45);
+  border-radius: 8px;
+  position: relative;
+}
+
+.sombrero-card:hover .sombrero-content {
+  transform: rotateY(180deg);
+}
+
+.sombrero-front,
+.sombrero-back {
+  background-color: #13151A;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Back Side (Initial View with Neon Glowing Border) */
+.sombrero-back {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sombrero-back::before {
+  position: absolute;
+  content: ' ';
+  display: block;
+  width: 190px;
+  height: 180%;
+  background: linear-gradient(90deg, transparent, #D5B779, #664701, #D5B779, transparent);
+  animation: rotation_481 5000ms infinite linear;
+}
+
+.sombrero-back-content {
+  position: absolute;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background-color: #12141A;
+  border-radius: 6px;
+  color: white;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
-  transition: all 250ms ease;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.retail-feat-card:hover .retail-feat-inner {
-  border-color: var(--gold);
-  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.15);
-}
-
-.feat-icon-box {
-  width: 50px;
-  height: 50px;
-  border-radius: 2px;
-  background: rgba(102, 71, 1, 0.12);
-  border: 1px solid rgba(102, 71, 1, 0.35);
+.sombrero-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(213, 183, 121, 0.25) 0%, rgba(102, 71, 1, 0.15) 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.25rem;
+  box-shadow: 0 0 16px rgba(102, 71, 1, 0.35);
+}
+
+.sombrero-icon {
+  color: #D5B779;
+}
+
+.sombrero-back-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.sombrero-num-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #D5B779;
+  letter-spacing: 0.14em;
+  background: rgba(102, 71, 1, 0.35);
+  border: 1px solid rgba(102, 71, 1, 0.6);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.sombrero-back-title {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+  max-width: 190px;
+}
+
+.sombrero-hover-hint {
+  font-size: 0.72rem;
+  color: #9C988F;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes rotation_481 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+/* Front Side (Flipped View) */
+.sombrero-front {
+  transform: rotateY(180deg);
+  color: white;
+}
+
+.sombrero-front .sombrero-front-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.sombrero-badge {
+  background-color: rgba(10, 11, 14, 0.65);
+  border: 1px solid rgba(102, 71, 1, 0.45);
+  color: #D5B779;
+  padding: 3px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  width: fit-content;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.sombrero-description {
+  box-shadow: 0px 0px 14px 4px rgba(0, 0, 0, 0.65);
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(15, 17, 22, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.sombrero-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.sombrero-title-text {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFF5DB;
+  line-height: 1.2;
+}
+
+.sombrero-desc-icon {
+  color: #D5B779;
   flex-shrink: 0;
 }
 
-.feat-title {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  color: #111112;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-.feat-desc {
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
+.sombrero-card-footer {
+  color: #E2DFD9;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  margin-top: 4px;
   font-weight: 400;
-  flex: 1;
 }
 
-@media (max-width: 992px) {
-  .retail-grid {
+/* Floating Ambient Orbs Background */
+.sombrero-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sombrero-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #D5B779;
+  position: absolute;
+  filter: blur(20px);
+  opacity: 0.65;
+  animation: sombreroFloating 2600ms infinite linear;
+}
+
+#sombrero-bottom {
+  background-color: #664701;
+  left: 30px;
+  top: 110px;
+  width: 140px;
+  height: 140px;
+  animation-delay: -800ms;
+}
+
+#sombrero-right {
+  background-color: #8A6102;
+  left: 140px;
+  top: -30px;
+  width: 80px;
+  height: 80px;
+  animation-delay: -1800ms;
+}
+
+@keyframes sombreroFloating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  .retail-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .retail-cards-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
 }
 
