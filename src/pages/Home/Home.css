@@ -1449,18 +1449,55 @@
 }
 
 .arch-wallet-deck-wrapper {
-  padding: 2rem 1rem 3rem;
+  padding: 1.5rem 0.5rem 2.5rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+/* Quick Level Selector Tabs for Instant Grabbing */
+.arch-deck-quick-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  z-index: 60;
+}
+
+.arch-deck-tab-pill {
+  background: #141720;
+  border: 1px solid rgba(102, 71, 1, 0.45);
+  color: #C8C5BF;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 250ms ease;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.arch-deck-tab-pill:hover,
+.arch-deck-tab-pill.active {
+  background: #664701;
+  border-color: #D5B779;
+  color: #FFF5DB;
+  box-shadow: 0 0 14px rgba(102, 71, 1, 0.6);
+  transform: translateY(-2px);
 }
 
 /* 3D Wallet / Pocket Deck Base */
 .arch-wallet {
   position: relative;
   width: 320px;
-  height: 250px;
+  height: 270px;
   cursor: pointer;
   perspective: 1200px;
   display: flex;
@@ -1470,9 +1507,9 @@
 }
 
 .arch-wallet::after {
-  content: "Hover deck to fan out spatial tiers";
+  content: "Tap tabs or hover cards to inspect";
   position: absolute;
-  bottom: -30px;
+  bottom: -28px;
   font-style: italic;
   color: #664701;
   font-size: 12px;
@@ -1503,7 +1540,7 @@
   position: absolute;
   bottom: 0;
   width: 320px;
-  height: 220px;
+  height: 230px;
   background: #12141A;
   border: 1.5px solid rgba(102, 71, 1, 0.35);
   border-radius: 18px 18px 48px 48px;
@@ -1513,11 +1550,11 @@
     inset 0 5px 15px rgba(0, 0, 0, 0.7);
 }
 
-/* Stacked Architectural Cards */
+/* Stacked Architectural Cards (Elevated for effortless grabbing) */
 .arch-deck-card {
   position: absolute;
   width: 290px;
-  height: 150px;
+  height: 155px;
   left: 15px;
   border-radius: 12px;
   padding: 14px 16px;
@@ -1526,7 +1563,7 @@
     inset 0 1px 1px rgba(255, 255, 255, 0.2),
     0 -4px 15px rgba(0, 0, 0, 0.3);
   transition:
-    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
     z-index 0s,
     box-shadow 0.3s ease,
     border-color 0.3s ease;
@@ -1548,7 +1585,7 @@
 }
 
 .arch-card-floor {
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -1647,47 +1684,47 @@
   text-transform: uppercase;
 }
 
-/* Card Stacking & Themes */
+/* Resting Staggered Elevations (Extending high above pocket for effortless grabbing) */
 .arch-card-1 {
-  background: linear-gradient(135deg, #1C1E24 0%, #101115 100%);
-  border: 1.5px solid rgba(102, 71, 1, 0.45);
-  bottom: 95px;
+  background: linear-gradient(135deg, #1E2128 0%, #101216 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.5);
+  bottom: 125px;
   z-index: 10;
   animation-delay: 0.1s;
 }
 
 .arch-card-2 {
-  background: linear-gradient(135deg, #242730 0%, #15171D 100%);
-  border: 1.5px solid rgba(102, 71, 1, 0.55);
-  bottom: 70px;
+  background: linear-gradient(135deg, #242832 0%, #13161D 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.6);
+  bottom: 90px;
   z-index: 20;
   animation-delay: 0.2s;
 }
 
 .arch-card-3 {
-  background: linear-gradient(135deg, #2C2F3A 0%, #181A22 100%);
-  border: 1.5px solid rgba(102, 71, 1, 0.65);
-  bottom: 45px;
+  background: linear-gradient(135deg, #2A2E3B 0%, #171A23 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.7);
+  bottom: 55px;
   z-index: 30;
   animation-delay: 0.3s;
 }
 
 .arch-card-4 {
-  background: linear-gradient(135deg, #343744 0%, #1D2028 100%);
+  background: linear-gradient(135deg, #323645 0%, #1A1D27 100%);
   border: 1.5px solid #7D5701;
   bottom: 20px;
   z-index: 40;
   animation-delay: 0.4s;
 }
 
-/* Front Pocket */
+/* Front Pocket (Lowered so cards are naturally grab-able) */
 .arch-pocket {
   position: absolute;
   bottom: 0;
   width: 320px;
-  height: 140px;
+  height: 125px;
   z-index: 50;
-  background: linear-gradient(180deg, #1E2128 0%, #0E0F12 100%);
+  background: linear-gradient(180deg, #1C1E26 0%, #0C0D10 100%);
   border: 1.5px solid rgba(102, 71, 1, 0.6);
   border-top: 3px solid #664701;
   border-radius: 12px 12px 48px 48px;
@@ -1706,12 +1743,12 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  padding-top: 10px;
+  padding-top: 6px;
 }
 
 .arch-pocket-emblem {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: rgba(102, 71, 1, 0.2);
   border: 1.5px solid #664701;
@@ -1766,9 +1803,9 @@
   border-radius: 2px;
 }
 
-/* Hover Interactions */
+/* Hover & Active Card Mechanics */
 .arch-wallet:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 }
 
 .arch-wallet:hover .arch-pocket-emblem {
@@ -1785,51 +1822,58 @@
   transform: translate(-50%, -50%);
 }
 
-/* Hover effects fan out cards */
+/* Hover effects fan out cards widely */
 .arch-wallet:hover .arch-card-1 {
-  transform: translateY(-85px) rotate(-6deg);
+  transform: translateY(-90px) translateX(-20px) rotate(-6deg);
 }
 
 .arch-wallet:hover .arch-card-2 {
-  transform: translateY(-60px) rotate(-2deg);
+  transform: translateY(-65px) translateX(-7px) rotate(-2deg);
 }
 
 .arch-wallet:hover .arch-card-3 {
-  transform: translateY(-38px) rotate(2deg);
+  transform: translateY(-40px) translateX(7px) rotate(2deg);
 }
 
 .arch-wallet:hover .arch-card-4 {
-  transform: translateY(-16px) rotate(6deg);
+  transform: translateY(-15px) translateX(20px) rotate(6deg);
 }
 
-/* Individual Card Hover Pull-Out */
-.arch-deck-card:hover {
-  z-index: 100 !important;
+/* Individual Card Hover & Active Pull-Out */
+.arch-deck-card:hover,
+.arch-deck-card.card-active-pull {
+  z-index: 150 !important;
   border-color: #D5B779 !important;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(102, 71, 1, 0.4) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(102, 71, 1, 0.65) !important;
 }
 
-.arch-wallet:hover .arch-card-1:hover {
-  transform: translateY(-100px) scale(1.05) rotate(0deg) !important;
+.arch-wallet:hover .arch-card-1:hover,
+.arch-card-1.card-active-pull {
+  transform: translateY(-115px) scale(1.06) rotate(0deg) !important;
 }
 
-.arch-wallet:hover .arch-card-2:hover {
-  transform: translateY(-85px) scale(1.05) rotate(0deg) !important;
+.arch-wallet:hover .arch-card-2:hover,
+.arch-card-2.card-active-pull {
+  transform: translateY(-100px) scale(1.06) rotate(0deg) !important;
 }
 
-.arch-wallet:hover .arch-card-3:hover {
-  transform: translateY(-70px) scale(1.05) rotate(0deg) !important;
+.arch-wallet:hover .arch-card-3:hover,
+.arch-card-3.card-active-pull {
+  transform: translateY(-85px) scale(1.06) rotate(0deg) !important;
 }
 
-.arch-wallet:hover .arch-card-4:hover {
-  transform: translateY(-55px) scale(1.05) rotate(0deg) !important;
+.arch-wallet:hover .arch-card-4:hover,
+.arch-card-4.card-active-pull {
+  transform: translateY(-70px) scale(1.06) rotate(0deg) !important;
 }
 
-.arch-deck-card:hover .arch-code-hidden {
+.arch-deck-card:hover .arch-code-hidden,
+.arch-deck-card.card-active-pull .arch-code-hidden {
   display: none;
 }
 
-.arch-deck-card:hover .arch-inspect-prompt {
+.arch-deck-card:hover .arch-inspect-prompt,
+.arch-deck-card.card-active-pull .arch-inspect-prompt {
   display: inline-flex;
 }
 
@@ -2104,6 +2148,23 @@
 
   .schematics-content-col {
     order: 2;
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .arch-wallet {
+    width: 295px;
+    height: 255px;
+  }
+
+  .arch-wallet-back,
+  .arch-pocket {
+    width: 295px;
+  }
+
+  .arch-deck-card {
+    width: 270px;
+    left: 12px;
   }
 }
 

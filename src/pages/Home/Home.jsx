@@ -45,6 +45,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
   const spacesSliderRef = useRef(null);
   const [showHighlightsPopup, setShowHighlightsPopup] = useState(false);
   const [activeSpaceIndex, setActiveSpaceIndex] = useState(0);
+  const [activeDeckCard, setActiveDeckCard] = useState(null);
 
   const handleSpaceScroll = (e) => {
     const scrollLeft = e.target.scrollLeft;
@@ -836,7 +837,32 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
             <div className="schematics-deck-col">
               <RevealOnScroll animation="fade-right">
                 <div className="arch-wallet-deck-wrapper">
-                  <div className="arch-wallet">
+                  {/* Quick Level Selector Tabs for Instant Grabbing on Desktop & Mobile */}
+                  <div className="arch-deck-quick-tabs">
+                    {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => {
+                      const tabLabels = ['01 LGF', '02 UGF', '03 1st Flr', '04 2nd Flr'];
+                      const isSelected = activeDeckCard === idx;
+                      return (
+                        <button
+                          key={`tab-${plan.id}`}
+                          type="button"
+                          className={`arch-deck-tab-pill ${isSelected ? 'active' : ''}`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDeckCard(activeDeckCard === idx ? null : idx);
+                          }}
+                          aria-label={`Select ${plan.floor}`}
+                        >
+                          {tabLabels[idx]}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div
+                    className="arch-wallet"
+                    onMouseLeave={() => setActiveDeckCard(null)}
+                  >
                     {/* Wallet Back Foundation */}
                     <div className="arch-wallet-back" />
 
@@ -845,12 +871,14 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                       const cardClassNames = ['arch-card-1', 'arch-card-2', 'arch-card-3', 'arch-card-4'];
                       const cardClass = cardClassNames[idx] || `arch-card-${idx + 1}`;
                       const floorCode = idx === 0 ? 'LGF/UGF' : idx === 1 ? '1ST-FLR' : idx === 2 ? '2ND-FLR' : '3RD-7TH';
+                      const isCardActive = activeDeckCard === idx;
 
                       return (
                         <div
                           key={plan.id}
-                          className={`arch-deck-card ${cardClass}`}
+                          className={`arch-deck-card ${cardClass} ${isCardActive ? 'card-active-pull' : ''}`}
                           onClick={() => onSelectFloorPlan(plan)}
+                          onMouseEnter={() => setActiveDeckCard(idx)}
                           role="button"
                           tabIndex={0}
                           aria-label={`Inspect blueprint for ${plan.floor}`}
