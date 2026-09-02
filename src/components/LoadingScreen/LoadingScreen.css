@@ -1,0 +1,135 @@
+.loading-screen-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FAF8F4;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 600ms cubic-bezier(0.77, 0, 0.175, 1), opacity 600ms ease;
+  overflow: hidden;
+}
+
+.loading-screen-wrap.is-exiting {
+  transform: translateY(-100%);
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.loading-grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.6;
+}
+
+.loading-center-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.loading-logo-box {
+  width: 90px;
+  height: 90px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(102, 71, 1, 0.25);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 8px;
+}
+
+.loading-logo-box.show-symbol {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.loading-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.loading-brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #111112;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loading-brand-name.show-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.loading-line-track {
+  width: 0px;
+  height: 1.5px;
+  background: rgba(102, 71, 1, 0.3);
+  margin: 1.25rem 0;
+  position: relative;
+  transition: width 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.loading-line-track.expand-line {
+  width: 220px;
+}
+
+.loading-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-dark), transparent);
+}
+
+.loading-tagline {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--gold-dark);
+  font-style: italic;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 500ms ease 100ms;
+}
+
+.loading-tagline.show-tagline {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.loading-location {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: all 400ms ease 200ms;
+}
+
+.loading-location.show-location {
+  opacity: 1;
+}

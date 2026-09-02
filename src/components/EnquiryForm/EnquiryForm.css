@@ -1,0 +1,130 @@
+.enquiry-form-container {
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #2D2C29;
+  font-weight: 700;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: #FAF8F4;
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  border-radius: 2px;
+  padding: 12px 14px;
+  color: #111112;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 0 2px rgba(102, 71, 1, 0.25);
+  background: #FFFFFF;
+}
+
+.form-select option {
+  background: #FFFFFF;
+  color: #111112;
+}
+
+.input-error {
+  border-color: #E53E3E !important;
+}
+
+.field-error-msg {
+  font-size: 0.75rem;
+  color: #C53030;
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+.form-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-submit-btn {
+  padding: 15px 30px;
+  font-size: 0.88rem;
+}
+
+.form-disclaimer {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Success State Screen */
+.enquiry-success-state {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-icon-wrap {
+  margin-bottom: 1.25rem;
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: #111112;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.success-message {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: 1.25rem;
+}
+
+.success-contact-reminder {
+  font-size: 0.85rem;
+  color: var(--gold-dark);
+  background: rgba(102, 71, 1, 0.12);
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,198 @@
+.floor-plans-page-root {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+.filter-tabs-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.filter-btn {
+  background: #FFFFFF;
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  color: #111112;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--gold-dark);
+  color: var(--gold-dark);
+  background: rgba(102, 71, 1, 0.08);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #7D5701 0%, #664701 100%);
+  color: #000000;
+  border-color: var(--gold);
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(102, 71, 1, 0.35);
+}
+
+/* Equal Height Blueprint Cards */
+.blueprint-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.blueprint-tilt-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.blueprint-card-inner {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(102, 71, 1, 0.3);
+  border-radius: 4px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: var(--transition);
+}
+
+.blueprint-tilt-card:hover .blueprint-card-inner {
+  border-color: var(--gold-dark);
+  box-shadow: 0 20px 60px rgba(102, 71, 1, 0.2);
+}
+
+.blueprint-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.bp-floor-tag {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+.bp-code-tag {
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  border: 1px dashed rgba(102, 71, 1, 0.4);
+  padding: 2px 6px;
+  font-weight: 600;
+}
+
+.bp-preview-image-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(102, 71, 1, 0.2);
+}
+
+.bp-preview-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05);
+  transition: transform 600ms ease;
+}
+
+.blueprint-tilt-card:hover .bp-preview-image-wrap img {
+  transform: scale(1.06);
+}
+
+.bp-click-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.blueprint-tilt-card:hover .bp-click-overlay {
+  opacity: 1;
+}
+
+.bp-overlay-btn {
+  background: linear-gradient(135deg, #7D5701, #664701);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 8px 16px;
+  border-radius: 2px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.bp-purpose-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #111112;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.bp-description {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+  flex: 1;
+}
+
+.bp-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.bp-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #111112;
+  font-weight: 500;
+}
+
+.bp-card-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bp-open-cue {
+  font-size: 0.75rem;
+  color: var(--gold-dark);
+  font-weight: 600;
+}

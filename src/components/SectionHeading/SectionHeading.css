@@ -1,0 +1,158 @@
+.section-heading {
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.section-heading.align-center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 840px;
+}
+
+.section-heading.align-left {
+  text-align: left;
+  max-width: 780px;
+}
+
+.section-eyebrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.section-number {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold-dark);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+}
+
+.section-badge {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: var(--gold-dark);
+  background: rgba(102, 71, 1, 0.12);
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  color: #111112;
+}
+
+.section-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--gold-dark);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.section-description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.align-center .section-divider {
+  justify-content: center;
+}
+
+.align-left .section-divider {
+  justify-content: flex-start;
+}
+
+.divider-line {
+  height: 1px;
+  width: 40px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.align-center .divider-line:last-child {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.divider-diamond {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px var(--gold);
+}
+
+/* ==========================================================================
+   THEME OVERRIDES FOR SECTION HEADING
+   ========================================================================== */
+.theme-dark .section-title,
+.theme-section-dark .section-title {
+  color: #FFFFFF;
+}
+
+.theme-dark .section-number,
+.theme-section-dark .section-number {
+  color: var(--gold-light);
+}
+
+.theme-dark .section-badge,
+.theme-section-dark .section-badge {
+  color: var(--gold-light);
+  background: rgba(102, 71, 1, 0.15);
+  border-color: rgba(102, 71, 1, 0.45);
+}
+
+.theme-dark .section-subtitle,
+.theme-section-dark .section-subtitle {
+  color: var(--gold-light);
+}
+
+.theme-dark .section-description,
+.theme-section-dark .section-description {
+  color: #BDBAB0;
+}
+
+.theme-light .section-title,
+.theme-section-light .section-title,
+.theme-section-white .section-title {
+  color: #111112;
+}
+
+.theme-light .section-subtitle,
+.theme-section-light .section-subtitle,
+.theme-section-white .section-subtitle {
+  color: var(--gold-dark);
+}
+
+.theme-light .section-description,
+.theme-section-light .section-description,
+.theme-section-white .section-description {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .section-heading {
+    margin-bottom: 2.5rem;
+  }
+}

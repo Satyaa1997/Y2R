@@ -1,0 +1,238 @@
+.contact-page-root {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr;
+  gap: 4.5rem;
+  align-items: flex-start;
+}
+
+.contact-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-detail-tilt {
+  width: 100%;
+}
+
+.contact-detail-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(102, 71, 1, 0.25);
+  border-radius: 4px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 110px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.contact-detail-tilt:hover .contact-detail-card {
+  border-color: var(--gold);
+  background: #FAF8F4;
+  box-shadow: 0 10px 30px rgba(102, 71, 1, 0.15);
+}
+
+.card-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 2px;
+  background: rgba(102, 71, 1, 0.12);
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-dark);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.card-heading {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #111112;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.card-subtext {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.phone-links-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.phone-link-main {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toll-badge {
+  font-size: 0.65rem;
+  background: rgba(102, 71, 1, 0.2);
+  border: 1px solid var(--gold);
+  color: #111112;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+.direct-nums {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.direct-nums a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.direct-nums a:hover {
+  color: var(--gold-dark);
+}
+
+.num-sep {
+  color: var(--text-muted);
+}
+
+.email-link-main {
+  font-size: 1.05rem;
+  color: var(--gold-dark);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 250ms ease;
+}
+
+.email-link-main:hover {
+  color: var(--gold-deep);
+}
+
+.rera-verified-card {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  padding: 1.25rem 1.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.rera-verified-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-dark);
+  font-weight: 700;
+  display: block;
+}
+
+.rera-verified-num {
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #111112;
+  font-weight: 700;
+}
+
+.contact-form-wrapper {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border-radius: 4px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+}
+
+.form-header-box {
+  margin-bottom: 2rem;
+}
+
+.form-heading {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: #111112;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.form-subheading {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.map-visual-card {
+  background: radial-gradient(circle at 50% 50%, #FFFFFF 0%, #FAF8F4 80%);
+  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border-radius: 4px;
+  padding: 4.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.06);
+}
+
+.map-inner-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-beacon-symbol {
+  margin-bottom: 1.25rem;
+}
+
+.map-location-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: #111112;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.map-address-text {
+  font-size: 1rem;
+  color: var(--gold-dark);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+@media (max-width: 992px) {
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .contact-form-wrapper {
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,128 @@
+.location-page-root {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+/* Equal Height Connectivity Cards */
+.connectivity-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  align-items: stretch;
+}
+
+.conn-tilt-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.conn-card-inner {
+  background: #FFFFFF;
+  border: 1px solid rgba(102, 71, 1, 0.25);
+  border-radius: 4px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.conn-tilt-card:hover .conn-card-inner {
+  border-color: var(--gold);
+  background: #FAF8F4;
+  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.15);
+}
+
+.conn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.conn-time-badge {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  background: rgba(102, 71, 1, 0.12);
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.conn-dest-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: #111112;
+  margin-bottom: 1.25rem;
+  flex: 1;
+  font-weight: 700;
+}
+
+.conn-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin-top: auto;
+}
+
+.conn-dist {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.conn-type-tag {
+  font-size: 0.7rem;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.location-notes-box {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  padding: 2rem;
+  border-radius: 4px;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.notes-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: #111112;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.notes-text {
+  font-size: 1rem;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.notes-sub {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+  .location-notes-box {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+}

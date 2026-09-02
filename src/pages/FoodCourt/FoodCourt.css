@@ -1,0 +1,189 @@
+.food-court-page-root {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+.fnb-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+.fnb-p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+.fnb-specs-box {
+  margin-top: 2rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(102, 71, 1, 0.3);
+  padding: 1.5rem;
+  border-radius: 3px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.specs-box-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-dark);
+  margin-bottom: 0.85rem;
+  font-weight: 700;
+}
+
+.specs-box-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.specs-box-list li {
+  font-size: 0.88rem;
+  color: #111112;
+  position: relative;
+  padding-left: 1.25rem;
+  font-weight: 500;
+}
+
+.specs-box-list li::before {
+  content: '•';
+  color: var(--gold);
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.fnb-img-frame {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+}
+
+.fnb-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+}
+
+.fnb-img-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, transparent 100%);
+  padding: 2rem 1.5rem 1.5rem;
+}
+
+.fnb-img-caption p {
+  font-size: 0.85rem;
+  color: #111112;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* Equal Height F&B Cards */
+.fnb-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.fnb-feat-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.fnb-feat-inner {
+  background: #FFFFFF;
+  border: 1px solid rgba(102, 71, 1, 0.25);
+  padding: 2.25rem 1.75rem;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: var(--transition);
+}
+
+.fnb-feat-card:hover .fnb-feat-inner {
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.15);
+}
+
+.feat-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+  background: rgba(102, 71, 1, 0.12);
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.feat-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: #111112;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.feat-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 400;
+  flex: 1;
+}
+
+@media (max-width: 992px) {
+  .fnb-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* ==========================================================================
+   FOOD COURT DARK THEME STYLES
+   ========================================================================== */
+.theme-section-dark .fnb-p {
+  color: #BDBAB0;
+}
+
+.theme-section-dark .fnb-specs-box {
+  background: #141519;
+  border-color: rgba(102, 71, 1, 0.35);
+}
+
+.theme-section-dark .specs-box-title {
+  color: var(--gold-light);
+}
+
+.theme-section-dark .specs-box-list li {
+  color: #FAF8F4;
+}
+
+.theme-section-dark .fnb-img-caption {
+  background: linear-gradient(to top, rgba(14, 15, 18, 0.95) 0%, transparent 100%);
+}
+
+.theme-section-dark .fnb-img-caption p {
+  color: #FFFFFF;
+}
+

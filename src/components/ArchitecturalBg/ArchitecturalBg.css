@@ -1,0 +1,676 @@
+/* ==========================================================================
+   MULTI-TOPIC ARCHITECTURAL BACKGROUND ANIMATIONS
+   100% Unique, Non-Repeating Vector Graphics & Keyframe Motions Per Section
+   Zero Text • Clean CAD Geometry • Dark & Light Section Support
+   ========================================================================== */
+
+.arch-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   1. SECTION-SPECIFIC BACKGROUND GRIDS (Different Grid Types)
+   ========================================================================== */
+.arch-grid-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.arch-grid-home_overview,
+.arch-grid-project_hero,
+.arch-grid-spaces_hero {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(102, 71, 1, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(102, 71, 1, 0.05) 1px, transparent 1px);
+  animation: gridDriftA 60s linear infinite;
+}
+
+.arch-grid-home_highlights,
+.arch-grid-offices_narrative,
+.arch-grid-gallery_main {
+  background-size: 45px 45px;
+  background-image: 
+    radial-gradient(circle, rgba(102, 71, 1, 0.16) 1.5px, transparent 1.5px),
+    linear-gradient(to right, rgba(102, 71, 1, 0.035) 1px, transparent 1px);
+  animation: gridDriftB 50s linear infinite;
+}
+
+.arch-grid-home_retail,
+.arch-grid-retail_hero,
+.arch-grid-retail_showcase,
+.arch-grid-retail_features {
+  background-size: 80px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(102, 71, 1, 0.065) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(102, 71, 1, 0.035) 1px, transparent 1px);
+  animation: gridDriftC 45s linear infinite;
+}
+
+.arch-grid-home_dual_spotlight,
+.arch-grid-offices_hero,
+.arch-grid-offices_pillars {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(45deg, rgba(102, 71, 1, 0.045) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(102, 71, 1, 0.045) 1px, transparent 1px);
+  animation: gridDriftD 70s linear infinite;
+}
+
+.arch-grid-home_foodcourt,
+.arch-grid-foodcourt_hero,
+.arch-grid-foodcourt_narrative,
+.arch-grid-foodcourt_categories {
+  background-size: 70px 70px;
+  background-image: 
+    radial-gradient(circle at center, rgba(102, 71, 1, 0.08) 0%, transparent 65%),
+    linear-gradient(to right, rgba(102, 71, 1, 0.035) 1px, transparent 1px);
+  animation: gridDriftE 55s linear infinite;
+}
+
+.arch-grid-home_floorplans,
+.arch-grid-floorplans_hero,
+.arch-grid-floorplans_gallery {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(102, 71, 1, 0.075) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(102, 71, 1, 0.075) 1px, transparent 1px);
+  animation: gridDriftF 40s linear infinite;
+}
+
+.arch-grid-home_location,
+.arch-grid-location_hero,
+.arch-grid-location_radar,
+.arch-grid-location_connectivity {
+  background-size: 90px 90px;
+  background-image: 
+    radial-gradient(circle, rgba(102, 71, 1, 0.12) 2px, transparent 2px),
+    linear-gradient(to right, rgba(102, 71, 1, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(102, 71, 1, 0.045) 1px, transparent 1px);
+  animation: gridDriftG 65s linear infinite;
+}
+
+.arch-grid-home_amenities,
+.arch-grid-home_parking,
+.arch-grid-home_why,
+.arch-grid-home_gallery,
+.arch-grid-home_investment,
+.arch-grid-home_enquiry,
+.arch-grid-project_vision,
+.arch-grid-project_spaces,
+.arch-grid-project_amenities,
+.arch-grid-project_parking,
+.arch-grid-project_why,
+.arch-grid-spaces_list,
+.arch-grid-studios_hero,
+.arch-grid-studios_narrative,
+.arch-grid-studios_features,
+.arch-grid-gallery_hero,
+.arch-grid-investment_hero,
+.arch-grid-investment_overview,
+.arch-grid-investment_pillars,
+.arch-grid-contact_hero,
+.arch-grid-contact_main,
+.arch-grid-cta_banner {
+  background-size: 55px 55px;
+  background-image: 
+    linear-gradient(to right, rgba(102, 71, 1, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(102, 71, 1, 0.05) 1px, transparent 1px);
+  animation: gridDriftA 55s linear infinite;
+}
+
+@keyframes gridDriftA {
+  0% { background-position: 0 0; }
+  100% { background-position: 120px 120px; }
+}
+@keyframes gridDriftB {
+  0% { background-position: 0 0; }
+  100% { background-position: 90px 90px; }
+}
+@keyframes gridDriftC {
+  0% { background-position: 0 0; }
+  100% { background-position: -160px 0; }
+}
+@keyframes gridDriftD {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px -100px; }
+}
+@keyframes gridDriftE {
+  0% { background-position: 0 0; }
+  100% { background-position: 140px 70px; }
+}
+@keyframes gridDriftF {
+  0% { background-position: 0 0; }
+  100% { background-position: 64px 64px; }
+}
+@keyframes gridDriftG {
+  0% { background-position: 0 0; }
+  100% { background-position: -90px 90px; }
+}
+
+/* ==========================================================================
+   2. SCANNING HORIZON LASER BEAM
+   ========================================================================== */
+.arch-laser-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(102, 71, 1, 0.05) 20%,
+    rgba(125, 87, 1, 0.45) 50%,
+    rgba(102, 71, 1, 0.05) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(102, 71, 1, 0.3);
+  animation: archLaserScanMotion 14s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes archLaserScanMotion {
+  0% { transform: translateY(-50px); opacity: 0; }
+  15% { opacity: 0.75; }
+  85% { opacity: 0.75; }
+  100% { transform: translateY(900px); opacity: 0; }
+}
+
+/* ==========================================================================
+   3. INDIVIDUAL VECTOR CANVAS & UNIQUE ANIMATIONS
+   ========================================================================== */
+.arch-vector-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 1. Tower Elevation Motion */
+.anim-tower-elevation {
+  animation: animElevationPulse 6s ease-in-out infinite;
+}
+@keyframes animElevationPulse {
+  0%, 100% { transform: translate(80px, 70px) scale(1); opacity: 0.8; }
+  50% { transform: translate(80px, 65px) scale(1.01); opacity: 1; }
+}
+
+/* 2. Compass Spin */
+.anim-compass-rotate {
+  transform-origin: 1260px 150px;
+  animation: animCompassSpin 100s linear infinite;
+}
+@keyframes animCompassSpin {
+  0% { transform: translate(1260px, 150px) rotate(0deg); }
+  100% { transform: translate(1260px, 150px) rotate(360deg); }
+}
+
+/* 3. Cube Cluster */
+.anim-cube-cluster {
+  animation: animCubeFloat 7s ease-in-out infinite;
+}
+@keyframes animCubeFloat {
+  0%, 100% { transform: translate(720px, 400px) scale(1); }
+  50% { transform: translate(720px, 390px) scale(1.02); }
+}
+
+/* 4. Retail Arches */
+.anim-retail-arches {
+  animation: animArchesGlow 8s ease-in-out infinite;
+}
+@keyframes animArchesGlow {
+  0%, 100% { transform: translate(160px, 160px); opacity: 0.75; }
+  50% { transform: translate(160px, 152px); opacity: 1; }
+}
+
+/* 5. Dual Split */
+.anim-dual-split {
+  animation: animDualBreathe 9s ease-in-out infinite;
+}
+@keyframes animDualBreathe {
+  0%, 100% { transform: translate(120px, 140px); opacity: 0.8; }
+  50% { transform: translate(120px, 130px); opacity: 1; }
+}
+
+/* 6. Pergola Spin */
+.anim-pergola-spin {
+  transform-origin: 720px 400px;
+  animation: animPergolaRotate 120s linear infinite;
+}
+@keyframes animPergolaRotate {
+  0% { transform: translate(720px, 400px) rotate(0deg); }
+  100% { transform: translate(720px, 400px) rotate(360deg); }
+}
+
+/* 7. Elevator Lifts */
+.lift-car-motion-a {
+  animation: liftMoveA 8s ease-in-out infinite alternate;
+}
+@keyframes liftMoveA {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(290px); }
+}
+.lift-car-motion-b {
+  animation: liftMoveB 9s ease-in-out infinite alternate;
+}
+@keyframes liftMoveB {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-250px); }
+}
+
+/* 8. Parking Bays */
+.anim-parking-bays {
+  animation: animParkingWave 8s ease-in-out infinite;
+}
+@keyframes animParkingWave {
+  0%, 100% { transform: translate(180px, 140px); opacity: 0.8; }
+  50% { transform: translate(190px, 135px); opacity: 1; }
+}
+
+/* 9. Blueprint Draft */
+.anim-blueprint-draft {
+  animation: animDraftPulse 6s ease-in-out infinite;
+}
+@keyframes animDraftPulse {
+  0%, 100% { transform: translate(140px, 100px); opacity: 0.8; }
+  50% { transform: translate(140px, 95px); opacity: 1; }
+}
+
+/* 10. Why Tiers */
+.anim-why-tiers {
+  animation: animTiersAscend 7s ease-in-out infinite;
+}
+@keyframes animTiersAscend {
+  0%, 100% { transform: translate(180px, 160px); opacity: 0.8; }
+  50% { transform: translate(180px, 150px); opacity: 1; }
+}
+
+/* 11. Home Radar */
+.anim-home-radar {
+  animation: animHomeRadarPulse 8s ease-in-out infinite;
+}
+@keyframes animHomeRadarPulse {
+  0%, 100% { transform: translate(700px, 400px) scale(0.97); }
+  50% { transform: translate(700px, 400px) scale(1.03); }
+}
+
+/* 12. Gallery Frustum */
+.anim-gallery-frustum {
+  animation: animFrustumFloat 8s ease-in-out infinite;
+}
+@keyframes animFrustumFloat {
+  0%, 100% { transform: translate(180px, 140px); opacity: 0.8; }
+  50% { transform: translate(180px, 130px); opacity: 1; }
+}
+
+/* 13. Golden Spiral */
+.anim-golden-spiral {
+  transform-origin: 720px 380px;
+  animation: animSpiralRotate 90s linear infinite;
+}
+@keyframes animSpiralRotate {
+  0% { transform: translate(720px, 380px) rotate(0deg); }
+  100% { transform: translate(720px, 380px) rotate(360deg); }
+}
+
+/* 14. Protractor Sweep */
+.anim-protractor-sweep {
+  animation: animProtractor 9s ease-in-out infinite;
+}
+@keyframes animProtractor {
+  0%, 100% { transform: translate(180px, 120px); opacity: 0.8; }
+  50% { transform: translate(180px, 110px); opacity: 1; }
+}
+
+/* 15. Masterplan */
+.anim-proj-masterplan {
+  animation: animMasterplanFloat 8s ease-in-out infinite;
+}
+@keyframes animMasterplanFloat {
+  0%, 100% { transform: translate(140px, 100px); opacity: 0.8; }
+  50% { transform: translate(140px, 92px); opacity: 1; }
+}
+
+/* 16. Glass Curtain */
+.anim-glass-curtain {
+  animation: animCurtainShimmer 7s ease-in-out infinite;
+}
+@keyframes animCurtainShimmer {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
+/* 17. Tier Slices */
+.anim-tier-slices {
+  animation: animSliceStack 6s ease-in-out infinite;
+}
+@keyframes animSliceStack {
+  0%, 100% { transform: translate(120px, 120px); }
+  50% { transform: translate(120px, 110px); }
+}
+
+/* 18. Smart Mesh */
+.anim-smart-mesh {
+  animation: animMeshPulse 8s ease-in-out infinite;
+}
+@keyframes animMeshPulse {
+  0%, 100% { transform: translate(160px, 140px) scale(0.98); }
+  50% { transform: translate(160px, 140px) scale(1.02); }
+}
+
+/* 19. Subsurface Gradient */
+.anim-subsurface-gradient {
+  animation: animSubsurface 7s ease-in-out infinite;
+}
+@keyframes animSubsurface {
+  0%, 100% { transform: translate(140px, 160px); opacity: 0.8; }
+  50% { transform: translate(140px, 150px); opacity: 1; }
+}
+
+/* 20. Truss Lattice */
+.anim-truss-lattice {
+  animation: animTrussStress 8s ease-in-out infinite;
+}
+@keyframes animTrussStress {
+  0%, 100% { transform: translate(160px, 180px); opacity: 0.8; }
+  50% { transform: translate(160px, 172px); opacity: 1; }
+}
+
+/* 21. Spatial Constellation */
+.anim-spatial-constellation {
+  transform-origin: 720px 400px;
+  animation: animConstellationSpin 100s linear infinite;
+}
+@keyframes animConstellationSpin {
+  0% { transform: translate(720px, 400px) rotate(0deg); }
+  100% { transform: translate(720px, 400px) rotate(360deg); }
+}
+
+/* 22. Perspective Stack */
+.anim-perspective-stack {
+  animation: animPerspectiveHover 6s ease-in-out infinite;
+}
+@keyframes animPerspectiveHover {
+  0%, 100% { transform: translate(140px, 100px); }
+  50% { transform: translate(140px, 90px); }
+}
+
+/* 23. Grand Portal */
+.anim-grand-portal {
+  animation: animPortalGlow 7s ease-in-out infinite;
+}
+@keyframes animPortalGlow {
+  0%, 100% { transform: translate(160px, 80px); opacity: 0.8; }
+  50% { transform: translate(160px, 72px); opacity: 1; }
+}
+
+/* 24. Promenade Boulevard */
+.anim-promenade-boulevard {
+  animation: animBoulevardShift 8s ease-in-out infinite;
+}
+@keyframes animBoulevardShift {
+  0%, 100% { transform: translate(140px, 120px); opacity: 0.8; }
+  50% { transform: translate(150px, 115px); opacity: 1; }
+}
+
+/* 25. Colonnade Columns */
+.anim-colonnade-columns {
+  animation: animColonnadeSweep 9s ease-in-out infinite;
+}
+@keyframes animColonnadeSweep {
+  0%, 100% { transform: translate(120px, 160px); opacity: 0.8; }
+  50% { transform: translate(120px, 150px); opacity: 1; }
+}
+
+/* 26. Exec Tower */
+.anim-exec-tower {
+  animation: animTowerSway 8s ease-in-out infinite;
+}
+@keyframes animTowerSway {
+  0%, 100% { transform: translate(200px, 60px); }
+  50% { transform: translate(200px, 52px); }
+}
+
+/* 27. Office Floorplate */
+.anim-office-floorplate {
+  animation: animOfficeHoverA 7s ease-in-out infinite;
+}
+@keyframes animOfficeHoverA {
+  0%, 100% { transform: translate(160px, 120px); }
+  50% { transform: translate(160px, 110px); }
+}
+
+/* 28. Glass Partitions */
+.anim-glass-partitions {
+  animation: animPartitionsDrift 8s ease-in-out infinite;
+}
+@keyframes animPartitionsDrift {
+  0%, 100% { transform: translate(140px, 140px); opacity: 0.8; }
+  50% { transform: translate(140px, 130px); opacity: 1; }
+}
+
+/* 29. Res Facade */
+.anim-res-facade {
+  animation: animFacadeBreathe 8s ease-in-out infinite;
+}
+@keyframes animFacadeBreathe {
+  0%, 100% { transform: translate(180px, 80px); }
+  50% { transform: translate(180px, 72px); }
+}
+
+/* 30. Studio Suite */
+.anim-stu-suite {
+  animation: animSuiteDraft 8s ease-in-out infinite;
+}
+@keyframes animSuiteDraft {
+  0%, 100% { transform: translate(180px, 120px); opacity: 0.8; }
+  50% { transform: translate(180px, 112px); opacity: 1; }
+}
+
+/* 31. Modular Living */
+.anim-modular-living {
+  animation: animModularShift 7s ease-in-out infinite;
+}
+@keyframes animModularShift {
+  0%, 100% { transform: translate(140px, 140px); opacity: 0.8; }
+  50% { transform: translate(140px, 132px); opacity: 1; }
+}
+
+/* 32. Sail Canopies */
+.anim-sail-canopies {
+  animation: animCanopyWave 8s ease-in-out infinite;
+}
+@keyframes animCanopyWave {
+  0%, 100% { transform: translate(160px, 100px); opacity: 0.8; }
+  50% { transform: translate(160px, 90px); opacity: 1; }
+}
+
+/* 33. F&B Stations */
+.anim-fnb-stations {
+  animation: animStationsFlow 8s ease-in-out infinite;
+}
+@keyframes animStationsFlow {
+  0%, 100% { transform: translate(140px, 120px); opacity: 0.8; }
+  50% { transform: translate(140px, 112px); opacity: 1; }
+}
+
+/* 34. Cluster Orbital */
+.anim-cluster-orbital {
+  transform-origin: 720px 380px;
+  animation: animOrbitalSpin 90s linear infinite;
+}
+@keyframes animOrbitalSpin {
+  0% { transform: translate(720px, 380px) rotate(0deg); }
+  100% { transform: translate(720px, 380px) rotate(360deg); }
+}
+
+/* 35. FP Datum */
+.anim-fp-datum {
+  animation: animDatumShift 6s ease-in-out infinite;
+}
+@keyframes animDatumShift {
+  0%, 100% { transform: translate(180px, 100px); opacity: 0.8; }
+  50% { transform: translate(180px, 92px); opacity: 1; }
+}
+
+/* 36. CAD Hatch */
+.anim-cad-hatch {
+  animation: animHatchScan 7s ease-in-out infinite;
+}
+@keyframes animHatchScan {
+  0%, 100% { transform: translate(140px, 90px); opacity: 0.8; }
+  50% { transform: translate(140px, 82px); opacity: 1; }
+}
+
+/* 37. Expressway Grid */
+.anim-expressway-grid {
+  animation: animExpresswayPulse 8s ease-in-out infinite;
+}
+@keyframes animExpresswayPulse {
+  0%, 100% { transform: translate(140px, 100px) scale(0.98); }
+  50% { transform: translate(140px, 100px) scale(1.02); }
+}
+
+/* 38. Radar Sweep */
+.anim-radar-sweep {
+  animation: animRadarSweepB 8s ease-in-out infinite;
+}
+@keyframes animRadarSweepB {
+  0%, 100% { transform: translate(680px, 400px) scale(0.96); opacity: 0.75; }
+  50% { transform: translate(680px, 400px) scale(1.02); opacity: 1; }
+}
+
+/* 39. Transit Corridors */
+.anim-transit-corridors {
+  animation: animCorridorsFlow 8s ease-in-out infinite;
+}
+@keyframes animCorridorsFlow {
+  0%, 100% { transform: translate(180px, 120px); opacity: 0.8; }
+  50% { transform: translate(180px, 112px); opacity: 1; }
+}
+
+/* 40. Gallery Frustum Hero */
+.anim-gallery-frustum-hero {
+  animation: animFrustumHero 7s ease-in-out infinite;
+}
+@keyframes animFrustumHero {
+  0%, 100% { transform: translate(160px, 100px); opacity: 0.8; }
+  50% { transform: translate(160px, 90px); opacity: 1; }
+}
+
+/* 41. Display Panels */
+.anim-display-panels {
+  animation: animPanelsHover 8s ease-in-out infinite;
+}
+@keyframes animPanelsHover {
+  0%, 100% { transform: translate(120px, 120px); opacity: 0.8; }
+  50% { transform: translate(120px, 110px); opacity: 1; }
+}
+
+/* 42. Growth Curve */
+.anim-growth-curve {
+  animation: animGrowthCurveHover 7s ease-in-out infinite;
+}
+@keyframes animGrowthCurveHover {
+  0%, 100% { transform: translate(160px, 140px); opacity: 0.8; }
+  50% { transform: translate(160px, 130px); opacity: 1; }
+}
+
+/* 43. Catchment Circles */
+.anim-catchment-circles {
+  animation: animCatchmentPulse 8s ease-in-out infinite;
+}
+@keyframes animCatchmentPulse {
+  0%, 100% { transform: translate(700px, 380px) scale(0.97); }
+  50% { transform: translate(700px, 380px) scale(1.03); }
+}
+
+/* 44. Stability Pyramid */
+.anim-stability-pyramid {
+  animation: animPyramidHover 7s ease-in-out infinite;
+}
+@keyframes animPyramidHover {
+  0%, 100% { transform: translate(180px, 120px); opacity: 0.8; }
+  50% { transform: translate(180px, 110px); opacity: 1; }
+}
+
+/* 45. Contact Compass */
+.anim-contact-compass {
+  animation: animContactCompassPulse 8s ease-in-out infinite;
+}
+@keyframes animContactCompassPulse {
+  0%, 100% { transform: translate(180px, 100px); opacity: 0.8; }
+  50% { transform: translate(180px, 90px); opacity: 1; }
+}
+
+/* 46. Comm Nodes */
+.anim-comm-nodes {
+  animation: animCommNodesSweep 8s ease-in-out infinite;
+}
+@keyframes animCommNodesSweep {
+  0%, 100% { transform: translate(160px, 120px); opacity: 0.8; }
+  50% { transform: translate(160px, 110px); opacity: 1; }
+}
+
+/* 47. CTA Seal */
+.anim-cta-seal {
+  transform-origin: 720px 360px;
+  animation: animCtaSealRotate 100s linear infinite;
+}
+@keyframes animCtaSealRotate {
+  0% { transform: translate(720px, 360px) rotate(0deg); }
+  100% { transform: translate(720px, 360px) rotate(360deg); }
+}
+
+/* ==========================================================================
+   4. DARK THEME ILLUMINATION & GLOW STYLES
+   ========================================================================== */
+.theme-section-dark .arch-bg-wrapper {
+  opacity: 0.95;
+}
+
+.theme-section-dark .arch-grid-canvas {
+  filter: brightness(1.25);
+}
+
+.theme-section-dark .arch-laser-beam {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(102, 71, 1, 0.1) 15%,
+    rgba(125, 87, 1, 0.75) 50%,
+    rgba(102, 71, 1, 0.1) 85%,
+    transparent 100%
+  );
+  box-shadow: 0 0 25px rgba(125, 87, 1, 0.6);
+}
+
+.theme-section-dark .arch-vector-canvas {
+  filter: drop-shadow(0 0 4px rgba(102, 71, 1, 0.25));
+}
+
+/* ==========================================================================
+   5. RESPONSIVE ADAPTATIONS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .arch-bg-wrapper {
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 640px) {
+  .arch-bg-wrapper {
+    opacity: 0.55;
+  }
+}

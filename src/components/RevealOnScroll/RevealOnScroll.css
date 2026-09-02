@@ -1,0 +1,87 @@
+.reveal-item {
+  transition-property: opacity, transform, filter, clip-path;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Fade Up */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(35px);
+}
+
+.reveal-fade-up.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Left */
+.reveal-fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.reveal-fade-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade Right */
+.reveal-fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+.reveal-fade-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Zoom In */
+.reveal-zoom-in {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.reveal-zoom-in.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Blur In */
+.reveal-blur-in {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(20px);
+}
+
+.reveal-blur-in.is-revealed {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+/* Clip Reveal */
+.reveal-clip-reveal {
+  opacity: 0;
+  clip-path: inset(100% 0 0 0);
+  transform: translateY(20px);
+}
+
+.reveal-clip-reveal.is-revealed {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transform: translateY(0);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+}
+

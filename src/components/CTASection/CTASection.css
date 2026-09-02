@@ -1,0 +1,140 @@
+.cta-section-wrapper {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.cta-container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.cta-tilt-card {
+  width: 100%;
+}
+
+.cta-card-inner {
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FAF8F4 70%, #F5F2EA 100%);
+  border: 1.5px solid rgba(102, 71, 1, 0.45);
+  border-radius: 4px;
+  padding: 4.5rem 3rem;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-dark);
+  background: rgba(102, 71, 1, 0.12);
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  padding: 5px 14px;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  color: #111112;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.cta-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--gold-dark);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+.cta-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  max-width: 680px;
+}
+
+.cta-buttons-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.cta-action-btn {
+  padding: 16px 36px;
+  font-size: 0.9rem;
+}
+
+.cta-phone-btn {
+  padding: 15px 30px;
+  font-size: 0.9rem;
+}
+
+.cta-footnote {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.cta-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--gold);
+  opacity: 0.8;
+}
+
+.cta-corner-tl {
+  top: 12px;
+  left: 12px;
+  border-top: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+}
+
+.cta-corner-br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+}
+
+@media (max-width: 640px) {
+  .cta-card-inner {
+    padding: 3rem 1.5rem;
+  }
+}

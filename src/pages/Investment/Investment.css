@@ -1,0 +1,176 @@
+.investment-page-root {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+.investment-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+.invest-p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+.invest-rera-badge-box {
+  margin-top: 2rem;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  padding: 1.25rem 1.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.invest-rera-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-dark);
+  font-weight: 700;
+  display: block;
+}
+
+.invest-rera-num {
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #111112;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.invest-img-box {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+}
+
+.invest-img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+}
+
+.invest-img-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, transparent 100%);
+  padding: 2rem 1.5rem 1.5rem;
+}
+
+.invest-img-caption p {
+  font-size: 0.85rem;
+  color: #111112;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* Equal Height Pillars Grid */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.driver-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.driver-inner {
+  background: #FFFFFF;
+  border: 1px solid rgba(102, 71, 1, 0.25);
+  padding: 2.25rem 1.75rem;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.driver-card:hover .driver-inner {
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.15);
+}
+
+.driver-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+  background: rgba(102, 71, 1, 0.12);
+  border: 1px solid rgba(102, 71, 1, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.driver-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: #111112;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.driver-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 400;
+  flex: 1;
+}
+
+@media (max-width: 992px) {
+  .investment-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* ==========================================================================
+   INVESTMENT DARK THEME STYLES
+   ========================================================================== */
+.theme-section-dark .invest-p {
+  color: #BDBAB0;
+}
+
+.theme-section-dark .invest-rera-badge-box {
+  background: #141519;
+  border-color: rgba(102, 71, 1, 0.35);
+}
+
+.theme-section-dark .invest-rera-title {
+  color: var(--gold-light);
+}
+
+.theme-section-dark .invest-rera-num {
+  color: #FFFFFF;
+}
+
+.theme-section-dark .invest-img-caption {
+  background: linear-gradient(to top, rgba(14, 15, 18, 0.95) 0%, transparent 100%);
+}
+
+.theme-section-dark .invest-img-caption p {
+  color: #FFFFFF;
+}
+
