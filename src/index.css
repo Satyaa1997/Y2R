@@ -55,6 +55,7 @@
   --container: 1280px;
   --container-wide: 1440px;
   --header-height: 84px;
+  --section-padding: clamp(2.25rem, 4.5vh, 3.25rem);
 
   /* Micro-Interactions & Physics Easings */
   --transition-fast: 250ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -474,6 +475,21 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 
 .animate-bounce {
   animation: bounce 1.5s infinite;
+}
+
+/* ==========================================================================
+   GLOBAL SECTION PADDING (OPTIMIZED FOR 1-SCREEN VIEWPORT HEIGHT ON DESKTOP)
+   ========================================================================== */
+.section-padding {
+  padding: clamp(2.25rem, 4.5vh, 3.25rem) 0;
+}
+
+.section-padding-sm {
+  padding: clamp(1.5rem, 3vh, 2.25rem) 0;
+}
+
+.section-padding-lg {
+  padding: clamp(2.75rem, 5.5vh, 4rem) 0;
 }
 
 /* ==========================================================================

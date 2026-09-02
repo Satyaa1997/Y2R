@@ -7,9 +7,9 @@
 /* Equal Height Connectivity Cards */
 .connectivity-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.15rem;
+  margin-bottom: 1.75rem;
   align-items: stretch;
 }
 
@@ -21,46 +21,44 @@
 
 .conn-card-inner {
   background: #FFFFFF;
-  border: 1px solid rgba(102, 71, 1, 0.25);
-  border-radius: 4px;
-  padding: 1.75rem 1.5rem;
+  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border-radius: 6px;
+  padding: 1.25rem 1.15rem;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
   transition: var(--transition);
 }
 
 .conn-tilt-card:hover .conn-card-inner {
   border-color: var(--gold);
   background: #FAF8F4;
-  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.15);
+  box-shadow: 0 12px 30px rgba(102, 71, 1, 0.15);
 }
 
 .conn-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .conn-time-badge {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--gold-dark);
   background: rgba(102, 71, 1, 0.12);
   border: 1px solid rgba(102, 71, 1, 0.35);
-  padding: 4px 10px;
-  border-radius: 2px;
+  padding: 3px 8px;
+  border-radius: 3px;
 }
 
 .conn-dest-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   color: #111112;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
   flex: 1;
   font-weight: 700;
 }
@@ -69,35 +67,35 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.85rem;
+  padding-top: 0.65rem;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   margin-top: auto;
 }
 
 .conn-dist {
   font-family: monospace;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 600;
 }
 
 .conn-type-tag {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--gold-dark);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   font-weight: 700;
 }
 
 .location-notes-box {
   background: #FFFFFF;
   border: 1.5px solid rgba(102, 71, 1, 0.35);
-  padding: 2rem;
-  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  border-radius: 6px;
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
   align-items: flex-start;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
 }
 
 .notes-title {

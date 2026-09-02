@@ -5,7 +5,7 @@
 }
 
 .page-hero-section {
-  padding: 8.5rem 2rem 5rem;
+  padding: calc(var(--header-height) + 1.25rem) 1.5rem 2.25rem;
   background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, #FAF8F4 80%);
   text-align: center;
   border-bottom: 1px solid rgba(102, 71, 1, 0.25);
@@ -20,21 +20,20 @@
 }
 
 .page-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
   color: #111112;
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .page-hero-desc {
-  font-size: 1.15rem;
-  line-height: 1.8;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--text-secondary);
   font-weight: 400;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 .page-hero-meta {

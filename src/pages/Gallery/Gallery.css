@@ -8,9 +8,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .gallery-filter-btn {
@@ -18,11 +18,11 @@
   border: 1px solid rgba(102, 71, 1, 0.35);
   color: #111112;
   font-family: var(--font-body);
-  font-size: 0.82rem;
-  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 2px;
+  padding: 7px 16px;
+  border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(0,0,0,0.02);
@@ -37,7 +37,7 @@
 
 .gallery-filter-btn.active {
   background: linear-gradient(135deg, #7D5701 0%, #664701 100%);
-  color: #000000;
+  color: #FFFFFF;
   border-color: var(--gold);
   font-weight: 700;
   box-shadow: 0 4px 15px rgba(102, 71, 1, 0.35);
@@ -46,12 +46,12 @@
 .gallery-masonry-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.15rem;
 }
 
 .gallery-tile {
   position: relative;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
   background: #FAF8F4;
@@ -65,9 +65,9 @@
   transform: translateY(-2px);
 }
 
-.gallery-tile.aspect-wide { grid-column: span 2; height: 350px; }
-.gallery-tile.aspect-tall { height: 420px; }
-.gallery-tile.aspect-square { height: 350px; }
+.gallery-tile.aspect-wide { grid-column: span 2; height: 260px; }
+.gallery-tile.aspect-tall { height: 320px; }
+.gallery-tile.aspect-square { height: 260px; }
 
 .gallery-tile-inner {
   position: relative;

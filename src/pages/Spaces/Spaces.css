@@ -7,19 +7,19 @@
 .spaces-detailed-stack {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2rem;
 }
 
 .space-stack-card {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 4rem;
+  gap: 2rem;
   align-items: center;
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.25);
-  border-radius: 4px;
-  padding: 3rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border-radius: 6px;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .space-stack-card.row-reverse {
@@ -36,14 +36,14 @@
 
 .space-stack-img-wrap {
   position: relative;
-  border-radius: 3px;
+  border-radius: 4px;
   overflow: hidden;
   border: 1px solid rgba(102, 71, 1, 0.3);
 }
 
 .space-stack-img-wrap img {
   width: 100%;
-  height: 420px;
+  height: 270px;
   object-fit: cover;
   transition: transform 600ms ease;
 }

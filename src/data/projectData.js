@@ -107,6 +107,25 @@ export const SPACES_CATEGORIES = [
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1600&auto=format&fit=crop",
     badge: "2nd Floor",
     ctaText: "Discover Spaces"
+  },
+  {
+    id: "parking",
+    slug: "/floor-plans",
+    title: "Double Basement Parking",
+    shortTitle: "Basement Parking",
+    tagline: "Effortless Vehicular Arrival with 40+ Bays.",
+    description: "Secure, dual subterranean ramps engineered for smooth two-way vehicular flow, EV charging provisions, and 24/7 surveillance.",
+    highlight: "Dual Subterranean Ramps • 40+ Vehicles • 24/7 Security",
+    features: [
+      "Dual Subterranean Ramps (B1 & B2)",
+      "Dedicated 40+ Vehicle Bays",
+      "EV Charging Infrastructure",
+      "24/7 CCTV & Boom Barrier Access",
+      "Direct High-Speed Elevator Access"
+    ],
+    image: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=1600&auto=format&fit=crop",
+    badge: "B1 & B2 Levels",
+    ctaText: "Explore Parking Plan"
   }
 ];
 

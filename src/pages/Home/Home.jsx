@@ -4,6 +4,8 @@ import heroVideo from '../../assets/hero-bg.mp4';
 import {
   ArrowRight,
   ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
   Store,
   Briefcase,
   Home as HomeIcon,
@@ -39,7 +41,31 @@ import './Home.css';
 export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGalleryItem }) {
   const heroRef = useRef(null);
   const videoRef = useRef(null);
+  const spacesSliderRef = useRef(null);
   const [showHighlightsPopup, setShowHighlightsPopup] = useState(false);
+  const [activeSpaceIndex, setActiveSpaceIndex] = useState(0);
+
+  const handleSpaceScroll = (e) => {
+    const scrollLeft = e.target.scrollLeft;
+    const itemWidth = e.target.offsetWidth;
+    if (itemWidth > 0) {
+      const newIndex = Math.round(scrollLeft / itemWidth);
+      if (newIndex !== activeSpaceIndex && newIndex >= 0 && newIndex < SPACES_CATEGORIES.length) {
+        setActiveSpaceIndex(newIndex);
+      }
+    }
+  };
+
+  const scrollToSpace = (index) => {
+    if (spacesSliderRef.current) {
+      const itemWidth = spacesSliderRef.current.offsetWidth;
+      spacesSliderRef.current.scrollTo({
+        left: index * itemWidth,
+        behavior: 'smooth'
+      });
+      setActiveSpaceIndex(index);
+    }
+  };
 
   useEffect(() => {
     if (videoRef.current) {
@@ -121,210 +147,225 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
         <ArchitecturalBg variant="home_overview" />
         <div className="container-custom">
           <div className="intro-split-grid">
-            {/* Left: Architectural 3D Frame & Expressive Elevation Stack */}
-            <RevealOnScroll animation="fade-right" className="intro-media-col">
-              <TiltCard maxTilt={6} scale={1.01} className="intro-tilt-card">
-                <div className="architectural-frame-outer">
-                  {/* Compact Header Image */}
-                  <div className="frame-inner-border">
-                    <img
-                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1400&auto=format&fit=crop"
-                      alt="Y2R Heights Elevation"
-                      className="architectural-frame-img"
-                    />
-                    <div className="frame-blueprint-overlay" />
-                    
-                    {/* Live Elevation Floating Tag */}
-                    <div className="floating-elevation-badge">
-                      <span className="live-pulse-dot" />
-                      <span>7 Integrated Levels • Double Basement</span>
-                    </div>
+            {/* Left Half: 50% Master Architectural Elevation Showcase */}
+            <RevealOnScroll animation="fade-right" className="intro-half-media-col">
+              <TiltCard maxTilt={4} scale={1.01} className="intro-half-tilt-card">
+                <div className="intro-half-image-frame">
+                  <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop"
+                    alt="Y2R Heights Master Elevation"
+                    className="intro-half-master-img"
+                  />
+                  <div className="intro-half-overlay" />
 
-                    {/* Architectural Corner Brackets */}
-                    <div className="frame-corner top-left" />
-                    <div className="frame-corner top-right" />
-                    <div className="frame-corner bottom-left" />
-                    <div className="frame-corner bottom-right" />
+                  {/* Top Floating Badge */}
+                  <div className="intro-floating-top-badge">
+                    <ShieldCheck size={16} className="text-gold" />
+                    <span>UP RERA: {PROJECT_INFO.reraNumber}</span>
                   </div>
 
-                  {/* Comprehensive & Clean Spatial Levels Breakdown */}
-                  <div className="spatial-levels-breakdown">
-                    <div className="spatial-breakdown-header">
-                      <span className="breakdown-title-tag">Architectural Vertical Zoning</span>
-                      <span className="breakdown-sub-tag">7 Integrated Levels</span>
-                    </div>
-
-                    <div className="spatial-levels-list">
-                      {/* Tier 1: Studios */}
-                      <div className="spatial-level-row">
-                        <div className="level-floor-badge">3rd–7th</div>
-                        <div className="level-details">
-                          <div className="level-title-row">
-                            <span className="level-title">Studio Apartments</span>
-                            <span className="level-category">Residential</span>
-                          </div>
-                          <p className="level-desc">Contemporary urban living suites with private balconies</p>
-                        </div>
-                      </div>
-
-                      {/* Tier 2: Food Court */}
-                      <div className="spatial-level-row">
-                        <div className="level-floor-badge">Service</div>
-                        <div className="level-details">
-                          <div className="level-title-row">
-                            <span className="level-title">Food Court & Dining</span>
-                            <span className="level-category">F&B Hub</span>
-                          </div>
-                          <p className="level-desc">Curated multi-cuisine QSRs, cafés & terrace dining</p>
-                        </div>
-                      </div>
-
-                      {/* Tier 3: Offices */}
-                      <div className="spatial-level-row">
-                        <div className="level-floor-badge">1st & 2nd</div>
-                        <div className="level-details">
-                          <div className="level-title-row">
-                            <span className="level-title">Boutique Offices</span>
-                            <span className="level-category">Commercial</span>
-                          </div>
-                          <p className="level-desc">Efficient workspaces with natural light & zero wasted space</p>
-                        </div>
-                      </div>
-
-                      {/* Tier 4: Retail */}
-                      <div className="spatial-level-row">
-                        <div className="level-floor-badge">LGF & UGF</div>
-                        <div className="level-details">
-                          <div className="level-title-row">
-                            <span className="level-title">High-Street Retail</span>
-                            <span className="level-category">Commerce</span>
-                          </div>
-                          <p className="level-desc">Double-height frontage for flagship stores & boutique brands</p>
-                        </div>
-                      </div>
-
-                      {/* Tier 5: Basement Parking */}
-                      <div className="spatial-level-row parking-tier-row">
-                        <div className="level-floor-badge basement">B1 & B2</div>
-                        <div className="level-details">
-                          <div className="level-title-row">
-                            <span className="level-title">Double Basement Parking</span>
-                            <span className="level-category">40+ Vehicles</span>
-                          </div>
-                          <p className="level-desc">Dual subterranean ramps for effortless vehicular arrival</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="spatial-breakdown-footer">
-                      <Link to="/floor-plans" className="breakdown-explore-link">
-                        <span>Explore Full Architectural Blueprints</span>
-                        <ArrowRight size={14} />
-                      </Link>
+                  {/* Bottom Floating Badge */}
+                  <div className="intro-floating-bottom-badge">
+                    <span className="live-pulse-dot" />
+                    <div className="badge-text-group">
+                      <span className="badge-main-text">7 Integrated Spatial Levels</span>
+                      <span className="badge-sub-text">Double Basement Parking • 40+ Vehicles Capacity</span>
                     </div>
                   </div>
+
+                  {/* Architectural Corner Brackets */}
+                  <div className="frame-corner top-left" />
+                  <div className="frame-corner top-right" />
+                  <div className="frame-corner bottom-left" />
+                  <div className="frame-corner bottom-right" />
                 </div>
               </TiltCard>
             </RevealOnScroll>
 
-            {/* Right: High-Contrast Technical Overview Content */}
-            <div className="intro-content-col">
-              <RevealOnScroll animation="fade-left">
-                <div className="intro-section-eyebrow">
-                  <span className="gold-badge">Project Overview</span>
-                  <span className="overview-spec-tag">UP RERA: {PROJECT_INFO.reraNumber}</span>
+            {/* Right Half: 50% Auto-Moving Vertical Overview Details (Pauses on Hover) */}
+            <RevealOnScroll animation="fade-left" className="intro-half-content-col">
+              <div className="overview-moving-viewport">
+                {/* Live Interactive Hint Bar */}
+                <div className="overview-scroll-hint-bar">
+                  <span className="scroll-indicator-dot" />
+                  <span>Auto-Moving Feed (Hover to Pause)</span>
                 </div>
 
-                <h2 className="intro-main-title">
-                  A Unified Vision for <br />
-                  <span className="gold-gradient-text">Commercial Landmark Living</span>
-                </h2>
+                <div className="overview-moving-track">
+                  {[1, 2].map((loopIdx) => (
+                    <div key={`overview-loop-${loopIdx}`} className="overview-moving-content-block">
+                      {/* Block 1: Executive Title & Vision Narrative */}
+                      <div className="overview-block-header">
+                        <div className="intro-section-eyebrow">
+                          <span className="gold-badge">Project Overview</span>
+                          <span className="overview-spec-tag">UP RERA: {PROJECT_INFO.reraNumber}</span>
+                        </div>
 
-                <p className="intro-lead-text">
-                  Situated prominently on <strong>Kursi Road | Jankipuram Extension</strong>, Y2R Heights is a modern commercial and residential hub combining high-street retail, corporate offices, curated dining, and contemporary studio suites.
-                </p>
+                        <h2 className="intro-main-title">
+                          A Unified Vision for <br />
+                          <span className="gold-gradient-text">Commercial Landmark Living</span>
+                        </h2>
 
-                <p className="intro-sub-text">
-                  Engineered with double basement structured parking, structural glass façade, and high-speed vertical transit — delivering long-term value for investors and occupants alike.
-                </p>
-              </RevealOnScroll>
+                        <p className="intro-lead-text">
+                          Situated prominently on <strong>Kursi Road | Jankipuram Extension</strong>, Y2R Heights is a modern commercial and residential hub combining high-street retail, corporate offices, curated dining, and contemporary studio suites.
+                        </p>
 
-              {/* 4 Architectural Pillars Grid */}
-              <RevealOnScroll animation="fade-up" delay={200}>
-                <div className="intro-pillars-grid">
-                  <div className="intro-pillar-item">
-                    <div className="pillar-icon-box">
-                      <Store size={18} className="text-gold" />
-                    </div>
-                    <div className="pillar-info">
-                      <h4 className="pillar-title">High-Street Retail</h4>
-                      <p className="pillar-desc">Double-height frontage with direct road access</p>
-                    </div>
-                  </div>
+                        <p className="intro-sub-text">
+                          Engineered with double basement structured parking, structural glass façade, and high-speed vertical transit — delivering long-term value for investors and occupants alike.
+                        </p>
+                      </div>
 
-                  <div className="intro-pillar-item">
-                    <div className="pillar-icon-box">
-                      <Briefcase size={18} className="text-gold" />
-                    </div>
-                    <div className="pillar-info">
-                      <h4 className="pillar-title">Boutique Offices</h4>
-                      <p className="pillar-desc">Zero-wastage layouts with ample natural light</p>
-                    </div>
-                  </div>
+                      {/* Block 2: 7 Integrated Spatial Levels Breakdown */}
+                      <div className="spatial-levels-breakdown">
+                        <div className="spatial-breakdown-header">
+                          <span className="breakdown-title-tag">Architectural Vertical Zoning</span>
+                          <span className="breakdown-sub-tag">7 Integrated Levels</span>
+                        </div>
 
-                  <div className="intro-pillar-item">
-                    <div className="pillar-icon-box">
-                      <UtensilsCrossed size={18} className="text-gold" />
-                    </div>
-                    <div className="pillar-info">
-                      <h4 className="pillar-title">Food & Dining</h4>
-                      <p className="pillar-desc">Dedicated service level with ventilation</p>
-                    </div>
-                  </div>
+                        <div className="spatial-levels-list">
+                          {/* Tier 1: Studios */}
+                          <div className="spatial-level-row">
+                            <div className="level-floor-badge">3rd–7th</div>
+                            <div className="level-details">
+                              <div className="level-title-row">
+                                <span className="level-title">Studio Apartments</span>
+                                <span className="level-category">Residential</span>
+                              </div>
+                              <p className="level-desc">Contemporary urban living suites with private balconies</p>
+                            </div>
+                          </div>
 
-                  <div className="intro-pillar-item">
-                    <div className="pillar-icon-box">
-                      <HomeIcon size={18} className="text-gold" />
+                          {/* Tier 2: Food Court */}
+                          <div className="spatial-level-row">
+                            <div className="level-floor-badge">Service</div>
+                            <div className="level-details">
+                              <div className="level-title-row">
+                                <span className="level-title">Food Court & Dining</span>
+                                <span className="level-category">F&B Hub</span>
+                              </div>
+                              <p className="level-desc">Curated multi-cuisine QSRs, cafés & terrace dining</p>
+                            </div>
+                          </div>
+
+                          {/* Tier 3: Offices */}
+                          <div className="spatial-level-row">
+                            <div className="level-floor-badge">1st & 2nd</div>
+                            <div className="level-details">
+                              <div className="level-title-row">
+                                <span className="level-title">Boutique Offices</span>
+                                <span className="level-category">Commercial</span>
+                              </div>
+                              <p className="level-desc">Efficient workspaces with natural light & zero wasted space</p>
+                            </div>
+                          </div>
+
+                          {/* Tier 4: Retail */}
+                          <div className="spatial-level-row">
+                            <div className="level-floor-badge">LGF & UGF</div>
+                            <div className="level-details">
+                              <div className="level-title-row">
+                                <span className="level-title">High-Street Retail</span>
+                                <span className="level-category">Commerce</span>
+                              </div>
+                              <p className="level-desc">Double-height frontage for flagship stores & boutique brands</p>
+                            </div>
+                          </div>
+
+                          {/* Tier 5: Basement Parking */}
+                          <div className="spatial-level-row parking-tier-row">
+                            <div className="level-floor-badge basement">B1 & B2</div>
+                            <div className="level-details">
+                              <div className="level-title-row">
+                                <span className="level-title">Double Basement Parking</span>
+                                <span className="level-category">40+ Vehicles</span>
+                              </div>
+                              <p className="level-desc">Dual subterranean ramps for effortless vehicular arrival</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="spatial-breakdown-footer">
+                          <Link to="/floor-plans" className="breakdown-explore-link">
+                            <span>Explore Full Architectural Blueprints</span>
+                            <ArrowRight size={14} />
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Block 3: 4 Architectural Pillars Grid */}
+                      <div className="intro-pillars-grid">
+                        <div className="intro-pillar-item">
+                          <div className="pillar-icon-box">
+                            <Store size={18} className="text-gold" />
+                          </div>
+                          <div className="pillar-info">
+                            <h4 className="pillar-title">High-Street Retail</h4>
+                            <p className="pillar-desc">Double-height frontage with direct road access</p>
+                          </div>
+                        </div>
+
+                        <div className="intro-pillar-item">
+                          <div className="pillar-icon-box">
+                            <Briefcase size={18} className="text-gold" />
+                          </div>
+                          <div className="pillar-info">
+                            <h4 className="pillar-title">Boutique Offices</h4>
+                            <p className="pillar-desc">Zero-wastage layouts with ample natural light</p>
+                          </div>
+                        </div>
+
+                        <div className="intro-pillar-item">
+                          <div className="pillar-icon-box">
+                            <UtensilsCrossed size={18} className="text-gold" />
+                          </div>
+                          <div className="pillar-info">
+                            <h4 className="pillar-title">Food & Dining</h4>
+                            <p className="pillar-desc">Dedicated service level with ventilation</p>
+                          </div>
+                        </div>
+
+                        <div className="intro-pillar-item">
+                          <div className="pillar-icon-box">
+                            <HomeIcon size={18} className="text-gold" />
+                          </div>
+                          <div className="pillar-info">
+                            <h4 className="pillar-title">Studio Residences</h4>
+                            <p className="pillar-desc">Contemporary urban living on 3rd–7th floors</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Block 4: Key Stats & Action CTAs */}
+                      <div className="intro-stats-row">
+                        <div className="stat-card">
+                          <span className="stat-value">2</span>
+                          <span className="stat-label">Basement Parking Tiers</span>
+                        </div>
+                        <div className="stat-card">
+                          <span className="stat-value">7+</span>
+                          <span className="stat-label">Integrated Spatial Levels</span>
+                        </div>
+                        <div className="stat-card">
+                          <span className="stat-value">0 min</span>
+                          <span className="stat-label">Kursi Road Access</span>
+                        </div>
+                      </div>
+
+                      <div className="intro-actions">
+                        <Link to="/project" className="btn-primary">
+                          <span>Discover Full Vision</span>
+                          <ArrowRight size={16} />
+                        </Link>
+                        <Link to="/floor-plans" className="btn-secondary">
+                          <span>Explore Floor Plans</span>
+                          <ArrowRight size={16} />
+                        </Link>
+                      </div>
                     </div>
-                    <div className="pillar-info">
-                      <h4 className="pillar-title">Studio Residences</h4>
-                      <p className="pillar-desc">Contemporary urban living on 3rd–7th floors</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              </RevealOnScroll>
-
-              {/* Stats Row */}
-              <RevealOnScroll animation="fade-up" delay={400}>
-                <div className="intro-stats-row">
-                  <div className="stat-card">
-                    <span className="stat-value">2</span>
-                    <span className="stat-label">Basement Parking Tiers</span>
-                  </div>
-                  <div className="stat-card">
-                    <span className="stat-value">7+</span>
-                    <span className="stat-label">Integrated Spatial Levels</span>
-                  </div>
-                  <div className="stat-card">
-                    <span className="stat-value">0 min</span>
-                    <span className="stat-label">Kursi Road Access</span>
-                  </div>
-                </div>
-              </RevealOnScroll>
-
-              <RevealOnScroll animation="fade-up" delay={450}>
-                <div className="intro-actions">
-                  <Link to="/project" className="btn-primary">
-                    <span>Discover Full Vision</span>
-                    <ArrowRight size={16} />
-                  </Link>
-                  <Link to="/floor-plans" className="btn-secondary">
-                    <span>Explore Floor Plans</span>
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </RevealOnScroll>
-            </div>
+              </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -344,43 +385,81 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
             theme="dark"
           />
 
-          <div className="highlights-grid">
-            {SPACES_CATEGORIES.map((space, idx) => (
-              <RevealOnScroll
-                key={space.id}
-                animation="fade-up"
-                delay={idx * 100}
-                className="highlight-grid-col"
+          {/* Desktop 3x2 Grid & Mobile Touch-Swipeable Slider Container */}
+          <div className="highlights-slider-wrapper">
+            <div
+              className="highlights-grid"
+              ref={spacesSliderRef}
+              onScroll={handleSpaceScroll}
+            >
+              {SPACES_CATEGORIES.map((space, idx) => (
+                <div key={space.id} className="highlight-grid-col">
+                  <TiltCard maxTilt={6} scale={1.01} className="highlight-tilt-card">
+                    <div className="highlight-card-inner">
+                      <div className="highlight-card-header">
+                        <span className="highlight-badge">{space.badge}</span>
+                        <span className="highlight-num">0{idx + 1}</span>
+                      </div>
+
+                      <div className="highlight-image-wrap">
+                        <img
+                          src={space.image}
+                          alt={space.title}
+                          className="highlight-img"
+                          loading="lazy"
+                        />
+                        <div className="highlight-img-overlay" />
+                      </div>
+
+                      <h3 className="highlight-card-title">{space.title}</h3>
+                      <p className="highlight-card-desc">{space.tagline || space.highlight}</p>
+
+                      <div className="highlight-card-footer">
+                        <Link to={space.slug} className="highlight-cta-link">
+                          <span>{space.ctaText}</span>
+                          <ArrowRight size={13} />
+                        </Link>
+                      </div>
+                    </div>
+                  </TiltCard>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Swipe Navigation Controls (Prev / Next & Slide Dots) */}
+            <div className="highlights-mobile-nav">
+              <button
+                type="button"
+                className="highlights-nav-btn prev"
+                onClick={() => scrollToSpace(Math.max(0, activeSpaceIndex - 1))}
+                disabled={activeSpaceIndex === 0}
+                aria-label="Previous Slide"
               >
-                <TiltCard maxTilt={10} scale={1.02} className="highlight-tilt-card">
-                  <div className="highlight-card-inner architectural-grid">
-                    <div className="highlight-card-header">
-                      <span className="highlight-badge">{space.badge}</span>
-                      <span className="highlight-num">0{idx + 1}</span>
-                    </div>
+                <ChevronLeft size={18} />
+              </button>
 
-                    <div className="highlight-image-wrap">
-                      <img
-                        src={space.image}
-                        alt={space.title}
-                        className="highlight-img"
-                      />
-                      <div className="highlight-img-overlay" />
-                    </div>
+              <div className="highlights-dots-list">
+                {SPACES_CATEGORIES.map((_, idx) => (
+                  <button
+                    key={`space-dot-${idx}`}
+                    type="button"
+                    className={`highlights-dot ${activeSpaceIndex === idx ? 'active' : ''}`}
+                    onClick={() => scrollToSpace(idx)}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
 
-                    <h3 className="highlight-card-title">{space.title}</h3>
-                    <p className="highlight-card-desc">{space.description}</p>
-
-                    <div className="highlight-card-footer">
-                      <Link to={space.slug} className="btn-link">
-                        <span>{space.ctaText}</span>
-                        <ArrowUpRight size={15} />
-                      </Link>
-                    </div>
-                  </div>
-                </TiltCard>
-              </RevealOnScroll>
-            ))}
+              <button
+                type="button"
+                className="highlights-nav-btn next"
+                onClick={() => scrollToSpace(Math.min(SPACES_CATEGORIES.length - 1, activeSpaceIndex + 1))}
+                disabled={activeSpaceIndex === SPACES_CATEGORIES.length - 1}
+                aria-label="Next Slide"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -480,28 +559,29 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
           <div className="dual-cards-grid">
             {/* Boutique Offices Card */}
             <RevealOnScroll animation="fade-right" className="dual-card-col">
-              <TiltCard maxTilt={8} scale={1.02} className="dual-tilt-card">
+              <TiltCard maxTilt={5} scale={1.01} className="dual-tilt-card">
                 <div className="dual-card-inner">
                   <div className="dual-card-image">
                     <img
                       src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
                       alt="Boutique Offices at Y2R Heights"
+                      loading="lazy"
                     />
                     <span className="dual-badge">Boutique Offices</span>
                   </div>
                   <div className="dual-card-body">
                     <h3 className="dual-card-title">More Than an Office. A Statement.</h3>
                     <p className="dual-card-text">
-                      Workspaces designed around productivity, flexibility and a premium business experience. Y2R Heights offers self-contained office units, flexible configurations, natural light and layouts designed to minimise wasted space—suited to founders, consultants, professionals and growing businesses.
+                      High-efficiency boutique offices designed for modern founders, consultants & corporate firms with natural light and zero wasted space.
                     </p>
                     <div className="dual-specs-pills">
-                      <span>Customisable Offices</span>
+                      <span>Customisable Units</span>
                       <span>Natural Light</span>
-                      <span>Efficient Floor Plans</span>
+                      <span>Zero Wastage</span>
                     </div>
-                    <Link to="/offices" className="btn-primary w-full mt-4 text-center">
+                    <Link to="/offices" className="btn-primary w-full text-center">
                       <span>Explore Office Spaces</span>
-                      <ArrowRight size={16} />
+                      <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>
@@ -509,29 +589,30 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
             </RevealOnScroll>
 
             {/* Studio Apartments Card */}
-            <RevealOnScroll animation="fade-left" delay={150} className="dual-card-col">
-              <TiltCard maxTilt={8} scale={1.02} className="dual-tilt-card">
+            <RevealOnScroll animation="fade-left" delay={120} className="dual-card-col">
+              <TiltCard maxTilt={5} scale={1.01} className="dual-tilt-card">
                 <div className="dual-card-inner">
                   <div className="dual-card-image">
                     <img
                       src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop"
                       alt="Studio Apartments at Y2R Heights"
+                      loading="lazy"
                     />
                     <span className="dual-badge">Studio Apartments</span>
                   </div>
                   <div className="dual-card-body">
                     <h3 className="dual-card-title">Urban Living, Simplified.</h3>
                     <p className="dual-card-text">
-                      Modern studio apartments located on the 3rd to 7th floors offering contemporary aesthetics, efficient layouts and everyday convenience in Lucknow’s growing Northern corridor. Ideal for young professionals, corporate stays, remote workers and long-term rental income investors.
+                      Contemporary studio suites on 3rd–7th floors designed for professionals, corporate stays & long-term rental income in Lucknow.
                     </p>
                     <div className="dual-specs-pills">
                       <span>3rd–7th Floors</span>
-                      <span>Modern Living</span>
-                      <span>Everyday Ease</span>
+                      <span>Private Balconies</span>
+                      <span>Turnkey Living</span>
                     </div>
-                    <Link to="/studios" className="btn-primary w-full mt-4 text-center">
+                    <Link to="/studios" className="btn-primary w-full text-center">
                       <span>Explore Studio Apartments</span>
-                      <ArrowRight size={16} />
+                      <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>
