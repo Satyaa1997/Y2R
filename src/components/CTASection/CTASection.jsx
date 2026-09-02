@@ -1,4 +1,5 @@
 import { ArrowUpRight, Phone, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { PROJECT_INFO } from '../../data/projectData';
 import RevealOnScroll from '../RevealOnScroll/RevealOnScroll';
 import TiltCard from '../TiltCard/TiltCard';
@@ -6,13 +7,14 @@ import ArchitecturalBg from '../ArchitecturalBg/ArchitecturalBg';
 import './CTASection.css';
 
 export default function CTASection({
-  title = "Your Next Business Address Starts Here.",
-  subtitle = "Where Vision Meets Value.",
-  description = "Looking for retail, office, studio or commercial investment opportunities at Y2R Heights? Speak with our advisory team and discover the space that fits your requirement.",
-  onOpenEnquiry
+  title = "Ready to Explore Y2R Heights?",
+  subtitle = "Direct Commercial Consultation",
+  description = "Connect with our advisory team for customized floor layouts, pricing structures, and unit availability.",
+  theme = "dark",
+  className = ""
 }) {
   return (
-    <section className="cta-section-wrapper">
+    <section className={`cta-section-wrapper theme-${theme} ${className}`}>
       <div className="cta-container">
         <RevealOnScroll animation="zoom-in" duration={800}>
           <TiltCard maxTilt={6} scale={1.01} className="cta-tilt-card">
@@ -29,10 +31,10 @@ export default function CTASection({
                 <p className="cta-description">{description}</p>
 
                 <div className="cta-buttons-wrap">
-                  <button onClick={onOpenEnquiry} className="btn-primary cta-action-btn">
-                    <span>Schedule a Consultation</span>
+                  <Link to="/contact" className="btn-primary cta-action-btn">
+                    <span>Connect With Advisory Team</span>
                     <ArrowUpRight size={16} />
-                  </button>
+                  </Link>
 
                   <a
                     href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`}

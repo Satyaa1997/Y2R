@@ -1,4 +1,12 @@
 // Project Data for Y2R HEIGHTS - Strictly verified factual information
+import lowerGroundMap from '../assets/LowerGround.JPG';
+import upperGroundMap from '../assets/UpperGround.JPG';
+import firstFloorMap from '../assets/FirstFlor.JPG';
+import secondFloorMap from '../assets/SecondFlor.JPG';
+import serviceFloorMap from '../assets/ServiceFlor.JPG';
+import studioFloorMap from '../assets/3to7.JPG';
+import terraceFloorMap from '../assets/TericeFlor.JPG';
+
 export const PROJECT_INFO = {
   name: "Y2R HEIGHTS",
   tagline: "Where Vision Meets Value.",
@@ -226,57 +234,99 @@ export const FLOOR_PLANS_DATA = [
     id: "lgf",
     floor: "Lower Ground Floor",
     purpose: "Retail Stores",
-    description: "High-footfall anchor retail shops with direct access from entry concourse.",
-    highlights: ["Anchor Stores", "Frontage Promenade", "Direct Access Stairs & Lifts"],
-    blueprintUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+    description: "High-footfall anchor retail shops with direct access from entry concourse and basement connectivity.",
+    highlights: ["Anchor Showroom Units", "Frontage Promenade Access", "Direct Entry Escalators & Lifts", "Wide Customer Circulation Aisles"],
+    blueprintUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
+    mapImage: lowerGroundMap,
+    slabHeight: "14 Ft Slab-to-Slab",
+    zoning: "Anchor Retail & High-Street",
+    ingress: "Direct Concourses & Dual Lifts",
+    unitType: "Double-Height Retail Showrooms",
+    code: "Y2R-LGF-01"
   },
   {
     id: "ugf",
     floor: "Upper Ground Floor",
     purpose: "Retail Stores",
-    description: "Prime street-level retail frontage designed for premium brands, cafés and high visibility.",
-    highlights: ["Maximum Road Visibility", "Double Height Facade", "Grand Walkway"],
-    blueprintUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop"
+    description: "Prime street-level retail frontage designed for flagship brands, high-visibility boutiques, and lifestyle cafés.",
+    highlights: ["Maximum Kursi Road Visibility", "Double-Height Glass Façade", "Grand Walkway Ingress", "Dedicated Brand Signage Zones"],
+    blueprintUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop",
+    mapImage: upperGroundMap,
+    slabHeight: "14 Ft Slab-to-Slab",
+    zoning: "Prime Street Retail",
+    ingress: "Main Boulevard Entry",
+    unitType: "Road-Facing Premium Stores",
+    code: "Y2R-UGF-02"
   },
   {
     id: "1st",
     floor: "First Floor",
     purpose: "Commercial Hall",
-    description: "Flexible commercial layout designed for corporate firms, boutique offices and brand showcases.",
-    highlights: ["Continuous Floor Plates", "Abundant Natural Light", "Versatile Partitions"],
-    blueprintUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
+    description: "Flexible commercial layout designed for corporate firms, boutique offices, diagnostic centers, and corporate lounges.",
+    highlights: ["Continuous Efficient Floor Plates", "Abundant Natural Light", "Versatile Modular Partitions", "High-Speed Dual Lift Cores"],
+    blueprintUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
+    mapImage: firstFloorMap,
+    slabHeight: "12 Ft Slab-to-Slab",
+    zoning: "Corporate Commercial",
+    ingress: "Executive Elevator Lobby",
+    unitType: "Scalable Office Workspaces",
+    code: "Y2R-1ST-03"
   },
   {
     id: "2nd",
     floor: "Second Floor",
     purpose: "Banquet Hall",
-    description: "Expansive column-free hall suitable for corporate gatherings, banquets and hospitality ventures.",
-    highlights: ["Grand Event Space", "Dedicated Pre-Function Area", "Catering Service Access"],
-    blueprintUrl: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop"
+    description: "Expansive column-free hall suitable for corporate summits, celebrations, grand banquets, and hospitality venues.",
+    highlights: ["Grand Event & Gathering Space", "Dedicated Pre-Function Foyer", "Catering & Service Kitchen Access", "Integrated Acoustic Dampening"],
+    blueprintUrl: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop",
+    mapImage: secondFloorMap,
+    slabHeight: "14 Ft Clear Height",
+    zoning: "Hospitality & Grand Events",
+    ingress: "Dedicated Service & Guest Lifts",
+    unitType: "Column-Free Event Concourse",
+    code: "Y2R-2ND-04"
   },
   {
     id: "service",
     floor: "Service Floor",
     purpose: "Food Court",
-    description: "Centralized dining destination with multiple F&B brand counters and communal dining floor.",
-    highlights: ["Exhaust Shafts", "Dedicated Wash Basins", "Communal Seating Setup"],
-    blueprintUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop"
+    description: "Centralized dining concourse featuring multiple national & regional F&B counters and expansive communal seating.",
+    highlights: ["Integrated Commercial Exhaust Shafts", "Dedicated Kitchen Supply Risers", "Spacious Communal Seating Concourse", "High Turnaround Dining Hub"],
+    blueprintUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop",
+    mapImage: serviceFloorMap,
+    slabHeight: "12 Ft Clear Height",
+    zoning: "Multi-Cuisine Culinary Concourse",
+    ingress: "Central High-Speed Elevators",
+    unitType: "QSR & Culinary Brand Bays",
+    code: "Y2R-SRV-05"
   },
   {
     id: "3-7th",
     floor: "3rd–7th Floors",
     purpose: "Studio Apartments",
-    description: "Smart, contemporary studio suites crafted for modern living, corporate visitors and urban convenience.",
-    highlights: ["Modern Compact Suites", "Panoramic Balcony Views", "Quiet Upper Levels"],
-    blueprintUrl: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop"
+    description: "Smart, contemporary studio suites crafted for modern living, corporate visitors, and urban rental convenience.",
+    highlights: ["Modern Compact Self-Contained Suites", "Private Balconies with Panoramic Views", "Quiet Upper Residential Tiers", "Dedicated Access Security"],
+    blueprintUrl: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop",
+    mapImage: studioFloorMap,
+    slabHeight: "11 Ft Ceiling Clearance",
+    zoning: "Executive Studio Living",
+    ingress: "Residential Access Lift Core",
+    unitType: "Serviced Studio Residences",
+    code: "Y2R-STU-06"
   },
   {
     id: "terrace",
     floor: "Terrace",
     purpose: "Rooftop Space",
-    description: "Open-to-sky rooftop terrace offering sweeping vistas of the Jankipuram Extension and Kursi Road horizon.",
-    highlights: ["Open Sky Vista", "Services Isolation", "Stargazing & Green Accents"],
-    blueprintUrl: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop"
+    description: "Open-to-sky rooftop terrace offering sweeping 360-degree vistas of the Jankipuram Extension and Kursi Road skyline.",
+    highlights: ["360° Open Sky Panoramic Vista", "Services & Solar Infrastructure Isolation", "Sky Lounge & Green Recreation Accents", "Stargazing Vantage Point"],
+    blueprintUrl: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop",
+    mapImage: terraceFloorMap,
+    slabHeight: "Open Sky Vantage",
+    zoning: "Rooftop Open Lounge",
+    ingress: "Fire Stairwell & Express Lift Link",
+    unitType: "Open-Air Sky Terrace",
+    code: "Y2R-TER-07"
   }
 ];
 

@@ -93,23 +93,10 @@ export default function Navbar({ onOpenBrochure }) {
       ]
     },
     {
-      name: 'Floor Plans',
-      path: '/floor-plans',
-      items: [
-        { title: 'All 7 Integrated Levels', subtitle: 'Interactive Blueprints', path: '/floor-plans' },
-        { title: 'Lower Ground (LGF)', subtitle: 'Anchor Retail Floor', path: '/floor-plans' },
-        { title: 'Upper Ground (UGF)', subtitle: 'Road Facing Retail', path: '/floor-plans' },
-        { title: '1st & 2nd Floors', subtitle: 'Offices & Banquet Hall', path: '/floor-plans' },
-        { title: 'Service Floor', subtitle: 'Dedicated Food Court', path: '/floor-plans' },
-        { title: '3rd to 7th Floors', subtitle: 'Studio Apartment Tiers', path: '/floor-plans' }
-      ]
-    },
-    {
       name: 'Location',
       path: '/location',
       items: [
         { title: 'Kursi Road Advantage', subtitle: 'Near Sector-J Extension', path: '/location' },
-        { title: '3D Transit Radar', subtitle: 'Calculated Travel Times', path: '/location' },
         { title: 'Catchment Corridors', subtitle: 'Sitapur Rd & Ring Road', path: '/location' }
       ]
     },
@@ -183,7 +170,57 @@ export default function Navbar({ onOpenBrochure }) {
               <span className="nav-indicator" />
             </NavLink>
 
-            {navGroups.map((group) => (
+            {/* Spaces Dropdown */}
+            {navGroups.filter(g => g.name === 'Spaces').map((group) => (
+              <div
+                key={group.name}
+                className={`nav-dropdown-wrapper ${activeDropdown === group.name ? 'is-open' : ''}`}
+                onMouseEnter={() => setActiveDropdown(group.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link
+                  to={group.path}
+                  className="nav-item nav-dropdown-trigger"
+                  onClick={() => setActiveDropdown(null)}
+                >
+                  <span>{group.name}</span>
+                  {group.badge && <span className="nav-hot-badge">{group.badge}</span>}
+                  <ChevronDown size={14} className="dropdown-arrow-icon" />
+                  <span className="nav-indicator" />
+                </Link>
+
+                {/* Portal-Style Dropdown Flyout */}
+                <div className="nav-dropdown-menu">
+                  <div className="nav-dropdown-grid">
+                    {group.items.map((item) => (
+                      <Link
+                        key={item.title}
+                        to={item.path}
+                        className="dropdown-menu-item"
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        <div className="menu-item-text">
+                          <span className="menu-item-title">{item.title}</span>
+                          <span className="menu-item-subtitle">{item.subtitle}</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Floor Plans Direct Link (No Dropdown) */}
+            <NavLink
+              to="/floor-plans"
+              className={({ isActive }) => `nav-item ${isActive ? 'nav-item-active' : ''}`}
+            >
+              Floor Plans
+              <span className="nav-indicator" />
+            </NavLink>
+
+            {/* Location & Project Dropdowns */}
+            {navGroups.filter(g => g.name === 'Location' || g.name === 'Project').map((group) => (
               <div
                 key={group.name}
                 className={`nav-dropdown-wrapper ${activeDropdown === group.name ? 'is-open' : ''}`}
@@ -283,7 +320,55 @@ export default function Navbar({ onOpenBrochure }) {
               <ArrowUpRight size={18} className="mobile-link-arrow" />
             </NavLink>
 
-            {navGroups.map((group) => {
+            {/* Spaces Group */}
+            {navGroups.filter(g => g.name === 'Spaces').map((group) => {
+              const isExpanded = mobileExpanded[group.name];
+              return (
+                <div key={group.name} className="mobile-nav-group">
+                  <div
+                    className="mobile-group-header"
+                    onClick={() => toggleMobileGroup(group.name)}
+                  >
+                    <span className="mobile-link-name">{group.name}</span>
+                    <ChevronDown
+                      size={18}
+                      className={`mobile-chevron ${isExpanded ? 'rotated' : ''}`}
+                    />
+                  </div>
+
+                  {isExpanded && (
+                    <div className="mobile-group-submenu">
+                      {group.items.map((sub) => (
+                        <Link
+                          key={sub.title}
+                          to={sub.path}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="mobile-submenu-item"
+                        >
+                          <span className="mobile-sub-title">{sub.title}</span>
+                          <span className="mobile-sub-desc">{sub.subtitle}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* Floor Plans Direct Link */}
+            <NavLink
+              to="/floor-plans"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={({ isActive }) =>
+                `mobile-nav-item ${isActive ? 'mobile-nav-item-active' : ''}`
+              }
+            >
+              <span className="mobile-link-name">Floor Plans</span>
+              <ArrowUpRight size={18} className="mobile-link-arrow" />
+            </NavLink>
+
+            {/* Location & Project Groups */}
+            {navGroups.filter(g => g.name === 'Location' || g.name === 'Project').map((group) => {
               const isExpanded = mobileExpanded[group.name];
               return (
                 <div key={group.name} className="mobile-nav-group">

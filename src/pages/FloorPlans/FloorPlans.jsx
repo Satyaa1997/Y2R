@@ -1,6 +1,13 @@
 import { useState } from 'react';
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
-import { FLOOR_PLANS_DATA } from '../../data/projectData';
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Layers,
+  Car,
+  ShieldCheck
+} from 'lucide-react';
+import { FLOOR_PLANS_DATA, PROJECT_INFO } from '../../data/projectData';
+import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
@@ -29,8 +36,8 @@ export default function FloorPlans({ onOpenEnquiry, onSelectFloorPlan }) {
 
   return (
     <div className="floor-plans-page-root">
-      {/* Page Hero */}
-      <section className="page-hero-section theme-section-light architectural-grid">
+      {/* 1. HERO SECTION (BLACK / DARK BACKGROUND) */}
+      <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="floorplans_hero" />
         <div className="container-custom page-hero-content">
           <RevealOnScroll animation="fade-up">
@@ -42,14 +49,39 @@ export default function FloorPlans({ onOpenEnquiry, onSelectFloorPlan }) {
             <p className="page-hero-desc">
               Explore the structured vertical integration of Y2R Heights across 7 dedicated spatial tiers. Click any floor to inspect detailed blueprint schematics.
             </p>
+
+            <div className="fp-hero-stats-row">
+              <div className="fp-hero-stat">
+                <Layers size={16} className="text-gold" />
+                <span>7 Spatial Tiers</span>
+              </div>
+              <div className="fp-hero-stat">
+                <Car size={16} className="text-gold" />
+                <span>Double Basement Parking</span>
+              </div>
+              <div className="fp-hero-stat">
+                <ShieldCheck size={16} className="text-gold" />
+                <span>UP RERA: {PROJECT_INFO.reraNumber}</span>
+              </div>
+            </div>
           </RevealOnScroll>
         </div>
       </section>
 
-      {/* Filter Tabs */}
-      <section className="section-padding theme-section-dark floor-plans-gallery-section">
+      {/* 2. INTERACTIVE BLUEPRINTS GALLERY (WHITE / LIGHT BACKGROUND) */}
+      <section className="section-padding theme-section-white floor-plans-gallery-section">
         <ArchitecturalBg variant="floorplans_gallery" />
         <div className="container-custom">
+          <SectionHeading
+            number="01"
+            badge="CAD Schematics"
+            title="Interactive Floor Schematics."
+            subtitle="Filter by commercial zone and click any blueprint card to open high-resolution CAD schematics."
+            align="center"
+            theme="light"
+          />
+
+          {/* Filter Tabs on Light Background */}
           <div className="filter-tabs-row">
             {categories.map((cat) => (
               <button
@@ -62,7 +94,7 @@ export default function FloorPlans({ onOpenEnquiry, onSelectFloorPlan }) {
             ))}
           </div>
 
-          {/* Blueprint Cards Grid */}
+          {/* Blueprint Cards Grid on Light Background */}
           <div className="blueprint-cards-grid">
             {filteredPlans.map((plan, idx) => (
               <RevealOnScroll
@@ -77,7 +109,7 @@ export default function FloorPlans({ onOpenEnquiry, onSelectFloorPlan }) {
                   className="blueprint-tilt-card cursor-pointer"
                   onClick={() => onSelectFloorPlan(plan)}
                 >
-                  <div className="blueprint-card-inner blueprint-grid">
+                  <div className="blueprint-dark-card blueprint-grid">
                     <div className="blueprint-card-header">
                       <span className="bp-floor-tag">{plan.floor}</span>
                       <span className="bp-code-tag">SCHEMATIC-{plan.id.toUpperCase()}</span>
@@ -116,8 +148,9 @@ export default function FloorPlans({ onOpenEnquiry, onSelectFloorPlan }) {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* 3. CTA SECTION */}
       <CTASection
+        theme="light"
         title="Request Architectural Floor Sheets & Layouts"
         subtitle="Where Vision Meets Value."
         description="Receive detailed spatial plans, column grids, and custom sizing options from our architectural advisory team."
