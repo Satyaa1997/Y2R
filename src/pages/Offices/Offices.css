@@ -22,7 +22,7 @@
 .office-ideal-for {
   margin-top: 1.25rem;
   background: #FFFFFF;
-  border: 1px solid rgba(102, 71, 1, 0.3);
+  border: 1px solid rgba(175, 125, 9, 0.3);
   padding: 1rem 1.25rem;
   border-radius: 4px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
@@ -46,7 +46,7 @@
 .ideal-tags span {
   font-size: 0.74rem;
   background: #FAF8F4;
-  border: 1px solid rgba(102, 71, 1, 0.25);
+  border: 1px solid rgba(175, 125, 9, 0.25);
   padding: 4px 10px;
   border-radius: 3px;
   color: #111112;
@@ -57,7 +57,7 @@
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
 }
 
@@ -99,7 +99,7 @@
 
 .pillar-inner {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
   padding: 1.35rem 1.25rem;
   border-radius: 6px;
   width: 100%;
@@ -112,15 +112,15 @@
 
 .pillar-card:hover .pillar-inner {
   border-color: var(--gold);
-  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.15);
+  box-shadow: 0 15px 40px rgba(175, 125, 9, 0.15);
 }
 
 .pillar-icon-box {
   width: 54px;
   height: 54px;
   border-radius: 2px;
-  background: rgba(102, 71, 1, 0.12);
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,7 +164,7 @@
 
 .theme-section-dark .office-ideal-for {
   background: #141519;
-  border-color: rgba(102, 71, 1, 0.35);
+  border-color: rgba(175, 125, 9, 0.35);
 }
 
 .theme-section-dark .ideal-title {
@@ -173,7 +173,7 @@
 
 .theme-section-dark .ideal-tags span {
   background: #1C1E24;
-  border-color: rgba(102, 71, 1, 0.3);
+  border-color: rgba(175, 125, 9, 0.3);
   color: #FAF8F4;
 }
 

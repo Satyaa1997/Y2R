@@ -24,27 +24,27 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
       >
         <defs>
           <linearGradient id="goldLinearA" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#664701" stopOpacity="0.4" />
-            <stop offset="50%" stopColor="#7D5701" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#664701" stopOpacity="0.35" />
+            <stop offset="0%" stopColor="#af7d09" stopOpacity="0.10" />
+            <stop offset="50%" stopColor="#8a6104" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="#af7d09" stopOpacity="0.08" />
           </linearGradient>
 
           <linearGradient id="goldLinearB" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#664701" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="#7D5701" stopOpacity="0.75" />
-            <stop offset="100%" stopColor="#664701" stopOpacity="0.4" />
+            <stop offset="0%" stopColor="#af7d09" stopOpacity="0.08" />
+            <stop offset="50%" stopColor="#8a6104" stopOpacity="0.20" />
+            <stop offset="100%" stopColor="#af7d09" stopOpacity="0.10" />
           </linearGradient>
 
           <linearGradient id="beamHorizGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#664701" stopOpacity="0.0" />
-            <stop offset="20%" stopColor="#7D5701" stopOpacity="0.5" />
-            <stop offset="80%" stopColor="#7D5701" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#664701" stopOpacity="0.0" />
+            <stop offset="0%" stopColor="#af7d09" stopOpacity="0.0" />
+            <stop offset="20%" stopColor="#8a6104" stopOpacity="0.12" />
+            <stop offset="80%" stopColor="#8a6104" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#af7d09" stopOpacity="0.0" />
           </linearGradient>
 
           <radialGradient id="goldRadialGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#7D5701" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#664701" stopOpacity="0.0" />
+            <stop offset="0%" stopColor="#8a6104" stopOpacity="0.10" />
+            <stop offset="100%" stopColor="#af7d09" stopOpacity="0.0" />
           </radialGradient>
         </defs>
 
@@ -60,21 +60,21 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[30, 100, 170, 240, 320, 410, 500].map((y, idx) => (
                 <g key={`ho-floor-${idx}`}>
                   <line x1="20" y1={y} x2="540" y2={y} stroke="url(#goldLinearA)" strokeWidth="1.6" />
-                  <line x1="20" y1={y + 6} x2="540" y2={y + 6} stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" />
-                  <line x1="80" y1={y} x2="180" y2={y + 70} stroke="rgba(102, 71, 1, 0.18)" strokeWidth="0.8" strokeDasharray="4 4" />
-                  <line x1="180" y1={y} x2="80" y2={y + 70} stroke="rgba(102, 71, 1, 0.18)" strokeWidth="0.8" strokeDasharray="4 4" />
-                  <line x1="280" y1={y} x2="380" y2={y + 70} stroke="rgba(102, 71, 1, 0.18)" strokeWidth="0.8" strokeDasharray="4 4" />
-                  <line x1="380" y1={y} x2="280" y2={y + 70} stroke="rgba(102, 71, 1, 0.18)" strokeWidth="0.8" strokeDasharray="4 4" />
+                  <line x1="20" y1={y + 6} x2="540" y2={y + 6} stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" />
+                  <line x1="80" y1={y} x2="180" y2={y + 70} stroke="rgba(175, 125, 9, 0.18)" strokeWidth="0.8" strokeDasharray="4 4" />
+                  <line x1="180" y1={y} x2="80" y2={y + 70} stroke="rgba(175, 125, 9, 0.18)" strokeWidth="0.8" strokeDasharray="4 4" />
+                  <line x1="280" y1={y} x2="380" y2={y + 70} stroke="rgba(175, 125, 9, 0.18)" strokeWidth="0.8" strokeDasharray="4 4" />
+                  <line x1="380" y1={y} x2="280" y2={y + 70} stroke="rgba(175, 125, 9, 0.18)" strokeWidth="0.8" strokeDasharray="4 4" />
                 </g>
               ))}
               <polygon points="280,-30 230,30 330,30" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
               <circle cx="280" cy="-30" r="4" fill="none" stroke="var(--gold)" strokeWidth="1.5" />
             </g>
             <g transform="translate(1260, 150)" className="anim-compass-rotate">
-              <circle cx="0" cy="0" r="90" stroke="rgba(102, 71, 1, 0.2)" strokeWidth="1" strokeDasharray="4 3" />
-              <circle cx="0" cy="0" r="65" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
-              <line x1="-105" y1="0" x2="105" y2="0" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
-              <line x1="0" y1="-105" x2="0" y2="105" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
+              <circle cx="0" cy="0" r="90" stroke="rgba(175, 125, 9, 0.2)" strokeWidth="1" strokeDasharray="4 3" />
+              <circle cx="0" cy="0" r="65" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
+              <line x1="-105" y1="0" x2="105" y2="0" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
+              <line x1="0" y1="-105" x2="0" y2="105" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
             </g>
           </g>
         )}
@@ -94,8 +94,8 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               ].map((c, i) => (
                 <g key={`cube-${i}`} transform={`translate(${c.x}, ${c.y})`}>
                   <polygon points={`0,-${c.s} ${c.s},-${c.s/2} 0,0 -${c.s},-${c.s/2}`} fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
-                  <polygon points={`0,0 ${c.s},-${c.s/2} ${c.s},${c.s/2} 0,${c.s}`} fill="none" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
-                  <polygon points={`0,0 -${c.s},-${c.s/2} -${c.s},${c.s/2} 0,${c.s}`} fill="none" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1.2" />
+                  <polygon points={`0,0 ${c.s},-${c.s/2} ${c.s},${c.s/2} 0,${c.s}`} fill="none" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
+                  <polygon points={`0,0 -${c.s},-${c.s/2} -${c.s},${c.s/2} 0,${c.s}`} fill="none" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1.2" />
                   <circle cx="0" cy="0" r="4" fill="var(--gold)" />
                 </g>
               ))}
@@ -116,10 +116,10 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[0, 240, 480, 720, 960].map((x, i) => (
                 <g key={`arch-${i}`} transform={`translate(${x}, 0)`}>
                   <path d="M 10 380 L 10 120 A 70 70 0 0 1 150 120 L 150 380 Z" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
-                  <path d="M 25 365 L 25 130 A 55 55 0 0 1 135 130 L 135 365 Z" fill="none" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="4 2" />
+                  <path d="M 25 365 L 25 130 A 55 55 0 0 1 135 130 L 135 365 Z" fill="none" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="4 2" />
                   <line x1="0" y1="90" x2="160" y2="90" stroke="url(#goldLinearB)" strokeWidth="2" />
-                  <rect x="0" y="90" width="10" height="290" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
-                  <rect x="150" y="90" width="10" height="290" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
+                  <rect x="0" y="90" width="10" height="290" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
+                  <rect x="150" y="90" width="10" height="290" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
                 </g>
               ))}
               <line x1="-40" y1="40" x2="1160" y2="40" stroke="url(#beamHorizGrad)" strokeWidth="2" />
@@ -137,10 +137,10 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               <g transform="translate(0, 0)">
                 <rect x="0" y="0" width="540" height="500" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
                 {[100, 200, 300, 400].map((x, i) => (
-                  <line key={`dm-v-${i}`} x1={x} y1="0" x2={x} y2="500" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="4 3" />
+                  <line key={`dm-v-${i}`} x1={x} y1="0" x2={x} y2="500" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="4 3" />
                 ))}
                 {[120, 240, 360].map((y, i) => (
-                  <line key={`dm-h-${i}`} x1="0" y1={y} x2="540" y2={y} stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="4 3" />
+                  <line key={`dm-h-${i}`} x1="0" y1={y} x2="540" y2={y} stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="4 3" />
                 ))}
                 <ellipse cx="270" cy="250" rx="70" ry="40" fill="none" stroke="var(--gold)" strokeWidth="1.5" />
               </g>
@@ -166,11 +166,11 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-home-foodcourt">
             <g transform="translate(720, 400)" className="anim-pergola-spin">
               <circle cx="0" cy="0" r="290" stroke="url(#goldLinearA)" strokeWidth="1.8" />
-              <circle cx="0" cy="0" r="210" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1.2" strokeDasharray="6 4" />
+              <circle cx="0" cy="0" r="210" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1.2" strokeDasharray="6 4" />
               <circle cx="0" cy="0" r="140" stroke="url(#goldLinearA)" strokeWidth="1.5" />
               <circle cx="0" cy="0" r="40" fill="none" stroke="var(--gold)" strokeWidth="2" />
               {[0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5].map((deg, i) => (
-                <line key={`hp-${i}`} x1="40" y1="0" x2="330" y2="0" transform={`rotate(${deg})`} stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="4 6" />
+                <line key={`hp-${i}`} x1="40" y1="0" x2="330" y2="0" transform={`rotate(${deg})`} stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="4 6" />
               ))}
               {[0, 60, 120, 180, 240, 300].map((deg, i) => (
                 <g key={`hpc-${i}`} transform={`rotate(${deg}) translate(210, 0)`}>
@@ -193,8 +193,8 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
                 <rect x="100" y="0" width="80" height="520" fill="none" stroke="url(#goldLinearA)" strokeWidth="2" />
                 {[60, 130, 200, 270, 340, 410, 480].map((ly, i) => (
                   <g key={`ha-lvl-${i}`}>
-                    <line x1="0" y1={ly} x2="80" y2={ly} stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
-                    <line x1="100" y1={ly} x2="180" y2={ly} stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
+                    <line x1="0" y1={ly} x2="80" y2={ly} stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
+                    <line x1="100" y1={ly} x2="180" y2={ly} stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
                   </g>
                 ))}
                 <rect x="6" y="140" width="68" height="52" rx="3" fill="none" stroke="var(--gold)" strokeWidth="2" className="lift-car-motion-a" />
@@ -206,7 +206,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
                   [60, 100], [180, 100], [300, 100],
                   [0, 200], [120, 200], [240, 200]
                 ].map(([hx, hy], i) => (
-                  <polygon key={`ha-hex-${i}`} points={`${hx},${hy-40} ${hx+35},${hy-20} ${hx+35},${hy+20} ${hx},${hy+40} ${hx-35},${hy+20} ${hx-35},${hy-20}`} fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1.2" />
+                  <polygon key={`ha-hex-${i}`} points={`${hx},${hy-40} ${hx+35},${hy-20} ${hx+35},${hy+20} ${hx},${hy+40} ${hx-35},${hy+20} ${hx-35},${hy-20}`} fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1.2" />
                 ))}
               </g>
             </g>
@@ -221,18 +221,18 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
             <g transform="translate(180, 140)" className="anim-parking-bays">
               {/* Dual Basement Ramp Elevation */}
               <path d="M 0 100 L 300 240 L 900 240 L 1100 380" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.5" />
-              <path d="M 0 130 L 290 265 L 890 265 L 1100 410" fill="none" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.5" strokeDasharray="6 3" />
+              <path d="M 0 130 L 290 265 L 890 265 L 1100 410" fill="none" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.5" strokeDasharray="6 3" />
               {/* Angled Parking Bays */}
               {[40, 110, 180, 250, 320, 390, 460, 530, 600, 670, 740, 810].map((bx, i) => (
                 <g key={`bay-${i}`} transform={`translate(${bx + 100}, 240)`}>
-                  <line x1="0" y1="0" x2="35" y2="-70" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
+                  <line x1="0" y1="0" x2="35" y2="-70" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
                   <circle cx="17" cy="-35" r="2.5" fill="var(--gold)" />
                 </g>
               ))}
               {/* Lower Basement Level Parking Bays */}
               {[40, 110, 180, 250, 320, 390, 460, 530, 600, 670].map((bx, i) => (
                 <g key={`lbay-${i}`} transform={`translate(${bx + 200}, 440)`}>
-                  <line x1="0" y1="0" x2="35" y2="-60" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
+                  <line x1="0" y1="0" x2="35" y2="-60" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
                 </g>
               ))}
             </g>
@@ -277,9 +277,9 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               ].map((step, i) => (
                 <g key={`why-st-${i}`}>
                   <polygon points={`${step.x},${step.y} ${step.x+90},${step.y-45} ${step.x+180},${step.y} ${step.x+90},${step.y+45}`} fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
-                  <line x1={step.x} y1={step.y} x2={step.x} y2={step.y + step.h} stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
-                  <line x1={step.x + 90} y1={step.y + 45} x2={step.x + 90} y2={step.y + step.h + 45} stroke="rgba(102, 71, 1, 0.45)" strokeWidth="1.5" />
-                  <line x1={step.x + 180} y1={step.y} x2={step.x + 180} y2={step.y + step.h} stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
+                  <line x1={step.x} y1={step.y} x2={step.x} y2={step.y + step.h} stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
+                  <line x1={step.x + 90} y1={step.y + 45} x2={step.x + 90} y2={step.y + step.h + 45} stroke="rgba(175, 125, 9, 0.45)" strokeWidth="1.5" />
+                  <line x1={step.x + 180} y1={step.y} x2={step.x + 180} y2={step.y + step.h} stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
                 </g>
               ))}
               <path d="M 150 425 L 340 335 L 530 245 L 720 155 L 910 65" fill="none" stroke="url(#beamHorizGrad)" strokeWidth="3" strokeDasharray="8 4" />
@@ -294,7 +294,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-home-location">
             <g transform="translate(700, 400)" className="anim-home-radar">
               {[80, 160, 240, 340, 440].map((r, i) => (
-                <circle key={`hl-rad-${i}`} cx="0" cy="0" r={r} fill="none" stroke={i % 2 === 0 ? "url(#goldLinearA)" : "rgba(102, 71, 1, 0.2)"} strokeWidth={i % 2 === 0 ? "1.6" : "1"} strokeDasharray={i % 2 === 1 ? "6 4" : "none"} />
+                <circle key={`hl-rad-${i}`} cx="0" cy="0" r={r} fill="none" stroke={i % 2 === 0 ? "url(#goldLinearA)" : "rgba(175, 125, 9, 0.2)"} strokeWidth={i % 2 === 0 ? "1.6" : "1"} strokeDasharray={i % 2 === 1 ? "6 4" : "none"} />
               ))}
               <line x1="-540" y1="-200" x2="540" y2="200" stroke="url(#beamHorizGrad)" strokeWidth="2.5" />
               <line x1="-540" y1="240" x2="540" y2="-240" stroke="url(#beamHorizGrad)" strokeWidth="2" />
@@ -310,7 +310,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-home-gallery">
             <g transform="translate(180, 140)" className="anim-gallery-frustum">
               <polygon points="540,40 1000,460 80,460" fill="none" stroke="url(#goldLinearA)" strokeWidth="2" />
-              <polygon points="540,120 860,420 220,420" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1.2" strokeDasharray="6 3" />
+              <polygon points="540,120 860,420 220,420" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1.2" strokeDasharray="6 3" />
               <line x1="540" y1="40" x2="540" y2="460" stroke="url(#beamHorizGrad)" strokeWidth="1.5" strokeDasharray="4 4" />
               {[[80, 460], [1000, 460], [540, 40]].map(([px, py], i) => (
                 <g key={`hgal-node-${i}`} transform={`translate(${px}, ${py})`}>
@@ -329,8 +329,8 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-home-investment">
             <g transform="translate(720, 380)" className="anim-golden-spiral">
               <path d="M 0 0 A 20 20 0 0 1 20 20 A 40 40 0 0 1 -20 60 A 80 80 0 0 1 -100 -20 A 160 160 0 0 1 60 -180 A 320 320 0 0 1 380 140" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.2" />
-              <rect x="-100" y="-180" width="480" height="320" fill="none" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="6 4" />
-              <rect x="-100" y="-20" width="160" height="160" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
+              <rect x="-100" y="-180" width="480" height="320" fill="none" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="6 4" />
+              <rect x="-100" y="-20" width="160" height="160" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
             </g>
           </g>
         )}
@@ -342,7 +342,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-home-enquiry">
             <g transform="translate(180, 120)" className="anim-protractor-sweep">
               <path d="M 100 520 A 440 440 0 0 1 980 520" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.2" />
-              <path d="M 220 520 A 320 320 0 0 1 860 520" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1.2" strokeDasharray="6 3" />
+              <path d="M 220 520 A 320 320 0 0 1 860 520" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1.2" strokeDasharray="6 3" />
               <path d="M 340 520 A 200 200 0 0 1 740 520" fill="none" stroke="url(#goldLinearB)" strokeWidth="1.5" />
               <line x1="540" y1="80" x2="540" y2="520" stroke="url(#beamHorizGrad)" strokeWidth="1.8" />
             </g>
@@ -356,10 +356,10 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-proj-hero">
             <g transform="translate(140, 100)" className="anim-proj-masterplan">
               <polygon points="120,40 1020,80 1140,500 60,460" fill="none" stroke="url(#goldLinearA)" strokeWidth="2" />
-              <line x1="120" y1="40" x2="600" y2="480" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" strokeDasharray="6 3" />
-              <line x1="1020" y1="80" x2="400" y2="470" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" strokeDasharray="6 3" />
+              <line x1="120" y1="40" x2="600" y2="480" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" strokeDasharray="6 3" />
+              <line x1="1020" y1="80" x2="400" y2="470" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" strokeDasharray="6 3" />
               <circle cx="560" cy="270" r="80" fill="none" stroke="var(--gold)" strokeWidth="1.8" />
-              <circle cx="560" cy="270" r="140" fill="none" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="4 4" />
+              <circle cx="560" cy="270" r="140" fill="none" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="4 4" />
             </g>
           </g>
         )}
@@ -371,10 +371,10 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-proj-vision">
             <g transform="translate(180, 80)" className="anim-glass-curtain">
               {[0, 120, 240, 360, 480, 600, 720, 840, 960, 1080].map((x, i) => (
-                <line key={`pv-v-${i}`} x1={x} y1="0" x2={x} y2="600" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1.2" />
+                <line key={`pv-v-${i}`} x1={x} y1="0" x2={x} y2="600" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1.2" />
               ))}
               {[0, 75, 150, 225, 300, 375, 450, 525, 600].map((y, i) => (
-                <line key={`pv-h-${i}`} x1="0" y1={y} x2="1080" y2={y} stroke={i % 2 === 0 ? "url(#goldLinearA)" : "rgba(102, 71, 1, 0.2)"} strokeWidth={i % 2 === 0 ? "1.8" : "1"} />
+                <line key={`pv-h-${i}`} x1="0" y1={y} x2="1080" y2={y} stroke={i % 2 === 0 ? "url(#goldLinearA)" : "rgba(175, 125, 9, 0.2)"} strokeWidth={i % 2 === 0 ? "1.8" : "1"} />
               ))}
               <line x1="0" y1="0" x2="1080" y2="600" stroke="url(#beamHorizGrad)" strokeWidth="2" strokeDasharray="10 5" />
             </g>
@@ -420,11 +420,11 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
                   <circle cx="0" cy="0" r="3" fill="var(--gold)" />
                 </g>
               ))}
-              <path d="M 100 100 L 300 80 L 450 240 L 200 260 Z" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
-              <path d="M 300 80 L 550 120 L 700 270 L 450 240 Z" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
-              <path d="M 550 120 L 800 90 L 950 250 L 700 270 Z" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
-              <path d="M 200 260 L 450 240 L 350 400 L 120 420 Z" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
-              <path d="M 450 240 L 700 270 L 600 440 L 350 400 Z" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
+              <path d="M 100 100 L 300 80 L 450 240 L 200 260 Z" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
+              <path d="M 300 80 L 550 120 L 700 270 L 450 240 Z" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
+              <path d="M 550 120 L 800 90 L 950 250 L 700 270 Z" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
+              <path d="M 200 260 L 450 240 L 350 400 L 120 420 Z" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
+              <path d="M 450 240 L 700 270 L 600 440 L 350 400 Z" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
             </g>
           </g>
         )}
@@ -439,8 +439,8 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               <line x1="0" y1="230" x2="1160" y2="230" stroke="url(#goldLinearB)" strokeWidth="1.8" strokeDasharray="8 4" />
               {[60, 160, 260, 360, 460, 560, 660, 760, 860, 960, 1060].map((x, i) => (
                 <g key={`pp-col-${i}`}>
-                  <rect x={x} y="0" width="16" height="230" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
-                  <rect x={x} y="230" width="16" height="230" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
+                  <rect x={x} y="0" width="16" height="230" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
+                  <rect x={x} y="230" width="16" height="230" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
                 </g>
               ))}
             </g>
@@ -456,7 +456,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               <line x1="0" y1="0" x2="1120" y2="0" stroke="url(#goldLinearA)" strokeWidth="3" />
               <line x1="0" y1="240" x2="1120" y2="240" stroke="url(#goldLinearA)" strokeWidth="3" />
               {[0, 160, 320, 480, 640, 800, 960, 1120].map((x, i) => (
-                <line key={`truss-v-${i}`} x1={x} y1="0" x2={x} y2="240" stroke="rgba(102, 71, 1, 0.4)" strokeWidth="1.8" />
+                <line key={`truss-v-${i}`} x1={x} y1="0" x2={x} y2="240" stroke="rgba(175, 125, 9, 0.4)" strokeWidth="1.8" />
               ))}
               {[0, 160, 320, 480, 640, 800, 960].map((x, i) => (
                 <line key={`truss-diag-${i}`} x1={x} y1={i % 2 === 0 ? "0" : "240"} x2={x + 160} y2={i % 2 === 0 ? "240" : "0"} stroke="url(#goldLinearB)" strokeWidth="1.6" />
@@ -472,7 +472,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-spaces-hero">
             <g transform="translate(720, 400)" className="anim-spatial-constellation">
               <circle cx="0" cy="0" r="280" stroke="url(#goldLinearA)" strokeWidth="1.5" strokeDasharray="8 6" />
-              <circle cx="0" cy="0" r="160" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1.2" />
+              <circle cx="0" cy="0" r="160" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1.2" />
               {[0, 72, 144, 216, 288].map((deg, i) => (
                 <g key={`sc-node-${i}`} transform={`rotate(${deg}) translate(280, 0)`}>
                   <circle cx="0" cy="0" r="22" fill="none" stroke="var(--gold)" strokeWidth="1.8" />
@@ -493,7 +493,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[60, 160, 260, 360, 460].map((y, i) => (
                 <g key={`sl-plate-${i}`} transform={`translate(0, ${y})`}>
                   <line x1="80" y1="0" x2="1080" y2="0" stroke="url(#goldLinearA)" strokeWidth="2" />
-                  <line x1="120" y1="20" x2="1040" y2="20" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" strokeDasharray="5 3" />
+                  <line x1="120" y1="20" x2="1040" y2="20" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" strokeDasharray="5 3" />
                   <circle cx="80" cy="0" r="4" fill="var(--gold)" />
                   <circle cx="1080" cy="0" r="4" fill="var(--gold)" />
                 </g>
@@ -509,7 +509,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-ret-hero">
             <g transform="translate(160, 80)" className="anim-grand-portal">
               <path d="M 120 600 L 120 180 A 440 440 0 0 1 1000 180 L 1000 600" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.8" />
-              <path d="M 180 600 L 180 200 A 380 380 0 0 1 940 200 L 940 600" fill="none" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.5" strokeDasharray="8 4" />
+              <path d="M 180 600 L 180 200 A 380 380 0 0 1 940 200 L 940 600" fill="none" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.5" strokeDasharray="8 4" />
               <line x1="60" y1="120" x2="1060" y2="120" stroke="url(#beamHorizGrad)" strokeWidth="2" />
             </g>
           </g>
@@ -524,8 +524,8 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[0, 300, 600, 900].map((x, i) => (
                 <g key={`rsh-bay-${i}`} transform={`translate(${x}, 0)`}>
                   <rect x="0" y="40" width="260" height="420" rx="4" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
-                  <line x1="0" y1="140" x2="260" y2="140" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
-                  <rect x="30" y="170" width="200" height="260" fill="none" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="4 2" />
+                  <line x1="0" y1="140" x2="260" y2="140" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
+                  <rect x="30" y="170" width="200" height="260" fill="none" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="4 2" />
                 </g>
               ))}
             </g>
@@ -541,7 +541,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[0, 160, 320, 480, 640, 800, 960, 1120].map((cx, i) => (
                 <g key={`col-p-${i}`} transform={`translate(${cx}, 0)`}>
                   <line x1="0" y1="0" x2="0" y2="400" stroke="url(#goldLinearA)" strokeWidth="2" />
-                  <line x1="16" y1="0" x2="16" y2="400" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" />
+                  <line x1="16" y1="0" x2="16" y2="400" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" />
                   <rect x="-10" y="-15" width="36" height="15" fill="none" stroke="var(--gold)" strokeWidth="1.5" />
                   <rect x="-10" y="400" width="36" height="15" fill="none" stroke="var(--gold)" strokeWidth="1.5" />
                 </g>
@@ -558,7 +558,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
             <g transform="translate(200, 60)" className="anim-exec-tower">
               <polygon points="520,20 840,120 840,640 200,640 200,120" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.2" />
               {[120, 200, 280, 360, 440, 520, 600].map((y, i) => (
-                <line key={`oft-fl-${i}`} x1="200" y1={y} x2="840" y2={y} stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
+                <line key={`oft-fl-${i}`} x1="200" y1={y} x2="840" y2={y} stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
               ))}
               <line x1="520" y1="20" x2="520" y2="640" stroke="url(#beamHorizGrad)" strokeWidth="1.8" />
             </g>
@@ -572,7 +572,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-off-narrative">
             <g transform="translate(160, 120)" className="anim-office-floorplate">
               <polygon points="560,40 1080,240 560,440 40,240" fill="none" stroke="url(#goldLinearA)" strokeWidth="2" />
-              <polygon points="560,80 1000,240 560,400 120,240" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1.2" strokeDasharray="6 3" />
+              <polygon points="560,80 1000,240 560,400 120,240" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1.2" strokeDasharray="6 3" />
               <ellipse cx="560" cy="240" rx="90" ry="45" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
             </g>
           </g>
@@ -587,7 +587,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[0, 280, 560, 840].map((gx, i) => (
                 <g key={`agp-${i}`} transform={`translate(${gx}, 0)`}>
                   <rect x="0" y="0" width="240" height="400" rx="4" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.6" />
-                  <circle cx="120" cy="180" r="30" fill="none" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1" strokeDasharray="3 3" />
+                  <circle cx="120" cy="180" r="30" fill="none" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1" strokeDasharray="3 3" />
                 </g>
               ))}
             </g>
@@ -604,7 +604,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[80, 180, 280, 380, 480].map((y, i) => (
                 <g key={`balc-${i}`}>
                   <rect x="80" y={y} width="880" height="40" rx="3" fill="none" stroke="url(#goldLinearB)" strokeWidth="1.8" />
-                  <line x1="80" y1={y + 20} x2="960" y2={y + 20} stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1" strokeDasharray="6 3" />
+                  <line x1="80" y1={y + 20} x2="960" y2={y + 20} stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1" strokeDasharray="6 3" />
                 </g>
               ))}
             </g>
@@ -619,7 +619,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
             <g transform="translate(180, 120)" className="anim-stu-suite">
               <rect x="0" y="0" width="1080" height="520" rx="4" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.2" />
               <line x1="420" y1="0" x2="420" y2="340" stroke="url(#goldLinearA)" strokeWidth="2" />
-              <path d="M 420 340 A 60 60 0 0 0 480 400" fill="none" stroke="rgba(102, 71, 1, 0.45)" strokeWidth="1.2" strokeDasharray="3 3" />
+              <path d="M 420 340 A 60 60 0 0 0 480 400" fill="none" stroke="rgba(175, 125, 9, 0.45)" strokeWidth="1.2" strokeDasharray="3 3" />
               <path d="M 0 520 L 0 580 Q 540 640 1080 580 L 1080 520" fill="none" stroke="url(#goldLinearA)" strokeWidth="2" />
             </g>
           </g>
@@ -634,8 +634,8 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[0, 380, 760].map((mx, i) => (
                 <g key={`mod-${i}`} transform={`translate(${mx}, 0)`}>
                   <rect x="0" y="0" width="340" height="420" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
-                  <line x1="0" y1="140" x2="340" y2="140" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
-                  <line x1="0" y1="280" x2="340" y2="280" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.2" />
+                  <line x1="0" y1="140" x2="340" y2="140" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
+                  <line x1="0" y1="280" x2="340" y2="280" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.2" />
                 </g>
               ))}
             </g>
@@ -649,7 +649,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-fc-hero">
             <g transform="translate(160, 100)" className="anim-sail-canopies">
               <path d="M 100 480 Q 540 80 980 480" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.5" />
-              <path d="M 180 520 Q 540 160 900 520" fill="none" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.5" strokeDasharray="6 3" />
+              <path d="M 180 520 Q 540 160 900 520" fill="none" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.5" strokeDasharray="6 3" />
               <polygon points="540,60 300,340 780,340" fill="none" stroke="url(#goldLinearB)" strokeWidth="1.8" />
             </g>
           </g>
@@ -664,7 +664,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[0, 360, 720].map((fx, i) => (
                 <g key={`fnb-st-${i}`} transform={`translate(${fx}, 0)`}>
                   <path d="M 20 380 L 20 180 A 150 150 0 0 1 320 180 L 320 380" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
-                  <circle cx="170" cy="180" r="60" fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1.2" strokeDasharray="4 2" />
+                  <circle cx="170" cy="180" r="60" fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1.2" strokeDasharray="4 2" />
                 </g>
               ))}
             </g>
@@ -678,7 +678,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-fc-categories">
             <g transform="translate(720, 380)" className="anim-cluster-orbital">
               {[120, 240, 340].map((r, i) => (
-                <circle key={`fc-cr-${i}`} cx="0" cy="0" r={r} fill="none" stroke="rgba(102, 71, 1, 0.3)" strokeWidth="1.2" strokeDasharray="6 4" />
+                <circle key={`fc-cr-${i}`} cx="0" cy="0" r={r} fill="none" stroke="rgba(175, 125, 9, 0.3)" strokeWidth="1.2" strokeDasharray="6 4" />
               ))}
               {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
                 <g key={`fcp-${i}`} transform={`rotate(${deg}) translate(240, 0)`}>
@@ -713,7 +713,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-fp-gallery">
             <g transform="translate(140, 90)" className="anim-cad-hatch">
               <rect x="0" y="0" width="1160" height="560" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.5" />
-              <rect x="14" y="14" width="1132" height="532" fill="none" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="3 3" />
+              <rect x="14" y="14" width="1132" height="532" fill="none" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="3 3" />
               <line x1="360" y1="0" x2="360" y2="560" stroke="url(#goldLinearA)" strokeWidth="2" />
               <line x1="760" y1="0" x2="760" y2="560" stroke="url(#goldLinearA)" strokeWidth="2" />
               <line x1="0" y1="280" x2="1160" y2="280" stroke="url(#goldLinearA)" strokeWidth="2" />
@@ -741,10 +741,10 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-loc-radar">
             <g transform="translate(680, 400)" className="anim-radar-sweep">
               {[90, 180, 270, 360, 460].map((r, i) => (
-                <circle key={`lr-r-${i}`} cx="0" cy="0" r={r} fill="none" stroke={i % 2 === 0 ? "url(#goldLinearA)" : "rgba(102, 71, 1, 0.2)"} strokeWidth={i % 2 === 0 ? "1.6" : "1"} strokeDasharray={i % 2 === 1 ? "6 4" : "none"} />
+                <circle key={`lr-r-${i}`} cx="0" cy="0" r={r} fill="none" stroke={i % 2 === 0 ? "url(#goldLinearA)" : "rgba(175, 125, 9, 0.2)"} strokeWidth={i % 2 === 0 ? "1.6" : "1"} strokeDasharray={i % 2 === 1 ? "6 4" : "none"} />
               ))}
-              <line x1="-540" y1="0" x2="540" y2="0" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.5" strokeDasharray="8 4" />
-              <line x1="0" y1="-460" x2="0" y2="460" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.5" strokeDasharray="8 4" />
+              <line x1="-540" y1="0" x2="540" y2="0" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.5" strokeDasharray="8 4" />
+              <line x1="0" y1="-460" x2="0" y2="460" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.5" strokeDasharray="8 4" />
             </g>
           </g>
         )}
@@ -786,7 +786,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
               {[0, 380, 760].map((px, i) => (
                 <g key={`dp-${i}`} transform={`translate(${px}, 0)`}>
                   <rect x="0" y="0" width="340" height="420" fill="none" stroke="url(#goldLinearA)" strokeWidth="1.8" />
-                  <rect x="20" y="20" width="300" height="380" fill="none" stroke="rgba(102, 71, 1, 0.25)" strokeWidth="1" strokeDasharray="4 2" />
+                  <rect x="20" y="20" width="300" height="380" fill="none" stroke="rgba(175, 125, 9, 0.25)" strokeWidth="1" strokeDasharray="4 2" />
                 </g>
               ))}
             </g>
@@ -800,8 +800,8 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-inv-hero">
             <g transform="translate(160, 140)" className="anim-growth-curve">
               <path d="M 40 480 Q 400 460 700 240 T 1100 40" fill="none" stroke="url(#goldLinearA)" strokeWidth="3" />
-              <path d="M 40 480 L 1100 480" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.5" />
-              <line x1="40" y1="40" x2="40" y2="480" stroke="rgba(102, 71, 1, 0.35)" strokeWidth="1.5" />
+              <path d="M 40 480 L 1100 480" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.5" />
+              <line x1="40" y1="40" x2="40" y2="480" stroke="rgba(175, 125, 9, 0.35)" strokeWidth="1.5" />
             </g>
           </g>
         )}
@@ -826,9 +826,9 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
           <g className="art-inv-pillars">
             <g transform="translate(180, 120)" className="anim-stability-pyramid">
               <polygon points="540,40 980,480 100,480" fill="none" stroke="url(#goldLinearA)" strokeWidth="2.5" />
-              <line x1="210" y1="370" x2="870" y2="370" stroke="rgba(102, 71, 1, 0.4)" strokeWidth="1.5" />
-              <line x1="320" y1="260" x2="760" y2="260" stroke="rgba(102, 71, 1, 0.4)" strokeWidth="1.5" />
-              <line x1="430" y1="150" x2="650" y2="150" stroke="rgba(102, 71, 1, 0.4)" strokeWidth="1.5" />
+              <line x1="210" y1="370" x2="870" y2="370" stroke="rgba(175, 125, 9, 0.4)" strokeWidth="1.5" />
+              <line x1="320" y1="260" x2="760" y2="260" stroke="rgba(175, 125, 9, 0.4)" strokeWidth="1.5" />
+              <line x1="430" y1="150" x2="650" y2="150" stroke="rgba(175, 125, 9, 0.4)" strokeWidth="1.5" />
             </g>
           </g>
         )}
@@ -871,7 +871,7 @@ export default function ArchitecturalBg({ variant = 'home_overview' }) {
             <g transform="translate(720, 360)" className="anim-cta-seal">
               <circle cx="0" cy="0" r="260" stroke="url(#goldLinearA)" strokeWidth="2" strokeDasharray="10 5" />
               <circle cx="0" cy="0" r="180" stroke="url(#goldLinearB)" strokeWidth="1.5" />
-              <circle cx="0" cy="0" r="100" stroke="rgba(102, 71, 1, 0.4)" strokeWidth="1" strokeDasharray="4 4" />
+              <circle cx="0" cy="0" r="100" stroke="rgba(175, 125, 9, 0.4)" strokeWidth="1" strokeDasharray="4 4" />
             </g>
           </g>
         )}

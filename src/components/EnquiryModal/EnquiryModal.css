@@ -17,7 +17,7 @@
 
 .enquiry-modal-dialog {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.45);
+  border: 1.5px solid rgba(175, 125, 9, 0.45);
   border-radius: 4px;
   width: 100%;
   max-width: 620px;
@@ -34,7 +34,7 @@
   top: 1.25rem;
   right: 1.25rem;
   background: #FAF8F4;
-  border: 1px solid rgba(102, 71, 1, 0.3);
+  border: 1px solid rgba(175, 125, 9, 0.3);
   color: #111112;
   width: 36px;
   height: 36px;
@@ -48,7 +48,7 @@
 }
 
 .enquiry-modal-close:hover {
-  background: rgba(102, 71, 1, 0.2);
+  background: rgba(175, 125, 9, 0.2);
   border-color: var(--gold);
   color: var(--gold-dark);
 }
@@ -66,8 +66,8 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--gold-dark);
-  background: rgba(102, 71, 1, 0.12);
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   padding: 4px 12px;
   border-radius: 2px;
   margin-bottom: 0.75rem;

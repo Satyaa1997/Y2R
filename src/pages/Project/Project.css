@@ -8,7 +8,7 @@
   padding: calc(var(--header-height) + 1.25rem) 1.5rem 2.25rem;
   background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, #FAF8F4 80%);
   text-align: center;
-  border-bottom: 1px solid rgba(102, 71, 1, 0.25);
+  border-bottom: 1px solid rgba(175, 125, 9, 0.25);
 }
 
 .page-hero-content {
@@ -68,7 +68,7 @@
   position: relative;
   border-radius: 4px;
   overflow: hidden;
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
 }
 
@@ -141,7 +141,7 @@
 
 .space-catalog-inner {
   background: #FFFFFF;
-  border: 1px solid rgba(102, 71, 1, 0.25);
+  border: 1px solid rgba(175, 125, 9, 0.25);
   border-radius: 4px;
   overflow: hidden;
   display: flex;
@@ -154,7 +154,7 @@
 
 .space-catalog-card:hover .space-catalog-inner {
   border-color: var(--gold);
-  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.15);
+  box-shadow: 0 15px 40px rgba(175, 125, 9, 0.15);
 }
 
 .space-img-box {

@@ -16,7 +16,7 @@
   gap: 2rem;
   align-items: center;
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
   border-radius: 6px;
   padding: 1.35rem 1.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -38,7 +38,7 @@
   position: relative;
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid rgba(102, 71, 1, 0.3);
+  border: 1px solid rgba(175, 125, 9, 0.3);
 }
 
 .space-stack-img-wrap img {

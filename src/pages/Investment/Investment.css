@@ -22,7 +22,7 @@
 .invest-rera-badge-box {
   margin-top: 1.25rem;
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   padding: 0.85rem 1.15rem;
   border-radius: 4px;
   display: flex;
@@ -52,7 +52,7 @@
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
 }
 
@@ -94,7 +94,7 @@
 
 .driver-inner {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
   padding: 1.25rem 1.15rem;
   border-radius: 6px;
   width: 100%;
@@ -107,15 +107,15 @@
 
 .driver-card:hover .driver-inner {
   border-color: var(--gold);
-  box-shadow: 0 12px 30px rgba(102, 71, 1, 0.15);
+  box-shadow: 0 12px 30px rgba(175, 125, 9, 0.15);
 }
 
 .driver-icon-box {
   width: 38px;
   height: 38px;
   border-radius: 4px;
-  background: rgba(102, 71, 1, 0.12);
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,7 +154,7 @@
 
 .theme-section-dark .invest-rera-badge-box {
   background: #141519;
-  border-color: rgba(102, 71, 1, 0.35);
+  border-color: rgba(175, 125, 9, 0.35);
 }
 
 .theme-section-dark .invest-rera-title {

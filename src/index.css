@@ -21,17 +21,17 @@
   --text-secondary: #58554E;
   --text-muted: #7E7B74;
 
-  --gold: #664701;
-  --gold-light: #7D5701;
-  --gold-dark: #664701;
-  --gold-deep: #4D3501;
-  --gold-gradient: #664701;
-  --gold-glow: rgba(102, 71, 1, 0.2);
-  --gold-border: rgba(102, 71, 1, 0.4);
+  --gold: #af7d09;
+  --gold-light: #c7921a;
+  --gold-dark: #735103;
+  --gold-deep: #593e02;
+  --gold-gradient: linear-gradient(135deg, #c7921a 0%, #af7d09 50%, #735103 100%);
+  --gold-glow: rgba(175, 125, 9, 0.25);
+  --gold-border: rgba(175, 125, 9, 0.4);
 
   --border-light: rgba(0, 0, 0, 0.08);
-  --border-card: rgba(102, 71, 1, 0.25);
-  --border-card-hover: rgba(102, 71, 1, 0.6);
+  --border-card: rgba(175, 125, 9, 0.25);
+  --border-card-hover: rgba(175, 125, 9, 0.6);
 
   /* Legacy variable aliases for unified compatibility */
   --dark: #FFFFFF;
@@ -54,7 +54,7 @@
   /* Architectural Layout Dimensions */
   --container: 1280px;
   --container-wide: 1440px;
-  --header-height: 84px;
+  --header-height: 110px;
   --section-padding: clamp(2.25rem, 4.5vh, 3.25rem);
 
   /* Micro-Interactions & Physics Easings */
@@ -66,7 +66,7 @@
   /* Shadows & Atmospheric Elevation */
   --shadow-premium: 0 25px 70px rgba(0, 0, 0, 0.08);
   --shadow-card: 0 12px 35px rgba(0, 0, 0, 0.06);
-  --shadow-gold: 0 10px 30px rgba(102, 71, 1, 0.2);
+  --shadow-gold: 0 10px 30px rgba(175, 125, 9, 0.2);
   --shadow-subtle: 0 6px 20px rgba(0, 0, 0, 0.04);
 
   /* Typography Stacks */
@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 ::-webkit-scrollbar-thumb {
   background: #C4BFB5;
   border-radius: 4px;
-  border: 1px solid rgba(102, 71, 1, 0.2);
+  border: 1px solid rgba(175, 125, 9, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #664701 0%, #664701 60%, #6E4F18 100%);
+  background: linear-gradient(135deg, #af7d09 0%, #af7d09 60%, #6E4F18 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -172,7 +172,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 }
 
 .gold-shimmer-text {
-  background: linear-gradient(90deg, #664701 0%, #7D5701 50%, #664701 100%);
+  background: linear-gradient(90deg, #af7d09 0%, #8a6104 50%, #af7d09 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -216,35 +216,35 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 .layer-z-60 { transform: translateZ(60px); }
 
 /* ==========================================================================
-   ARCHITECTURAL GRAPHICS & GRID OVERLAYS (LIGHT LUXURY)
+   ARCHITECTURAL GRAPHICS & GRID OVERLAYS (SUBTLE LIGHT LUXURY)
    ========================================================================== */
 
 .architectural-grid {
   background-size: 50px 50px;
   background-image: 
-    linear-gradient(to right, rgba(102, 71, 1, 0.065) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(102, 71, 1, 0.065) 1px, transparent 1px);
+    linear-gradient(to right, rgba(175, 125, 9, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(175, 125, 9, 0.025) 1px, transparent 1px);
   animation: archGlobalGridDrift 70s linear infinite;
 }
 
 .architectural-grid-gold {
   background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(102, 71, 1, 0.09) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(102, 71, 1, 0.09) 1px, transparent 1px);
+    linear-gradient(to right, rgba(175, 125, 9, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(175, 125, 9, 0.035) 1px, transparent 1px);
   animation: archGlobalGridDrift 60s linear infinite;
 }
 
 .blueprint-grid {
   background-size: 30px 30px;
   background-image: 
-    linear-gradient(to right, rgba(102, 71, 1, 0.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(102, 71, 1, 0.12) 1px, transparent 1px);
+    linear-gradient(to right, rgba(175, 125, 9, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(175, 125, 9, 0.04) 1px, transparent 1px);
   animation: archGlobalGridDrift 50s linear infinite;
 }
 
 .isometric-lines {
-  background: radial-gradient(circle at 50% 50%, rgba(102, 71, 1, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 50%, rgba(175, 125, 9, 0.03) 0%, transparent 60%);
 }
 
 @keyframes archGlobalGridDrift {
@@ -269,15 +269,15 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   background: rgba(253, 250, 243, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(102, 71, 1, 0.35);
-  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.1);
+  border: 1px solid rgba(175, 125, 9, 0.35);
+  box-shadow: 0 15px 40px rgba(175, 125, 9, 0.1);
 }
 
 .glass-ivory {
   background: rgba(248, 246, 240, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(102, 71, 1, 0.22);
+  border: 1px solid rgba(175, 125, 9, 0.22);
   color: var(--text-primary);
 }
 
@@ -292,8 +292,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   text-transform: uppercase;
   font-weight: 700;
   color: var(--gold-dark);
-  background: rgba(102, 71, 1, 0.1);
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  background: rgba(175, 125, 9, 0.1);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   border-radius: 2px;
   position: relative;
 }
@@ -314,7 +314,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   justify-content: center;
   gap: 10px;
   padding: 13px 26px;
-  background: #664701;
+  background: #af7d09;
   color: #FFFFFF;
   font-weight: 700;
   font-size: 0.85rem;
@@ -326,7 +326,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   position: relative;
   overflow: hidden;
   transition: var(--transition);
-  box-shadow: 0 8px 24px rgba(102, 71, 1, 0.35);
+  box-shadow: 0 8px 24px rgba(175, 125, 9, 0.35);
   text-decoration: none;
 }
 
@@ -343,9 +343,10 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 
 .btn-primary:hover {
   transform: translateY(-3px) translateZ(10px);
-  box-shadow: 0 14px 35px rgba(102, 71, 1, 0.5);
-  color: #FFFFFF;
-  background: #7D5701;
+  box-shadow: 0 14px 35px rgba(175, 125, 9, 0.5);
+  color: #FFFFFF !important;
+  background: #6e4e04 !important;
+  border-color: #593e02;
 }
 
 .btn-primary:hover::after {
@@ -365,7 +366,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border-radius: 2px;
-  border: 1px solid rgba(102, 71, 1, 0.45);
+  border: 1px solid rgba(175, 125, 9, 0.45);
   cursor: pointer;
   position: relative;
   transition: var(--transition);
@@ -374,18 +375,18 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 }
 
 .btn-secondary:hover {
-  border-color: var(--gold-dark);
-  color: var(--gold-dark);
-  background: rgba(102, 71, 1, 0.08);
+  border-color: #6e4e04 !important;
+  color: #FFFFFF !important;
+  background: #6e4e04 !important;
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(102, 71, 1, 0.15);
+  box-shadow: 0 8px 25px rgba(110, 78, 4, 0.35);
 }
 
 .btn-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--gold-dark);
+  color: #af7d09;
   font-size: 0.85rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -402,12 +403,12 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   left: 0;
   width: 0%;
   height: 1.5px;
-  background-color: var(--gold);
+  background-color: #af7d09;
   transition: var(--transition);
 }
 
 .btn-link:hover {
-  color: var(--gold-deep);
+  color: #6e4e04;
 }
 
 .btn-link:hover::after {
@@ -500,8 +501,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   color: #FAF8F4;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(102, 71, 1, 0.2);
-  border-bottom: 1px solid rgba(102, 71, 1, 0.2);
+  border-top: 1px solid rgba(175, 125, 9, 0.2);
+  border-bottom: 1px solid rgba(175, 125, 9, 0.2);
 }
 
 .theme-section-dark > .container,
@@ -522,8 +523,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 
 .theme-section-dark .section-badge {
   color: var(--gold-light) !important;
-  background: rgba(102, 71, 1, 0.15) !important;
-  border-color: rgba(102, 71, 1, 0.45) !important;
+  background: rgba(175, 125, 9, 0.15) !important;
+  border-color: rgba(175, 125, 9, 0.45) !important;
 }
 
 .theme-section-dark .section-subtitle {
@@ -539,8 +540,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   color: #111112;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(102, 71, 1, 0.15);
-  border-bottom: 1px solid rgba(102, 71, 1, 0.15);
+  border-top: 1px solid rgba(175, 125, 9, 0.15);
+  border-bottom: 1px solid rgba(175, 125, 9, 0.15);
 }
 
 .theme-section-white {

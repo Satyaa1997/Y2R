@@ -2,12 +2,12 @@
   background-color: #0D0E11;
   color: #E8E5DC;
   position: relative;
-  border-top: 1.5px solid rgba(102, 71, 1, 0.35);
+  border-top: 1.5px solid rgba(175, 125, 9, 0.35);
 }
 
 .footer-top-accent {
   height: 2px;
-  background: linear-gradient(90deg, transparent, #7D5701, #664701, #664701, transparent);
+  background: linear-gradient(90deg, transparent, #8a6104, #af7d09, #af7d09, transparent);
   width: 100%;
 }
 
@@ -45,7 +45,7 @@
   border: none;
   outline: none;
   box-shadow: none;
-  filter: drop-shadow(0 2px 8px rgba(102, 71, 1, 0.25));
+  filter: drop-shadow(0 2px 8px rgba(175, 125, 9, 0.25));
 }
 
 .footer-tagline-text {
@@ -68,7 +68,7 @@
   gap: 10px;
   padding: 10px 14px;
   background: #141519;
-  border: 1px solid rgba(102, 71, 1, 0.3);
+  border: 1px solid rgba(175, 125, 9, 0.3);
   border-radius: 2px;
   margin-top: 0.25rem;
 }
@@ -138,7 +138,7 @@
   margin-top: 1rem;
   padding: 0.85rem;
   background: #141519;
-  border: 1px solid rgba(102, 71, 1, 0.25);
+  border: 1px solid rgba(175, 125, 9, 0.25);
   border-radius: 2px;
 }
 

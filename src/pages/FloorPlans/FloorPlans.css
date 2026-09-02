@@ -15,7 +15,7 @@
 
 .filter-btn {
   background: #FFFFFF;
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   color: #111112;
   font-family: var(--font-body);
   font-size: 0.78rem;
@@ -32,15 +32,15 @@
 .filter-btn:hover {
   border-color: var(--gold-dark);
   color: var(--gold-dark);
-  background: rgba(102, 71, 1, 0.08);
+  background: rgba(175, 125, 9, 0.08);
 }
 
 .filter-btn.active {
-  background: linear-gradient(135deg, #7D5701 0%, #664701 100%);
+  background: linear-gradient(135deg, #8a6104 0%, #af7d09 100%);
   color: #FFFFFF;
   border-color: var(--gold);
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(102, 71, 1, 0.35);
+  box-shadow: 0 4px 15px rgba(175, 125, 9, 0.35);
 }
 
 /* Equal Height Blueprint Cards */
@@ -59,7 +59,7 @@
 
 .blueprint-card-inner {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.3);
+  border: 1.5px solid rgba(175, 125, 9, 0.3);
   border-radius: 6px;
   padding: 1.25rem 1.15rem;
   display: flex;
@@ -72,7 +72,7 @@
 
 .blueprint-tilt-card:hover .blueprint-card-inner {
   border-color: var(--gold-dark);
-  box-shadow: 0 20px 60px rgba(102, 71, 1, 0.2);
+  box-shadow: 0 20px 60px rgba(175, 125, 9, 0.2);
 }
 
 .blueprint-card-header {
@@ -92,7 +92,7 @@
   font-family: monospace;
   font-size: 0.65rem;
   color: var(--text-muted);
-  border: 1px dashed rgba(102, 71, 1, 0.4);
+  border: 1px dashed rgba(175, 125, 9, 0.4);
   padding: 2px 6px;
   font-weight: 600;
 }
@@ -103,7 +103,7 @@
   overflow: hidden;
   border-radius: 4px;
   margin-bottom: 1rem;
-  border: 1px solid rgba(102, 71, 1, 0.2);
+  border: 1px solid rgba(175, 125, 9, 0.2);
 }
 
 .bp-preview-image-wrap img {
@@ -137,7 +137,7 @@
 }
 
 .bp-overlay-btn {
-  background: linear-gradient(135deg, #7D5701, #664701);
+  background: linear-gradient(135deg, #8a6104, #af7d09);
   color: #000;
   font-size: 0.75rem;
   font-weight: 700;

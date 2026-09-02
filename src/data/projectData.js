@@ -143,42 +143,66 @@ export const AMENITIES_LIST = [
   {
     icon: "DoorOpen",
     title: "Grand Entrance Lobby",
-    description: "Triple-height arrival experience featuring polished architectural accents and reception desk."
+    description: "Triple-height arrival experience featuring polished architectural accents and reception desk.",
+    image: "https://img.magnific.com/free-photo/modern-luxury-hotel-office-reception-lounge-with-meeting-room_105762-1772.jpg?semt=ais_hybrid&w=740&q=80",
+    badge: "Triple Height",
+    tag: "Arrival Foyer"
   },
   {
     icon: "Building2",
     title: "Modern Glass Façade",
-    description: "Energy-efficient structural glazing offering panoramic sightlines and high aesthetic presence."
+    description: "Energy-efficient structural glazing offering panoramic sightlines and high aesthetic presence.",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
+    badge: "Energy Rated",
+    tag: "Façade"
   },
   {
     icon: "MoveUp",
     title: "High-Speed Elevators",
-    description: "State-of-the-art vertical transit elevators for seamless connectivity between retail and residences."
+    description: "State-of-the-art vertical transit elevators for seamless connectivity between retail and residences.",
+    image: "https://5.imimg.com/data5/MC/BJ/MY-10715304/high-speed-elevators.jpg",
+    badge: "Rapid Transit",
+    tag: "Vertical Access"
   },
   {
     icon: "Car",
     title: "Dedicated Parking",
-    description: "Two dedicated basement parking tiers ensuring structured arrival for patrons and occupants."
+    description: "Two dedicated basement parking tiers ensuring structured arrival for patrons and occupants.",
+    image: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=800&auto=format&fit=crop",
+    badge: "40+ Vehicles",
+    tag: "Dual Basement"
   },
   {
     icon: "ShieldCheck",
     title: "24×7 Security",
-    description: "Round-the-clock trained security personnel, access control points, and perimeter safety."
+    description: "Round-the-clock trained security personnel, access control points, and perimeter safety.",
+    image: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800&auto=format&fit=crop",
+    badge: "Manned 24/7",
+    tag: "Access Control"
   },
   {
     icon: "Camera",
     title: "CCTV Surveillance",
-    description: "Comprehensive high-definition digital surveillance covering all common zones and corridors."
+    description: "Comprehensive high-definition digital surveillance covering all common zones and corridors.",
+    image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=800&auto=format&fit=crop",
+    badge: "HD Matrix",
+    tag: "Surveillance"
   },
   {
     icon: "Zap",
     title: "EV Charging Provision",
-    description: "Modern electric vehicle charging infrastructure ready for sustainable contemporary mobility."
+    description: "Modern electric vehicle charging infrastructure ready for sustainable contemporary mobility.",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=800&auto=format&fit=crop",
+    badge: "Fast Charging",
+    tag: "Green Tech"
   },
   {
     icon: "Sparkles",
     title: "Premium Common Areas",
-    description: "Elegantly finished hallways, ambient lighting, high-spec washrooms and landscaped seating."
+    description: "Elegantly finished hallways, ambient lighting, high-spec washrooms and landscaped seating.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+    badge: "Luxury Foyer",
+    tag: "Public Spaces"
   }
 ];
 

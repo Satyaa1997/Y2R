@@ -22,7 +22,7 @@
 .fnb-specs-box {
   margin-top: 1.25rem;
   background: #FFFFFF;
-  border: 1px solid rgba(102, 71, 1, 0.3);
+  border: 1px solid rgba(175, 125, 9, 0.3);
   padding: 1rem 1.25rem;
   border-radius: 4px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
@@ -65,7 +65,7 @@
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
 }
 
@@ -107,7 +107,7 @@
 
 .fnb-feat-inner {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
   padding: 1.25rem 1.15rem;
   border-radius: 6px;
   width: 100%;
@@ -120,15 +120,15 @@
 
 .fnb-feat-card:hover .fnb-feat-inner {
   border-color: var(--gold);
-  box-shadow: 0 15px 40px rgba(102, 71, 1, 0.15);
+  box-shadow: 0 15px 40px rgba(175, 125, 9, 0.15);
 }
 
 .feat-icon-box {
   width: 50px;
   height: 50px;
   border-radius: 2px;
-  background: rgba(102, 71, 1, 0.12);
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,7 +168,7 @@
 
 .theme-section-dark .fnb-specs-box {
   background: #141519;
-  border-color: rgba(102, 71, 1, 0.35);
+  border-color: rgba(175, 125, 9, 0.35);
 }
 
 .theme-section-dark .specs-box-title {

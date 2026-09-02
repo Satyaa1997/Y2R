@@ -23,7 +23,7 @@
 
 .contact-detail-card {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
   border-radius: 6px;
   padding: 1.15rem 1.25rem;
   display: flex;
@@ -38,15 +38,15 @@
 .contact-detail-tilt:hover .contact-detail-card {
   border-color: var(--gold);
   background: #FAF8F4;
-  box-shadow: 0 10px 30px rgba(102, 71, 1, 0.15);
+  box-shadow: 0 10px 30px rgba(175, 125, 9, 0.15);
 }
 
 .card-icon-box {
   width: 44px;
   height: 44px;
   border-radius: 2px;
-  background: rgba(102, 71, 1, 0.12);
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,7 +95,7 @@
 
 .toll-badge {
   font-size: 0.65rem;
-  background: rgba(102, 71, 1, 0.2);
+  background: rgba(175, 125, 9, 0.2);
   border: 1px solid var(--gold);
   color: #111112;
   padding: 2px 6px;
@@ -139,7 +139,7 @@
 
 .rera-verified-card {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   padding: 1.25rem 1.5rem;
   border-radius: 4px;
   display: flex;
@@ -166,7 +166,7 @@
 
 .contact-form-wrapper {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   border-radius: 4px;
   padding: 3rem 2.5rem;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
@@ -192,7 +192,7 @@
 
 .map-visual-card {
   background: radial-gradient(circle at 50% 50%, #FFFFFF 0%, #FAF8F4 80%);
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   border-radius: 4px;
   padding: 4.5rem 2rem;
   text-align: center;

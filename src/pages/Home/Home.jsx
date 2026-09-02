@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import heroVideo from '../../assets/hero-bg.mp4';
+import qrImage from '../../assets/QR.png';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -14,17 +15,11 @@ import {
   MapPin,
   Car,
   ShieldCheck,
-  Building2,
-  DoorOpen,
-  Camera,
-  Zap,
-  Sparkles,
   X
 } from 'lucide-react';
 import {
   PROJECT_INFO,
   SPACES_CATEGORIES,
-  CONNECTIVITY_DATA,
   AMENITIES_LIST,
   PARKING_LEVELS,
   FLOOR_PLANS_DATA,
@@ -34,8 +29,6 @@ import { GALLERY_ITEMS } from '../../data/galleryData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
-import Location3DMap from '../../components/Location3DMap/Location3DMap';
-import EnquiryForm from '../../components/EnquiryForm/EnquiryForm';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import './Home.css';
 
@@ -82,20 +75,6 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
 
     return () => clearTimeout(popupTimer);
   }, []);
-
-  const getAmenityIcon = (iconName) => {
-    switch (iconName) {
-      case 'DoorOpen': return DoorOpen;
-      case 'Building2': return Building2;
-      case 'MoveUp': return ArrowUpRight;
-      case 'Car': return Car;
-      case 'ShieldCheck': return ShieldCheck;
-      case 'Camera': return Camera;
-      case 'Zap': return Zap;
-      case 'Sparkles': return Sparkles;
-      default: return Building2;
-    }
-  };
 
   return (
     <div className="home-page-root">
@@ -187,12 +166,6 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
             {/* Right Half: 50% Auto-Moving Vertical Overview Details (Pauses on Hover) */}
             <RevealOnScroll animation="fade-left" className="intro-half-content-col">
               <div className="overview-moving-viewport">
-                {/* Live Interactive Hint Bar */}
-                <div className="overview-scroll-hint-bar">
-                  <span className="scroll-indicator-dot" />
-                  <span>Auto-Moving Feed (Hover to Pause)</span>
-                </div>
-
                 <div className="overview-moving-track">
                   {[1, 2].map((loopIdx) => (
                     <div key={`overview-loop-${loopIdx}`} className="overview-moving-content-block">
@@ -396,34 +369,35 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
             >
               {SPACES_CATEGORIES.map((space, idx) => (
                 <div key={space.id} className="highlight-grid-col">
-                  <TiltCard maxTilt={6} scale={1.01} className="highlight-tilt-card">
-                    <div className="highlight-card-inner">
-                      <div className="highlight-card-header">
-                        <span className="highlight-badge">{space.badge}</span>
-                        <span className="highlight-num">0{idx + 1}</span>
+                  <Link to={space.slug} className="hasan-card-link">
+                    <article className="hasan-uiverse-card">
+                      <div className="hasan-sub-card category">
+                        <span className="hasan-text-span">{space.badge || 'Commercial'}</span>
+                        <div className="hasan-icon-box">
+                          <span className="hasan-idx-tag">0{idx + 1}</span>
+                          <ArrowUpRight size={14} className="hasan-icon-svg" />
+                        </div>
                       </div>
 
-                      <div className="highlight-image-wrap">
+                      <div className="hasan-card-container">
                         <img
                           src={space.image}
                           alt={space.title}
-                          className="highlight-img"
+                          className="hasan-card-img"
                           loading="lazy"
                         />
-                        <div className="highlight-img-overlay" />
+                        <div className="hasan-img-overlay" />
+                        <div className="hasan-center-info">
+                          <h3 className="hasan-center-title">{space.title}</h3>
+                          <p className="hasan-center-desc">{space.tagline || space.highlight}</p>
+                        </div>
                       </div>
 
-                      <h3 className="highlight-card-title">{space.title}</h3>
-                      <p className="highlight-card-desc">{space.tagline || space.highlight}</p>
-
-                      <div className="highlight-card-footer">
-                        <Link to={space.slug} className="highlight-cta-link">
-                          <span>{space.ctaText}</span>
-                          <ArrowRight size={13} />
-                        </Link>
+                      <div className="hasan-sub-card named">
+                        <span className="hasan-text-span">{space.title}</span>
                       </div>
-                    </div>
-                  </TiltCard>
+                    </article>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -689,61 +663,13 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          7. LOCATION & 3D CONNECTIVITY RADAR
-          ========================================================================= */}
-      <section className="section-padding theme-section-dark location-section">
-        <ArchitecturalBg variant="home_location" />
-        <div className="container-custom">
-          <SectionHeading
-            number="06"
-            badge="Strategic Nexus"
-            title="Strategically Centered. Seamlessly Connected."
-            subtitle="A location that keeps business closer to everything that matters."
-            description="Y2R Heights is situated near Sector-J Extension, Jankipuram Extension Scheme, with connectivity towards Kursi Road, Sitapur Road, Vikas Nagar, Indira Nagar, Gomti Nagar, Outer Ring Road and Shaheed Path."
-            align="center"
-            theme="dark"
-          />
-
-          {/* Interactive 3D Radar Visualizer */}
-          <RevealOnScroll animation="zoom-in" delay={150}>
-            <Location3DMap />
-          </RevealOnScroll>
-
-          {/* Connectivity Matrix Grid */}
-          <div className="connectivity-matrix-grid">
-            {CONNECTIVITY_DATA.map((item, idx) => (
-              <RevealOnScroll
-                key={item.destination}
-                animation="fade-up"
-                delay={idx * 60}
-                className="matrix-col"
-              >
-                <div className="matrix-card">
-                  <div className="matrix-time-bubble">{item.time}</div>
-                  <h4 className="matrix-dest">{item.destination}</h4>
-                  <span className="matrix-type">{item.type}</span>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Link to="/location" className="btn-secondary">
-              <span>View Comprehensive Location Analysis</span>
-              <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          8. AMENITIES MOVING CAROUSEL (Right to Left: 4 on Desktop, 1 on Mobile)
+          7. AMENITIES MOVING CAROUSEL (Right to Left: 4 on Desktop, 1 on Mobile)
           ========================================================================= */}
       <section className="section-padding theme-section-white amenities-section">
         <ArchitecturalBg variant="home_amenities" />
         <div className="container-custom">
           <SectionHeading
-            number="07"
+            number="06"
             badge="World-Class Standards"
             title="Thoughtfully Planned. Effortlessly Functional."
             subtitle="Engineered infrastructure supporting seamless daily operations."
@@ -755,33 +681,47 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
         {/* Continuous Right-to-Left Moving Marquee Track */}
         <div className="amenities-marquee-container">
           <div className="amenities-marquee-track">
-            {[...AMENITIES_LIST, ...AMENITIES_LIST].map((amenity, idx) => {
-              const IconComp = getAmenityIcon(amenity.icon);
-              return (
-                <div key={`${amenity.title}-${idx}`} className="amenity-marquee-item">
-                  <div className="amenity-card-inner">
-                    <div className="amenity-icon-box">
-                      <IconComp size={24} className="text-gold" />
+            {[...AMENITIES_LIST, ...AMENITIES_LIST].map((amenity, idx) => (
+              <div key={`${amenity.title}-${idx}`} className="amenity-marquee-item">
+                <div className="amenity-uiverse-card">
+                  <div className="card__shine" />
+                  <div className="card__glow" />
+                  <div className="card__content">
+                    <div className="card__badge">{amenity.badge || 'PREMIUM'}</div>
+                    <div className="card__image">
+                      <img
+                        src={amenity.image}
+                        alt={amenity.title}
+                        className="card__img-el"
+                        loading="lazy"
+                      />
                     </div>
-                    <h3 className="amenity-title">{amenity.title}</h3>
-                    <p className="amenity-desc">{amenity.description}</p>
-                    <div className="amenity-corner-accent" />
+                    <div className="card__text">
+                      <h4 className="card__title">{amenity.title}</h4>
+                      <p className="card__description">{amenity.description}</p>
+                    </div>
+                    <div className="card__footer">
+                      <div className="card__price">{amenity.tag || 'Y2R Spec'}</div>
+                      <div className="card__button">
+                        <ArrowUpRight size={14} />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          9. PARKING SLABS 3D SECTION
+          8. PARKING SLABS 3D SECTION
           ========================================================================= */}
       <section className="section-padding theme-section-dark parking-section">
         <ArchitecturalBg variant="home_parking" />
         <div className="container-custom">
           <SectionHeading
-            number="08"
+            number="07"
             badge="Dual Basement Tiers"
             title="Designed for Effortless Arrival."
             subtitle="Two dedicated basement parking levels support convenient access for occupants and visitors."
@@ -797,8 +737,8 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                 delay={idx * 150}
                 className="parking-col"
               >
-                <TiltCard maxTilt={8} scale={1.02} className="parking-tilt-card">
-                  <div className="parking-slab-inner architectural-grid-gold">
+                <div className="parking-uiverse-card">
+                  <div className="parking-card-content architectural-grid-gold">
                     <div className="parking-header">
                       <div className="parking-icon-wrap">
                         <Car size={26} className="text-gold" />
@@ -819,7 +759,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                       ))}
                     </div>
                   </div>
-                </TiltCard>
+                </div>
               </RevealOnScroll>
             ))}
           </div>
@@ -827,7 +767,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          10. ARCHITECTURAL SCHEMATICS (3D STACKED BLUEPRINT DECK & SPLIT HEADINGS)
+          9. ARCHITECTURAL SCHEMATICS (3D STACKED BLUEPRINT DECK & SPLIT HEADINGS)
           ========================================================================= */}
       <section className="section-padding theme-section-light floor-plans-preview-section">
         <ArchitecturalBg variant="home_floorplans" />
@@ -859,10 +799,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                     })}
                   </div>
 
-                  <div
-                    className="arch-wallet"
-                    onMouseLeave={() => setActiveDeckCard(null)}
-                  >
+                  <div className="arch-wallet">
                     {/* Wallet Back Foundation */}
                     <div className="arch-wallet-back" />
 
@@ -877,8 +814,13 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                         <div
                           key={plan.id}
                           className={`arch-deck-card ${cardClass} ${isCardActive ? 'card-active-pull' : ''}`}
-                          onClick={() => onSelectFloorPlan(plan)}
-                          onMouseEnter={() => setActiveDeckCard(idx)}
+                          onClick={() => {
+                            if (activeDeckCard === idx) {
+                              onSelectFloorPlan(plan);
+                            } else {
+                              setActiveDeckCard(idx);
+                            }
+                          }}
                           role="button"
                           tabIndex={0}
                           aria-label={`Inspect blueprint for ${plan.floor}`}
@@ -936,7 +878,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                 {/* 1. Animated Text Box */}
                 <div className="schematics-text-anim-box">
                   <SectionHeading
-                    number="09"
+                    number="08"
                     badge="Architectural Schematics"
                     title="A Space for Every Ambition."
                     subtitle="Structured vertical integration from Lower Ground to Rooftop Terrace."
@@ -1003,13 +945,13 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          11. WHY Y2R HEIGHTS
+          10. WHY Y2R HEIGHTS
           ========================================================================= */}
       <section className="section-padding theme-section-dark why-section">
         <ArchitecturalBg variant="home_why" />
         <div className="container-custom">
           <SectionHeading
-            number="10"
+            number="09"
             badge="Value Proposition"
             title="A Location to Grow. A Presence to Remember."
             subtitle="Strategic Location • Versatile Spaces • Premium Planning • Business Visibility"
@@ -1061,7 +1003,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          12. INVESTMENT OVERVIEW (STRICTLY FACTUAL)
+          11. INVESTMENT OVERVIEW (STRICTLY FACTUAL)
           ========================================================================= */}
       <section className="section-padding theme-section-white investment-teaser-section">
         <ArchitecturalBg variant="home_investment" />
@@ -1095,13 +1037,13 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          13. GALLERY PREVIEW (MASONRY SHOWCASE)
+          12. GALLERY PREVIEW (MASONRY SHOWCASE)
           ========================================================================= */}
       <section className="section-padding theme-section-dark gallery-preview-section">
         <ArchitecturalBg variant="home_gallery" />
         <div className="container-custom">
           <SectionHeading
-            number="11"
+            number="10"
             badge="Visual Gallery"
             title="See The Vision Take Shape."
             subtitle="Exterior • Retail • Offices • Studios • Food Court • Floor Plans"
@@ -1115,22 +1057,24 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                 key={item.id}
                 animation="zoom-in"
                 delay={idx * 80}
-                className={`gallery-card aspect-${item.aspect}`}
+                className="gallery-card-col"
               >
                 <div
-                  className="gallery-item-inner"
+                  className="gallery-card"
                   onClick={() => onSelectGalleryItem(idx)}
                 >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="gallery-img"
-                    loading="lazy"
-                  />
-                  <div className="gallery-item-overlay">
-                    <span className="gallery-badge">{item.categoryLabel}</span>
-                    <h4 className="gallery-title">{item.title}</h4>
-                    <span className="gallery-click-cue">Click to view fullscreen</span>
+                  <div className="gallery-item-inner">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="gallery-img"
+                      loading="lazy"
+                    />
+                    <div className="gallery-item-overlay">
+                      <span className="gallery-badge">{item.categoryLabel}</span>
+                      <h4 className="gallery-title">{item.title}</h4>
+                      <span className="gallery-click-cue">Click to view fullscreen</span>
+                    </div>
                   </div>
                 </div>
               </RevealOnScroll>
@@ -1147,140 +1091,69 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          14. BRAND STATEMENT (CINEMATIC LUXURY ACCENT)
+          11. DIRECT CONSULTATION (COMPACT ADVISORY BANNER)
           ========================================================================= */}
-      <section className="brand-statement-section theme-section-dark">
-        <div className="brand-statement-bg">
-          <img
-            src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2000&auto=format&fit=crop"
-            alt="Y2R Heights Statement"
-          />
-          <div className="brand-statement-overlay" />
-        </div>
+      <section className="section-padding theme-section-white enquiry-section" id="enquiry">
+        <ArchitecturalBg variant="home_enquiry" />
+        <div className="container-custom">
+          <RevealOnScroll animation="fade-up">
+            <div className="consultation-compact-card architectural-grid-gold">
+              <div className="consultation-compact-content">
+                <span className="gold-badge mb-3">Direct Consultation</span>
+                <h2 className="consultation-compact-title">
+                  Your Next Space Starts Here.
+                </h2>
+                <p className="consultation-compact-desc">
+                  Connect with our advisory team to discuss available retail, office, and studio formats, customised layouts, and site visits at Y2R Heights.
+                </p>
 
-        <div className="container-custom brand-statement-content">
-          <RevealOnScroll animation="zoom-in">
-            <span className="gold-badge mb-4">The Benchmark</span>
-            <h2 className="statement-title">
-              Rise Where the World <br />
-              <span className="gold-gradient-text">Takes Notice.</span>
-            </h2>
-            <p className="statement-desc">
-              Y2R Heights is envisioned as more than another commercial building. It is a contemporary destination created for ambitious businesses, growing brands and people who value visibility, functionality and presence.
-            </p>
+                <div className="consultation-compact-actions">
+                  <Link to="/contact" className="btn-primary">
+                    <span>Connect With Advisory Team</span>
+                    <ArrowRight size={16} />
+                  </Link>
+                  <a
+                    href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`}
+                    className="btn-secondary"
+                  >
+                    <span>Toll Free: {PROJECT_INFO.tollFree}</span>
+                  </a>
+                </div>
+
+                <div className="consultation-rera-tag">
+                  <ShieldCheck size={16} className="text-gold" />
+                  <span>UP RERA Approved: <strong>{PROJECT_INFO.reraNumber}</strong></span>
+                </div>
+              </div>
+            </div>
           </RevealOnScroll>
         </div>
       </section>
 
       {/* =========================================================================
-          15. ENQUIRY SECTION (INTEGRATED CONSULTATION FORM)
-          ========================================================================= */}
-      <section className="section-padding theme-section-white enquiry-section" id="enquiry">
-        <ArchitecturalBg variant="home_enquiry" />
-        <div className="container-custom">
-          <div className="enquiry-split-grid">
-            <div className="enquiry-text-col">
-              <SectionHeading
-                number="12"
-                badge="Direct Consultation"
-                title="Your Next Business Address Starts Here."
-                subtitle="Speak with our advisory team and discover the space that fits your requirement."
-                align="left"
-                theme="light"
-              />
-
-              <p className="enquiry-lead">
-                Looking for retail, office, studio or commercial investment opportunities at Y2R Heights?
-              </p>
-
-              <div className="enquiry-direct-links">
-                <div className="enquiry-link-card">
-                  <span className="link-tag">Toll Free Consultation</span>
-                  <a href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`} className="link-val">
-                    {PROJECT_INFO.tollFree}
-                  </a>
-                </div>
-
-                <div className="enquiry-link-card">
-                  <span className="link-tag">Official Inquiries</span>
-                  <a href={`mailto:${PROJECT_INFO.email}`} className="link-val">
-                    {PROJECT_INFO.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="enquiry-rera-badge">
-                <ShieldCheck size={18} className="text-gold" />
-                <span>UP RERA Registration: <strong>{PROJECT_INFO.reraNumber}</strong></span>
-              </div>
-            </div>
-
-            <div className="enquiry-form-col">
-              <div className="enquiry-form-card architectural-grid">
-                <EnquiryForm defaultInterest="Retail" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          RIGHT-SIDE ANIMATED HIGHLIGHTS POPUP (Auto Opens on Website Load)
+          RIGHT-SIDE ANIMATED QR POPUP (Auto Opens on Website Load)
           ========================================================================= */}
       <div
-        className={`project-highlights-popup ${showHighlightsPopup ? 'visible' : ''}`}
+        className={`project-highlights-popup qr-transparent-popup ${showHighlightsPopup ? 'visible' : ''}`}
         role="dialog"
-        aria-label="Project Highlights"
+        aria-label="Y2R Project QR Code"
       >
-        <div className="popup-glass-card">
-          <div className="popup-header">
-            <div className="popup-header-title">
-              <span className="popup-live-dot" />
-              <span className="popup-badge-label">Key Project Highlights</span>
-            </div>
-            <button
-              type="button"
-              className="popup-close-btn"
-              onClick={() => setShowHighlightsPopup(false)}
-              aria-label="Close highlights"
-            >
-              <X size={15} />
-            </button>
-          </div>
+        <div className="popup-qr-glass-card">
+          <button
+            type="button"
+            className="popup-qr-close-btn"
+            onClick={() => setShowHighlightsPopup(false)}
+            aria-label="Close QR Code"
+          >
+            <X size={16} />
+          </button>
 
-          <div className="popup-points-list">
-            {/* Point 1: UP RERA */}
-            <div className="popup-point-item">
-              <div className="popup-icon-wrap">
-                <ShieldCheck size={18} className="text-gold flex-shrink-0" />
-              </div>
-              <div className="popup-point-content">
-                <span className="popup-point-tag">RERA Approved</span>
-                <span className="popup-point-val">UP RERA: {PROJECT_INFO.reraNumber}</span>
-              </div>
-            </div>
-
-            {/* Point 2: Double Basement Parking */}
-            <div className="popup-point-item">
-              <div className="popup-icon-wrap">
-                <Car size={18} className="text-gold flex-shrink-0" />
-              </div>
-              <div className="popup-point-content">
-                <span className="popup-point-tag">Structured Parking</span>
-                <span className="popup-point-val">Double Basement Parking (40+ Vehicles)</span>
-              </div>
-            </div>
-
-            {/* Point 3: 7 Integrated Spatial Levels */}
-            <div className="popup-point-item">
-              <div className="popup-icon-wrap">
-                <Building2 size={18} className="text-gold flex-shrink-0" />
-              </div>
-              <div className="popup-point-content">
-                <span className="popup-point-tag">Vertical Elevation</span>
-                <span className="popup-point-val">7 Integrated Spatial Levels</span>
-              </div>
-            </div>
+          <div className="popup-qr-media-wrap">
+            <img
+              src={qrImage}
+              alt="Y2R Heights Official QR Code"
+              className="popup-qr-img"
+            />
           </div>
         </div>
       </div>

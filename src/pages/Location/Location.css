@@ -21,7 +21,7 @@
 
 .conn-card-inner {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.28);
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
   border-radius: 6px;
   padding: 1.25rem 1.15rem;
   display: flex;
@@ -35,7 +35,7 @@
 .conn-tilt-card:hover .conn-card-inner {
   border-color: var(--gold);
   background: #FAF8F4;
-  box-shadow: 0 12px 30px rgba(102, 71, 1, 0.15);
+  box-shadow: 0 12px 30px rgba(175, 125, 9, 0.15);
 }
 
 .conn-header {
@@ -49,8 +49,8 @@
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--gold-dark);
-  background: rgba(102, 71, 1, 0.12);
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   padding: 3px 8px;
   border-radius: 3px;
 }
@@ -89,7 +89,7 @@
 
 .location-notes-box {
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.35);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   padding: 1.25rem 1.5rem;
   border-radius: 6px;
   display: flex;

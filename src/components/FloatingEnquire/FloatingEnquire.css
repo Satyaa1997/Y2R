@@ -23,7 +23,7 @@
   height: 46px;
   border-radius: 50%;
   background: #FFFFFF;
-  border: 1.5px solid rgba(102, 71, 1, 0.45);
+  border: 1.5px solid rgba(175, 125, 9, 0.45);
   color: var(--gold-dark);
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@
   color: #000000;
   border-color: var(--gold);
   transform: scale(1.1);
-  box-shadow: 0 12px 30px rgba(102, 71, 1, 0.4);
+  box-shadow: 0 12px 30px rgba(175, 125, 9, 0.4);
 }
 
 .floating-enquire-btn {
@@ -47,7 +47,7 @@
   align-items: center;
   gap: 10px;
   padding: 12px 22px;
-  background: #664701;
+  background: #af7d09;
   color: #FFFFFF;
   font-weight: 700;
   font-size: 0.8rem;
@@ -56,14 +56,14 @@
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 12px 35px rgba(102, 71, 1, 0.45);
+  box-shadow: 0 12px 35px rgba(175, 125, 9, 0.45);
   transition: var(--transition);
 }
 
 .floating-enquire-btn:hover {
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 16px 45px rgba(102, 71, 1, 0.65);
-  background: #7D5701;
+  box-shadow: 0 16px 45px rgba(175, 125, 9, 0.65);
+  background: #8a6104;
   color: #FFFFFF;
 }
 

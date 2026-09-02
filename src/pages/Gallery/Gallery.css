@@ -15,7 +15,7 @@
 
 .gallery-filter-btn {
   background: #FFFFFF;
-  border: 1px solid rgba(102, 71, 1, 0.35);
+  border: 1px solid rgba(175, 125, 9, 0.35);
   color: #111112;
   font-family: var(--font-body);
   font-size: 0.78rem;
@@ -32,15 +32,15 @@
 .gallery-filter-btn:hover {
   border-color: var(--gold-dark);
   color: var(--gold-dark);
-  background: rgba(102, 71, 1, 0.08);
+  background: rgba(175, 125, 9, 0.08);
 }
 
 .gallery-filter-btn.active {
-  background: linear-gradient(135deg, #7D5701 0%, #664701 100%);
+  background: linear-gradient(135deg, #8a6104 0%, #af7d09 100%);
   color: #FFFFFF;
   border-color: var(--gold);
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(102, 71, 1, 0.35);
+  box-shadow: 0 4px 15px rgba(175, 125, 9, 0.35);
 }
 
 .gallery-masonry-grid {
@@ -55,7 +55,7 @@
   overflow: hidden;
   cursor: pointer;
   background: #FAF8F4;
-  border: 1px solid rgba(102, 71, 1, 0.25);
+  border: 1px solid rgba(175, 125, 9, 0.25);
   box-shadow: none;
   transition: transform 350ms ease, border-color 350ms ease;
 }
