@@ -1,0 +1,474 @@
+import { useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import {
+  ArrowLeft,
+  CheckCircle2,
+  Maximize2,
+  Minimize2,
+  Ruler,
+  Layers,
+  DoorOpen,
+  Building,
+  Phone,
+  ShieldCheck,
+  MapPin,
+  Sparkles,
+  Zap,
+  Car,
+  Download,
+  ArrowRight,
+  ArrowUpRight,
+  ChevronRight,
+  Briefcase
+} from 'lucide-react';
+import { FLOOR_PLANS_DATA, PROJECT_INFO } from '../../data/projectData';
+import SectionHeading from '../../components/SectionHeading/SectionHeading';
+import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
+import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
+import TiltCard from '../../components/TiltCard/TiltCard';
+import CTASection from '../../components/CTASection/CTASection';
+import './FloorPlanDetail.css';
+
+export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [activeView, setActiveView] = useState('map'); // 'map' | 'render'
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
+
+  // Find plan by id, default to first if not found
+  const planIndex = FLOOR_PLANS_DATA.findIndex((p) => p.id === id);
+  const plan = planIndex !== -1 ? FLOOR_PLANS_DATA[planIndex] : FLOOR_PLANS_DATA[0];
+
+  // Adjacent plans
+  const prevPlan = planIndex > 0 ? FLOOR_PLANS_DATA[planIndex - 1] : null;
+  const nextPlan = planIndex < FLOOR_PLANS_DATA.length - 1 ? FLOOR_PLANS_DATA[planIndex + 1] : null;
+
+  // Other plans for bottom grid (excluding current)
+  const otherPlans = FLOOR_PLANS_DATA.filter((p) => p.id !== plan.id);
+
+  const currentImage = activeView === 'map' && plan.mapImage ? plan.mapImage : plan.blueprintUrl;
+
+  return (
+    <div className="floor-detail-page-root">
+      {/* 1. HERO & BREADCRUMB SECTION (DARK LUXURY) */}
+      <section className="floor-detail-hero-section theme-section-dark architectural-grid">
+        <ArchitecturalBg variant="floorplans_hero" />
+        <div className="container-custom floor-detail-hero-container">
+          {/* Breadcrumb Navigation */}
+          <nav className="detail-breadcrumb-nav" aria-label="Breadcrumb">
+            <Link to="/" className="breadcrumb-link">Home</Link>
+            <ChevronRight size={14} className="breadcrumb-separator" />
+            <Link to="/floor-plans" className="breadcrumb-link">Floor Plans</Link>
+            <ChevronRight size={14} className="breadcrumb-separator" />
+            <span className="breadcrumb-current">{plan.floor}</span>
+          </nav>
+
+          <div className="hero-top-row">
+            <Link to="/floor-plans" className="back-to-plans-btn">
+              <ArrowLeft size={16} />
+              <span>All Floor Plans</span>
+            </Link>
+
+            <div className="hero-badge-group">
+              <span className="gold-badge">UP RERA: {PROJECT_INFO.reraNumber}</span>
+              <span className="plan-code-badge">{plan.code || `Y2R-${plan.id.toUpperCase()}`}</span>
+            </div>
+          </div>
+
+          <div className="floor-detail-hero-titles">
+            <RevealOnScroll animation="fade-up">
+              <span className="gold-badge">Architectural CAD Blueprint</span>
+              <h1 className="floor-detail-hero-title">
+                {plan.floor} <br />
+                <span className="gold-gradient-text">{plan.purpose}</span>
+              </h1>
+              <p className="floor-detail-hero-desc">
+                {plan.description}
+              </p>
+            </RevealOnScroll>
+          </div>
+
+          {/* Quick Floor Level Switcher Pills */}
+          <div className="floor-level-switcher-bar">
+            <span className="switcher-label">Select Floor:</span>
+            <div className="switcher-pills-row">
+              {FLOOR_PLANS_DATA.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => {
+                    navigate(`/floor-plans/${p.id}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={`floor-switcher-pill ${p.id === plan.id ? 'active' : ''}`}
+                >
+                  <span className="pill-name">{p.floor}</span>
+                  <span className="pill-sub">{p.purpose}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. MAIN BLUEPRINT & SPECIFICATION SHOWCASE (LIGHT THEME FOR CRISP MAP VISIBILITY) */}
+      <section className="section-padding theme-section-white floor-detail-main-section">
+        <ArchitecturalBg variant="floorplans_gallery" />
+        <div className="container-custom">
+          <div className="floor-detail-showcase-grid">
+            
+            {/* LEFT COLUMN: INTERACTIVE MAP & BLUEPRINT VISUALIZER */}
+            <div className="detail-visual-col">
+              <div className="detail-visual-sticky-box">
+                {/* View Switcher Tabs (CAD Map vs 3D Perspective) */}
+                <div className="detail-view-switcher">
+                  <button
+                    type="button"
+                    onClick={() => setActiveView('map')}
+                    className={`detail-view-tab ${activeView === 'map' ? 'active' : ''}`}
+                  >
+                    <Layers size={16} />
+                    <span>Architectural CAD Map</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveView('render')}
+                    className={`detail-view-tab ${activeView === 'render' ? 'active' : ''}`}
+                  >
+                    <Sparkles size={16} />
+                    <span>3D Perspective Render</span>
+                  </button>
+                </div>
+
+                {/* Map Display Frame */}
+                <div className="detail-blueprint-frame">
+                  <div className="blueprint-stamp-overlay">
+                    {activeView === 'map' ? 'SANCTIONED CAD MAP • Y2R HEIGHTS' : '3D ARCHITECTURAL PERSPECTIVE'}
+                  </div>
+
+                  <img
+                    src={currentImage}
+                    alt={`${plan.floor} - ${plan.purpose} Blueprint Map`}
+                    className="detail-blueprint-img"
+                    onClick={() => setIsZoomOpen(true)}
+                  />
+
+                  {/* Zoom Action Cue Button */}
+                  <button
+                    onClick={() => setIsZoomOpen(true)}
+                    className="detail-zoom-trigger-btn"
+                    title="Inspect Fullscreen Blueprint Map"
+                    aria-label="Inspect Fullscreen Blueprint Map"
+                  >
+                    <Maximize2 size={16} />
+                    <span>Inspect Fullscreen</span>
+                  </button>
+
+                  <div className="blueprint-frame-meta">
+                    <span className="meta-text">SCALE: 1:100 CAD FIT</span>
+                    <span className="meta-text">LEVEL: {plan.floor}</span>
+                    <span className="meta-text">STATUS: APPROVED</span>
+                  </div>
+                </div>
+
+                <div className="blueprint-inspect-hint">
+                  <Sparkles size={14} className="text-gold" />
+                  <span>Click the map or "Inspect Fullscreen" button to zoom into room dimensions, column grids, and layouts.</span>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: SPATIAL METRICS, INCLUSIONS & CONSULTATION */}
+            <div className="detail-info-col">
+              {/* Floor Executive Overview */}
+              <div className="detail-narrative-card">
+                <div className="narrative-badge-row">
+                  <span className="gold-badge">Spatial Architecture</span>
+                  <span className="floor-zoning-tag">{plan.zoning || plan.purpose}</span>
+                </div>
+                <h2 className="detail-section-title">Floor Layout & Architectural Vision</h2>
+                <p className="detail-narrative-p">
+                  {plan.longDescription || plan.description}
+                </p>
+              </div>
+
+              {/* 6-Box Technical Spatial Metrics Grid */}
+              <div className="detail-metrics-matrix">
+                <h3 className="matrix-heading">Key Spatial Specifications</h3>
+                <div className="matrix-grid">
+                  <div className="matrix-card">
+                    <div className="matrix-card-icon">
+                      <Ruler size={18} className="text-gold" />
+                    </div>
+                    <div className="matrix-card-body">
+                      <span className="matrix-label">Clear Height</span>
+                      <span className="matrix-val">{plan.slabHeight || "14 Ft Slab-to-Slab"}</span>
+                    </div>
+                  </div>
+
+                  <div className="matrix-card">
+                    <div className="matrix-card-icon">
+                      <Building size={18} className="text-gold" />
+                    </div>
+                    <div className="matrix-card-body">
+                      <span className="matrix-label">Zoning Format</span>
+                      <span className="matrix-val">{plan.unitType || "Commercial Space"}</span>
+                    </div>
+                  </div>
+
+                  <div className="matrix-card">
+                    <div className="matrix-card-icon">
+                      <DoorOpen size={18} className="text-gold" />
+                    </div>
+                    <div className="matrix-card-body">
+                      <span className="matrix-label">Vertical Ingress</span>
+                      <span className="matrix-val">{plan.ingress || "Dual High-Speed Lifts"}</span>
+                    </div>
+                  </div>
+
+                  <div className="matrix-card">
+                    <div className="matrix-card-icon">
+                      <MapPin size={18} className="text-gold" />
+                    </div>
+                    <div className="matrix-card-body">
+                      <span className="matrix-label">Frontage Exposure</span>
+                      <span className="matrix-val">{plan.frontage || "Main Kursi Road Frontage"}</span>
+                    </div>
+                  </div>
+
+                  <div className="matrix-card">
+                    <div className="matrix-card-icon">
+                      <Zap size={18} className="text-gold" />
+                    </div>
+                    <div className="matrix-card-body">
+                      <span className="matrix-label">Power Redundancy</span>
+                      <span className="matrix-val">{plan.powerBackup || "100% DG Power Backup"}</span>
+                    </div>
+                  </div>
+
+                  <div className="matrix-card">
+                    <div className="matrix-card-icon">
+                      <Car size={18} className="text-gold" />
+                    </div>
+                    <div className="matrix-card-body">
+                      <span className="matrix-label">Basement Parking</span>
+                      <span className="matrix-val">{plan.parkingInfo || "Double Basement Access"}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Architectural Features Checklist */}
+              <div className="detail-checklist-card">
+                <h3 className="checklist-heading">Level Inclusions & Layout Highlights</h3>
+                <div className="checklist-items">
+                  {plan.highlights.map((item, idx) => (
+                    <div key={idx} className="checklist-item-row">
+                      <CheckCircle2 size={18} className="text-gold flex-shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Ideal Occupants Card */}
+              {plan.idealOccupants && (
+                <div className="detail-occupants-card">
+                  <div className="occupants-icon">
+                    <Briefcase size={18} className="text-gold" />
+                  </div>
+                  <div className="occupants-content">
+                    <span className="occupants-label">Recommended Formats & Occupants</span>
+                    <span className="occupants-text">{plan.idealOccupants}</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Consultation & Action Card */}
+              <div className="detail-action-card">
+                <div className="action-card-header">
+                  <h4 className="action-card-title">Reserve Space on {plan.floor}</h4>
+                  <p className="action-card-desc">
+                    Connect directly with our project advisory team to receive customized floor plates, price sheets, and unit availability.
+                  </p>
+                </div>
+
+                <div className="action-card-buttons">
+                  <button
+                    onClick={() => onOpenEnquiry && onOpenEnquiry(`${plan.floor} - ${plan.purpose}`)}
+                    className="btn-primary action-btn-full"
+                  >
+                    <span>Request CAD Drawings & Pricing</span>
+                    <ArrowUpRight size={16} />
+                  </button>
+
+                  <div className="action-btn-row">
+                    <button
+                      onClick={() => onOpenBrochure && onOpenBrochure()}
+                      className="btn-secondary action-btn-half"
+                    >
+                      <Download size={15} />
+                      <span>Download Brochure</span>
+                    </button>
+
+                    <a
+                      href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`}
+                      className="btn-secondary action-btn-half"
+                    >
+                      <Phone size={15} className="text-gold" />
+                      <span>{PROJECT_INFO.tollFree}</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="action-card-rera">
+                  <ShieldCheck size={14} className="text-gold" />
+                  <span>UP RERA Sanctioned Commercial Project: {PROJECT_INFO.reraNumber}</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* 3. ADJACENT LEVEL NAVIGATION */}
+          <div className="adjacent-nav-bar">
+            {prevPlan ? (
+              <Link to={`/floor-plans/${prevPlan.id}`} className="adjacent-nav-link prev">
+                <ArrowLeft size={16} className="text-gold" />
+                <div className="adjacent-link-text">
+                  <span className="nav-sub">Previous Level</span>
+                  <span className="nav-title">{prevPlan.floor} ({prevPlan.purpose})</span>
+                </div>
+              </Link>
+            ) : (
+              <div className="adjacent-nav-placeholder" />
+            )}
+
+            <Link to="/floor-plans" className="adjacent-nav-center">
+              <span>View All 7 Levels</span>
+            </Link>
+
+            {nextPlan ? (
+              <Link to={`/floor-plans/${nextPlan.id}`} className="adjacent-nav-link next">
+                <div className="adjacent-link-text">
+                  <span className="nav-sub">Next Level</span>
+                  <span className="nav-title">{nextPlan.floor} ({nextPlan.purpose})</span>
+                </div>
+                <ArrowRight size={16} className="text-gold" />
+              </Link>
+            ) : (
+              <div className="adjacent-nav-placeholder" />
+            )}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. EXPLORE OTHER FLOOR PLANS SECTION */}
+      <section className="section-padding theme-section-dark other-floors-section">
+        <ArchitecturalBg variant="floorplans_other" />
+        <div className="container-custom">
+          <SectionHeading
+            number="02"
+            badge="Vertical Architecture"
+            title="Explore Other Integrated Levels."
+            subtitle="Discover how Y2R Heights integrates retail, commercial halls, banquets, and residential suites."
+            align="center"
+            theme="dark"
+          />
+
+          <div className="other-floors-grid">
+            {otherPlans.map((otherPlan, idx) => (
+              <RevealOnScroll
+                key={otherPlan.id}
+                animation="fade-up"
+                delay={idx * 60}
+                className="other-floor-col"
+              >
+                <TiltCard
+                  maxTilt={6}
+                  scale={1.02}
+                  className="other-floor-tilt cursor-pointer"
+                  onClick={() => {
+                    navigate(`/floor-plans/${otherPlan.id}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                >
+                  <div className="other-floor-card">
+                    <div className="other-card-img-wrap">
+                      <img src={otherPlan.blueprintUrl} alt={otherPlan.purpose} />
+                      <span className="other-floor-tag">{otherPlan.floor}</span>
+                    </div>
+                    <div className="other-card-body">
+                      <h4 className="other-card-title">{otherPlan.purpose}</h4>
+                      <p className="other-card-desc">{otherPlan.description}</p>
+                      <div className="other-card-footer">
+                        <span>Explore Floor Plan</span>
+                        <ArrowRight size={14} className="text-gold" />
+                      </div>
+                    </div>
+                  </div>
+                </TiltCard>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CTA SECTION */}
+      <CTASection
+        theme="light"
+        title={`Explore Spaces on ${plan.floor}`}
+        subtitle="Direct Commercial Advisory"
+        description={`Connect with our advisory team for detailed floor plates, CAD drawings, and unit reservations on ${plan.floor}.`}
+        onOpenEnquiry={() => onOpenEnquiry && onOpenEnquiry(`${plan.floor} - ${plan.purpose}`)}
+      />
+
+      {/* 6. FULLSCREEN BLUEPRINT ZOOM MODAL */}
+      {isZoomOpen && (
+        <div className="blueprint-zoom-backdrop" onClick={() => setIsZoomOpen(false)}>
+          <div className="blueprint-zoom-dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="zoom-header-bar">
+              <div className="zoom-header-info">
+                <span className="gold-badge">Blueprint Inspection</span>
+                <span className="zoom-title">{plan.floor} — {plan.purpose}</span>
+                <span className="zoom-code">CAD SPEC: {plan.code || plan.id.toUpperCase()}</span>
+              </div>
+              <button
+                onClick={() => setIsZoomOpen(false)}
+                className="zoom-close-btn"
+                aria-label="Close Zoom Inspection"
+              >
+                <Minimize2 size={18} />
+                <span>Exit Fullscreen</span>
+              </button>
+            </div>
+
+            <div className="zoom-image-container">
+              <img
+                src={currentImage}
+                alt={`${plan.floor} ${activeView === 'map' ? 'Architectural Map' : 'Render'} Fullscreen`}
+                className="zoom-full-img"
+              />
+            </div>
+
+            <div className="zoom-footer-bar">
+              <span>Sanctioned Architectural Plan • UP RERA: {PROJECT_INFO.reraNumber}</span>
+              <button
+                onClick={() => {
+                  setIsZoomOpen(false);
+                  onOpenEnquiry && onOpenEnquiry(`${plan.floor} - ${plan.purpose}`);
+                }}
+                className="btn-primary py-2 px-6 text-xs"
+              >
+                <span>Enquire For This Floor</span>
+                <ArrowUpRight size={14} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+

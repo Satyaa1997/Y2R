@@ -3464,21 +3464,391 @@
 
 @media (max-width: 640px) {
   .project-highlights-popup {
-    top: auto;
-    bottom: 1.5rem;
-    right: 1rem;
+    top: calc(var(--header-height, 70px) + 0.75rem);
+    bottom: auto;
+    right: 0.75rem;
     left: auto;
     width: auto;
-    max-width: 290px;
-    transform: translateY(130%);
+    max-width: 285px;
+    transform: translateX(130%);
   }
 
   .project-highlights-popup.visible {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   .popup-qr-img {
-    width: 260px;
+    width: 245px;
   }
 }
+
+/* ==========================================================================
+   11. DIRECT CONSULTATION (PROFESSIONAL 50/50 CARD ON WHITE BACKGROUND)
+   ========================================================================== */
+.consultation-pro-card {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06), 0 2px 10px rgba(175, 125, 9, 0.05);
+  position: relative;
+}
+
+.consultation-pro-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: stretch;
+  min-height: 520px;
+}
+
+.consultation-pro-content {
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #FFFFFF;
+  position: relative;
+  z-index: 2;
+}
+
+.consultation-pro-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.consultation-pro-approval-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(175, 125, 9, 0.1);
+  border: 1px solid rgba(175, 125, 9, 0.35);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  color: #8a6104;
+  font-weight: 700;
+}
+
+.consultation-pro-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.2;
+  margin-top: 0.25rem;
+  margin-bottom: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.consultation-pro-desc {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #475569;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.consultation-pro-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2.25rem;
+}
+
+.consultation-pro-matrix-item {
+  background: #FAF8F4;
+  border: 1px solid rgba(175, 125, 9, 0.25);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all 200ms ease;
+}
+
+.consultation-pro-matrix-item:hover {
+  border-color: #af7d09;
+  background: #FFFDF9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(175, 125, 9, 0.1);
+}
+
+.pro-matrix-val {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #8a6104;
+}
+
+.pro-matrix-lbl {
+  font-size: 0.74rem;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.consultation-pro-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.25rem;
+}
+
+.consultation-pro-footer-tags {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.consultation-pro-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.consultation-pro-tag strong {
+  color: #0F172A;
+}
+
+.consultation-pro-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  background: #10121A;
+}
+
+.consultation-pro-image-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.consultation-pro-building-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 600ms ease;
+  filter: contrast(1.05) brightness(0.98);
+  display: block;
+}
+
+.consultation-pro-card:hover .consultation-pro-building-img {
+  transform: scale(1.03);
+}
+
+.consultation-pro-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14, 16, 24, 0.8) 0%, rgba(14, 16, 24, 0.1) 40%, transparent 100%);
+  pointer-events: none;
+}
+
+.consultation-pro-img-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pro-badge-subtext {
+  font-size: 0.78rem;
+  color: #FAF8F4;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 992px) {
+  .consultation-pro-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .consultation-pro-content {
+    padding: 2.5rem 1.75rem;
+  }
+
+  .consultation-pro-media {
+    min-height: 340px;
+    height: 360px;
+  }
+
+  .consultation-pro-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   11. COMMERCIAL REAL ESTATE / INVESTMENT TEASER (PURE WHITE & GOLD 3D SHOWCASE)
+   ========================================================================== */
+.investment-teaser-section {
+  position: relative;
+  overflow: hidden;
+  background: #FFFFFF;
+  padding: 8.5rem 0;
+  border-top: 1.5px solid rgba(175, 125, 9, 0.2);
+  border-bottom: 1.5px solid rgba(175, 125, 9, 0.2);
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.investment-content-transparent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.investment-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.investment-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 3.75rem);
+  font-weight: 800;
+  color: #0A0B0D;
+  line-height: 1.15;
+  margin-bottom: 1.15rem;
+  letter-spacing: -0.015em;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.investment-highlight {
+  font-size: 1.3rem;
+  color: #8a6104;
+  font-weight: 700;
+  margin-bottom: 1.35rem;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.investment-text {
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: #1E293B;
+  max-width: 760px;
+  margin: 0 auto 2.75rem auto;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.investment-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 1440px) {
+  .consultation-pro-content {
+    padding: 4.5rem 4rem;
+  }
+
+  .consultation-pro-media {
+    min-height: 560px;
+  }
+
+  .investment-teaser-section {
+    padding: 10rem 0;
+    min-height: 650px;
+  }
+}
+
+@media (max-width: 768px) {
+  .investment-teaser-section {
+    padding: 5.5rem 0;
+    min-height: 520px;
+  }
+
+  .investment-title {
+    font-size: clamp(1.85rem, 5vw, 2.35rem);
+  }
+
+  .investment-highlight {
+    font-size: 1.15rem;
+  }
+
+  .investment-text {
+    font-size: 0.98rem;
+    margin-bottom: 2rem;
+  }
+
+  .consultation-pro-content {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .consultation-pro-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .consultation-pro-actions .btn-primary,
+  .consultation-pro-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .investment-teaser-section {
+    padding: 4.5rem 0;
+  }
+
+  .investment-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .investment-actions .btn-primary,
+  .investment-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .consultation-pro-media {
+    min-height: 280px;
+    height: 280px;
+  }
+
+  .consultation-pro-footer-tags {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+
+
+
+
 

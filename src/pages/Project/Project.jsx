@@ -1,11 +1,26 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, Building, ShieldCheck, Car, MapPin } from 'lucide-react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  Building,
+  ShieldCheck,
+  Car,
+  MapPin,
+  Landmark,
+  Layers,
+  Sparkles,
+  Zap,
+  DoorOpen,
+  Ruler
+} from 'lucide-react';
 import {
   PROJECT_INFO,
   SPACES_CATEGORIES,
   AMENITIES_LIST,
   PARKING_LEVELS,
-  WHY_Y2R_POINTS
+  WHY_Y2R_POINTS,
+  PROJECT_SPECIFICATIONS
 } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
@@ -15,6 +30,7 @@ import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import './Project.css';
 
 export default function Project({ onOpenEnquiry }) {
+  const [activeSpecTab, setActiveSpecTab] = useState('structure');
   return (
     <div className="project-page-root">
       {/* Page Hero */}
@@ -239,12 +255,247 @@ export default function Project({ onOpenEnquiry }) {
         </div>
       </section>
 
+      {/* 5. Official Engineering & Technical Specifications Section */}
+      <section className="section-padding theme-section-white project-specs-section">
+        <ArchitecturalBg variant="project_specs" />
+        <div className="container-custom">
+          <SectionHeading
+            number="05"
+            badge="Engineering Matrix"
+            title="Precision Planning. Premium Specifications."
+            subtitle="Explore comprehensive architectural standards, structural engineering, and branded fittings at Y2R Heights."
+            align="center"
+            theme="light"
+          />
+
+          {/* Specification Navigation Tabs */}
+          <div className="project-specs-tabs-row">
+            <button
+              onClick={() => setActiveSpecTab('structure')}
+              className={`spec-tab-btn ${activeSpecTab === 'structure' ? 'active' : ''}`}
+            >
+              <Building size={16} />
+              <span>Structure & Foundation</span>
+            </button>
+
+            <button
+              onClick={() => setActiveSpecTab('retail')}
+              className={`spec-tab-btn ${activeSpecTab === 'retail' ? 'active' : ''}`}
+            >
+              <Layers size={16} />
+              <span>Retail (LGF/UGF)</span>
+            </button>
+
+            <button
+              onClick={() => setActiveSpecTab('banquet')}
+              className={`spec-tab-btn ${activeSpecTab === 'banquet' ? 'active' : ''}`}
+            >
+              <Sparkles size={16} />
+              <span>Banquet (620.22 SQ.M.)</span>
+            </button>
+
+            <button
+              onClick={() => setActiveSpecTab('apartments')}
+              className={`spec-tab-btn ${activeSpecTab === 'apartments' ? 'active' : ''}`}
+            >
+              <DoorOpen size={16} />
+              <span>Service Apartments</span>
+            </button>
+
+            <button
+              onClick={() => setActiveSpecTab('common')}
+              className={`spec-tab-btn ${activeSpecTab === 'common' ? 'active' : ''}`}
+            >
+              <Ruler size={16} />
+              <span>Common Areas Table</span>
+            </button>
+
+            <button
+              onClick={() => setActiveSpecTab('doors')}
+              className={`spec-tab-btn ${activeSpecTab === 'doors' ? 'active' : ''}`}
+            >
+              <ShieldCheck size={16} />
+              <span>Doors & Windows</span>
+            </button>
+
+            <button
+              onClick={() => setActiveSpecTab('mep')}
+              className={`spec-tab-btn ${activeSpecTab === 'mep' ? 'active' : ''}`}
+            >
+              <Zap size={16} />
+              <span>Electrical, MEP & EV</span>
+            </button>
+          </div>
+
+          {/* Tab Content Display */}
+          <div className="spec-tab-content-box">
+            {activeSpecTab === 'structure' && (
+              <div className="spec-items-grid">
+                {PROJECT_SPECIFICATIONS.structure.items.map((item, idx) => (
+                  <div key={idx} className="spec-feature-card">
+                    <div className="spec-card-top">
+                      <span className="spec-label-tag">{item.label}</span>
+                      <CheckCircle2 size={18} className="text-gold" />
+                    </div>
+                    <p className="spec-detail-val">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeSpecTab === 'retail' && (
+              <div className="spec-items-grid">
+                {PROJECT_SPECIFICATIONS.retail.items.map((item, idx) => (
+                  <div key={idx} className="spec-feature-card">
+                    <div className="spec-card-top">
+                      <span className="spec-label-tag">{item.label}</span>
+                      <CheckCircle2 size={18} className="text-gold" />
+                    </div>
+                    <p className="spec-detail-val">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeSpecTab === 'banquet' && (
+              <div>
+                <div className="spec-banner-note">
+                  <span className="gold-badge">Dedicated Second Floor Format</span>
+                  <span className="banner-area-highlight">Total Floor Area: {PROJECT_SPECIFICATIONS.banquet.area}</span>
+                </div>
+                <div className="spec-items-grid">
+                  {PROJECT_SPECIFICATIONS.banquet.items.map((item, idx) => (
+                    <div key={idx} className="spec-feature-card">
+                      <div className="spec-card-top">
+                        <span className="spec-label-tag">{item.label}</span>
+                        <CheckCircle2 size={18} className="text-gold" />
+                      </div>
+                      <p className="spec-detail-val">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {activeSpecTab === 'apartments' && (
+              <div className="spec-items-grid">
+                {PROJECT_SPECIFICATIONS.serviceApartments.items.map((item, idx) => (
+                  <div key={idx} className="spec-feature-card">
+                    <div className="spec-card-top">
+                      <span className="spec-label-tag">{item.label}</span>
+                      <CheckCircle2 size={18} className="text-gold" />
+                    </div>
+                    <p className="spec-detail-val">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeSpecTab === 'common' && (
+              <div className="common-areas-table-wrapper">
+                <table className="common-areas-table">
+                  <thead>
+                    <tr>
+                      <th>Area</th>
+                      <th>Flooring</th>
+                      <th>Wall Finish</th>
+                      <th>Ceiling</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {PROJECT_SPECIFICATIONS.commonAreas.map((row, idx) => (
+                      <tr key={idx}>
+                        <td className="area-col-cell">{row.area}</td>
+                        <td>{row.flooring}</td>
+                        <td>{row.wallFinish}</td>
+                        <td>{row.ceiling}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeSpecTab === 'doors' && (
+              <div className="spec-items-grid">
+                {PROJECT_SPECIFICATIONS.doorsWindows.items.map((item, idx) => (
+                  <div key={idx} className="spec-feature-card">
+                    <div className="spec-card-top">
+                      <span className="spec-label-tag">{item.label}</span>
+                      <CheckCircle2 size={18} className="text-gold" />
+                    </div>
+                    <p className="spec-detail-val">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeSpecTab === 'mep' && (
+              <div className="spec-items-grid">
+                {PROJECT_SPECIFICATIONS.mep.items.map((item, idx) => (
+                  <div key={idx} className="spec-feature-card">
+                    <div className="spec-card-top">
+                      <span className="spec-label-tag">{item.label}</span>
+                      <CheckCircle2 size={18} className="text-gold" />
+                    </div>
+                    <p className="spec-detail-val">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Banking Approval & Financial Assurance Card */}
+          <div className="banking-assurance-card">
+            <div className="bank-card-left">
+              <div className="bank-logo-emblem">
+                <Landmark size={28} className="text-gold" />
+              </div>
+              <div>
+                <span className="gold-badge">Project Approved by Canara Bank</span>
+                <h4 className="bank-card-title">Official Financial & Collection Details</h4>
+                <p className="bank-card-desc">
+                  {PROJECT_INFO.bankAccount.note}
+                </p>
+              </div>
+            </div>
+
+            <div className="bank-details-grid">
+              <div className="bank-detail-item">
+                <span className="b-label">Account Name</span>
+                <span className="b-val">{PROJECT_INFO.bankAccount.name}</span>
+              </div>
+              <div className="bank-detail-item">
+                <span className="b-label">Account Number</span>
+                <span className="b-val font-mono">{PROJECT_INFO.bankAccount.accountNumber}</span>
+              </div>
+              <div className="bank-detail-item">
+                <span className="b-label">Bank & Branch</span>
+                <span className="b-val">{PROJECT_INFO.bankAccount.bank}, {PROJECT_INFO.bankAccount.branch}</span>
+              </div>
+              <div className="bank-detail-item">
+                <span className="b-label">IFSC Code</span>
+                <span className="b-val font-mono">{PROJECT_INFO.bankAccount.ifsc}</span>
+              </div>
+              <div className="bank-detail-item">
+                <span className="b-label">Official Launch Date</span>
+                <span className="b-val">{PROJECT_INFO.launchDate}</span>
+              </div>
+              <div className="bank-detail-item">
+                <span className="b-label">RERA Registration</span>
+                <span className="b-val font-mono">{PROJECT_INFO.reraNumber}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Y2R Heights */}
       <section className="section-padding theme-section-dark why-section">
         <ArchitecturalBg variant="project_why" />
         <div className="container-custom">
           <SectionHeading
-            number="05"
+            number="06"
             badge="Core Advantages"
             title="A Location to Grow. A Presence to Remember."
             subtitle="Strategic Location • Versatile Spaces • Premium Planning • Business Visibility"

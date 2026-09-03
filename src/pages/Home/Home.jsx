@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import heroVideo from '../../assets/hero-bg.mp4';
 import qrImage from '../../assets/QR.png';
+import building2Image from '../../assets/Building.png';
+import buildingImage from '../../assets/Building3.png';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -30,9 +32,11 @@ import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
+import Commercial3DAnimation from '../../components/Commercial3DAnimation/Commercial3DAnimation';
 import './Home.css';
 
-export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGalleryItem }) {
+export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
+  const navigate = useNavigate();
   const heroRef = useRef(null);
   const videoRef = useRef(null);
   const spacesSliderRef = useRef(null);
@@ -104,7 +108,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
           <div className="hero-portal-content">
             <RevealOnScroll animation="fade-up">
               <div className="hero-location-pill">
-                <MapPin size={15} className="text-gold flex-shrink-0" />
+                <MapPin size={15} className="text-gold" />
                 <span>Kursi Road | Jankipuram Extension, Lucknow</span>
               </div>
 
@@ -114,7 +118,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
               </h1>
 
               <p className="hero-portal-desc">
-                Welcome to Y2R Heights – Lucknow’s premier destination for high-frontage commercial retail, boutique corporate offices, dedicated dining food courts, and contemporary studio apartments on Kursi Road.
+                Welcome to Y2R Heights - Lucknow's premier destination for high-frontage commercial retail, boutique corporate offices, dedicated dining food courts, and contemporary studio apartments on Kursi Road.
               </p>
             </RevealOnScroll>
           </div>
@@ -132,11 +136,11 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
             <RevealOnScroll animation="fade-right" className="intro-half-media-col">
               <TiltCard maxTilt={4} scale={1.01} className="intro-half-tilt-card">
                 <div className="intro-half-image-frame">
-                  <img
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop"
-                    alt="Y2R Heights Master Elevation"
-                    className="intro-half-master-img"
-                  />
+                 <img 
+                   src={building2Image}
+                     alt="Y2R Heights Master Elevation"
+                     className="intro-half-master-img"
+                   />
                   <div className="intro-half-overlay" />
 
                   {/* Top Floating Badge */}
@@ -816,7 +820,8 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                           className={`arch-deck-card ${cardClass} ${isCardActive ? 'card-active-pull' : ''}`}
                           onClick={() => {
                             if (activeDeckCard === idx) {
-                              onSelectFloorPlan(plan);
+                              navigate(`/floor-plans/${plan.id}`);
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
                             } else {
                               setActiveDeckCard(idx);
                             }
@@ -898,7 +903,10 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                       <div
                         key={`level-row-${plan.id}`}
                         className={`schematic-alert-box alert-tier-${idx + 1}`}
-                        onClick={() => onSelectFloorPlan(plan)}
+                        onClick={() => {
+                          navigate(`/floor-plans/${plan.id}`);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
                         role="alert"
                         tabIndex={0}
                         aria-label={`${plan.floor} - ${plan.purpose}`}
@@ -1003,18 +1011,28 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          11. INVESTMENT OVERVIEW (STRICTLY FACTUAL)
+          11. COMMERCIAL REAL ESTATE / INVESTMENT TEASER (3D ANIMATED BACKGROUND)
           ========================================================================= */}
-      <section className="section-padding theme-section-white investment-teaser-section">
-        <ArchitecturalBg variant="home_investment" />
-        <div className="container-custom">
-          <div className="investment-slab architectural-grid-gold">
-            <div className="investment-content">
-              <span className="gold-badge">Commercial Real Estate</span>
-              <h2 className="investment-title">An Address Designed for Tomorrow.</h2>
+      {/* =========================================================================
+          11. COMMERCIAL REAL ESTATE / INVESTMENT TEASER (3D ANIMATED BACKGROUND - TRANSPARENT)
+          ========================================================================= */}
+      <section className="section-padding theme-section-white investment-teaser-section" id="commercial-real-estate">
+        <Commercial3DAnimation />
+        <div className="container-custom" style={{ position: 'relative', zIndex: 10 }}>
+          <RevealOnScroll animation="fade-up">
+            <div className="investment-content-transparent">
+              <div className="investment-badge-row">
+                <span className="gold-badge">Commercial Real Estate</span>
+              </div>
+
+              <h2 className="investment-title">
+                An Address Designed for Tomorrow.
+              </h2>
+
               <p className="investment-highlight">
                 Own a Space Where Growth Takes Centre Stage.
               </p>
+
               <p className="investment-text">
                 For investors and end-users alike, Y2R Heights combines location, versatile commercial formats and contemporary infrastructure in one emerging business destination.
               </p>
@@ -1032,7 +1050,7 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
                 </button>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -1091,38 +1109,94 @@ export default function Home({ onOpenEnquiry, onSelectFloorPlan, onSelectGallery
       </section>
 
       {/* =========================================================================
-          11. DIRECT CONSULTATION (COMPACT ADVISORY BANNER)
+          11. DIRECT CONSULTATION (PROFESSIONAL 50/50 CARD ON WHITE BACKGROUND)
           ========================================================================= */}
       <section className="section-padding theme-section-white enquiry-section" id="enquiry">
         <ArchitecturalBg variant="home_enquiry" />
         <div className="container-custom">
           <RevealOnScroll animation="fade-up">
-            <div className="consultation-compact-card architectural-grid-gold">
-              <div className="consultation-compact-content">
-                <span className="gold-badge mb-3">Direct Consultation</span>
-                <h2 className="consultation-compact-title">
-                  Your Next Space Starts Here.
-                </h2>
-                <p className="consultation-compact-desc">
-                  Connect with our advisory team to discuss available retail, office, and studio formats, customised layouts, and site visits at Y2R Heights.
-                </p>
+            <div className="consultation-pro-card architectural-grid-gold">
+              <div className="consultation-pro-grid">
+                {/* Left 50%: Direct Consultation & Advisory Details */}
+                <div className="consultation-pro-content">
+                  <div className="consultation-pro-badge-group">
+                    <span className="gold-badge">Direct Consultation</span>
+                    <span className="consultation-pro-approval-pill">
+                      <ShieldCheck size={14} className="text-gold" />
+                      <span>Canara Bank Approved</span>
+                    </span>
+                  </div>
 
-                <div className="consultation-compact-actions">
-                  <Link to="/contact" className="btn-primary">
-                    <span>Connect With Advisory Team</span>
-                    <ArrowRight size={16} />
-                  </Link>
-                  <a
-                    href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`}
-                    className="btn-secondary"
-                  >
-                    <span>Toll Free: {PROJECT_INFO.tollFree}</span>
-                  </a>
+                  <h2 className="consultation-pro-title">
+                    Your Next Space Starts Here.
+                  </h2>
+
+                  <p className="consultation-pro-desc">
+                    Connect directly with our project advisory team to explore prime retail showrooms, boutique corporate offices, and serviced studio apartments with bespoke space configurations at Y2R Heights.
+                  </p>
+
+                  {/* 4 Professional Metric Chips */}
+                  <div className="consultation-pro-matrix-grid">
+                    <div className="consultation-pro-matrix-item">
+                      <span className="pro-matrix-val">G+8 Structure</span>
+                      <span className="pro-matrix-lbl">11-Storey Landmark Tower</span>
+                    </div>
+                    <div className="consultation-pro-matrix-item">
+                      <span className="pro-matrix-val">Double Basement</span>
+                      <span className="pro-matrix-lbl">40+ Dedicated Vehicle Bays</span>
+                    </div>
+                    <div className="consultation-pro-matrix-item">
+                      <span className="pro-matrix-val">6 High-Speed Lifts</span>
+                      <span className="pro-matrix-lbl">Rapid Vertical Transit</span>
+                    </div>
+                    <div className="consultation-pro-matrix-item">
+                      <span className="pro-matrix-val">100% Vastu</span>
+                      <span className="pro-matrix-lbl">Self-Contained Units</span>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="consultation-pro-actions">
+                    <Link to="/contact" className="btn-primary">
+                      <span>Connect With Advisory Team</span>
+                      <ArrowRight size={16} />
+                    </Link>
+                    <a
+                      href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`}
+                      className="btn-secondary"
+                    >
+                      <span>Toll Free: {PROJECT_INFO.tollFree}</span>
+                    </a>
+                  </div>
+
+                  {/* Bottom Verification Strip */}
+                  <div className="consultation-pro-footer-tags">
+                    <div className="consultation-pro-tag">
+                      <ShieldCheck size={16} className="text-gold " />
+                      <span>UP RERA: <strong>{PROJECT_INFO.reraNumber}</strong></span>
+                    </div>
+                    <div className="consultation-pro-tag">
+                      <MapPin size={15} className="text-gold " />
+                      <span>CP-02, Main Kursi Road, Lucknow</span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="consultation-rera-tag">
-                  <ShieldCheck size={16} className="text-gold" />
-                  <span>UP RERA Approved: <strong>{PROJECT_INFO.reraNumber}</strong></span>
+                {/* Right 50%: Building Image in Professional Architectural Frame */}
+                <div className="consultation-pro-media">
+                  <div className="consultation-pro-image-frame">
+                    <img
+                      src={buildingImage}
+                      alt="Y2R Heights Landmark Architectural Elevation"
+                      className="consultation-pro-building-img"
+                    />
+                    <div className="consultation-pro-img-overlay" />
+                    
+                    <div className="consultation-pro-img-badge">
+                      <span className="gold-badge">11-Storey Commercial Landmark</span>
+                      <span className="pro-badge-subtext">Kursi Road, Jankipuram Scheme</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

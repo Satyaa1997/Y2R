@@ -10,7 +10,6 @@ import Footer from './components/Footer/Footer';
 import FloatingEnquire from './components/FloatingEnquire/FloatingEnquire';
 import EnquiryModal from './components/EnquiryModal/EnquiryModal';
 import BrochureModal from './components/BrochureModal/BrochureModal';
-import FloorPlanModal from './components/FloorPlanModal/FloorPlanModal';
 import LightboxModal from './components/LightboxModal/LightboxModal';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
@@ -24,6 +23,7 @@ import Studios from './pages/Studios/Studios';
 import FoodCourt from './pages/FoodCourt/FoodCourt';
 import Location from './pages/Location/Location';
 import FloorPlans from './pages/FloorPlans/FloorPlans';
+import FloorPlanDetail from './pages/FloorPlanDetail/FloorPlanDetail';
 import Gallery from './pages/Gallery/Gallery';
 import Investment from './pages/Investment/Investment';
 import Contact from './pages/Contact/Contact';
@@ -47,7 +47,6 @@ export default function App() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [enquiryInterest, setEnquiryInterest] = useState('Retail');
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
-  const [selectedFloorPlan, setSelectedFloorPlan] = useState(null);
 
   // Gallery Lightbox state
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -68,14 +67,6 @@ export default function App() {
 
   const handleCloseBrochure = () => {
     setIsBrochureOpen(false);
-  };
-
-  const handleOpenFloorPlan = (plan) => {
-    setSelectedFloorPlan(plan);
-  };
-
-  const handleCloseFloorPlan = () => {
-    setSelectedFloorPlan(null);
   };
 
   const handleOpenGalleryItem = (index) => {
@@ -114,7 +105,6 @@ export default function App() {
               element={
                 <Home
                   onOpenEnquiry={handleOpenEnquiry}
-                  onSelectFloorPlan={handleOpenFloorPlan}
                   onSelectGalleryItem={handleOpenGalleryItem}
                 />
               }
@@ -152,7 +142,15 @@ export default function App() {
               element={
                 <FloorPlans
                   onOpenEnquiry={handleOpenEnquiry}
-                  onSelectFloorPlan={handleOpenFloorPlan}
+                />
+              }
+            />
+            <Route
+              path="/floor-plans/:id"
+              element={
+                <FloorPlanDetail
+                  onOpenEnquiry={handleOpenEnquiry}
+                  onOpenBrochure={handleOpenBrochure}
                 />
               }
             />
@@ -190,15 +188,6 @@ export default function App() {
         <BrochureModal
           isOpen={isBrochureOpen}
           onClose={handleCloseBrochure}
-        />
-
-        <FloorPlanModal
-          plan={selectedFloorPlan}
-          onClose={handleCloseFloorPlan}
-          onEnquire={(purpose) => {
-            handleCloseFloorPlan();
-            handleOpenEnquiry(purpose);
-          }}
         />
 
         <LightboxModal

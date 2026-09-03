@@ -124,7 +124,25 @@
 }
 
 @media (max-width: 640px) {
+  .enquiry-modal-backdrop {
+    padding: 0.75rem;
+  }
+
   .enquiry-modal-dialog {
-    padding: 2rem 1.25rem;
+    padding: 2.25rem 1.15rem 1.5rem;
+    max-height: 94vh;
+    border-radius: 6px;
+  }
+
+  .modal-title {
+    font-size: 1.6rem;
+  }
+
+  .enquiry-modal-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
   }
 }
+

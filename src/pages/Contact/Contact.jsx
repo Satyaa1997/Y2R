@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Landmark, Globe } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
@@ -102,7 +102,7 @@ export default function Contact() {
                   </TiltCard>
                 </RevealOnScroll>
 
-                {/* Official Email */}
+                {/* Official Email & Portal */}
                 <RevealOnScroll animation="fade-up" delay={400}>
                   <TiltCard maxTilt={6} scale={1.01} className="contact-detail-tilt">
                     <div className="contact-detail-card">
@@ -110,14 +110,55 @@ export default function Contact() {
                         <Mail size={22} className="text-gold" />
                       </div>
                       <div>
-                        <span className="card-tag">Official Inquiries Email</span>
+                        <span className="card-tag">Official Inquiries & Portal</span>
                         <a href={`mailto:${PROJECT_INFO.email}`} className="email-link-main">
                           {PROJECT_INFO.email}
                         </a>
+                        <div className="portal-sub-link">
+                          <Globe size={14} className="text-gold" />
+                          <a href={`https://${PROJECT_INFO.website}`} target="_blank" rel="noopener noreferrer">
+                            {PROJECT_INFO.website}
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </TiltCard>
                 </RevealOnScroll>
+
+                {/* Banking Collection Account Details */}
+                <div className="contact-bank-collection-box">
+                  <div className="bank-header-line">
+                    <Landmark size={20} className="text-gold" />
+                    <div>
+                      <span className="bank-pill">Official Collection Account</span>
+                      <h4 className="bank-branch-title">{PROJECT_INFO.approvedBy.badge}</h4>
+                    </div>
+                  </div>
+                  <p className="bank-note-text">{PROJECT_INFO.bankAccount.note}</p>
+                  
+                  <div className="bank-meta-rows">
+                    <div className="b-row">
+                      <span className="b-tag">Account Name:</span>
+                      <span className="b-data">{PROJECT_INFO.bankAccount.name}</span>
+                    </div>
+                    <div className="b-row">
+                      <span className="b-tag">Account No.:</span>
+                      <span className="b-data font-mono">{PROJECT_INFO.bankAccount.accountNumber}</span>
+                    </div>
+                    <div className="b-row">
+                      <span className="b-tag">Bank & Branch:</span>
+                      <span className="b-data">{PROJECT_INFO.bankAccount.bank}, {PROJECT_INFO.bankAccount.branch}</span>
+                    </div>
+                    <div className="b-row">
+                      <span className="b-tag">IFSC Code:</span>
+                      <span className="b-data font-mono">{PROJECT_INFO.bankAccount.ifsc}</span>
+                    </div>
+                    <div className="b-row">
+                      <span className="b-tag">Launch Date:</span>
+                      <span className="b-data">{PROJECT_INFO.launchDate}</span>
+                    </div>
+                  </div>
+                </div>
 
                 {/* RERA Badge Card */}
                 <div className="rera-verified-card">
@@ -125,6 +166,14 @@ export default function Contact() {
                   <div>
                     <span className="rera-verified-title">UP RERA Registered Project</span>
                     <p className="rera-verified-num">{PROJECT_INFO.reraNumber}</p>
+                    <a
+                      href={`https://${PROJECT_INFO.reraWebsite}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rera-portal-link"
+                    >
+                      Verify on RERA Portal: {PROJECT_INFO.reraWebsite}
+                    </a>
                   </div>
                 </div>
               </div>

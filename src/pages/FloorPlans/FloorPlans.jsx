@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -14,7 +15,8 @@ import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import './FloorPlans.css';
 
-export default function FloorPlans({ onOpenEnquiry, onSelectFloorPlan }) {
+export default function FloorPlans({ onOpenEnquiry }) {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('all');
 
   const categories = [
@@ -100,35 +102,47 @@ export default function FloorPlans({ onOpenEnquiry, onSelectFloorPlan }) {
               <RevealOnScroll
                 key={plan.id}
                 animation="fade-up"
-                delay={idx * 80}
+                delay={idx * 60}
                 className="blueprint-card-col"
               >
                 <TiltCard
-                  maxTilt={8}
-                  scale={1.02}
+                  maxTilt={6}
+                  scale={1.015}
                   className="blueprint-tilt-card cursor-pointer"
-                  onClick={() => onSelectFloorPlan(plan)}
+                  onClick={() => {
+                    navigate(`/floor-plans/${plan.id}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                 >
                   <div className="blueprint-dark-card blueprint-grid">
                     <div className="blueprint-card-header">
-                      <span className="bp-floor-tag">{plan.floor}</span>
-                      <span className="bp-code-tag">SCHEMATIC-{plan.id.toUpperCase()}</span>
+                      <div className="bp-floor-meta">
+                        <span className="bp-floor-tag">{plan.floor}</span>
+                        <span className="bp-purpose-sub">{plan.purpose}</span>
+                      </div>
+                      <span className="bp-code-tag">{plan.code || `LVL-${plan.id.toUpperCase()}`}</span>
                     </div>
 
                     <div className="bp-preview-image-wrap">
                       <img src={plan.blueprintUrl} alt={plan.purpose} />
                       <div className="bp-click-overlay">
-                        <span className="bp-overlay-btn">Inspect Blueprint</span>
+                        <span className="bp-overlay-btn">
+                          <span>Inspect CAD Map</span>
+                          <ArrowUpRight size={13} />
+                        </span>
+                      </div>
+                      <div className="bp-cad-indicator-chip">
+                        <Layers size={11} className="text-gold" />
+                        <span>CAD Map Ready</span>
                       </div>
                     </div>
 
-                    <h3 className="bp-purpose-title">{plan.purpose}</h3>
                     <p className="bp-description">{plan.description}</p>
 
                     <div className="bp-specs-list">
-                      {plan.highlights.map((h, hIdx) => (
+                      {plan.highlights.slice(0, 2).map((h, hIdx) => (
                         <div key={hIdx} className="bp-spec-item">
-                          <CheckCircle2 size={14} className="text-gold flex-shrink-0" />
+                          <CheckCircle2 size={13} className="text-gold flex-shrink-0" />
                           <span>{h}</span>
                         </div>
                       ))}
@@ -136,9 +150,11 @@ export default function FloorPlans({ onOpenEnquiry, onSelectFloorPlan }) {
 
                     <div className="bp-card-footer">
                       <span className="bp-open-cue">
-                        Click to view full schematic
+                        View Level Details
                       </span>
-                      <ArrowUpRight size={16} className="text-gold" />
+                      <div className="bp-arrow-bubble">
+                        <ArrowUpRight size={14} className="text-gold" />
+                      </div>
                     </div>
                   </div>
                 </TiltCard>

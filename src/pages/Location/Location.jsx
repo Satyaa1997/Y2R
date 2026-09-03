@@ -1,7 +1,6 @@
-import { MapPin, Clock } from 'lucide-react';
-import { PROJECT_INFO, CONNECTIVITY_DATA } from '../../data/projectData';
+import { MapPin } from 'lucide-react';
+import { PROJECT_INFO, VICINITY_LANDMARKS } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
-import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import Location3DMap from '../../components/Location3DMap/Location3DMap';
 import CTASection from '../../components/CTASection/CTASection';
@@ -54,36 +53,77 @@ export default function Location({ onOpenEnquiry }) {
           <SectionHeading
             number="02"
             badge="Catchment Corridors"
-            title="Direct Transit Milestones"
-            subtitle="Calculated travel times from Y2R Heights."
+            title="Strategically Centered. Seamlessly Connected."
+            subtitle="Situating your enterprise within minutes of Northern Lucknow’s key educational, healthcare, and arterial nodes."
             align="center"
             theme="light"
           />
 
-          <div className="connectivity-cards-grid">
-            {CONNECTIVITY_DATA.map((item, idx) => (
-              <RevealOnScroll
-                key={item.destination}
-                animation="fade-up"
-                delay={idx * 60}
-                className="conn-col"
-              >
-                <TiltCard maxTilt={8} scale={1.02} className="conn-tilt-card">
-                  <div className="conn-card-inner">
-                    <div className="conn-header">
-                      <Clock size={18} className="text-gold" />
-                      <span className="conn-time-badge">{item.time}</span>
-                    </div>
-
-                    <h3 className="conn-dest-title">{item.destination}</h3>
-                    <div className="conn-footer">
-                      <span className="conn-dist">{item.distance}</span>
-                      <span className="conn-type-tag">{item.type}</span>
-                    </div>
+          {/* Categorized Vicinity Matrix */}
+          <div className="vicinity-categories-grid">
+            {/* 1. Highways & Connectivity */}
+            <div className="vicinity-category-card">
+              <div className="vicinity-cat-header">
+                <span className="vicinity-cat-pill">Transit Corridors</span>
+                <h3 className="vicinity-cat-title">Highway & City Access</h3>
+              </div>
+              <div className="vicinity-items-list">
+                {VICINITY_LANDMARKS.connectivity.map((item, idx) => (
+                  <div key={idx} className="vicinity-row">
+                    <span className="v-name">{item.name}</span>
+                    <span className="v-time-pill">{item.time}</span>
                   </div>
-                </TiltCard>
-              </RevealOnScroll>
-            ))}
+                ))}
+              </div>
+            </div>
+
+            {/* 2. Schools & Universities */}
+            <div className="vicinity-category-card">
+              <div className="vicinity-cat-header">
+                <span className="vicinity-cat-pill">Education & Research</span>
+                <h3 className="vicinity-cat-title">Schools & Universities</h3>
+              </div>
+              <div className="vicinity-items-list">
+                {VICINITY_LANDMARKS.education.map((item, idx) => (
+                  <div key={idx} className="vicinity-row">
+                    <span className="v-name">{item.name}</span>
+                    <span className="v-time-pill">{item.time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. Hotels & Hospitality */}
+            <div className="vicinity-category-card">
+              <div className="vicinity-cat-header">
+                <span className="vicinity-cat-pill">Hospitality & Lifestyle</span>
+                <h3 className="vicinity-cat-title">Hotels & Recreation</h3>
+              </div>
+              <div className="vicinity-items-list">
+                {VICINITY_LANDMARKS.hospitality.map((item, idx) => (
+                  <div key={idx} className="vicinity-row">
+                    <span className="v-name">{item.name}</span>
+                    <span className="v-time-pill">{item.time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 4. Healthcare & Hospitals */}
+            <div className="vicinity-category-card">
+              <div className="vicinity-cat-header">
+                <span className="vicinity-cat-pill">Medical Infrastructure</span>
+                <h3 className="vicinity-cat-title">Hospitals & Clinics</h3>
+              </div>
+              <div className="vicinity-items-list">
+                {VICINITY_LANDMARKS.healthcare.map((item, idx) => (
+                  <div key={idx} className="vicinity-row">
+                    <span className="v-name">{item.name}</span>
+                    <span className="v-time-pill">{item.time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="location-notes-box">
@@ -91,7 +131,7 @@ export default function Location({ onOpenEnquiry }) {
             <div>
               <h4 className="notes-title">Site Sales & Location Address:</h4>
               <p className="notes-text">{PROJECT_INFO.siteOffice}</p>
-              <span className="notes-sub">Near Sector-J Extension, Jankipuram Extension Scheme, Kursi Road, Lucknow – 226021</span>
+              <span className="notes-sub">Engineering College Crossing, Near Sector-J Extension, Jankipuram Scheme, Kursi Road, Lucknow – 226021</span>
             </div>
           </div>
         </div>

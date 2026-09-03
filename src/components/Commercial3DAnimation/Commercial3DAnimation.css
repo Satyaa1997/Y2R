@@ -1,0 +1,22 @@
+/* ==========================================================================
+   COMMERCIAL 3D ARCHITECTURAL CANVAS ANIMATION (PURE WHITE & GOLD THEME)
+   ========================================================================== */
+.commercial-3d-canvas-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  background: #FFFFFF;
+}
+
+.commercial-3d-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}

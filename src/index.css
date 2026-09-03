@@ -479,18 +479,114 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 }
 
 /* ==========================================================================
-   GLOBAL SECTION PADDING (OPTIMIZED FOR 1-SCREEN VIEWPORT HEIGHT ON DESKTOP)
+   GLOBAL SECTION PADDING (OPTIMIZED FOR ALL SCREEN SIZES)
    ========================================================================== */
 .section-padding {
-  padding: clamp(2.25rem, 4.5vh, 3.25rem) 0;
+  padding: clamp(2.5rem, 5vw, 4.25rem) 0;
 }
 
 .section-padding-sm {
-  padding: clamp(1.5rem, 3vh, 2.25rem) 0;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) 0;
 }
 
 .section-padding-lg {
-  padding: clamp(2.75rem, 5.5vh, 4rem) 0;
+  padding: clamp(3rem, 6vw, 5.5rem) 0;
+}
+
+/* ==========================================================================
+   UNIVERSAL RESPONSIVE CONTAINER ARCHITECTURE
+   ========================================================================== */
+.container,
+.container-custom {
+  width: 100%;
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 3vw, 2.5rem);
+  padding-right: clamp(1rem, 3vw, 2.5rem);
+  box-sizing: border-box;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 3vw, 2.5rem);
+  padding-right: clamp(1rem, 3vw, 2.5rem);
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: clamp(1rem, 3vw, 2.5rem);
+  padding-right: clamp(1rem, 3vw, 2.5rem);
+  box-sizing: border-box;
+}
+
+/* Big Desktop (1920px+) */
+@media (min-width: 1920px) {
+  :root {
+    --container: 1480px;
+    --container-wide: 1640px;
+  }
+}
+
+/* Standard Big Desktop (1440px to 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  :root {
+    --container: 1320px;
+    --container-wide: 1440px;
+  }
+}
+
+/* Medium Desktop / Laptop (1024px to 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  :root {
+    --container: 1140px;
+    --container-wide: 1240px;
+  }
+}
+
+/* Tablet Screen (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --container: 100%;
+    --container-wide: 100%;
+  }
+}
+
+/* Mobile Screen (< 768px) */
+@media (max-width: 767px) {
+  :root {
+    --container: 100%;
+    --container-wide: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 11px 20px;
+    font-size: 0.82rem;
+  }
+}
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 480px) {
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Universal Media Guardrails */
+img, video, canvas, svg, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  max-width: 100%;
 }
 
 /* ==========================================================================

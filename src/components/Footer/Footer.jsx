@@ -31,9 +31,13 @@ export default function Footer({ onOpenEnquiry }) {
             <div className="footer-rera-box">
               <ShieldCheck className="text-gold flex-shrink-0" size={20} />
               <div>
-                <span className="rera-label">UP RERA Registered Project</span>
-                <span className="rera-code">{PROJECT_INFO.reraNumber}</span>
+                <span className="rera-label">UP RERA Registered: {PROJECT_INFO.reraNumber}</span>
+                <span className="rera-code">{PROJECT_INFO.approvedBy.badge}</span>
               </div>
+            </div>
+
+            <div className="footer-bank-note">
+              <span>Collection Account: Canara Bank, Mohanlalganj | A/c: {PROJECT_INFO.bankAccount.accountNumber}</span>
             </div>
           </div>
 

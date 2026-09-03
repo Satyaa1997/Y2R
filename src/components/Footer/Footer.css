@@ -90,6 +90,15 @@
   letter-spacing: 0.04em;
 }
 
+.footer-bank-note {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(175, 125, 9, 0.3);
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
 /* Headings */
 .footer-heading {
   font-family: var(--font-display);
@@ -220,7 +229,17 @@
   color: var(--gold);
 }
 
-/* Responsive */
+/* Responsive (Big Desktop / Tablet / Mobile) */
+@media (min-width: 1440px) {
+  .footer-container {
+    padding: 3.5rem 2.5rem 2rem;
+  }
+
+  .footer-main-grid {
+    gap: 3.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .footer-main-grid {
     grid-template-columns: 1fr 1fr;
@@ -230,7 +249,7 @@
 
 @media (max-width: 640px) {
   .footer-container {
-    padding: 2.25rem 1.5rem 1.25rem;
+    padding: 2.25rem 1rem 1.25rem;
   }
 
   .footer-main-grid {
@@ -247,5 +266,19 @@
   .footer-legal-links {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.75rem;
   }
 }
+
+@media (max-width: 480px) {
+  .footer-brand-logo-img {
+    height: 76px;
+  }
+
+  .footer-rera-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+

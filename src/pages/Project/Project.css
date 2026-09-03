@@ -257,3 +257,248 @@
   color: #FFFFFF;
 }
 
+/* ==========================================================================
+   TECHNICAL SPECIFICATIONS & BANKING SECTION
+   ========================================================================== */
+.project-specs-section {
+  background-color: #FAF8F4;
+  position: relative;
+}
+
+.project-specs-tabs-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.spec-tab-btn {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(175, 125, 9, 0.3);
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 200ms ease;
+}
+
+.spec-tab-btn:hover {
+  border-color: #af7d09;
+  color: #af7d09;
+  background: #FFFDF9;
+}
+
+.spec-tab-btn.active {
+  background: linear-gradient(135deg, #8a6104, #af7d09);
+  border-color: #ffd978;
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(175, 125, 9, 0.3);
+}
+
+.spec-tab-content-box {
+  margin-bottom: 3.5rem;
+}
+
+.spec-items-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.spec-feature-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(175, 125, 9, 0.25);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  transition: all 200ms ease;
+}
+
+.spec-feature-card:hover {
+  border-color: #af7d09;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(175, 125, 9, 0.12);
+}
+
+.spec-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.spec-label-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8a6104;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.spec-detail-val {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #1E293B;
+  font-weight: 500;
+}
+
+.spec-banner-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.banner-area-highlight {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #8a6104;
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.35);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+/* Common Areas Table */
+.common-areas-table-wrapper {
+  background: #FFFFFF;
+  border: 1px solid rgba(175, 125, 9, 0.3);
+  border-radius: 8px;
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.common-areas-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.common-areas-table th {
+  background: #161822;
+  color: #FAF8F4;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1rem 1.25rem;
+  border-bottom: 1.5px solid rgba(175, 125, 9, 0.4);
+}
+
+.common-areas-table td {
+  padding: 1rem 1.25rem;
+  font-size: 0.88rem;
+  color: #334155;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.common-areas-table tr:hover td {
+  background: #FFFDF9;
+}
+
+.area-col-cell {
+  font-weight: 700;
+  color: #0F172A !important;
+}
+
+/* Banking Assurance Card */
+.banking-assurance-card {
+  background: linear-gradient(135deg, #181A24 0%, #0E1017 100%);
+  border: 1.5px solid rgba(175, 125, 9, 0.5);
+  border-radius: 8px;
+  padding: 2.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.bank-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bank-logo-emblem {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  background: rgba(175, 125, 9, 0.2);
+  border: 1.5px solid rgba(175, 125, 9, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bank-card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.bank-card-desc {
+  font-size: 0.84rem;
+  color: #CBD5E1;
+  line-height: 1.6;
+}
+
+.bank-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.bank-detail-item {
+  background: rgba(26, 28, 38, 0.8);
+  border: 1px solid rgba(175, 125, 9, 0.3);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.b-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: #c99318;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.b-val {
+  font-size: 0.88rem;
+  color: #FAF8F4;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .spec-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .banking-assurance-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .bank-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
