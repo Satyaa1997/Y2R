@@ -4049,18 +4049,29 @@
 
 @media (max-width: 992px) {
   .consultation-pro-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     min-height: auto;
   }
 
-  .consultation-pro-content {
-    padding: 2rem 1.5rem;
+  /* Place Image First in Mobile/Tablet View */
+  .consultation-pro-media {
+    order: 1;
+    min-height: 300px;
+    height: 340px;
+    width: 100%;
   }
 
-  .consultation-pro-media,
   .consultation-pro-image-frame {
-    min-height: 320px;
+    min-height: 300px;
     height: 340px;
+    width: 100%;
+  }
+
+  /* Place Content After Image in Mobile/Tablet View */
+  .consultation-pro-content {
+    order: 2;
+    padding: 2rem 1.5rem;
   }
 
   .consultation-pro-matrix-grid {
@@ -4212,8 +4223,14 @@
     margin-bottom: 2rem;
   }
 
+  .consultation-pro-media,
+  .consultation-pro-image-frame {
+    min-height: 250px;
+    height: 270px;
+  }
+
   .consultation-pro-content {
-    padding: 2.25rem 1.5rem;
+    padding: 2rem 1.25rem;
   }
 
   .consultation-pro-actions {
