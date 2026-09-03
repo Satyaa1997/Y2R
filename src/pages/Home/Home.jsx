@@ -16,7 +16,8 @@ import {
   MapPin,
   Car,
   ShieldCheck,
-  X
+  X,
+  Maximize2
 } from 'lucide-react';
 import {
   PROJECT_INFO,
@@ -34,6 +35,15 @@ import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import Commercial3DAnimation from '../../components/Commercial3DAnimation/Commercial3DAnimation';
 import './Home.css';
 
+const CUBE_FACES = [
+  { face: 'front', index: 0, label: 'Exterior' },
+  { face: 'right', index: 1, label: 'Retail' },
+  { face: 'back', index: 2, label: 'Offices' },
+  { face: 'left', index: 3, label: 'Studios' },
+  { face: 'top', index: 4, label: 'Food Court' },
+  { face: 'bottom', index: 5, label: 'Floor Plans' }
+];
+
 export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
   const navigate = useNavigate();
   const heroRef = useRef(null);
@@ -42,6 +52,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
   const [showHighlightsPopup, setShowHighlightsPopup] = useState(false);
   const [activeSpaceIndex, setActiveSpaceIndex] = useState(0);
   const [activeDeckCard, setActiveDeckCard] = useState(null);
+  const [activeCubeFace, setActiveCubeFace] = useState(null);
 
   const handleSpaceScroll = (e) => {
     const scrollLeft = e.target.scrollLeft;
@@ -538,64 +549,90 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           <div className="dual-cards-grid">
             {/* Boutique Offices Card */}
             <RevealOnScroll animation="fade-right" className="dual-card-col">
-              <TiltCard maxTilt={5} scale={1.01} className="dual-tilt-card">
-                <div className="dual-card-inner">
-                  <div className="dual-card-image">
+              <Link to="/offices" className="sushma-blueprint-card">
+                <span className="sushma-dashed-border" />
+
+                <div className="sushma-card-box">
+                  {/* Full Size Background Image */}
+                  <div className="sushma-img-bg-wrap">
                     <img
                       src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
                       alt="Boutique Offices at Y2R Heights"
+                      className="sushma-card-bg-img"
                       loading="lazy"
                     />
-                    <span className="dual-badge">Boutique Offices</span>
+                    <div className="sushma-img-overlay" />
                   </div>
-                  <div className="dual-card-body">
-                    <h3 className="dual-card-title">More Than an Office. A Statement.</h3>
-                    <p className="dual-card-text">
-                      High-efficiency boutique offices designed for modern founders, consultants & corporate firms with natural light and zero wasted space.
-                    </p>
-                    <div className="dual-specs-pills">
-                      <span>Customisable Units</span>
-                      <span>Natural Light</span>
-                      <span>Zero Wastage</span>
+
+                  {/* Default State (Visible on load, hides on hover) */}
+                  <div className="sushma-state-default">
+                    <span className="sushma-level-badge">1st & 2nd Floors</span>
+                    <h2 className="sushma-card-heading">Boutique Offices</h2>
+                  </div>
+
+                  {/* Hover State (Reveals on hover) */}
+                  <div className="sushma-state-hover">
+                    <div className="sushma-hover-top">
+                      <span className="sushma-level-badge">1st & 2nd Floors</span>
+                      <h3 className="sushma-card-heading">Boutique Offices</h3>
+                      <p className="sushma-card-desc">
+                        High-efficiency boutique offices designed for modern founders, consultants & corporate firms with natural light and zero wasted space.
+                      </p>
                     </div>
-                    <Link to="/offices" className="btn-primary w-full text-center">
-                      <span>Explore Office Spaces</span>
-                      <ArrowRight size={14} />
-                    </Link>
+
+                    <div className="sushma-hover-bottom">
+                      <span className="sushma-readmore-link">
+                        <span>Explore Office Spaces</span>
+                        <ArrowRight size={16} />
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </TiltCard>
+              </Link>
             </RevealOnScroll>
 
             {/* Studio Apartments Card */}
             <RevealOnScroll animation="fade-left" delay={120} className="dual-card-col">
-              <TiltCard maxTilt={5} scale={1.01} className="dual-tilt-card">
-                <div className="dual-card-inner">
-                  <div className="dual-card-image">
+              <Link to="/studios" className="sushma-blueprint-card">
+                <span className="sushma-dashed-border" />
+
+                <div className="sushma-card-box">
+                  {/* Full Size Background Image */}
+                  <div className="sushma-img-bg-wrap">
                     <img
                       src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop"
                       alt="Studio Apartments at Y2R Heights"
+                      className="sushma-card-bg-img"
                       loading="lazy"
                     />
-                    <span className="dual-badge">Studio Apartments</span>
+                    <div className="sushma-img-overlay" />
                   </div>
-                  <div className="dual-card-body">
-                    <h3 className="dual-card-title">Urban Living, Simplified.</h3>
-                    <p className="dual-card-text">
-                      Contemporary studio suites on 3rd–7th floors designed for professionals, corporate stays & long-term rental income in Lucknow.
-                    </p>
-                    <div className="dual-specs-pills">
-                      <span>3rd–7th Floors</span>
-                      <span>Private Balconies</span>
-                      <span>Turnkey Living</span>
+
+                  {/* Default State (Visible on load, hides on hover) */}
+                  <div className="sushma-state-default">
+                    <span className="sushma-level-badge">3rd–7th Floors</span>
+                    <h2 className="sushma-card-heading">Studio Apartments</h2>
+                  </div>
+
+                  {/* Hover State (Reveals on hover) */}
+                  <div className="sushma-state-hover">
+                    <div className="sushma-hover-top">
+                      <span className="sushma-level-badge">3rd–7th Floors</span>
+                      <h3 className="sushma-card-heading">Studio Apartments</h3>
+                      <p className="sushma-card-desc">
+                        Contemporary studio suites on 3rd–7th floors designed for professionals, corporate stays & long-term rental income in Lucknow.
+                      </p>
                     </div>
-                    <Link to="/studios" className="btn-primary w-full text-center">
-                      <span>Explore Studio Apartments</span>
-                      <ArrowRight size={14} />
-                    </Link>
+
+                    <div className="sushma-hover-bottom">
+                      <span className="sushma-readmore-link">
+                        <span>Explore Studio Apartments</span>
+                        <ArrowRight size={16} />
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </TiltCard>
+              </Link>
             </RevealOnScroll>
           </div>
         </div>
@@ -783,7 +820,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                   {/* Quick Level Selector Tabs for Instant Grabbing on Desktop & Mobile */}
                   <div className="arch-deck-quick-tabs">
                     {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => {
-                      const tabLabels = ['01 LGF', '02 UGF', '03 1st Flr', '04 2nd Flr'];
+                      const tabLabels = ['LGF', 'UGF', '1st Flr', '2nd Flr'];
                       const isSelected = activeDeckCard === idx;
                       return (
                         <button
@@ -879,71 +916,65 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             {/* Right Column: Headings, Spatial Level Breakdowns, & Actions */}
             <div className="schematics-content-col">
               <RevealOnScroll animation="fade-left">
-                {/* 1. Animated Text Box */}
-                <div className="schematics-text-anim-box">
-                  <SectionHeading
-                    number="08"
-                    badge="Architectural Schematics"
-                    title="A Space for Every Ambition."
-                    subtitle="Structured vertical integration from Lower Ground to Rooftop Terrace."
-                    align="left"
-                    theme="light"
-                  />
+                <SectionHeading
+                  number="08"
+                  badge="Architectural Schematics"
+                  title="A Space for Every Ambition."
+                  subtitle="Structured vertical integration from Lower Ground to Rooftop Terrace."
+                  align="left"
+                  theme="light"
+                />
 
-                  <p className="schematics-lead-text">
-                    Y2R Heights is engineered with precision spatial zoning—separating vibrant high-footfall retail, dynamic commercial office suites, expansive banquets, and serene residential studios into seamless vertical tiers.
-                  </p>
+                <p className="schematics-lead-text">
+                  Y2R Heights is engineered with precision spatial zoning—separating vibrant high-footfall retail, dynamic commercial office suites, expansive banquets, and serene residential studios into seamless vertical tiers.
+                </p>
+
+                <div className="schematics-levels-list">
+                  {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => (
+                    <div
+                      key={`level-row-${plan.id}`}
+                      className={`schematic-alert-box alert-tier-${idx + 1}`}
+                      onClick={() => {
+                        navigate(`/floor-plans/${plan.id}`);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      role="alert"
+                      tabIndex={0}
+                      aria-label={`${plan.floor} - ${plan.purpose}`}
+                    >
+                      <div className="alert-box-shimmer" />
+                      <svg
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="alert-box-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M13 16h-1v-4h1m0-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          strokeWidth="2"
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+
+                      <div className="alert-box-num">0{idx + 1}</div>
+
+                      <div className="alert-box-info">
+                        <span className="alert-box-floor">{plan.floor}</span>
+                        <span className="alert-box-purpose">{plan.purpose}</span>
+                      </div>
+
+                      <ArrowUpRight size={15} className="alert-box-arrow" />
+                    </div>
+                  ))}
                 </div>
 
-                {/* 2. Animated 4-Boxes Container */}
-                <div className="schematics-boxes-anim-wrapper">
-                  <div className="schematics-levels-list">
-                    {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => (
-                      <div
-                        key={`level-row-${plan.id}`}
-                        className={`schematic-alert-box alert-tier-${idx + 1}`}
-                        onClick={() => {
-                          navigate(`/floor-plans/${plan.id}`);
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                        role="alert"
-                        tabIndex={0}
-                        aria-label={`${plan.floor} - ${plan.purpose}`}
-                      >
-                        <div className="alert-box-shimmer" />
-                        <svg
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          className="alert-box-svg"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M13 16h-1v-4h1m0-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                            strokeWidth="2"
-                            strokeLinejoin="round"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-
-                        <div className="alert-box-num">0{idx + 1}</div>
-
-                        <div className="alert-box-info">
-                          <span className="alert-box-floor">{plan.floor}</span>
-                          <span className="alert-box-purpose">{plan.purpose}</span>
-                        </div>
-
-                        <ArrowUpRight size={15} className="alert-box-arrow" />
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="schematics-cta-wrap">
-                    <Link to="/floor-plans" className="btn-primary">
-                      <span>View All 7 Spatial Levels</span>
-                      <ArrowRight size={16} />
-                    </Link>
-                  </div>
+                <div className="schematics-cta-wrap">
+                  <Link to="/floor-plans" className="btn-primary">
+                    <span>View All 7 Spatial Levels</span>
+                    <ArrowRight size={16} />
+                  </Link>
                 </div>
               </RevealOnScroll>
             </div>
@@ -1020,10 +1051,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
         <div className="container-custom" style={{ position: 'relative', zIndex: 10 }}>
           <RevealOnScroll animation="fade-up">
             <div className="investment-content-transparent">
-              <div className="investment-badge-row">
-                <span className="gold-badge">Commercial Real Estate</span>
-              </div>
-
               <h2 className="investment-title">
                 An Address Designed for Tomorrow.
               </h2>
@@ -1054,7 +1081,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          12. GALLERY PREVIEW (MASONRY SHOWCASE)
+          12. GALLERY PREVIEW (3D ROTATING CUBE SHOWCASE - UIVERSE RODOLPHEANDRIEUX)
           ========================================================================= */}
       <section className="section-padding theme-section-dark gallery-preview-section">
         <ArchitecturalBg variant="home_gallery" />
@@ -1068,35 +1095,52 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             theme="dark"
           />
 
-          <div className="gallery-masonry-preview">
-            {GALLERY_ITEMS.slice(0, 6).map((item, idx) => (
-              <RevealOnScroll
-                key={item.id}
-                animation="zoom-in"
-                delay={idx * 80}
-                className="gallery-card-col"
-              >
-                <div
-                  className="gallery-card"
-                  onClick={() => onSelectGalleryItem(idx)}
-                >
-                  <div className="gallery-item-inner">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="gallery-img"
-                      loading="lazy"
-                    />
-                    <div className="gallery-item-overlay">
-                      <span className="gallery-badge">{item.categoryLabel}</span>
-                      <h4 className="gallery-title">{item.title}</h4>
-                      <span className="gallery-click-cue">Click to view fullscreen</span>
-                    </div>
-                  </div>
+          <RevealOnScroll animation="fade-up">
+            <div className="gallery-cube-showcase">
+              {/* From Uiverse.io by RodolpheANDRIEUX - 3D Cube Container */}
+              <div className="cube-container">
+                <div className={`cube ${activeCubeFace ? `show-${activeCubeFace}` : 'auto-spinning'}`}>
+                  {CUBE_FACES.map((cf) => {
+                    const item = GALLERY_ITEMS[cf.index];
+                    return (
+                      <div
+                        key={cf.face}
+                        className={`face ${cf.face}`}
+                        style={{ backgroundImage: `url(${item?.image})` }}
+                        onClick={() => onSelectGalleryItem(cf.index)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`${item?.title} - Click to view fullscreen`}
+                      >
+                        <div className="cube-face-overlay" />
+                        <div className="cube-face-inner">
+                          <span className="cube-face-badge">{item?.categoryLabel}</span>
+                          <h4 className="cube-face-title">{item?.title}</h4>
+                          <span className="cube-face-click-hint">
+                            <Maximize2 size={13} /> Click to view
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              </RevealOnScroll>
-            ))}
-          </div>
+              </div>
+
+              {/* Interactive 3D Face Selector Chips */}
+              <div className="cube-selector-pills">
+                {CUBE_FACES.map((cf) => (
+                  <button
+                    key={`pill-${cf.face}`}
+                    type="button"
+                    className={`cube-pill-btn ${activeCubeFace === cf.face ? 'active' : ''}`}
+                    onClick={() => setActiveCubeFace(activeCubeFace === cf.face ? null : cf.face)}
+                  >
+                    <span>0{cf.index + 1} {cf.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </RevealOnScroll>
 
           <div className="text-center mt-10">
             <Link to="/gallery" className="btn-primary">
@@ -1118,14 +1162,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               <div className="consultation-pro-grid">
                 {/* Left 50%: Direct Consultation & Advisory Details */}
                 <div className="consultation-pro-content">
-                  <div className="consultation-pro-badge-group">
-                    <span className="gold-badge">Direct Consultation</span>
-                    <span className="consultation-pro-approval-pill">
-                      <ShieldCheck size={14} className="text-gold" />
-                      <span>Canara Bank Approved</span>
-                    </span>
-                  </div>
-
                   <h2 className="consultation-pro-title">
                     Your Next Space Starts Here.
                   </h2>

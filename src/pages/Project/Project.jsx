@@ -452,7 +452,6 @@ export default function Project({ onOpenEnquiry }) {
                 <Landmark size={28} className="text-gold" />
               </div>
               <div>
-                <span className="gold-badge">Project Approved by Canara Bank</span>
                 <h4 className="bank-card-title">Official Financial & Collection Details</h4>
                 <p className="bank-card-desc">
                   {PROJECT_INFO.bankAccount.note}

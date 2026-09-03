@@ -38,7 +38,6 @@ export default function Investment({ onOpenEnquiry }) {
         <ArchitecturalBg variant="investment_hero" />
         <div className="container-custom page-hero-content">
           <RevealOnScroll animation="fade-up">
-            <span className="gold-badge">Commercial Real Estate</span>
             <h1 className="page-hero-title">
               An Address Designed <br />
               <span className="gold-gradient-text">for Tomorrow.</span>

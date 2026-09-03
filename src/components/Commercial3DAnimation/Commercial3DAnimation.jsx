@@ -138,9 +138,9 @@ export default function Commercial3DAnimation() {
         t3: project(mainLeftX, baseY - totalH, frontZ, rotX, rotY),
       };
 
-      // Main tower subtle golden façade tint
-      draw3DQuad(mainCorners.b3, mainCorners.b2, mainCorners.t2, mainCorners.t3, 'rgba(175, 125, 9, 0.04)', 'rgba(175, 125, 9, 0.65)', 1.5);
-      draw3DQuad(mainCorners.t0, mainCorners.t1, mainCorners.t2, mainCorners.t3, 'rgba(175, 125, 9, 0.1)', 'rgba(175, 125, 9, 0.8)', 1.5);
+      // Main tower golden façade tint (Richer & Darker)
+      draw3DQuad(mainCorners.b3, mainCorners.b2, mainCorners.t2, mainCorners.t3, 'rgba(175, 125, 9, 0.03)', 'rgba(175, 125, 9, 0.45)', 1.2);
+      draw3DQuad(mainCorners.t0, mainCorners.t1, mainCorners.t2, mainCorners.t3, 'rgba(175, 125, 9, 0.06)', 'rgba(175, 125, 9, 0.55)', 1.2);
 
       // ----------------------------------------------------
       // B. RIGHT-SIDE VERTICAL LIFT & STAIRCASE CORE
@@ -157,8 +157,8 @@ export default function Commercial3DAnimation() {
       };
 
       // Draw Vertical Core solid block
-      draw3DQuad(coreCorners.b3, coreCorners.b2, coreCorners.t2, coreCorners.t3, 'rgba(175, 125, 9, 0.08)', 'rgba(175, 125, 9, 0.85)', 1.8);
-      draw3DQuad(coreCorners.t0, coreCorners.t1, coreCorners.t2, coreCorners.t3, 'rgba(175, 125, 9, 0.14)', 'rgba(175, 125, 9, 0.9)', 1.8);
+      draw3DQuad(coreCorners.b3, coreCorners.b2, coreCorners.t2, coreCorners.t3, 'rgba(175, 125, 9, 0.05)', 'rgba(175, 125, 9, 0.55)', 1.4);
+      draw3DQuad(coreCorners.t0, coreCorners.t1, coreCorners.t2, coreCorners.t3, 'rgba(175, 125, 9, 0.08)', 'rgba(175, 125, 9, 0.65)', 1.4);
 
       // Vertical Elevator Glass Shaft Windows (on Core)
       const liftTopY = baseY - totalH * 0.95;
@@ -171,7 +171,7 @@ export default function Commercial3DAnimation() {
         const lp2 = project(liftX + liftW, ly, frontZ - 1, rotX, rotY);
         const lp3 = project(liftX + liftW, ly - 12, frontZ - 1, rotX, rotY);
         const lp4 = project(liftX, ly - 12, frontZ - 1, rotX, rotY);
-        draw3DQuad(lp1, lp2, lp3, lp4, 'rgba(175, 125, 9, 0.18)', '#af7d09', 1.2);
+        draw3DQuad(lp1, lp2, lp3, lp4, 'rgba(175, 125, 9, 0.08)', 'rgba(175, 125, 9, 0.45)', 1);
       }
 
       // Y2R Gold Emblem Plaque on Core
@@ -180,13 +180,13 @@ export default function Commercial3DAnimation() {
       const ep2 = project(coreLeftX + coreW - 6, emblemY + 18, frontZ - 2, rotX, rotY);
       const ep3 = project(coreLeftX + coreW - 6, emblemY - 18, frontZ - 2, rotX, rotY);
       const ep4 = project(coreLeftX + 6, emblemY - 18, frontZ - 2, rotX, rotY);
-      draw3DQuad(ep1, ep2, ep3, ep4, 'rgba(175, 125, 9, 0.22)', '#af7d09', 1.5);
+      draw3DQuad(ep1, ep2, ep3, ep4, 'rgba(175, 125, 9, 0.12)', 'rgba(175, 125, 9, 0.6)', 1.2);
 
       // Emblem Center Star Dot
       const emblemCenter = project(coreLeftX + coreW / 2, emblemY, frontZ - 3, rotX, rotY);
       if (emblemCenter) {
         ctx.beginPath();
-        ctx.arc(emblemCenter.x, emblemCenter.y, 4, 0, Math.PI * 2);
+        ctx.arc(emblemCenter.x, emblemCenter.y, 3.5, 0, Math.PI * 2);
         ctx.fillStyle = '#af7d09';
         ctx.fill();
       }
@@ -202,25 +202,25 @@ export default function Commercial3DAnimation() {
       // Horizontal Retail Divider Beams
       const rBeam1 = project(mainLeftX, baseY - podiumH * 0.5, frontZ, rotX, rotY);
       const rBeam2 = project(mainLeftX + mainW, baseY - podiumH * 0.5, frontZ, rotX, rotY);
-      draw3DLine(rBeam1, rBeam2, '#af7d09', 1.5);
+      draw3DLine(rBeam1, rBeam2, 'rgba(175, 125, 9, 0.45)', 1.2);
 
       const rTopBeam1 = project(mainLeftX, podiumTopY, frontZ, rotX, rotY);
       const rTopBeam2 = project(mainLeftX + mainW, podiumTopY, frontZ, rotX, rotY);
-      draw3DLine(rTopBeam1, rTopBeam2, '#af7d09', 2);
+      draw3DLine(rTopBeam1, rTopBeam2, 'rgba(175, 125, 9, 0.55)', 1.4);
 
       // Vertical Retail Glass Bay Mullions
       for (let b = 1; b < retailBays; b++) {
         const bxPos = mainLeftX + b * bayW;
         const vp1 = project(bxPos, baseY, frontZ, rotX, rotY);
         const vp2 = project(bxPos, podiumTopY, frontZ, rotX, rotY);
-        draw3DLine(vp1, vp2, 'rgba(175, 125, 9, 0.5)', 1);
+        draw3DLine(vp1, vp2, 'rgba(175, 125, 9, 0.35)', 0.9);
 
         // Retail Glass Bay Windows (Lower Ground & Upper Ground)
         const gw1 = project(bxPos - bayW + 3, baseY - 4, frontZ - 1, rotX, rotY);
         const gw2 = project(bxPos - 3, baseY - 4, frontZ - 1, rotX, rotY);
         const gw3 = project(bxPos - 3, baseY - podiumH * 0.48, frontZ - 1, rotX, rotY);
         const gw4 = project(bxPos - bayW + 3, baseY - podiumH * 0.48, frontZ - 1, rotX, rotY);
-        draw3DQuad(gw1, gw2, gw3, gw4, 'rgba(175, 125, 9, 0.08)', 'rgba(175, 125, 9, 0.5)', 0.8);
+        draw3DQuad(gw1, gw2, gw3, gw4, 'rgba(175, 125, 9, 0.04)', 'rgba(175, 125, 9, 0.35)', 0.8);
       }
 
       // ----------------------------------------------------
@@ -231,14 +231,14 @@ export default function Commercial3DAnimation() {
 
       const mTopBeam1 = project(mainLeftX, midDeckTopY, frontZ, rotX, rotY);
       const mTopBeam2 = project(mainLeftX + mainW, midDeckTopY, frontZ, rotX, rotY);
-      draw3DLine(mTopBeam1, mTopBeam2, '#af7d09', 2.2);
+      draw3DLine(mTopBeam1, mTopBeam2, 'rgba(175, 125, 9, 0.55)', 1.4);
 
       // Ribbon glass horizontal louvres & ceiling grid lights
       for (let mg = 1; mg < 5; mg++) {
         const mgy = podiumTopY - (midDeckH / 5) * mg;
         const ml1 = project(mainLeftX, mgy, frontZ, rotX, rotY);
         const ml2 = project(mainLeftX + mainW, mgy, frontZ, rotX, rotY);
-        draw3DLine(ml1, ml2, 'rgba(175, 125, 9, 0.35)', 0.8);
+        draw3DLine(ml1, ml2, 'rgba(175, 125, 9, 0.28)', 0.8);
       }
 
       // Terrace Balcony Deck Separation with Planter nodes
@@ -248,7 +248,7 @@ export default function Commercial3DAnimation() {
         const ptPoint = project(tpx, terraceDeckY - 4, frontZ - 2, rotX, rotY);
         if (ptPoint) {
           ctx.beginPath();
-          ctx.arc(ptPoint.x, ptPoint.y, 2.5, 0, Math.PI * 2);
+          ctx.arc(ptPoint.x, ptPoint.y, 2.2, 0, Math.PI * 2);
           ctx.fillStyle = '#8a6104';
           ctx.fill();
         }
@@ -268,7 +268,7 @@ export default function Commercial3DAnimation() {
         // Floor slab line
         const fl1 = project(mainLeftX, floorBottomY, frontZ, rotX, rotY);
         const fl2 = project(mainLeftX + mainW, floorBottomY, frontZ, rotX, rotY);
-        draw3DLine(fl1, fl2, '#af7d09', 1.8);
+        draw3DLine(fl1, fl2, 'rgba(175, 125, 9, 0.45)', 1.2);
 
         // 6 Protruding Balconies per Floor
         for (let sb = 0; sb < retailBays; sb++) {
@@ -290,13 +290,13 @@ export default function Commercial3DAnimation() {
           const bw4 = project(balLeft, balTop - 4, frontZ, rotX, rotY);
 
           // Balcony Floor Plate
-          draw3DQuad(bw1, bw2, bp2, bp1, 'rgba(175, 125, 9, 0.16)', '#af7d09', 1);
+          draw3DQuad(bw1, bw2, bp2, bp1, 'rgba(175, 125, 9, 0.08)', 'rgba(175, 125, 9, 0.4)', 0.9);
 
           // Balcony Glass Railing Front
-          draw3DQuad(bp1, bp2, bp3, bp4, 'rgba(175, 125, 9, 0.1)', '#af7d09', 1.2);
+          draw3DQuad(bp1, bp2, bp3, bp4, 'rgba(175, 125, 9, 0.05)', 'rgba(175, 125, 9, 0.45)', 1);
 
           // Balcony Glass Window Behind
-          draw3DQuad(bw1, bw2, bw3, bw4, 'rgba(175, 125, 9, 0.05)', 'rgba(175, 125, 9, 0.45)', 0.8);
+          draw3DQuad(bw1, bw2, bw3, bw4, 'rgba(175, 125, 9, 0.02)', 'rgba(175, 125, 9, 0.3)', 0.8);
         }
       }
 
@@ -311,7 +311,7 @@ export default function Commercial3DAnimation() {
         const rNode = project(rpx, roofY - 7, frontZ - 2, rotX, rotY);
         if (rNode) {
           ctx.beginPath();
-          ctx.arc(rNode.x, rNode.y, 3, 0, Math.PI * 2);
+          ctx.arc(rNode.x, rNode.y, 2.5, 0, Math.PI * 2);
           ctx.fillStyle = '#af7d09';
           ctx.fill();
         }
@@ -321,10 +321,10 @@ export default function Commercial3DAnimation() {
       const apexP = project(mainLeftX + mainW / 2, roofY - 14, frontZ, rotX, rotY);
       if (apexP) {
         ctx.beginPath();
-        ctx.arc(apexP.x, apexP.y, 5, 0, Math.PI * 2);
+        ctx.arc(apexP.x, apexP.y, 4.5, 0, Math.PI * 2);
         ctx.fillStyle = '#c48d0a';
-        ctx.shadowColor = 'rgba(175, 125, 9, 0.6)';
-        ctx.shadowBlur = 10;
+        ctx.shadowColor = 'rgba(175, 125, 9, 0.4)';
+        ctx.shadowBlur = 8;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -347,10 +347,10 @@ export default function Commercial3DAnimation() {
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, width, height);
 
-      // 1. Draw 3D Isometric Golden Wave Ground Grid across full width
+      // 1. Draw 3D Isometric Golden Wave Ground Grid across full width (Richer & More Visible)
       const gridSize = 16;
       const gridSpacing = 75;
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 0.9;
 
       for (let ix = -gridSize; ix <= gridSize; ix++) {
         ctx.beginPath();
@@ -371,7 +371,7 @@ export default function Commercial3DAnimation() {
             }
           }
         }
-        ctx.strokeStyle = `rgba(175, 125, 9, ${0.22 * Math.max(0, 1 - Math.abs(ix) / gridSize)})`;
+        ctx.strokeStyle = `rgba(175, 125, 9, ${0.16 * Math.max(0, 1 - Math.abs(ix) / gridSize)})`;
         ctx.stroke();
       }
 
@@ -394,7 +394,7 @@ export default function Commercial3DAnimation() {
             }
           }
         }
-        ctx.strokeStyle = `rgba(175, 125, 9, ${0.22 * Math.max(0, 1 - iz / (gridSize * 2))})`;
+        ctx.strokeStyle = `rgba(175, 125, 9, ${0.16 * Math.max(0, 1 - iz / (gridSize * 2))})`;
         ctx.stroke();
       }
 
@@ -428,7 +428,7 @@ export default function Commercial3DAnimation() {
       // Right Y2R Heights Landmark Tower (Mirrored orientation for architectural symmetry)
       drawY2RBuilding(buildingSpread, 200, bWidth, bHeight, bDepth, currentRotX, currentRotY, true);
 
-      // 3. Draw 3D Floating Gold Dust & Energy Particles
+      // 3. Draw 3D Floating Gold Dust & Energy Particles (Darker & Richer Gold)
       particles.forEach((p) => {
         p.y -= p.speed;
         if (p.y < -380) p.y = 280;
@@ -440,9 +440,9 @@ export default function Commercial3DAnimation() {
           const alpha = Math.min(1, Math.max(0.15, (1100 - pt.depth) / 800));
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, Math.max(0.7, pulseSize * pt.scale), 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(175, 125, 9, ${alpha * 0.85})`;
-          ctx.shadowColor = 'rgba(175, 125, 9, 0.4)';
-          ctx.shadowBlur = 4;
+          ctx.fillStyle = `rgba(175, 125, 9, ${alpha * 0.55})`;
+          ctx.shadowColor = 'rgba(175, 125, 9, 0.25)';
+          ctx.shadowBlur = 3;
           ctx.fill();
           ctx.shadowBlur = 0;
         }
@@ -456,8 +456,8 @@ export default function Commercial3DAnimation() {
         ctx.beginPath();
         ctx.moveTo(sp1.x, sp1.y);
         ctx.lineTo(sp2.x, sp2.y);
-        ctx.strokeStyle = 'rgba(175, 125, 9, 0.35)';
-        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = 'rgba(175, 125, 9, 0.25)';
+        ctx.lineWidth = 1;
         ctx.stroke();
       }
 

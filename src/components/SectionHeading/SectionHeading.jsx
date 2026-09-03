@@ -2,8 +2,6 @@ import RevealOnScroll from '../RevealOnScroll/RevealOnScroll';
 import './SectionHeading.css';
 
 export default function SectionHeading({
-  badge = '',
-  number = '',
   title = '',
   subtitle = '',
   description = '',
@@ -13,14 +11,7 @@ export default function SectionHeading({
 }) {
   return (
     <div className={`section-heading align-${align} theme-${theme} ${className}`}>
-      <RevealOnScroll animation="fade-up" delay={50}>
-        <div className="section-eyebrow-wrap">
-          {number && <span className="section-number">{number}</span>}
-          {badge && <span className="section-badge">{badge}</span>}
-        </div>
-      </RevealOnScroll>
-
-      <RevealOnScroll animation="fade-up" delay={150}>
+      <RevealOnScroll animation="fade-up" delay={100}>
         <h2 className="section-title">
           {title}
         </h2>

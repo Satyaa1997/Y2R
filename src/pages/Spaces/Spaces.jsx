@@ -60,7 +60,6 @@ export default function Spaces({ onOpenEnquiry }) {
 
                   {/* Content Column */}
                   <div className="space-stack-content">
-                    <div className="space-num-tag">0{idx + 1}</div>
                     <h2 className="space-stack-title">{space.title}</h2>
                     <p className="space-stack-tagline">{space.tagline}</p>
                     <p className="space-stack-desc">{space.description}</p>
