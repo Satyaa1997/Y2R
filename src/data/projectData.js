@@ -1,11 +1,11 @@
 // Project Data for Y2R HEIGHTS - Strictly verified factual information
-import lowerGroundMap from '../assets/LowerGround.JPG';
-import upperGroundMap from '../assets/UpperGround.JPG';
-import firstFloorMap from '../assets/FirstFlor.JPG';
-import secondFloorMap from '../assets/SecondFlor.JPG';
-import serviceFloorMap from '../assets/ServiceFlor.JPG';
-import studioFloorMap from '../assets/3to7.JPG';
-import terraceFloorMap from '../assets/TericeFlor.JPG';
+import lowerGroundMap from '../assets/LowerGround.png';
+import upperGroundMap from '../assets/UpperGround.png';
+import firstFloorMap from '../assets/FirstFlor.png';
+import secondFloorMap from '../assets/SecondFlor.png';
+import serviceFloorMap from '../assets/ServiceFlor.png';
+import studioFloorMap from '../assets/3to7.png';
+import terraceFloorMap from '../assets/TericeFlor.png';
 
 export const PROJECT_INFO = {
   name: "Y2R HEIGHTS",
@@ -57,7 +57,8 @@ export const SPACES_CATEGORIES = [
     ],
     image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1600&auto=format&fit=crop",
     badge: "LGF & UGF",
-    ctaText: "Explore Retail Spaces"
+    ctaText: "Explore Retail Spaces",
+    floorPlanSlug: "/floor-plans/ugf"
   },
   {
     id: "offices",
@@ -76,7 +77,8 @@ export const SPACES_CATEGORIES = [
     ],
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop",
     badge: "1st & Commercial Floors",
-    ctaText: "Explore Office Spaces"
+    ctaText: "Explore Office Spaces",
+    floorPlanSlug: "/floor-plans/1st"
   },
   {
     id: "studios",
@@ -95,7 +97,8 @@ export const SPACES_CATEGORIES = [
     ],
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop",
     badge: "3rd to 7th Floors",
-    ctaText: "Explore Studio Apartments"
+    ctaText: "Explore Studio Apartments",
+    floorPlanSlug: "/floor-plans/3to7"
   },
   {
     id: "food-court",
@@ -114,7 +117,8 @@ export const SPACES_CATEGORIES = [
     ],
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop",
     badge: "Service & Dining Floor",
-    ctaText: "Explore F&B Spaces"
+    ctaText: "Explore F&B Spaces",
+    floorPlanSlug: "/floor-plans/service"
   },
   {
     id: "banquet",
@@ -479,7 +483,7 @@ export const FLOOR_PLANS_DATA = [
     code: "Y2R-SRV-05"
   },
   {
-    id: "3-7th",
+    id: "3to7",
     floor: "3rd–7th Floors",
     purpose: "Studio Apartments",
     description: "Smart, contemporary studio suites crafted for modern living, corporate visitors, and urban rental convenience.",

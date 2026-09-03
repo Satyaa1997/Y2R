@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
   CheckCircle2,
   Maximize2,
-  Minimize2,
   Ruler,
   Layers,
   DoorOpen,
@@ -19,7 +19,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   ChevronRight,
-  Briefcase
+  Briefcase,
+  X
 } from 'lucide-react';
 import { FLOOR_PLANS_DATA, PROJECT_INFO } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
@@ -35,6 +36,22 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
 
   const [activeView, setActiveView] = useState('map'); // 'map' | 'render'
   const [isZoomOpen, setIsZoomOpen] = useState(false);
+
+  useEffect(() => {
+    if (isZoomOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') setIsZoomOpen(false);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = 'unset';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isZoomOpen]);
 
   // Find plan by id, default to first if not found
   const planIndex = FLOOR_PLANS_DATA.findIndex((p) => p.id === id);
@@ -150,12 +167,21 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
                     src={currentImage}
                     alt={`${plan.floor} - ${plan.purpose} Blueprint Map`}
                     className="detail-blueprint-img"
-                    onClick={() => setIsZoomOpen(true)}
+                    onClick={() => {
+                      setActiveView('map');
+                      setIsZoomOpen(true);
+                    }}
                   />
 
                   {/* Zoom Action Cue Button */}
                   <button
-                    onClick={() => setIsZoomOpen(true)}
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setActiveView('map');
+                      setIsZoomOpen(true);
+                    }}
                     className="detail-zoom-trigger-btn"
                     title="Inspect Fullscreen Blueprint Map"
                     aria-label="Inspect Fullscreen Blueprint Map"
@@ -424,49 +450,53 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
         onOpenEnquiry={() => onOpenEnquiry && onOpenEnquiry(`${plan.floor} - ${plan.purpose}`)}
       />
 
-      {/* 6. FULLSCREEN BLUEPRINT ZOOM MODAL */}
-      {isZoomOpen && (
-        <div className="blueprint-zoom-backdrop" onClick={() => setIsZoomOpen(false)}>
-          <div className="blueprint-zoom-dialog" onClick={(e) => e.stopPropagation()}>
-            <div className="zoom-header-bar">
-              <div className="zoom-header-info">
-                <span className="gold-badge">Blueprint Inspection</span>
-                <span className="zoom-title">{plan.floor} — {plan.purpose}</span>
-                <span className="zoom-code">CAD SPEC: {plan.code || plan.id.toUpperCase()}</span>
-              </div>
-              <button
-                onClick={() => setIsZoomOpen(false)}
-                className="zoom-close-btn"
-                aria-label="Close Zoom Inspection"
-              >
-                <Minimize2 size={18} />
-                <span>Exit Fullscreen</span>
-              </button>
+      {/* 6. PURE FULLSCREEN BLUEPRINT LIGHTBOX (PORTAL TO DOCUMENT.BODY, NO SCROLLERS) */}
+      {isZoomOpen && typeof document !== 'undefined' && createPortal(
+        <div
+          className="blueprint-pure-fullscreen"
+          onClick={() => setIsZoomOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${plan.floor} Fullscreen Map`}
+        >
+          {/* Top Floating Info & Close Button */}
+          <div className="fullscreen-floating-top" onClick={(e) => e.stopPropagation()}>
+            <div className="fullscreen-pill-badge">
+              <span className="gold-dot" />
+              <span className="fullscreen-plan-name">{plan.floor} — {plan.purpose}</span>
+              <span className="fullscreen-plan-code">CAD SPEC: {plan.code || plan.id.toUpperCase()}</span>
             </div>
 
-            <div className="zoom-image-container">
-              <img
-                src={currentImage}
-                alt={`${plan.floor} ${activeView === 'map' ? 'Architectural Map' : 'Render'} Fullscreen`}
-                className="zoom-full-img"
-              />
-            </div>
-
-            <div className="zoom-footer-bar">
-              <span>Sanctioned Architectural Plan • UP RERA: {PROJECT_INFO.reraNumber}</span>
-              <button
-                onClick={() => {
-                  setIsZoomOpen(false);
-                  onOpenEnquiry && onOpenEnquiry(`${plan.floor} - ${plan.purpose}`);
-                }}
-                className="btn-primary py-2 px-6 text-xs"
-              >
-                <span>Enquire For This Floor</span>
-                <ArrowUpRight size={14} />
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => setIsZoomOpen(false)}
+              className="fullscreen-close-btn"
+              title="Close Fullscreen (Esc)"
+              aria-label="Close Fullscreen Map"
+            >
+              <X size={18} />
+              <span>Close Map</span>
+            </button>
           </div>
-        </div>
+
+          {/* Fullscreen Image Stage (Full Viewport, Zero Scrollbars) */}
+          <div className="fullscreen-img-stage" onClick={() => setIsZoomOpen(false)}>
+            <img
+              src={plan.mapImage || currentImage}
+              alt={`${plan.floor} Architectural CAD Map Fullscreen`}
+              className="fullscreen-map-img"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+
+          {/* Bottom Floating Info Pill */}
+          <div className="fullscreen-floating-bottom" onClick={(e) => e.stopPropagation()}>
+            <span className="fullscreen-info-text">
+              Sanctioned Architectural Layout • UP RERA: {PROJECT_INFO.reraNumber}
+            </span>
+          </div>
+        </div>,
+        document.body
       )}
     </div>
   );

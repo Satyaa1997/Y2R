@@ -264,7 +264,6 @@ export default function Commercial3DAnimation() {
 
       for (let sf = 0; sf < studioFloorCount; sf++) {
         const floorBottomY = midDeckTopY - sf * studioFloorH;
-        const floorTopY = floorBottomY - studioFloorH;
 
         // Floor slab line
         const fl1 = project(mainLeftX, floorBottomY, frontZ, rotX, rotY);

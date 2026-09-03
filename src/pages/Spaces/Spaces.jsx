@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { SPACES_CATEGORIES } from '../../data/projectData';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
@@ -10,8 +10,8 @@ import './Spaces.css';
 export default function Spaces({ onOpenEnquiry }) {
   return (
     <div className="spaces-page-root">
-      {/* Page Hero */}
-      <section className="page-hero-section theme-section-light architectural-grid">
+      {/* 1. Page Hero (Dark Luxury Backdrop) */}
+      <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="spaces_hero" />
         <div className="container-custom page-hero-content">
           <RevealOnScroll animation="fade-up">
@@ -27,71 +27,78 @@ export default function Spaces({ onOpenEnquiry }) {
         </div>
       </section>
 
-      {/* Spaces Listing */}
-      <section className="section-padding theme-section-white spaces-list-section">
-        <ArchitecturalBg variant="spaces_list" />
-        <div className="container-custom">
-          <div className="spaces-detailed-stack">
-            {SPACES_CATEGORIES.map((space, idx) => {
-              const isEven = idx % 2 === 1;
-              return (
-                <RevealOnScroll
-                  key={space.id}
-                  animation="fade-up"
-                  className="space-stack-row"
+      {/* 2. Alternating Showcase Sections (White <-> Dark) */}
+      {SPACES_CATEGORIES.map((space, idx) => {
+        const isDark = idx % 2 === 1; // 0: White (Retail), 1: Dark (Offices), 2: White (Studios), 3: Dark (Food Court)
+        const isReverse = idx % 2 === 1;
+
+        return (
+          <section
+            key={space.id}
+            id={space.slug.replace('/', '')}
+            className={`space-showcase-section ${
+              isDark ? 'theme-section-dark' : 'theme-section-white'
+            }`}
+          >
+            <ArchitecturalBg variant={`spaces_${space.id}`} />
+            <div className="container-custom">
+              <RevealOnScroll animation="fade-up">
+                <div
+                  className={`space-stack-card ${
+                    isDark ? 'space-card-dark' : 'space-card-white'
+                  } ${isReverse ? 'row-reverse' : ''}`}
                 >
-                  <div className={`space-stack-card ${isEven ? 'row-reverse' : ''}`}>
-                    {/* Media Column */}
-                    <div className="space-stack-media">
-                      <TiltCard maxTilt={6} scale={1.01} className="space-stack-tilt">
-                        <div className="space-stack-img-wrap">
-                          <img src={space.image} alt={space.title} />
-                          <span className="space-stack-badge">{space.badge}</span>
-                        </div>
-                      </TiltCard>
+                  {/* Media Column */}
+                  <div className="space-stack-media">
+                    <TiltCard maxTilt={5} scale={1.01} className="space-stack-tilt">
+                      <div className="space-stack-img-wrap">
+                        <img src={space.image} alt={space.title} />
+                        <span className="space-stack-badge">{space.badge}</span>
+                      </div>
+                    </TiltCard>
+                  </div>
+
+                  {/* Content Column */}
+                  <div className="space-stack-content">
+                    <div className="space-num-tag">0{idx + 1}</div>
+                    <h2 className="space-stack-title">{space.title}</h2>
+                    <p className="space-stack-tagline">{space.tagline}</p>
+                    <p className="space-stack-desc">{space.description}</p>
+
+                    <div className="space-stack-features">
+                      <h4 className="features-subhead">Key Highlights</h4>
+                      <ul className="features-list">
+                        {space.features.map((feat, fIdx) => (
+                          <li key={fIdx}>
+                            <CheckCircle2 size={16} className="text-gold flex-shrink-0" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    {/* Content Column */}
-                    <div className="space-stack-content">
-                      <div className="space-num-tag">0{idx + 1}</div>
-                      <h2 className="space-stack-title">{space.title}</h2>
-                      <p className="space-stack-tagline">{space.tagline}</p>
-                      <p className="space-stack-desc">{space.description}</p>
-
-                      <div className="space-stack-features">
-                        <h4 className="features-subhead">Key Highlights</h4>
-                        <ul className="features-list">
-                          {space.features.map((feat, fIdx) => (
-                            <li key={fIdx}>
-                              <CheckCircle2 size={16} className="text-gold flex-shrink-0" />
-                              <span>{feat}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="space-stack-actions">
-                        <Link to={space.slug} className="btn-primary">
-                          <span>{space.ctaText}</span>
-                          <ArrowRight size={16} />
-                        </Link>
-                        <button
-                          onClick={() => onOpenEnquiry(space.shortTitle)}
-                          className="btn-secondary"
-                        >
-                          <span>Enquire For This Space</span>
-                        </button>
-                      </div>
+                    <div className="space-stack-actions">
+                      <Link to={space.slug} className="btn-primary">
+                        <span>{space.ctaText}</span>
+                        <ArrowRight size={16} />
+                      </Link>
+                      <Link
+                        to={space.floorPlanSlug || "/floor-plans"}
+                        className="btn-secondary"
+                      >
+                        <span>View {space.shortTitle} Blueprint</span>
+                        <ArrowUpRight size={15} />
+                      </Link>
                     </div>
                   </div>
-                </RevealOnScroll>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+                </div>
+              </RevealOnScroll>
+            </div>
+          </section>
+        );
+      })}
 
-      {/* CTA */}
+      {/* 3. CTA Section (Clean Luxury White Section) */}
       <CTASection
         title="Find The Ideal Space for Your Brand"
         subtitle="Where Vision Meets Value."

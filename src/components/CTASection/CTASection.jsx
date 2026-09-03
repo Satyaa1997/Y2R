@@ -10,11 +10,11 @@ export default function CTASection({
   title = "Ready to Explore Y2R Heights?",
   subtitle = "Direct Commercial Consultation",
   description = "Connect with our advisory team for customized floor layouts, pricing structures, and unit availability.",
-  theme = "dark",
+  theme = "white",
   className = ""
 }) {
   return (
-    <section className={`cta-section-wrapper theme-${theme} ${className}`}>
+    <section className={`cta-section-wrapper theme-${theme} theme-section-white ${className}`}>
       <div className="cta-container">
         <RevealOnScroll animation="zoom-in" duration={800}>
           <TiltCard maxTilt={6} scale={1.01} className="cta-tilt-card">

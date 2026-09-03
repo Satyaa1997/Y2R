@@ -2,8 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import heroVideo from '../../assets/hero-bg.mp4';
 import qrImage from '../../assets/QR.png';
-import building2Image from '../../assets/Building.png';
-import buildingImage from '../../assets/Building3.png';
+import buildingImage from '../../assets/Building.JPG';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -137,7 +136,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               <TiltCard maxTilt={4} scale={1.01} className="intro-half-tilt-card">
                 <div className="intro-half-image-frame">
                  <img 
-                   src={building2Image}
+                   src={buildingImage}
                      alt="Y2R Heights Master Elevation"
                      className="intro-half-master-img"
                    />

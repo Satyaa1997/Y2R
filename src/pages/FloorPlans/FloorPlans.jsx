@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import floorPlanVideo from '../../assets/FloorPlan.mp4';
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -32,41 +33,53 @@ export default function FloorPlans({ onOpenEnquiry }) {
     if (filter === 'retail') return plan.id === 'lgf' || plan.id === 'ugf';
     if (filter === 'commercial') return plan.id === '1st' || plan.id === '2nd';
     if (filter === 'fnb') return plan.id === 'service';
-    if (filter === 'residential') return plan.id === '3-7th' || plan.id === 'terrace';
+    if (filter === 'residential') return plan.id === '3to7' || plan.id === 'terrace';
     return true;
   });
 
   return (
     <div className="floor-plans-page-root">
-      {/* 1. HERO SECTION (BLACK / DARK BACKGROUND) */}
-      <section className="page-hero-section theme-section-dark architectural-grid">
-        <ArchitecturalBg variant="floorplans_hero" />
-        <div className="container-custom page-hero-content">
-          <RevealOnScroll animation="fade-up">
-            <span className="gold-badge">Architectural Blueprints</span>
-            <h1 className="page-hero-title">
-              A Space for <br />
-              <span className="gold-gradient-text">Every Ambition.</span>
-            </h1>
-            <p className="page-hero-desc">
-              Explore the structured vertical integration of Y2R Heights across 7 dedicated spatial tiers. Click any floor to inspect detailed blueprint schematics.
-            </p>
+      {/* 1. HERO SECTION (CLEAR VIBRANT VIDEO BANNER) */}
+      <section className="page-hero-section floor-plans-hero-section theme-section-dark">
+        {/* Background Architectural Video & Soft Overlay */}
+        <div className="fp-hero-video-bg">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="fp-hero-video"
+          >
+            <source src={floorPlanVideo} type="video/mp4" />
+          </video>
+          <div className="fp-hero-video-overlay" />
+        </div>
 
-            <div className="fp-hero-stats-row">
-              <div className="fp-hero-stat">
-                <Layers size={16} className="text-gold" />
-                <span>7 Spatial Tiers</span>
-              </div>
-              <div className="fp-hero-stat">
-                <Car size={16} className="text-gold" />
-                <span>Double Basement Parking</span>
-              </div>
-              <div className="fp-hero-stat">
-                <ShieldCheck size={16} className="text-gold" />
-                <span>UP RERA: {PROJECT_INFO.reraNumber}</span>
-              </div>
+        <div className="container-custom page-hero-content fp-hero-content">
+          <span className="gold-badge">Architectural Blueprints</span>
+          <h1 className="page-hero-title">
+            A Space for <br />
+            <span className="hero-title-highlight">Every Ambition.</span>
+          </h1>
+          <p className="page-hero-desc">
+            Explore the structured vertical integration of Y2R Heights across 7 dedicated spatial tiers. Click any floor to inspect detailed blueprint schematics.
+          </p>
+
+          <div className="fp-hero-stats-row">
+            <div className="fp-hero-stat">
+              <Layers size={16} className="text-gold" />
+              <span>7 Spatial Tiers</span>
             </div>
-          </RevealOnScroll>
+            <div className="fp-hero-stat">
+              <Car size={16} className="text-gold" />
+              <span>Double Basement Parking</span>
+            </div>
+            <div className="fp-hero-stat">
+              <ShieldCheck size={16} className="text-gold" />
+              <span>UP RERA: {PROJECT_INFO.reraNumber}</span>
+            </div>
+          </div>
         </div>
       </section>
 
