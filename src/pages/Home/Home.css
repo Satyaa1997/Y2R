@@ -2997,293 +2997,235 @@
 }
 
 /* ==========================================================================
-   12. GALLERY 3D ROTATING CUBE SHOWCASE (UIVERSE.IO BY RODOLPHEANDRIEUX)
+   12. GALLERY 3D FLIP CARDS GRID (UIVERSE.IO BY DAVID-MOHSENI - FLICKER-FREE & SMOOTH)
    ========================================================================== */
-.gallery-cube-showcase {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3.5rem;
+.gallery-flip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
   width: 100%;
-  margin: 3rem auto 1rem auto;
+  margin-top: 2rem;
+}
+
+/* Static Outer Container (Solid Anchor: Never drops hover or blinks mid-rotation) */
+.flip-card-item {
+  position: relative;
+  width: 100%;
+  height: 330px;
   perspective: 1200px;
-}
-
-/* From Uiverse.io by RodolpheANDRIEUX */
-.cube-container {
-  width: 280px;
-  height: 280px;
-  perspective: 1000px;
-  margin: 40px auto;
-  transition: transform 0.8s ease-out, filter 0.8s ease-out;
   cursor: pointer;
+  border-radius: 8px;
 }
 
-.cube-container:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 35px rgba(175, 125, 9, 0.45));
-}
-
-.cube {
+/* Rotating 3D Card (Smooth & Slow Rotation - 1.3s with Custom Cubic-Bezier) */
+.flip {
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 1.3s cubic-bezier(0.35, 0.1, 0.15, 1), box-shadow 0.35s ease;
+  border-radius: 8px;
+  will-change: transform;
 }
 
-.cube.auto-spinning {
-  animation: rotateCube 16s infinite linear;
+/* Solid Hover Trigger from Static Wrapper */
+.flip-card-item:hover .flip {
+  transform: rotateY(180deg);
 }
 
-.cube-container:hover .cube.auto-spinning {
-  animation-play-state: paused;
+/* Content Container */
+.flip .content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
 }
 
-/* Specific Face Orientations when user selects a pill */
-.cube.show-front {
-  transform: rotateX(0deg) rotateY(0deg);
-}
-
-.cube.show-right {
-  transform: rotateX(0deg) rotateY(-90deg);
-}
-
-.cube.show-back {
-  transform: rotateX(0deg) rotateY(-180deg);
-}
-
-.cube.show-left {
-  transform: rotateX(0deg) rotateY(90deg);
-}
-
-.cube.show-top {
-  transform: rotateX(-90deg) rotateY(0deg);
-}
-
-.cube.show-bottom {
-  transform: rotateX(90deg) rotateY(0deg);
-}
-
-/* Face Styling */
-.face {
-  --gold-border-gradient: linear-gradient(
-      135deg,
-      #af7d09,
-      #d5b779,
-      #ffffff,
-      #d5b779,
-      #8a6104
-    )
-    1;
+/* Front & Back Faces with Anti-Flicker Hardware Acceleration */
+.flip .front,
+.flip .back {
   position: absolute;
-  width: 280px;
-  height: 280px;
-  color: white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 2.5px solid #af7d09;
-  border-image: var(--gold-border-gradient);
-  border-radius: 4px;
-  overflow: hidden;
-  box-sizing: border-box;
-  backface-visibility: visible;
-  -webkit-backface-visibility: visible;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.7);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.flip-card-item:hover .front,
+.flip-card-item:hover .back {
+  border-color: #af7d09;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(175, 125, 9, 0.35);
+}
+
+/* Front Face */
+.flip .front {
+  transform: rotateY(0deg) translateZ(1px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.25rem;
-  transition: border-color 0.3s ease;
+  padding: 1.65rem;
 }
 
-.face:hover {
-  border-color: #d5b779;
-}
-
-.cube-face-overlay {
+.flip-front-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 11, 13, 0.92) 0%,
-    rgba(10, 11, 13, 0.45) 55%,
-    rgba(10, 11, 13, 0.25) 100%
+    rgba(10, 11, 14, 0.95) 0%,
+    rgba(10, 11, 14, 0.45) 50%,
+    rgba(10, 11, 14, 0.15) 100%
   );
   z-index: 1;
+  pointer-events: none;
 }
 
-.cube-face-inner {
+.flip-front-body {
   position: relative;
   z-index: 2;
+  transform: translateZ(30px);
   display: flex;
   flex-direction: column;
   gap: 6px;
-  text-align: left;
+  pointer-events: none;
 }
 
-.cube-face-badge {
+.flip-badge {
   align-self: flex-start;
-  background: rgba(175, 125, 9, 0.35);
+  background: rgba(175, 125, 9, 0.28);
   border: 1px solid #af7d09;
-  color: #FFFFFF;
-  padding: 2px 8px;
+  color: #d5b779;
+  padding: 3px 9px;
   border-radius: 4px;
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
+  margin-bottom: 2px;
 }
 
-.cube-face-title {
+.flip-front-title {
   font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.25rem;
   color: #FFFFFF;
-  line-height: 1.3;
+  font-weight: 700;
+  line-height: 1.25;
   margin: 0;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
 }
 
-.cube-face-click-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.7rem;
+.flip-front-num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
   color: #d5b779;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   margin-top: 2px;
 }
 
-/* 6 Cube Faces 3D Space Positions */
-.front {
-  transform: translateZ(140px);
-}
-
-.back {
-  transform: rotateY(180deg) translateZ(140px);
-}
-
-.right {
-  transform: rotateY(90deg) translateZ(140px);
-}
-
-.left {
-  transform: rotateY(-90deg) translateZ(140px);
-}
-
-.top {
-  transform: rotateX(90deg) translateZ(140px);
-}
-
-.bottom {
-  transform: rotateX(-90deg) translateZ(140px);
-}
-
-/* 3D Full-Axis Rotation Animation */
-@keyframes rotateCube {
-  0% {
-    transform: rotateX(0) rotateY(0) rotateZ(0);
-  }
-  100% {
-    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
-  }
-}
-
-/* Face Selector Chips */
-.cube-selector-pills {
+/* Back Face */
+.flip .back {
+  transform: rotateY(180deg) translateZ(1px);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  max-width: 780px;
-  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.75rem;
 }
 
-.cube-pill-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(175, 125, 9, 0.35);
+.flip-back-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 11, 14, 0.96) 0%,
+    rgba(25, 20, 10, 0.94) 50%,
+    rgba(10, 11, 14, 0.97) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.flip-back-body {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.flip-back-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.flip-back-desc {
+  font-size: 0.86rem;
+  line-height: 1.55;
   color: rgba(255, 255, 255, 0.85);
-  padding: 7px 14px;
-  border-radius: 6px;
+  margin: 0;
+  max-width: 280px;
+}
+
+.flip-fullscreen-btn {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #af7d09;
+  border: 1px solid #af7d09;
+  color: #FFFFFF;
+  padding: 7px 16px;
+  border-radius: 5px;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   cursor: pointer;
   transition: all 250ms ease;
+  pointer-events: auto;
 }
 
-.cube-pill-btn:hover {
-  background: rgba(175, 125, 9, 0.2);
-  border-color: #af7d09;
+.flip-fullscreen-btn:hover {
+  background: #8a6104;
+  border-color: #8a6104;
   color: #FFFFFF;
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(175, 125, 9, 0.5);
 }
 
-.cube-pill-btn.active {
-  background: #af7d09;
-  border-color: #af7d09;
-  color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(175, 125, 9, 0.45);
+/* Responsive grid adjustments */
+@media (max-width: 992px) {
+  .gallery-flip-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
 }
 
-/* Responsive Scaling for Tablets & Mobile */
 @media (max-width: 640px) {
-  .cube-container {
-    width: 200px;
-    height: 200px;
-    margin: 30px auto;
+  .gallery-flip-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
-  .face {
-    width: 200px;
-    height: 200px;
-    padding: 0.85rem;
-  }
-
-  .cube-face-title {
-    font-size: 0.88rem;
-  }
-
-  .cube-face-badge {
-    font-size: 0.58rem;
-    padding: 1px 6px;
-  }
-
-  .front {
-    transform: translateZ(100px);
-  }
-
-  .back {
-    transform: rotateY(180deg) translateZ(100px);
-  }
-
-  .right {
-    transform: rotateY(90deg) translateZ(100px);
-  }
-
-  .left {
-    transform: rotateY(-90deg) translateZ(100px);
-  }
-
-  .top {
-    transform: rotateX(90deg) translateZ(100px);
-  }
-
-  .bottom {
-    transform: rotateX(-90deg) translateZ(100px);
-  }
-
-  .cube-selector-pills {
-    gap: 6px;
-  }
-
-  .cube-pill-btn {
-    font-size: 0.72rem;
-    padding: 5px 10px;
+  .flip-card-item {
+    height: 290px;
   }
 }
 

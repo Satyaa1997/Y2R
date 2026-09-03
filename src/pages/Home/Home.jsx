@@ -35,15 +35,6 @@ import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import Commercial3DAnimation from '../../components/Commercial3DAnimation/Commercial3DAnimation';
 import './Home.css';
 
-const CUBE_FACES = [
-  { face: 'front', index: 0, label: 'Exterior' },
-  { face: 'right', index: 1, label: 'Retail' },
-  { face: 'back', index: 2, label: 'Offices' },
-  { face: 'left', index: 3, label: 'Studios' },
-  { face: 'top', index: 4, label: 'Food Court' },
-  { face: 'bottom', index: 5, label: 'Floor Plans' }
-];
-
 export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
   const navigate = useNavigate();
   const heroRef = useRef(null);
@@ -52,7 +43,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
   const [showHighlightsPopup, setShowHighlightsPopup] = useState(false);
   const [activeSpaceIndex, setActiveSpaceIndex] = useState(0);
   const [activeDeckCard, setActiveDeckCard] = useState(null);
-  const [activeCubeFace, setActiveCubeFace] = useState(null);
 
   const handleSpaceScroll = (e) => {
     const scrollLeft = e.target.scrollLeft;
@@ -1081,7 +1071,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          12. GALLERY PREVIEW (3D ROTATING CUBE SHOWCASE - UIVERSE RODOLPHEANDRIEUX)
+          12. GALLERY PREVIEW (3D FLIP CARDS GRID - UIVERSE DAVID-MOHSENI)
           ========================================================================= */}
       <section className="section-padding theme-section-dark gallery-preview-section">
         <ArchitecturalBg variant="home_gallery" />
@@ -1096,49 +1086,58 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           />
 
           <RevealOnScroll animation="fade-up">
-            <div className="gallery-cube-showcase">
-              {/* From Uiverse.io by RodolpheANDRIEUX - 3D Cube Container */}
-              <div className="cube-container">
-                <div className={`cube ${activeCubeFace ? `show-${activeCubeFace}` : 'auto-spinning'}`}>
-                  {CUBE_FACES.map((cf) => {
-                    const item = GALLERY_ITEMS[cf.index];
-                    return (
+            <div className="gallery-flip-grid">
+              {GALLERY_ITEMS.slice(0, 6).map((item, idx) => (
+                <div
+                  key={item.id}
+                  className="flip-card-item"
+                  onClick={() => onSelectGalleryItem(idx)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${item.title} - Click to view fullscreen`}
+                >
+                  <div className="flip">
+                    <div className="content">
+                      {/* Front Face (From Uiverse.io by david-mohseni) */}
                       <div
-                        key={cf.face}
-                        className={`face ${cf.face}`}
-                        style={{ backgroundImage: `url(${item?.image})` }}
-                        onClick={() => onSelectGalleryItem(cf.index)}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`${item?.title} - Click to view fullscreen`}
+                        className="front"
+                        style={{ backgroundImage: `url(${item.image})` }}
                       >
-                        <div className="cube-face-overlay" />
-                        <div className="cube-face-inner">
-                          <span className="cube-face-badge">{item?.categoryLabel}</span>
-                          <h4 className="cube-face-title">{item?.title}</h4>
-                          <span className="cube-face-click-hint">
-                            <Maximize2 size={13} /> Click to view
-                          </span>
+                        <div className="flip-front-overlay" />
+                        <div className="flip-front-body">
+                          <span className="flip-badge">{item.categoryLabel}</span>
+                          <h3 className="flip-front-title">{item.title}</h3>
+                          <span className="flip-front-num">0{idx + 1}</span>
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
 
-              {/* Interactive 3D Face Selector Chips */}
-              <div className="cube-selector-pills">
-                {CUBE_FACES.map((cf) => (
-                  <button
-                    key={`pill-${cf.face}`}
-                    type="button"
-                    className={`cube-pill-btn ${activeCubeFace === cf.face ? 'active' : ''}`}
-                    onClick={() => setActiveCubeFace(activeCubeFace === cf.face ? null : cf.face)}
-                  >
-                    <span>0{cf.index + 1} {cf.label}</span>
-                  </button>
-                ))}
-              </div>
+                      {/* Back Face (From Uiverse.io by david-mohseni) */}
+                      <div
+                        className="back"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      >
+                        <div className="flip-back-overlay" />
+                        <div className="flip-back-body">
+                          <span className="flip-badge">{item.categoryLabel}</span>
+                          <h3 className="flip-back-title">{item.title}</h3>
+                          <p className="flip-back-desc">{item.caption}</p>
+                          <button
+                            type="button"
+                            className="flip-fullscreen-btn"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onSelectGalleryItem(idx);
+                            }}
+                          >
+                            <Maximize2 size={14} />
+                            <span>View Fullscreen</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </RevealOnScroll>
 

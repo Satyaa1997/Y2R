@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import spaceVideo from '../../assets/Space.mp4';
 import { SPACES_CATEGORIES } from '../../data/projectData';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
@@ -10,15 +11,28 @@ import './Spaces.css';
 export default function Spaces({ onOpenEnquiry }) {
   return (
     <div className="spaces-page-root">
-      {/* 1. Page Hero (Dark Luxury Backdrop) */}
-      <section className="page-hero-section theme-section-dark architectural-grid">
-        <ArchitecturalBg variant="spaces_hero" />
-        <div className="container-custom page-hero-content">
+      {/* 1. Page Hero (Clear Visible Background Video) */}
+      <section className="page-hero-section spaces-hero-section theme-section-dark">
+        {/* Background Video & Soft Overlay for Clear Visibility */}
+        <div className="spaces-hero-video-bg">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="spaces-hero-video"
+          >
+            <source src={spaceVideo} type="video/mp4" />
+          </video>
+          <div className="spaces-hero-video-overlay" />
+        </div>
+
+        <div className="container-custom page-hero-content spaces-hero-content">
           <RevealOnScroll animation="fade-up">
-            <span className="gold-badge">Spatial Ecosystem</span>
             <h1 className="page-hero-title">
               Spaces Designed <br />
-              <span className="gold-gradient-text">Around Possibility.</span>
+              Around Possibility.
             </h1>
             <p className="page-hero-desc">
               From high-visibility retail storefronts and self-contained boutique offices to contemporary studio suites and vibrant culinary floors, discover thoughtful spaces tailored for performance.
@@ -78,14 +92,14 @@ export default function Spaces({ onOpenEnquiry }) {
 
                     <div className="space-stack-actions">
                       <Link to={space.slug} className="btn-primary">
-                        <span>{space.ctaText}</span>
-                        <ArrowRight size={16} />
+                        <span>Explore {space.id === 'fnb' ? 'Food Court' : space.id.charAt(0).toUpperCase() + space.id.slice(1)}</span>
+                        <ArrowRight size={15} />
                       </Link>
                       <Link
                         to={space.floorPlanSlug || "/floor-plans"}
                         className="btn-secondary"
                       >
-                        <span>View {space.shortTitle} Blueprint</span>
+                        <span>View Blueprint</span>
                         <ArrowUpRight size={15} />
                       </Link>
                     </div>
