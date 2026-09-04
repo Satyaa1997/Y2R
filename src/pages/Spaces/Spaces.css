@@ -368,18 +368,29 @@
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 480px) {
+  .space-stack-card,
+  .space-stack-card.row-reverse {
+    padding: 1.25rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .space-stack-img-wrap {
+    min-height: 200px;
+    height: 220px;
+  }
+
   .space-stack-actions {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
 
   .space-stack-actions .btn-primary,
   .space-stack-actions .btn-secondary {
-    font-size: 0.72rem;
-    padding: 0 0.4rem;
+    font-size: 0.82rem;
+    padding: 0 1rem;
     height: 46px;
     min-height: 46px;
-    gap: 4px;
+    justify-content: center;
   }
 }

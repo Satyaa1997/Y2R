@@ -28,7 +28,7 @@ export default function Offices({ onOpenEnquiry }) {
   return (
     <div className="offices-page-root">
       {/* Page Hero */}
-      <section className="page-hero-section theme-section-light architectural-grid">
+      <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="offices_hero" />
         <div className="container-custom page-hero-content">
           <RevealOnScroll animation="fade-up">
@@ -54,7 +54,7 @@ export default function Offices({ onOpenEnquiry }) {
       </section>
 
       {/* Main Narrative */}
-      <section className="section-padding theme-section-dark office-narrative-section">
+      <section className="section-padding theme-section-white office-narrative-section">
         <ArchitecturalBg variant="offices_narrative" />
         <div className="container-custom">
           <div className="office-grid">
@@ -65,7 +65,7 @@ export default function Offices({ onOpenEnquiry }) {
                 title="A Distinction in Corporate Workspaces"
                 subtitle="Customisable Offices • Natural Light • Efficient Floor Plans"
                 align="left"
-                theme="dark"
+                theme="light"
               />
 
               <RevealOnScroll animation="fade-up" delay={150}>
@@ -111,7 +111,7 @@ export default function Offices({ onOpenEnquiry }) {
       </section>
 
       {/* 3 Core Office Pillars */}
-      <section className="section-padding theme-section-white office-pillars-section">
+      <section className="section-padding theme-section-dark office-pillars-section">
         <ArchitecturalBg variant="offices_pillars" />
         <div className="container-custom">
           <SectionHeading
@@ -120,7 +120,7 @@ export default function Offices({ onOpenEnquiry }) {
             title="Engineered Around Modern Business"
             subtitle="The three core foundations of Y2R Heights commercial suites."
             align="center"
-            theme="light"
+            theme="dark"
           />
 
           <div className="office-pillars-grid">

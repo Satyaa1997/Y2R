@@ -111,11 +111,12 @@ export default function Spaces({ onOpenEnquiry }) {
         );
       })}
 
-      {/* 3. CTA Section (Clean Luxury White Section) */}
+      {/* 3. CTA Section (Golden Box inside Clean Luxury White Section) */}
       <CTASection
         title="Find The Ideal Space for Your Brand"
         subtitle="Where Vision Meets Value."
         description="Speak directly with our commercial leasing team for tailored space recommendations."
+        theme="gold"
         onOpenEnquiry={() => onOpenEnquiry("Commercial Spaces")}
       />
     </div>

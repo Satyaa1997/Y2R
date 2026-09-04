@@ -2523,341 +2523,147 @@
 }
 
 /* ==========================================================================
-   10. WHY Y2R SECTION (FULL 3D 360° ROTATING COIN CARDS)
+   10. WHY Y2R SECTION (UIVERSE.IO CARD DESIGN BY JUBAYER-10)
    ========================================================================== */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.75rem;
+  gap: 1.5rem;
   justify-items: center;
-  align-items: center;
+  align-items: stretch;
   padding: 1.5rem 0 2.5rem;
 }
 
 .why-col {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
 }
 
-.coin-3d-wrapper {
+/* From Uiverse.io by jubayer-10 - Tailored for Y2R Heights Luxury Architecture */
+.jubayer-card {
+  width: 100%;
+  max-width: 290px;
+  min-height: 290px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.28), 0 0 15px rgba(0, 0, 0, 0.09);
+  border: 1.5px solid rgba(175, 125, 9, 0.3);
+  padding: 2.25rem 1.65rem 2rem;
   position: relative;
-  width: 260px;
-  height: 260px;
-  perspective: 1200px;
-  cursor: pointer;
-}
-
-/* 3D 360° Rotating Coin Card (1 Rotation + 5s Pause Loop) */
-.coin-rotating-card {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: spin360CoinCard 7s infinite;
-  transition: transform 0.4s ease, filter 0.4s ease;
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.75));
-}
-
-.coin-3d-wrapper:hover .coin-rotating-card {
-  animation-play-state: paused;
-  filter: drop-shadow(0 0 30px rgba(175, 125, 9, 0.95)) drop-shadow(0 16px 36px rgba(0, 0, 0, 0.85));
-}
-
-@keyframes spin360CoinCard {
-  0% {
-    transform: rotateY(0deg);
-    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
-  }
-  28.5% {
-    transform: rotateY(360deg);
-    animation-timing-function: step-end;
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-
-/* Dual Sides (Front and Back) */
-.coin-side {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  box-sizing: border-box;
-}
-
-/* Front Face (Heads) */
-.coin-front {
-  background: radial-gradient(circle at 35% 35%, #FFF5DB 0%, #c99318 30%, #af7d09 70%, #201400 100%);
-  border: 3px solid #FFF5DB;
-  box-shadow:
-    inset 0 0 15px rgba(0, 0, 0, 0.6),
-    0 10px 25px rgba(0, 0, 0, 0.5);
-  transform: rotateY(0deg);
-  z-index: 2;
-}
-
-/* Back Face (Tails) */
-.coin-back {
-  background: radial-gradient(circle at 35% 35%, #FFF5DB 0%, #c99318 30%, #8a6104 70%, #201400 100%);
-  border: 3px solid #FFF5DB;
-  box-shadow:
-    inset 0 0 15px rgba(0, 0, 0, 0.6),
-    0 10px 25px rgba(0, 0, 0, 0.5);
-  transform: rotateY(180deg);
-  z-index: 1;
-}
-
-/* Inner Core Disc */
-.coin-inner-disc {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 40%, #222633 0%, #111319 75%, #060709 100%);
-  border: 2px solid #af7d09;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.15rem 1rem;
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
-  user-select: none;
 }
 
-/* Front Side Typography */
-.coin-front-badge {
-  font-size: 0.62rem;
-  font-weight: 900;
-  color: #FFF5DB;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  background: #af7d09;
-  border: 1px solid #c99318;
-  padding: 2px 8px;
-  border-radius: 12px;
-  margin-bottom: 6px;
+.jubayer-card:hover {
+  transform: translateY(-8px);
+  border-color: #af7d09;
+  box-shadow: 0 18px 45px rgba(175, 125, 9, 0.35), 0 0 25px rgba(175, 125, 9, 0.15);
 }
 
-.coin-gold-medallion {
-  width: 50px;
-  height: 50px;
+/* Top-Right Circular Accent with Pillar Number */
+.jubayer-badge-circle {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #c99318 0%, #af7d09 60%, #8a6104 100%);
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #FFF5DB 0%, #c99318 40%, #af7d09 100%);
-  border: 2px solid #FFF5DB;
+  position: absolute;
+  right: -20px;
+  top: -24px;
+  box-shadow: 0 4px 15px rgba(175, 125, 9, 0.4);
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jubayer-card:hover .jubayer-badge-circle {
+  transform: scale(1.1);
+}
+
+.jubayer-badge-num {
+  position: absolute;
+  bottom: 18px;
+  left: 24px;
+  color: #FFFFFF;
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Feature Icon Box */
+.jubayer-icon-box {
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 6px;
-  box-shadow: 0 0 14px rgba(175, 125, 9, 0.7);
+  justify-content: flex-start;
+  margin-bottom: 1.25rem;
+  color: #af7d09;
+  transition: transform 350ms ease, color 350ms ease;
 }
 
-.coin-medallion-text {
-  font-size: 1.35rem;
-  font-weight: 900;
-  color: #12141A;
-  letter-spacing: -0.02em;
+.jubayer-card:hover .jubayer-icon-box {
+  transform: scale(1.1) translateX(2px);
+  color: #8a6104;
 }
 
-.coin-title-text {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #FFFFFF;
+.jubayer-icon-svg {
+  color: #af7d09;
+  stroke-width: 1.8;
+}
+
+/* Card Heading */
+.jubayer-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #0F172A;
+  margin-bottom: 0.65rem;
   line-height: 1.25;
-  margin-bottom: 4px;
-  max-width: 185px;
+  transition: color 300ms ease;
 }
 
-.coin-sub-tag {
-  font-size: 0.62rem;
-  font-weight: 800;
-  color: #c99318;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 3px;
+.jubayer-card:hover .jubayer-title {
+  color: #8a6104;
 }
 
-.coin-loc-text {
-  font-size: 0.58rem;
-  font-weight: 600;
-  color: #9C988F;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+/* Card Description */
+.jubayer-desc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.65;
+  font-weight: 400;
+  margin: 0;
+  flex: 1;
 }
 
-/* Back Side Typography */
-.coin-back-pillar {
-  font-size: 0.62rem;
-  font-weight: 900;
-  color: #c99318;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.coin-back-heading {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #FFF5DB;
-  line-height: 1.2;
-  margin-bottom: 4px;
-  max-width: 190px;
-  text-transform: uppercase;
-}
-
-.coin-gold-divider {
-  width: 60%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #af7d09, #c99318, #af7d09, transparent);
-  margin-bottom: 8px;
-}
-
-.coin-back-description {
-  font-size: 0.76rem;
-  line-height: 1.45;
-  color: #FAF8F4;
-  font-weight: 500;
-  margin-bottom: 8px;
-  max-width: 195px;
-}
-
-.coin-rera-stamp {
-  font-size: 0.6rem;
-  font-weight: 800;
-  color: #FFF5DB;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  background: rgba(175, 125, 9, 0.45);
-  border: 1px solid #c99318;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-@media (max-width: 1200px) and (min-width: 821px) {
+/* Responsive Media Queries */
+@media (max-width: 1200px) and (min-width: 769px) {
   .why-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.25rem;
+    gap: 1.75rem;
+  }
+
+  .jubayer-card {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 768px) {
   .why-grid {
     grid-template-columns: 1fr;
-    gap: 1.85rem;
+    gap: 1.5rem;
   }
 
-  .coin-3d-wrapper {
-    width: 220px;
-    height: 220px;
-  }
-
-  .coin-inner-disc {
-    padding: 0.85rem 0.75rem;
-  }
-
-  .coin-gold-medallion {
-    width: 42px;
-    height: 42px;
-    margin-bottom: 4px;
-  }
-
-  .coin-medallion-text {
-    font-size: 1.18rem;
-  }
-
-  .coin-title-text {
-    font-size: 0.94rem;
-    max-width: 160px;
-    margin-bottom: 3px;
-  }
-
-  .coin-front-badge {
-    font-size: 0.58rem;
-    padding: 2px 7px;
-    margin-bottom: 4px;
-  }
-
-  .coin-sub-tag {
-    font-size: 0.56rem;
-    margin-bottom: 2px;
-  }
-
-  .coin-loc-text {
-    font-size: 0.52rem;
-  }
-
-  .coin-back-pillar {
-    font-size: 0.58rem;
-  }
-
-  .coin-back-heading {
-    font-size: 0.86rem;
-    max-width: 165px;
-    margin-bottom: 3px;
-  }
-
-  .coin-gold-divider {
-    margin-bottom: 6px;
-  }
-
-  .coin-back-description {
-    font-size: 0.72rem;
-    line-height: 1.38;
-    max-width: 170px;
-    margin-bottom: 6px;
-  }
-
-  .coin-rera-stamp {
-    font-size: 0.56rem;
-    padding: 2px 7px;
-  }
-}
-
-@media (max-width: 480px) {
-  .coin-3d-wrapper {
-    width: 195px;
-    height: 195px;
-  }
-
-  .coin-inner-disc {
-    padding: 0.65rem 0.55rem;
-  }
-
-  .coin-gold-medallion {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 3px;
-  }
-
-  .coin-medallion-text {
-    font-size: 1.05rem;
-  }
-
-  .coin-title-text {
-    font-size: 0.84rem;
-    max-width: 145px;
-  }
-
-  .coin-back-heading {
-    font-size: 0.78rem;
-    max-width: 150px;
-  }
-
-  .coin-back-description {
-    font-size: 0.66rem;
-    line-height: 1.32;
-    max-width: 155px;
-    margin-bottom: 4px;
+  .jubayer-card {
+    max-width: 100%;
+    min-height: auto;
+    padding: 2rem 1.5rem 1.75rem;
   }
 }
 

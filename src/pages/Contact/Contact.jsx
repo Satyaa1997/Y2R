@@ -1,29 +1,39 @@
-import { Phone, Mail, MapPin, ShieldCheck, Landmark, Globe } from 'lucide-react';
+import { Phone, Mail, MapPin, Landmark, Globe, Navigation, ExternalLink } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import EnquiryForm from '../../components/EnquiryForm/EnquiryForm';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
+import contactBanner from '../../assets/contactbanner.png';
 import './Contact.css';
 
 export default function Contact() {
   return (
     <div className="contact-page-root">
-      {/* Page Hero */}
-      <section className="page-hero-section theme-section-light architectural-grid">
+      {/* Page Hero with contactbanner.png Background Image */}
+      <section className="page-hero-section contact-hero-section theme-section-dark">
+        <div className="contact-hero-bg">
+          <img
+            src={contactBanner}
+            alt="Y2R Heights Official Advisory & Contact"
+            className="contact-hero-img"
+          />
+          <div className="contact-hero-overlay" />
+        </div>
         <ArchitecturalBg variant="contact_hero" />
-        <div className="container-custom page-hero-content">
-          <RevealOnScroll animation="fade-up">
-            <span className="gold-badge">Official Advisory</span>
-            <h1 className="page-hero-title">
-              Visit <br />
-              <span className="gold-gradient-text">Y2R Heights</span>
-            </h1>
-            <p className="page-hero-desc">
-              Connect directly with our project consultants, arrange on-site inspections, or schedule an in-depth portfolio review.
-            </p>
-          </RevealOnScroll>
+        <div className="container-custom contact-hero-container">
+          <div className="contact-hero-content">
+            <RevealOnScroll animation="fade-up">
+              <h1 className="page-hero-title contact-title-white">
+                Visit <br />
+                <span>Y2R Heights</span>
+              </h1>
+              <p className="page-hero-desc">
+                Connect directly with our project consultants, arrange on-site inspections, or schedule an in-depth portfolio review.
+              </p>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 
@@ -124,58 +134,6 @@ export default function Contact() {
                     </div>
                   </TiltCard>
                 </RevealOnScroll>
-
-                {/* Banking Collection Account Details */}
-                <div className="contact-bank-collection-box">
-                  <div className="bank-header-line">
-                    <Landmark size={20} className="text-gold" />
-                    <div>
-                      <span className="bank-pill">Official Collection Account</span>
-                      <h4 className="bank-branch-title">{PROJECT_INFO.approvedBy.badge}</h4>
-                    </div>
-                  </div>
-                  <p className="bank-note-text">{PROJECT_INFO.bankAccount.note}</p>
-                  
-                  <div className="bank-meta-rows">
-                    <div className="b-row">
-                      <span className="b-tag">Account Name:</span>
-                      <span className="b-data">{PROJECT_INFO.bankAccount.name}</span>
-                    </div>
-                    <div className="b-row">
-                      <span className="b-tag">Account No.:</span>
-                      <span className="b-data font-mono">{PROJECT_INFO.bankAccount.accountNumber}</span>
-                    </div>
-                    <div className="b-row">
-                      <span className="b-tag">Bank & Branch:</span>
-                      <span className="b-data">{PROJECT_INFO.bankAccount.bank}, {PROJECT_INFO.bankAccount.branch}</span>
-                    </div>
-                    <div className="b-row">
-                      <span className="b-tag">IFSC Code:</span>
-                      <span className="b-data font-mono">{PROJECT_INFO.bankAccount.ifsc}</span>
-                    </div>
-                    <div className="b-row">
-                      <span className="b-tag">Launch Date:</span>
-                      <span className="b-data">{PROJECT_INFO.launchDate}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* RERA Badge Card */}
-                <div className="rera-verified-card">
-                  <ShieldCheck size={26} className="text-gold flex-shrink-0" />
-                  <div>
-                    <span className="rera-verified-title">UP RERA Registered Project</span>
-                    <p className="rera-verified-num">{PROJECT_INFO.reraNumber}</p>
-                    <a
-                      href={`https://${PROJECT_INFO.reraWebsite}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rera-portal-link"
-                    >
-                      Verify on RERA Portal: {PROJECT_INFO.reraWebsite}
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -193,11 +151,91 @@ export default function Contact() {
               </div>
             </div>
           </div>
+
+          {/* Dual Box Row: Official Collection Account & Google Map Site Location (Same Size Side-by-Side) */}
+          <div className="contact-bank-map-grid">
+            <RevealOnScroll animation="fade-up" delay={100} className="h-full">
+              {/* Left Box: Banking Collection Account Details */}
+              <div className="contact-bank-collection-box">
+                <div className="bank-header-line">
+                  <Landmark size={20} className="text-gold" />
+                  <div>
+                    <span className="bank-pill">Official Collection Account</span>
+                    <h4 className="bank-branch-title">{PROJECT_INFO.approvedBy.badge}</h4>
+                  </div>
+                </div>
+                <p className="bank-note-text">{PROJECT_INFO.bankAccount.note}</p>
+                
+                <div className="bank-meta-rows">
+                  <div className="b-row">
+                    <span className="b-tag">Account Name:</span>
+                    <span className="b-data">{PROJECT_INFO.bankAccount.name}</span>
+                  </div>
+                  <div className="b-row">
+                    <span className="b-tag">Account No.:</span>
+                    <span className="b-data font-mono">{PROJECT_INFO.bankAccount.accountNumber}</span>
+                  </div>
+                  <div className="b-row">
+                    <span className="b-tag">Bank & Branch:</span>
+                    <span className="b-data">{PROJECT_INFO.bankAccount.bank}, {PROJECT_INFO.bankAccount.branch}</span>
+                  </div>
+                  <div className="b-row">
+                    <span className="b-tag">IFSC Code:</span>
+                    <span className="b-data font-mono">{PROJECT_INFO.bankAccount.ifsc}</span>
+                  </div>
+                  <div className="b-row">
+                    <span className="b-tag">Launch Date:</span>
+                    <span className="b-data">{PROJECT_INFO.launchDate}</span>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll animation="fade-up" delay={200} className="h-full">
+              {/* Right Box: Google Map Building Location (Same Size) */}
+              <div className="contact-map-collection-box">
+                <div className="bank-header-line">
+                  <MapPin size={20} className="text-gold" />
+                  <div>
+                    <span className="bank-pill">Building Site Location</span>
+                    <h4 className="bank-branch-title">{PROJECT_INFO.siteOffice}</h4>
+                  </div>
+                </div>
+                <p className="bank-note-text">Main Kursi Road, Near Sector-J Extension, Jankipuram Scheme, Lucknow</p>
+                
+                <div className="contact-map-frame-wrapper">
+                  <iframe
+                    title="Y2R Heights Project Location Map"
+                    src="https://maps.google.com/maps?q=CP-02%2C%20Main%20Kursi%20Road%2C%20Jankipuram%2C%20Lucknow%2C%20Uttar%20Pradesh%20226021&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="contact-map-iframe"
+                  />
+                </div>
+                <div className="contact-map-footer">
+                  <a
+                    href="https://maps.google.com/?q=CP-02%2C%20Main%20Kursi%20Road%2C%20Jankipuram%2C%20Lucknow%2C%20Uttar%20Pradesh%20226021"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-map-directions-link"
+                  >
+                    <Navigation size={14} className="text-gold" />
+                    <span>Get Google Maps Directions</span>
+                    <ExternalLink size={13} />
+                  </a>
+                </div>
+              </div>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 
       {/* Location Map Visualizer Banner */}
-      <section className="section-padding bg-dark-surface map-placeholder-section">
+      <section className="section-padding theme-section-white map-placeholder-section">
         <div className="container-custom">
           <SectionHeading
             number="02"
@@ -205,6 +243,7 @@ export default function Contact() {
             title="Kursi Road • Jankipuram Scheme"
             subtitle="Strategically connected to Lucknow’s Northern commercial and residential sectors."
             align="center"
+            theme="light"
           />
 
           <div className="map-visual-card architectural-grid-gold">

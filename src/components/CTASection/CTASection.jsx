@@ -14,15 +14,15 @@ export default function CTASection({
   className = ""
 }) {
   return (
-    <section className={`cta-section-wrapper theme-${theme} theme-section-white ${className}`}>
+    <section className={`cta-section-wrapper theme-${theme} ${className}`}>
       <div className="cta-container">
         <RevealOnScroll animation="zoom-in" duration={800}>
           <TiltCard maxTilt={6} scale={1.01} className="cta-tilt-card">
-            <div className="cta-card-inner architectural-grid-gold">
+            <div className={`cta-card-inner cta-card-${theme} architectural-grid-gold`}>
               <ArchitecturalBg variant="cta_banner" />
               <div className="cta-content">
                 <div className="cta-badge">
-                  <Sparkles size={14} className="text-gold" />
+                  <Sparkles size={14} className={theme === 'gold' ? 'text-white' : 'text-gold'} />
                   <span>Strategic Lucknow Address</span>
                 </div>
 

@@ -33,7 +33,7 @@ export default function FoodCourt({ onOpenEnquiry }) {
   return (
     <div className="food-court-page-root">
       {/* Page Hero */}
-      <section className="page-hero-section theme-section-light architectural-grid">
+      <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="foodcourt_hero" />
         <div className="container-custom page-hero-content">
           <RevealOnScroll animation="fade-up">
@@ -59,7 +59,7 @@ export default function FoodCourt({ onOpenEnquiry }) {
       </section>
 
       {/* Main Narrative */}
-      <section className="section-padding theme-section-dark fnb-narrative-section">
+      <section className="section-padding theme-section-white fnb-narrative-section">
         <ArchitecturalBg variant="foodcourt_narrative" />
         <div className="container-custom">
           <div className="fnb-grid">
@@ -70,7 +70,7 @@ export default function FoodCourt({ onOpenEnquiry }) {
                 title="Planned for Operations. Loved by Patrons."
                 subtitle="QSR • Café • Desserts • Regional Cuisine • Dining Concepts"
                 align="left"
-                theme="dark"
+                theme="light"
               />
 
               <RevealOnScroll animation="fade-up" delay={150}>
@@ -115,7 +115,7 @@ export default function FoodCourt({ onOpenEnquiry }) {
       </section>
 
       {/* 4 F&B Categories Grid */}
-      <section className="section-padding theme-section-white fnb-categories-section">
+      <section className="section-padding theme-section-dark fnb-categories-section">
         <ArchitecturalBg variant="foodcourt_categories" />
         <div className="container-custom">
           <SectionHeading
@@ -124,7 +124,7 @@ export default function FoodCourt({ onOpenEnquiry }) {
             title="Diverse Dining Opportunities"
             subtitle="Explore available spatial concepts for visionary food entrepreneurs."
             align="center"
-            theme="light"
+            theme="dark"
           />
 
           <div className="fnb-cards-grid">

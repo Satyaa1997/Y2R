@@ -33,7 +33,7 @@ export default function Studios({ onOpenEnquiry }) {
   return (
     <div className="studios-page-root">
       {/* Page Hero */}
-      <section className="page-hero-section theme-section-light architectural-grid">
+      <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="studios_hero" />
         <div className="container-custom page-hero-content">
           <RevealOnScroll animation="fade-up">
@@ -59,7 +59,7 @@ export default function Studios({ onOpenEnquiry }) {
       </section>
 
       {/* Main Narrative */}
-      <section className="section-padding theme-section-dark studio-narrative-section">
+      <section className="section-padding theme-section-white studio-narrative-section">
         <ArchitecturalBg variant="studios_narrative" />
         <div className="container-custom">
           <div className="studio-grid">
@@ -70,7 +70,7 @@ export default function Studios({ onOpenEnquiry }) {
                 title="A Residence Designed for Seamless Convenience"
                 subtitle="3rd to 7th Floors • Contemporary Design • Everyday Ease"
                 align="left"
-                theme="dark"
+                theme="light"
               />
 
               <RevealOnScroll animation="fade-up" delay={150}>
@@ -111,7 +111,7 @@ export default function Studios({ onOpenEnquiry }) {
       </section>
 
       {/* 4 Studio Features */}
-      <section className="section-padding theme-section-white studio-features-section">
+      <section className="section-padding theme-section-dark studio-features-section">
         <ArchitecturalBg variant="studios_features" />
         <div className="container-custom">
           <SectionHeading
@@ -120,7 +120,7 @@ export default function Studios({ onOpenEnquiry }) {
             title="Engineered for Urban Comfort"
             subtitle="Smart design choices that elevate everyday lifestyle."
             align="center"
-            theme="light"
+            theme="dark"
           />
 
           <div className="studio-cards-grid">

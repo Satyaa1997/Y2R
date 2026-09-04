@@ -22,7 +22,8 @@ import {
   MoveUp,
   Camera,
   Zap,
-  Sparkles
+  Sparkles,
+  Layers
 } from 'lucide-react';
 import {
   PROJECT_INFO,
@@ -962,44 +963,36 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           />
 
           <div className="why-grid">
-            {WHY_Y2R_POINTS.map((pt, idx) => (
-              <RevealOnScroll
-                key={pt.id}
-                animation="fade-up"
-                delay={idx * 100}
-                className="why-col"
-              >
-                <div className="coin-3d-wrapper">
-                  <div className="coin-rotating-card" role="article" aria-label={`${pt.title} - ${pt.description}`}>
-                    {/* Front Face (Heads) */}
-                    <div className="coin-side coin-front">
-                      <div className="coin-inner-disc">
-                        <span className="coin-front-badge">PILLAR {pt.id}</span>
-                        <div className="coin-gold-medallion">
-                          <span className="coin-medallion-text">{pt.id}</span>
-                        </div>
-                        <h3 className="coin-title-text">{pt.title}</h3>
-                        <span className="coin-sub-tag">VALUE PROPOSITION</span>
-                        <span className="coin-loc-text">Y2R HEIGHTS • LUCKNOW</span>
-                      </div>
+            {WHY_Y2R_POINTS.map((pt, idx) => {
+              const whyIcons = [Compass, Layers, ShieldCheck, Sparkles];
+              const IconComp = whyIcons[idx] || Sparkles;
+              return (
+                <RevealOnScroll
+                  key={pt.id}
+                  animation="fade-up"
+                  delay={idx * 100}
+                  className="why-col"
+                >
+                  <div className="jubayer-card" role="article" aria-label={`${pt.title} - ${pt.description}`}>
+                    {/* Top-Right Circular Badge with Index Number */}
+                    <div className="jubayer-badge-circle">
+                      <p className="jubayer-badge-num">{pt.id}</p>
                     </div>
 
-                    {/* Back Face (Tails) */}
-                    <div className="coin-side coin-back">
-                      <div className="coin-inner-disc">
-                        <span className="coin-back-pillar">PILLAR {pt.id}</span>
-                        <h4 className="coin-back-heading">{pt.title}</h4>
-                        <div className="coin-gold-divider" />
-                        <p className="coin-back-description">{pt.description}</p>
-                        <div className="coin-rera-stamp">
-                          <span>UP RERA APPROVED</span>
-                        </div>
-                      </div>
+                    {/* Top Icon */}
+                    <div className="jubayer-icon-box">
+                      <IconComp size={38} className="jubayer-icon-svg" />
                     </div>
+
+                    {/* Title */}
+                    <h3 className="jubayer-title">{pt.title}</h3>
+
+                    {/* Description */}
+                    <p className="jubayer-desc">{pt.description}</p>
                   </div>
-                </div>
-              </RevealOnScroll>
-            ))}
+                </RevealOnScroll>
+              );
+            })}
           </div>
         </div>
       </section>

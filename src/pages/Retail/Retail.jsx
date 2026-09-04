@@ -33,14 +33,13 @@ export default function Retail({ onOpenEnquiry }) {
   return (
     <div className="retail-page-root">
       {/* Page Hero */}
-      <section className="page-hero-section theme-section-light architectural-grid">
+      <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="retail_hero" />
         <div className="container-custom page-hero-content">
           <RevealOnScroll animation="fade-up">
-            <span className="gold-badge">Commercial Retail</span>
             <h1 className="page-hero-title">
               Made for Brands That <br />
-              <span className="gold-gradient-text">Want to Be Seen.</span>
+              <span className="retail-hero-subtext">Want to Be Seen.</span>
             </h1>
             <p className="page-hero-desc">
               Premium retail spaces with efficient layouts, strong frontage and high visibility in Lucknow's expanding Kursi Road corridor.
@@ -59,7 +58,7 @@ export default function Retail({ onOpenEnquiry }) {
       </section>
 
       {/* Main Feature Showcase */}
-      <section className="section-padding theme-section-dark retail-showcase-section">
+      <section className="section-padding theme-section-white retail-showcase-section">
         <ArchitecturalBg variant="retail_showcase" />
         <div className="container-custom">
           <div className="retail-grid">
@@ -70,7 +69,7 @@ export default function Retail({ onOpenEnquiry }) {
                 title="More Visibility. More Possibility."
                 subtitle="Engineered for customer attraction and seamless daily operations."
                 align="left"
-                theme="dark"
+                theme="light"
               />
 
               <RevealOnScroll animation="fade-up" delay={150}>
@@ -104,10 +103,6 @@ export default function Retail({ onOpenEnquiry }) {
                     alt="Y2R Heights Retail Frontage"
                     className="retail-img"
                   />
-                  <div className="retail-img-caption">
-                    <span className="gold-badge">High Frontage Promenade</span>
-                    <p>Direct Kursi Road Catchment</p>
-                  </div>
                 </div>
               </TiltCard>
             </RevealOnScroll>
@@ -116,7 +111,7 @@ export default function Retail({ onOpenEnquiry }) {
       </section>
 
       {/* 4 Key Retail Features */}
-      <section className="section-padding theme-section-white retail-features-section">
+      <section className="section-padding theme-section-dark retail-features-section">
         <ArchitecturalBg variant="retail_features" />
         <div className="container-custom">
           <SectionHeading
@@ -125,7 +120,7 @@ export default function Retail({ onOpenEnquiry }) {
             title="Strategic Advantages for Retailers"
             subtitle="Meticulously planned infrastructure to support modern commercial ventures."
             align="center"
-            theme="light"
+            theme="dark"
           />
 
           <div className="retail-cards-grid">

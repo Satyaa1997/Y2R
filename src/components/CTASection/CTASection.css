@@ -8,6 +8,7 @@
 .cta-section-wrapper.theme-light,
 .cta-section-wrapper.theme-dark,
 .cta-section-wrapper.theme-white,
+.cta-section-wrapper.theme-gold,
 .cta-section-wrapper.theme-section-white {
   background-color: #FFFFFF;
 }
@@ -30,6 +31,157 @@
   padding: clamp(2.25rem, 3vw, 2.85rem) 2.5rem;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(175, 125, 9, 0.05);
   overflow: hidden;
+}
+
+/* Gold Theme Inner Box (Rich Luxury Gold Background with High-Contrast Typography) */
+.cta-card-gold,
+.theme-gold .cta-card-inner {
+  background: linear-gradient(
+    135deg,
+    #c4941d 0%,
+    #af7d09 35%,
+    #8a6104 70%,
+    #694801 100%
+  );
+  border: 1.5px solid rgba(255, 235, 175, 0.7);
+  box-shadow: 0 20px 60px rgba(175, 125, 9, 0.35), 0 4px 20px rgba(0, 0, 0, 0.15);
+  color: #FFFFFF;
+}
+
+.theme-gold .cta-badge,
+.cta-card-gold .cta-badge {
+  background: rgba(0, 0, 0, 0.32);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-gold .cta-badge span,
+.cta-card-gold .cta-badge span {
+  color: #FFFFFF;
+}
+
+.theme-gold .cta-title,
+.cta-card-gold .cta-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.theme-gold .cta-subtitle,
+.cta-card-gold .cta-subtitle {
+  color: #FFF2CC !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.theme-gold .cta-description,
+.cta-card-gold .cta-description {
+  color: #F8FAFC !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.theme-gold .cta-action-btn,
+.cta-card-gold .cta-action-btn {
+  background: #0A0B0E !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.theme-gold .cta-action-btn svg,
+.cta-card-gold .cta-action-btn svg {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), color 300ms ease;
+  color: #FFFFFF !important;
+}
+
+.theme-gold .cta-action-btn:hover,
+.cta-card-gold .cta-action-btn:hover {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF3D6 100%) !important;
+  color: #8a6104 !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+.theme-gold .cta-action-btn:hover span,
+.cta-card-gold .cta-action-btn:hover span {
+  color: #8a6104 !important;
+  font-weight: 700;
+}
+
+.theme-gold .cta-action-btn:hover svg,
+.cta-card-gold .cta-action-btn:hover svg {
+  transform: translate(4px, -4px);
+  color: #8a6104 !important;
+}
+
+.theme-gold .cta-phone-btn,
+.cta-card-gold .cta-phone-btn {
+  background: #FFFFFF !important;
+  color: #0A0B0E !important;
+  border: 1.5px solid #FFFFFF !important;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.theme-gold .cta-phone-btn svg,
+.cta-card-gold .cta-phone-btn svg {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), color 300ms ease;
+}
+
+.theme-gold .cta-phone-btn .text-gold,
+.cta-card-gold .cta-phone-btn .text-gold {
+  color: #af7d09 !important;
+}
+
+.theme-gold .cta-phone-btn:hover,
+.cta-card-gold .cta-phone-btn:hover {
+  background: #0A0B0E !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 235, 175, 0.9) !important;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 235, 175, 0.45);
+}
+
+.theme-gold .cta-phone-btn:hover span,
+.cta-card-gold .cta-phone-btn:hover span {
+  color: #FFFFFF !important;
+}
+
+.theme-gold .cta-phone-btn:hover svg,
+.cta-card-gold .cta-phone-btn:hover svg {
+  transform: scale(1.2) rotate(-12deg);
+  color: #FFD54F !important;
+}
+
+.theme-gold .cta-phone-btn:hover .text-gold,
+.cta-card-gold .cta-phone-btn:hover .text-gold {
+  color: #FFD54F !important;
+}
+
+.theme-gold .cta-footnote,
+.cta-card-gold .cta-footnote {
+  color: #FFFFFF !important;
+  opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.theme-gold .cta-footnote .dot-sep,
+.cta-card-gold .cta-footnote .dot-sep {
+  color: #FFF2CC !important;
+}
+
+.theme-gold .cta-corner,
+.cta-card-gold .cta-corner {
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
 }
 
 .cta-content {

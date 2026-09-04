@@ -4,53 +4,102 @@
   background-color: var(--bg-primary);
 }
 
-.page-hero-section {
-  padding: calc(var(--header-height) + 1.25rem) 1.5rem 2.25rem;
-  background: radial-gradient(circle at 50% 30%, #FFFFFF 0%, #FAF8F4 80%);
-  text-align: center;
-  border-bottom: 1px solid rgba(175, 125, 9, 0.25);
+.project-hero-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--header-height, 80px) + 2.5rem) 1.5rem 3.75rem;
+  background: #0A0B0E;
+  border-bottom: 1px solid rgba(175, 125, 9, 0.3);
 }
 
-.page-hero-content {
+.project-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.project-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: contrast(1.05) brightness(0.9);
+}
+
+.project-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 11, 14, 0.78) 0%,
+    rgba(10, 11, 14, 0.62) 50%,
+    rgba(10, 11, 14, 0.82) 100%
+  );
+  pointer-events: none;
+}
+
+.project-hero-content {
+  position: relative;
+  z-index: 3;
   max-width: 860px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
-.page-hero-title {
+.project-hero-content .page-hero-title {
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 700;
   line-height: 1.15;
-  color: #111112;
+  color: #FFFFFF !important;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.85);
 }
 
-.page-hero-desc {
+.project-hero-highlight {
+  color: #af7d09 !important;
+  font-weight: 700;
+  display: inline-block;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+
+.project-hero-content .page-hero-desc {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: #E2E4EB !important;
   font-weight: 400;
   margin-bottom: 1.25rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
 }
 
-.page-hero-meta {
+.project-hero-content .page-hero-meta {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #CBD5E1;
   flex-wrap: wrap;
   justify-content: center;
   font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .meta-item {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  color: #E2E8F0;
 }
 
 .meta-sep {
@@ -251,13 +300,21 @@
 }
 
 @media (max-width: 992px) {
-  .page-hero-section {
-    padding: 7.5rem 1.5rem 4rem;
+  .project-hero-section {
+    padding: calc(var(--header-height, 70px) + 2.5rem) 1.5rem 3.5rem;
+    min-height: 380px;
   }
 
   .vision-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-hero-section {
+    padding: calc(var(--header-height, 70px) + 1.75rem) 1.25rem 2.75rem;
+    min-height: auto;
   }
 }
 
@@ -522,6 +579,145 @@
 
   .bank-details-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   WHY Y2R SECTION (UIVERSE.IO CARD DESIGN BY JUBAYER-10)
+   ========================================================================== */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: stretch;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.why-col {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+}
+
+.jubayer-card {
+  width: 100%;
+  max-width: 290px;
+  min-height: 290px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.28), 0 0 15px rgba(0, 0, 0, 0.09);
+  border: 1.5px solid rgba(175, 125, 9, 0.3);
+  padding: 2.25rem 1.65rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.jubayer-card:hover {
+  transform: translateY(-8px);
+  border-color: #af7d09;
+  box-shadow: 0 18px 45px rgba(175, 125, 9, 0.35), 0 0 25px rgba(175, 125, 9, 0.15);
+}
+
+.jubayer-badge-circle {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #c99318 0%, #af7d09 60%, #8a6104 100%);
+  border-radius: 50%;
+  position: absolute;
+  right: -20px;
+  top: -24px;
+  box-shadow: 0 4px 15px rgba(175, 125, 9, 0.4);
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jubayer-card:hover .jubayer-badge-circle {
+  transform: scale(1.1);
+}
+
+.jubayer-badge-num {
+  position: absolute;
+  bottom: 18px;
+  left: 24px;
+  color: #FFFFFF;
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.jubayer-icon-box {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1.25rem;
+  color: #af7d09;
+  transition: transform 350ms ease, color 350ms ease;
+}
+
+.jubayer-card:hover .jubayer-icon-box {
+  transform: scale(1.1) translateX(2px);
+  color: #8a6104;
+}
+
+.jubayer-icon-svg {
+  color: #af7d09;
+  stroke-width: 1.8;
+}
+
+.jubayer-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #0F172A;
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+  transition: color 300ms ease;
+}
+
+.jubayer-card:hover .jubayer-title {
+  color: #8a6104;
+}
+
+.jubayer-desc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.65;
+  font-weight: 400;
+  margin: 0;
+  flex: 1;
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .jubayer-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .jubayer-card {
+    max-width: 100%;
+    min-height: auto;
+    padding: 2rem 1.5rem 1.75rem;
   }
 }
 

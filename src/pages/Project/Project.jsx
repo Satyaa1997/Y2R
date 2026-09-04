@@ -12,7 +12,8 @@ import {
   Sparkles,
   Zap,
   DoorOpen,
-  Ruler
+  Ruler,
+  Compass
 } from 'lucide-react';
 import {
   PROJECT_INFO,
@@ -27,21 +28,29 @@ import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
+import proImage from '../../assets/pro.jpg';
 import './Project.css';
 
 export default function Project({ onOpenEnquiry }) {
   const [activeSpecTab, setActiveSpecTab] = useState('structure');
   return (
     <div className="project-page-root">
-      {/* Page Hero */}
-      <section className="page-hero-section theme-section-light architectural-grid">
+      {/* Page Hero with pro.jpg Background Image */}
+      <section className="page-hero-section project-hero-section theme-section-dark">
+        <div className="project-hero-bg">
+          <img
+            src={proImage}
+            alt="Y2R Heights Master Project"
+            className="project-hero-img"
+          />
+          <div className="project-hero-overlay" />
+        </div>
         <ArchitecturalBg variant="project_hero" />
-        <div className="container-custom page-hero-content">
+        <div className="container-custom page-hero-content project-hero-content">
           <RevealOnScroll animation="fade-up">
-            <span className="gold-badge">Project Vision</span>
             <h1 className="page-hero-title">
               Designed for Business. <br />
-              <span className="gold-gradient-text">Built for Growth.</span>
+              <span className="project-hero-highlight">Built for Growth.</span>
             </h1>
             <p className="page-hero-desc">
               Y2R Heights brings thoughtfully planned commercial and lifestyle spaces together in one contemporary destination along the Jankipuram Extension–Kursi Road corridor.
@@ -503,20 +512,36 @@ export default function Project({ onOpenEnquiry }) {
           />
 
           <div className="why-grid">
-            {WHY_Y2R_POINTS.map((pt, idx) => (
-              <RevealOnScroll
-                key={pt.id}
-                animation="fade-up"
-                delay={idx * 80}
-                className="why-col"
-              >
-                <div className="why-card">
-                  <span className="why-number">{pt.id}</span>
-                  <h3 className="why-title">{pt.title}</h3>
-                  <p className="why-desc">{pt.description}</p>
-                </div>
-              </RevealOnScroll>
-            ))}
+            {WHY_Y2R_POINTS.map((pt, idx) => {
+              const whyIcons = [Compass, Layers, ShieldCheck, Sparkles];
+              const IconComp = whyIcons[idx] || Sparkles;
+              return (
+                <RevealOnScroll
+                  key={pt.id}
+                  animation="fade-up"
+                  delay={idx * 80}
+                  className="why-col"
+                >
+                  <div className="jubayer-card" role="article" aria-label={`${pt.title} - ${pt.description}`}>
+                    {/* Top-Right Circular Badge with Index Number */}
+                    <div className="jubayer-badge-circle">
+                      <p className="jubayer-badge-num">{pt.id}</p>
+                    </div>
+
+                    {/* Top Icon */}
+                    <div className="jubayer-icon-box">
+                      <IconComp size={38} className="jubayer-icon-svg" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="jubayer-title">{pt.title}</h3>
+
+                    {/* Description */}
+                    <p className="jubayer-desc">{pt.description}</p>
+                  </div>
+                </RevealOnScroll>
+              );
+            })}
           </div>
         </div>
       </section>

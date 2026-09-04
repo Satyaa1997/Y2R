@@ -30,7 +30,7 @@ export const PROJECT_INFO = {
     badge: "Project Approved by Canara Bank"
   },
   bankAccount: {
-    name: "Y2R Heights Pvt Ltd Collection Account for Y2R Heights",
+    name: "Y2R Heights Pvt Ltd Collection Account",
     accountNumber: "120035648899",
     bank: "Canara Bank",
     branch: "Mohanlalganj",
