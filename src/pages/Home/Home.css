@@ -3899,11 +3899,39 @@
 }
 
 .consultation-pro-actions {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.85rem;
-  flex-wrap: wrap;
+  width: 100%;
   margin-bottom: 1.25rem;
+}
+
+.consultation-pro-actions .btn-primary,
+.consultation-pro-actions .btn-secondary {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.75rem;
+  font-size: clamp(0.75rem, 0.9vw, 0.86rem);
+  font-weight: 600;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.consultation-pro-actions .btn-primary span,
+.consultation-pro-actions .btn-secondary span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .consultation-pro-footer-tags {
@@ -4176,13 +4204,20 @@
   }
 
   .consultation-pro-actions {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
     width: 100%;
   }
 
   .consultation-pro-actions .btn-primary,
   .consultation-pro-actions .btn-secondary {
     width: 100%;
+    min-width: 0;
+    height: 48px;
+    min-height: 48px;
+    padding: 0 0.65rem;
+    font-size: 0.8rem;
     justify-content: center;
   }
 }
@@ -4201,6 +4236,20 @@
   .investment-actions .btn-secondary {
     width: 100%;
     justify-content: center;
+  }
+
+  .consultation-pro-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .consultation-pro-actions .btn-primary,
+  .consultation-pro-actions .btn-secondary {
+    font-size: 0.72rem;
+    padding: 0 0.35rem;
+    height: 46px;
+    min-height: 46px;
+    gap: 4px;
   }
 
   .consultation-pro-media {

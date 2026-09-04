@@ -16,6 +16,7 @@ import {
   MapPin,
   Car,
   ShieldCheck,
+  Phone,
   X,
   Maximize2
 } from 'lucide-react';
@@ -1192,14 +1193,15 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                   {/* Action Buttons */}
                   <div className="consultation-pro-actions">
                     <Link to="/contact" className="btn-primary">
-                      <span>Connect With Advisory Team</span>
-                      <ArrowRight size={16} />
+                      <span>Connect With Advisory</span>
+                      <ArrowRight size={15} />
                     </Link>
                     <a
                       href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`}
                       className="btn-secondary"
                     >
-                      <span>Toll Free: {PROJECT_INFO.tollFree}</span>
+                      <Phone size={14} className="text-gold" />
+                      <span>{PROJECT_INFO.tollFree}</span>
                     </a>
                   </div>
 
@@ -1224,12 +1226,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                       alt="Y2R Heights Landmark Architectural Elevation"
                       className="consultation-pro-building-img"
                     />
-                    <div className="consultation-pro-img-overlay" />
-                    
-                    <div className="consultation-pro-img-badge">
-                      <span className="gold-badge">11-Storey Commercial Landmark</span>
-                      <span className="pro-badge-subtext">Kursi Road, Jankipuram Scheme</span>
-                    </div>
                   </div>
                 </div>
               </div>
