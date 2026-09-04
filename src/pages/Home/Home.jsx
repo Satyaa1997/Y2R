@@ -3,16 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import heroVideo from '../../assets/hero-bg.mp4';
 import qrImage from '../../assets/QR.png';
 import buildingImage from '../../assets/Building.JPG';
+import building1Image from '../../assets/Building1.JPG';
+
 import {
   ArrowRight,
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
   Compass,
-  Store,
-  Briefcase,
-  Home as HomeIcon,
-  UtensilsCrossed,
   MapPin,
   Car,
   ShieldCheck,
@@ -127,223 +125,134 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          2. PROJECT OVERVIEW / INTRO SPLIT LAYOUT (Expressive White Section)
+          2. PRECISION PLANNING MEETS PREMIUM DESIGN (Brochure Poster Showcase)
           ========================================================================= */}
-      <section className="section-padding theme-section-white intro-section" id="overview">
-        <ArchitecturalBg variant="home_overview" />
+      <section className="section-padding theme-section-white brochure-overview-section" id="overview">
         <div className="container-custom">
-          <div className="intro-split-grid">
-            {/* Left Half: 50% Master Architectural Elevation Showcase */}
-            <RevealOnScroll animation="fade-right" className="intro-half-media-col">
-              <TiltCard maxTilt={4} scale={1.01} className="intro-half-tilt-card">
-                <div className="intro-half-image-frame">
-                 <img 
-                   src={buildingImage}
-                     alt="Y2R Heights Master Elevation"
-                     className="intro-half-master-img"
-                   />
-                  <div className="intro-half-overlay" />
-
-                  {/* Top Floating Badge */}
-                  <div className="intro-floating-top-badge">
-                    <ShieldCheck size={16} className="text-gold" />
-                    <span>UP RERA: {PROJECT_INFO.reraNumber}</span>
-                  </div>
-
-                  {/* Bottom Floating Badge */}
-                  <div className="intro-floating-bottom-badge">
-                    <span className="live-pulse-dot" />
-                    <div className="badge-text-group">
-                      <span className="badge-main-text">7 Integrated Spatial Levels</span>
-                      <span className="badge-sub-text">Double Basement Parking • 40+ Vehicles Capacity</span>
-                    </div>
-                  </div>
-
-                  {/* Architectural Corner Brackets */}
-                  <div className="frame-corner top-left" />
-                  <div className="frame-corner top-right" />
-                  <div className="frame-corner bottom-left" />
-                  <div className="frame-corner bottom-right" />
+          <div className="brochure-overview-grid">
+            {/* Left Column: Brochure Content, Branding & 7-Feature Matrix */}
+            <RevealOnScroll animation="fade-right" className="brochure-overview-content-col">
+              <div className="brochure-content-wrapper">
+          
+                {/* Main Titles */}
+                <div className="brochure-titles-block">
+                  <h2 className="brochure-title-primary">PRECISION PLANNING</h2>
+                  <h3 className="brochure-title-secondary">MEETS PREMIUM DESIGN</h3>
                 </div>
-              </TiltCard>
+
+                {/* Uppercase Lead Narrative */}
+                <p className="brochure-lead-statement">
+                  Y2R HEIGHTS OFFERS A SEAMLESS COMMERCIAL EXPERIENCE THROUGH ITS G+8 STRUCTURE, BACKED BY SMART INFRASTRUCTURE AND REFINED PLANNING.
+                </p>
+
+                {/* Descriptive Body Paragraph */}
+                <p className="brochure-body-text">
+                  With a grand entrance lobby, dedicated Ground and Basement parking levels, and six high-speed elevators, the development ensures seamless mobility and secure access for occupants and visitors alike. Crowned with a contemporary glass façade, the project blends modern aesthetics with smart design, creating an impressive business destination that perfectly balances elegance and functionality.
+                </p>
+
+                {/* 7 Architectural Feature Icons Grid */}
+                <div className="brochure-features-grid">
+                  {/* Item 1: Studio Apartment */}
+                  <div className="brochure-feature-item">
+                    <div className="brochure-feature-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="4" y="2" width="16" height="20" rx="2" />
+                        <path d="M9 22v-4h6v4" />
+                        <path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01" />
+                      </svg>
+                    </div>
+                    <span className="brochure-feature-label">Studio<br />Apartment</span>
+                  </div>
+
+                  {/* Item 2: Food Court */}
+                  <div className="brochure-feature-item">
+                    <div className="brochure-feature-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2" />
+                        <path d="M15 2v18" />
+                        <path d="M5 2v4a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V2" />
+                        <path d="M7 8v12" />
+                      </svg>
+                    </div>
+                    <span className="brochure-feature-label">Food<br />Court</span>
+                  </div>
+
+                  {/* Item 3: Grand Entrance Lobby */}
+                  <div className="brochure-feature-item">
+                    <div className="brochure-feature-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 21h18" />
+                        <path d="M5 21V7l7-4 7 4v14" />
+                        <path d="M9 21v-6a3 3 0 0 1 6 0v6" />
+                        <path d="M9 10h.01M15 10h.01" />
+                      </svg>
+                    </div>
+                    <span className="brochure-feature-label">Grand Entrance<br />Lobby</span>
+                  </div>
+
+                  {/* Item 4: High Speed Elevators */}
+                  <div className="brochure-feature-item">
+                    <div className="brochure-feature-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" />
+                        <path d="M9 7l3-3 3 3" />
+                        <path d="M9 17l3 3 3-3" />
+                        <path d="M12 4v16" />
+                      </svg>
+                    </div>
+                    <span className="brochure-feature-label">High Speed<br />Elevators</span>
+                  </div>
+
+                  {/* Item 5: Modern Glass Façade */}
+                  <div className="brochure-feature-item">
+                    <div className="brochure-feature-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+                      </svg>
+                    </div>
+                    <span className="brochure-feature-label">Modern Glass<br />Façade</span>
+                  </div>
+
+                  {/* Item 6: Self Contained Offices */}
+                  <div className="brochure-feature-item">
+                    <div className="brochure-feature-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" />
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                      </svg>
+                    </div>
+                    <span className="brochure-feature-label">Self Contained<br />Offices</span>
+                  </div>
+
+                  {/* Item 7: Retail Spaces */}
+                  <div className="brochure-feature-item">
+                    <div className="brochure-feature-icon-box">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 9l1-6h16l1 6" />
+                        <path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0" />
+                        <path d="M4 9v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9" />
+                        <path d="M9 22v-6h6v6" />
+                      </svg>
+                    </div>
+                    <span className="brochure-feature-label">Retail<br />Spaces</span>
+                  </div>
+                </div>
+              </div>
             </RevealOnScroll>
 
-            {/* Right Half: 50% Auto-Moving Vertical Overview Details (Pauses on Hover) */}
-            <RevealOnScroll animation="fade-left" className="intro-half-content-col">
-              <div className="overview-moving-viewport">
-                <div className="overview-moving-track">
-                  {[1, 2].map((loopIdx) => (
-                    <div key={`overview-loop-${loopIdx}`} className="overview-moving-content-block">
-                      {/* Block 1: Executive Title & Vision Narrative */}
-                      <div className="overview-block-header">
-                        <div className="intro-section-eyebrow">
-                          <span className="gold-badge">Project Overview</span>
-                          <span className="overview-spec-tag">UP RERA: {PROJECT_INFO.reraNumber}</span>
-                        </div>
-
-                        <h2 className="intro-main-title">
-                          A Unified Vision for <br />
-                          <span className="gold-gradient-text">Commercial Landmark Living</span>
-                        </h2>
-
-                        <p className="intro-lead-text">
-                          Situated prominently on <strong>Kursi Road | Jankipuram Extension</strong>, Y2R Heights is a modern commercial and residential hub combining high-street retail, corporate offices, curated dining, and contemporary studio suites.
-                        </p>
-
-                        <p className="intro-sub-text">
-                          Engineered with double basement structured parking, structural glass façade, and high-speed vertical transit — delivering long-term value for investors and occupants alike.
-                        </p>
-                      </div>
-
-                      {/* Block 2: 7 Integrated Spatial Levels Breakdown */}
-                      <div className="spatial-levels-breakdown">
-                        <div className="spatial-breakdown-header">
-                          <span className="breakdown-title-tag">Architectural Vertical Zoning</span>
-                          <span className="breakdown-sub-tag">7 Integrated Levels</span>
-                        </div>
-
-                        <div className="spatial-levels-list">
-                          {/* Tier 1: Studios */}
-                          <div className="spatial-level-row">
-                            <div className="level-floor-badge">3rd–7th</div>
-                            <div className="level-details">
-                              <div className="level-title-row">
-                                <span className="level-title">Studio Apartments</span>
-                                <span className="level-category">Residential</span>
-                              </div>
-                              <p className="level-desc">Contemporary urban living suites with private balconies</p>
-                            </div>
-                          </div>
-
-                          {/* Tier 2: Food Court */}
-                          <div className="spatial-level-row">
-                            <div className="level-floor-badge">Service</div>
-                            <div className="level-details">
-                              <div className="level-title-row">
-                                <span className="level-title">Food Court & Dining</span>
-                                <span className="level-category">F&B Hub</span>
-                              </div>
-                              <p className="level-desc">Curated multi-cuisine QSRs, cafés & terrace dining</p>
-                            </div>
-                          </div>
-
-                          {/* Tier 3: Offices */}
-                          <div className="spatial-level-row">
-                            <div className="level-floor-badge">1st & 2nd</div>
-                            <div className="level-details">
-                              <div className="level-title-row">
-                                <span className="level-title">Boutique Offices</span>
-                                <span className="level-category">Commercial</span>
-                              </div>
-                              <p className="level-desc">Efficient workspaces with natural light & zero wasted space</p>
-                            </div>
-                          </div>
-
-                          {/* Tier 4: Retail */}
-                          <div className="spatial-level-row">
-                            <div className="level-floor-badge">LGF & UGF</div>
-                            <div className="level-details">
-                              <div className="level-title-row">
-                                <span className="level-title">High-Street Retail</span>
-                                <span className="level-category">Commerce</span>
-                              </div>
-                              <p className="level-desc">Double-height frontage for flagship stores & boutique brands</p>
-                            </div>
-                          </div>
-
-                          {/* Tier 5: Basement Parking */}
-                          <div className="spatial-level-row parking-tier-row">
-                            <div className="level-floor-badge basement">B1 & B2</div>
-                            <div className="level-details">
-                              <div className="level-title-row">
-                                <span className="level-title">Double Basement Parking</span>
-                                <span className="level-category">40+ Vehicles</span>
-                              </div>
-                              <p className="level-desc">Dual subterranean ramps for effortless vehicular arrival</p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="spatial-breakdown-footer">
-                          <Link to="/floor-plans" className="breakdown-explore-link">
-                            <span>Explore Full Architectural Blueprints</span>
-                            <ArrowRight size={14} />
-                          </Link>
-                        </div>
-                      </div>
-
-                      {/* Block 3: 4 Architectural Pillars Grid */}
-                      <div className="intro-pillars-grid">
-                        <div className="intro-pillar-item">
-                          <div className="pillar-icon-box">
-                            <Store size={18} className="text-gold" />
-                          </div>
-                          <div className="pillar-info">
-                            <h4 className="pillar-title">High-Street Retail</h4>
-                            <p className="pillar-desc">Double-height frontage with direct road access</p>
-                          </div>
-                        </div>
-
-                        <div className="intro-pillar-item">
-                          <div className="pillar-icon-box">
-                            <Briefcase size={18} className="text-gold" />
-                          </div>
-                          <div className="pillar-info">
-                            <h4 className="pillar-title">Boutique Offices</h4>
-                            <p className="pillar-desc">Zero-wastage layouts with ample natural light</p>
-                          </div>
-                        </div>
-
-                        <div className="intro-pillar-item">
-                          <div className="pillar-icon-box">
-                            <UtensilsCrossed size={18} className="text-gold" />
-                          </div>
-                          <div className="pillar-info">
-                            <h4 className="pillar-title">Food & Dining</h4>
-                            <p className="pillar-desc">Dedicated service level with ventilation</p>
-                          </div>
-                        </div>
-
-                        <div className="intro-pillar-item">
-                          <div className="pillar-icon-box">
-                            <HomeIcon size={18} className="text-gold" />
-                          </div>
-                          <div className="pillar-info">
-                            <h4 className="pillar-title">Studio Residences</h4>
-                            <p className="pillar-desc">Contemporary urban living on 3rd–7th floors</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Block 4: Key Stats & Action CTAs */}
-                      <div className="intro-stats-row">
-                        <div className="stat-card">
-                          <span className="stat-value">2</span>
-                          <span className="stat-label">Basement Parking Tiers</span>
-                        </div>
-                        <div className="stat-card">
-                          <span className="stat-value">7+</span>
-                          <span className="stat-label">Integrated Spatial Levels</span>
-                        </div>
-                        <div className="stat-card">
-                          <span className="stat-value">0 min</span>
-                          <span className="stat-label">Kursi Road Access</span>
-                        </div>
-                      </div>
-
-                      <div className="intro-actions">
-                        <Link to="/project" className="btn-primary">
-                          <span>Discover Full Vision</span>
-                          <ArrowRight size={16} />
-                        </Link>
-                        <Link to="/floor-plans" className="btn-secondary">
-                          <span>Explore Floor Plans</span>
-                          <ArrowRight size={16} />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+            {/* Right Column: Master Building Elevation Showcase */}
+            <RevealOnScroll animation="fade-left" className="brochure-overview-media-col">
+              <div className="brochure-elevation-card">
+                {/* Decorative Blue Sky Accent Backdrop behind building */}
+                <div className="brochure-sky-backdrop" />
+                
+                {/* Daytime Uncropped Building Image */}
+                <img
+                  src={building1Image}
+                  alt="Y2R Heights Master Architectural Elevation - Precision Planning Meets Premium Design"
+                  className="brochure-master-building-img"
+                />
               </div>
             </RevealOnScroll>
           </div>

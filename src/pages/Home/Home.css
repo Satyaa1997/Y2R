@@ -169,505 +169,224 @@
 }
 
 /* ==========================================================================
-   2. PROJECT INTRO SPLIT LAYOUT (50/50 Half Image & Half Auto-Moving Details)
+   2. PRECISION PLANNING MEETS PREMIUM DESIGN (Brochure Poster Showcase)
    ========================================================================== */
-.intro-split-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: stretch;
-  min-height: 640px;
-}
-
-/* Left Half: 50% Master Image Showcase */
-.intro-half-media-col {
-  display: flex;
-  height: 100%;
-  width: 100%;
-}
-
-.intro-half-tilt-card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
-.intro-half-image-frame {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 620px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1.5px solid rgba(175, 125, 9, 0.4);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-}
-
-.intro-half-master-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.intro-half-image-frame:hover .intro-half-master-img {
-  transform: scale(1.04);
-}
-
-.intro-half-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(14, 15, 18, 0.35) 0%, transparent 40%, rgba(14, 15, 18, 0.75) 100%);
-  pointer-events: none;
-}
-
-.intro-floating-top-badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: rgba(14, 15, 18, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(175, 125, 9, 0.5);
-  padding: 7px 14px;
-  border-radius: 4px;
-  color: #FAF8F4;
-  font-size: 0.75rem;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
-  z-index: 2;
-}
-
-.intro-floating-bottom-badge {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  background: rgba(14, 15, 18, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(175, 125, 9, 0.55);
-  padding: 11px 16px;
-  border-radius: 6px;
-  color: #FAF8F4;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  z-index: 2;
-}
-
-.badge-text-group {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.badge-main-text {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #FAF8F4;
-}
-
-.badge-sub-text {
-  font-size: 0.72rem;
-  color: #c99318;
-  font-weight: 500;
-}
-
-.live-pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #2ECC71;
-  box-shadow: 0 0 10px #2ECC71;
-  flex-shrink: 0;
-}
-
-/* Corner Brackets */
-.frame-corner {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: var(--gold);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.frame-corner.top-left {
-  top: 6px;
-  left: 6px;
-  border-top: 2px solid var(--gold);
-  border-left: 2px solid var(--gold);
-}
-
-.frame-corner.top-right {
-  top: 6px;
-  right: 6px;
-  border-top: 2px solid var(--gold);
-  border-right: 2px solid var(--gold);
-}
-
-.frame-corner.bottom-left {
-  bottom: 6px;
-  left: 6px;
-  border-bottom: 2px solid var(--gold);
-  border-left: 2px solid var(--gold);
-}
-
-.frame-corner.bottom-right {
-  bottom: 6px;
-  right: 6px;
-  border-bottom: 2px solid var(--gold);
-  border-right: 2px solid var(--gold);
-}
-
-/* Right Half: 50% Auto-Moving Details Viewport */
-.intro-half-content-col {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.overview-moving-viewport {
-  position: relative;
-  width: 100%;
-  height: 620px;
-  background: #FFFFFF;
-  border: 1.5px solid rgba(175, 125, 9, 0.32);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 4%, black 96%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 4%, black 96%, transparent 100%);
-}
-
-.overview-scroll-hint-bar {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  background: rgba(175, 125, 9, 0.12);
-  border: 1px solid rgba(175, 125, 9, 0.35);
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #af7d09;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  z-index: 10;
-  pointer-events: none;
-  backdrop-filter: blur(8px);
-}
-
-.scroll-indicator-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #af7d09;
-  animation: pulseGold 2s infinite ease-in-out;
-}
-
-@keyframes pulseGold {
-  0%, 100% { opacity: 0.4; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-.overview-moving-track {
-  display: flex;
-  flex-direction: column;
-  animation: verticalOverviewMarquee 40s linear infinite;
-  padding: 1.25rem 1.65rem;
-  cursor: default;
-}
-
-.overview-moving-viewport:hover .overview-moving-track {
-  animation-play-state: paused;
-}
-
-@keyframes verticalOverviewMarquee {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-.overview-moving-content-block {
-  display: flex;
-  flex-direction: column;
-  gap: 1.65rem;
-  padding-bottom: 2.5rem;
-}
-
-/* Spatial Levels Breakdown */
-.spatial-levels-breakdown {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
-.spatial-breakdown-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 0.45rem;
-  border-bottom: 1.5px solid rgba(175, 125, 9, 0.25);
-}
-
-.breakdown-title-tag {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #af7d09;
-  letter-spacing: 0.08em;
-}
-
-.breakdown-sub-tag {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #0E0F12;
-  background: rgba(175, 125, 9, 0.15);
-  padding: 2px 8px;
-  border-radius: 12px;
-}
-
-.spatial-levels-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.spatial-level-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.brochure-overview-section {
+  padding-top: clamp(3.5rem, 5vw, 5rem) !important;
+  padding-bottom: clamp(3.5rem, 5vw, 5rem) !important;
   background: #FAF8F4;
-  border: 1px solid rgba(175, 125, 9, 0.28);
-  border-radius: 6px;
-  padding: 0.55rem 0.75rem;
-  transition: all 200ms ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.spatial-level-row:hover {
-  background: #FFFFFF;
-  border-color: rgba(175, 125, 9, 0.7);
-  transform: translateX(4px);
-  box-shadow: 0 4px 14px rgba(175, 125, 9, 0.14);
-}
-
-.level-floor-badge {
-  background: #0E0F12;
-  color: var(--gold);
-  border: 1px solid rgba(175, 125, 9, 0.45);
-  font-size: 0.68rem;
-  font-weight: 800;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
-  min-width: 66px;
-  text-align: center;
-  flex-shrink: 0;
-  letter-spacing: 0.02em;
-}
-
-.level-floor-badge.basement {
-  background: #252830;
-  color: #FAF8F4;
-  border-color: rgba(175, 125, 9, 0.6);
-}
-
-.level-details {
-  flex: 1;
-  min-width: 0;
-}
-
-.level-title-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.4rem;
-  margin-bottom: 2px;
-}
-
-.level-title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #0E0F12;
-}
-
-.level-category {
-  font-size: 0.62rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #af7d09;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
-}
-
-.level-desc {
-  font-size: 0.72rem;
-  color: #555861;
-  line-height: 1.35;
-  margin: 0;
-}
-
-.spatial-breakdown-footer {
-  margin-top: 0.35rem;
-  padding-top: 0.5rem;
-  border-top: 1px dashed rgba(175, 125, 9, 0.3);
-  text-align: center;
-}
-
-.breakdown-explore-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--gold-dark);
-  text-decoration: none;
-  transition: all 200ms ease;
-}
-
-.breakdown-explore-link:hover {
-  color: var(--gold);
-  gap: 9px;
-}
-
-.intro-pillars-grid {
+.brochure-overview-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.95rem;
-  margin-bottom: 1.85rem;
+  grid-template-columns: 0.95fr 1.15fr;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
 }
 
-.intro-pillar-item {
+/* Left Column: Content Wrapper */
+.brochure-overview-content-col {
+  width: 100%;
+}
+
+.brochure-content-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
-  background: #FFFFFF;
-  border: 1.5px solid rgba(175, 125, 9, 0.28);
-  border-left: 3.5px solid var(--gold);
-  border-radius: 6px;
-  padding: 12px 14px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-  transition: all 250ms ease;
+  text-align: left;
 }
 
-.intro-pillar-item:hover {
-  background: #FFFFFF;
-  border-color: var(--gold);
-  border-left-color: var(--gold-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(175, 125, 9, 0.18);
+/* Brand Logo Header */
+.brochure-brand-header {
+  margin-bottom: 1.25rem;
 }
 
-.pillar-icon-box {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  background: rgba(175, 125, 9, 0.1);
-  border: 1px solid rgba(175, 125, 9, 0.35);
+.brochure-brand-logo {
+  width: 90px;
+  height: auto;
+  max-height: 90px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(175, 125, 9, 0.2));
+}
+
+/* Main Titles */
+.brochure-titles-block {
+  margin-bottom: 1.25rem;
+}
+
+.brochure-title-primary {
+  font-size: clamp(1.65rem, 2.5vw, 2.4rem);
+  font-weight: 800;
+  color: #111112;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brochure-title-secondary {
+  font-size: clamp(1.4rem, 2.1vw, 2rem);
+  font-weight: 600;
+  font-style: normal;
+  color: #af7d09;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  margin: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Uppercase Lead Statement */
+.brochure-lead-statement {
+  font-size: clamp(0.92rem, 1vw, 0.9rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #111827;
+  line-height: 1.55;
+  margin: 0 0 1.1rem 0;
+  letter-spacing: 0.01em;
+}
+
+/* Descriptive Body Copy */
+.brochure-body-text {
+  font-size: clamp(0.94rem, 0.95vw, 0.98rem);
+  font-weight: 400;
+  color: #2c333d;
+  line-height: 1.88;
+  margin: 0 0 2rem 0;
+}
+
+/* 7 Architectural Feature Icons Grid */
+.brochure-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem 1rem;
+  width: 100%;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(175, 125, 9, 0.18);
+}
+
+.brochure-feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 8px;
+}
+
+.brochure-feature-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(175, 125, 9, 0.08);
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   color: #af7d09;
+  transition: all 250ms ease;
+  flex-shrink: 0;
 }
 
-.pillar-info {
-  flex: 1;
+.brochure-feature-item:hover .brochure-feature-icon-box {
+  background: #af7d09;
+  color: #FFFFFF;
+  border-color: #af7d09;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(175, 125, 9, 0.28);
 }
 
-.pillar-title {
-  font-size: 0.92rem;
+.brochure-feature-label {
+  font-size: 0.72rem;
   font-weight: 700;
-  color: #0A0B0D;
-  margin-bottom: 2px;
+  color: #1F2937;
   line-height: 1.25;
 }
 
-.pillar-desc {
-  font-size: 0.76rem;
-  color: #4A4842;
-  line-height: 1.4;
-  font-weight: 450;
-}
-
-.intro-lead-text {
-  font-size: 1.15rem;
-  color: #0A0B0D;
-  line-height: 1.65;
-  margin-bottom: 0.85rem;
-  font-weight: 600;
-}
-
-.intro-sub-text {
-  font-size: 0.92rem;
-  line-height: 1.7;
-  color: #38352F;
-  font-weight: 450;
-  margin-bottom: 1.65rem;
-}
-
-.intro-stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
-  align-items: stretch;
-}
-
-.stat-card {
-  background: #FAF8F4;
-  border: 1.5px solid rgba(175, 125, 9, 0.28);
-  border-top: 3px solid var(--gold);
-  padding: 1rem 0.85rem;
-  border-radius: 6px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+/* Right Column: Master Elevation Showcase */
+.brochure-overview-media-col {
+  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  height: 100%;
-  transition: all 250ms ease;
-  text-align: center;
 }
 
-.stat-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--gold);
-  box-shadow: 0 8px 22px rgba(175, 125, 9, 0.16);
-}
-
-.stat-value {
-  display: block;
-  font-size: 1.85rem;
-  font-weight: 800;
-  color: #af7d09;
-  line-height: 1.1;
-  margin-bottom: 4px;
-}
-
-.stat-label {
-  display: block;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #111112;
-  font-weight: 700;
-}
-
-.intro-actions {
+.brochure-elevation-card {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: visible;
+}
+
+/* Blue Geometric Backdrop */
+.brochure-sky-backdrop {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  width: 96%;
+  height: 82%;
+  background: linear-gradient(145deg, #1d4b88 0%, #295ea5 100%);
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: 0 20px 48px rgba(29, 75, 136, 0.28);
+}
+
+/* Daytime Building Image */
+.brochure-master-building-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  max-height: 740px;
+  min-height: 520px;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.18));
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brochure-elevation-card:hover .brochure-master-building-img {
+  transform: scale(1.02);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .brochure-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .brochure-overview-media-col {
+    order: -1;
+  }
+
+  .brochure-features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .brochure-title-primary,
+  .brochure-title-secondary {
+    white-space: normal;
+  }
+
+  .brochure-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 0.75rem;
+  }
+
+  .brochure-brand-logo {
+    width: 75px;
+  }
 }
 
 /* ==========================================================================
@@ -3751,23 +3470,58 @@
 }
 
 @media (max-width: 992px) {
+  .intro-section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 5rem !important;
+    margin-bottom: 2rem !important;
+  }
+
   .intro-split-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
     min-height: auto;
+    height: auto;
+    margin-bottom: 2.5rem;
   }
   
   .intro-half-image-frame {
-    min-height: 380px;
-    height: 380px;
+    max-width: 440px;
+    height: 550px;
+    min-height: 550px;
+    margin: 0 auto;
   }
 
   .overview-moving-viewport {
-    height: 520px;
+    min-height: 480px;
+    height: 480px;
   }
 }
 
 @media (max-width: 640px) {
+  .intro-section {
+    padding-top: 2.5rem !important;
+    padding-bottom: 4rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .intro-split-grid {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .intro-half-image-frame {
+    width: 100%;
+    max-width: 360px;
+    height: 450px;
+    min-height: 450px;
+    margin: 0 auto;
+  }
+
+  .overview-moving-viewport {
+    min-height: 380px;
+    height: 380px;
+  }
+
   .project-highlights-popup {
     top: calc(var(--header-height, 70px) + 0.75rem);
     bottom: auto;
@@ -3791,7 +3545,9 @@
    11. DIRECT CONSULTATION (PROFESSIONAL 50/50 COMPACT CARD ON WHITE BACKGROUND)
    ========================================================================== */
 .enquiry-section {
-  padding: clamp(2.5rem, 4vw, 3.5rem) 0;
+  padding-top: clamp(3rem, 5vw, 4.5rem) !important;
+  padding-bottom: clamp(4.5rem, 6.5vw, 6rem) !important;
+  margin-bottom: 2rem;
 }
 
 .consultation-pro-card {
@@ -3801,6 +3557,7 @@
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(175, 125, 9, 0.05);
   position: relative;
+  margin-bottom: 2rem;
 }
 
 .consultation-pro-grid {
