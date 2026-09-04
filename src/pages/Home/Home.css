@@ -312,6 +312,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .brochure-elevation-card {
@@ -321,21 +322,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: visible;
+  padding: 0;
 }
 
 /* Blue Geometric Backdrop */
 .brochure-sky-backdrop {
   position: absolute;
-  top: 5%;
-  left: 2%;
-  width: 96%;
-  height: 82%;
-  background: linear-gradient(145deg, #1d4b88 0%, #295ea5 100%);
-  border-radius: 10px;
+  top: 6%;
+  left: 3%;
+  width: 94%;
+  height: 84%;
+  background: linear-gradient(145deg, #163e72 0%, #265ca0 100%);
+  border-radius: 14px;
   z-index: 1;
-  box-shadow: 0 20px 48px rgba(29, 75, 136, 0.28);
+  box-shadow: 0 20px 48px rgba(22, 62, 114, 0.28);
 }
 
 /* Daytime Building Image */
@@ -345,9 +347,8 @@
   width: 100%;
   height: auto;
   max-height: 740px;
-  min-height: 520px;
   object-fit: contain;
-  object-position: center center;
+  object-position: center bottom;
   display: block;
   filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.18));
   transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -361,11 +362,22 @@
 @media (max-width: 992px) {
   .brochure-overview-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .brochure-overview-media-col {
     order: -1;
+    width: 100%;
+  }
+
+  .brochure-elevation-card {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .brochure-master-building-img {
+    max-height: 440px;
+    min-height: unset;
   }
 
   .brochure-features-grid {
@@ -374,14 +386,60 @@
 }
 
 @media (max-width: 640px) {
-  .brochure-title-primary,
-  .brochure-title-secondary {
+  .brochure-overview-grid {
+    gap: 2rem;
+  }
+
+  .brochure-title-primary {
+    font-size: clamp(1.45rem, 5.8vw, 1.85rem);
     white-space: normal;
+    line-height: 1.2;
+  }
+
+  .brochure-title-secondary {
+    font-size: clamp(1.2rem, 4.8vw, 1.55rem);
+    white-space: normal;
+    line-height: 1.2;
+    margin-top: 4px;
+  }
+
+  .brochure-lead-statement {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+  }
+
+  .brochure-body-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .brochure-elevation-card {
+    max-width: 340px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .brochure-sky-backdrop {
+    top: 5%;
+    left: 4%;
+    width: 92%;
+    height: 85%;
+    border-radius: 12px;
+  }
+
+  .brochure-master-building-img {
+    width: 100%;
+    max-height: 330px;
+    min-height: unset;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.2));
   }
 
   .brochure-features-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem 0.75rem;
+    gap: 1.15rem 0.75rem;
   }
 
   .brochure-brand-logo {
@@ -1152,22 +1210,55 @@
 }
 
 /* ==========================================================================
-   7. AMENITIES GRID (EQUAL HEIGHTS)
-/* Continuous Right-to-Left Amenities Moving Carousel (4 Desktop, 1 Mobile) */
+/* ==========================================================================
+   7. AMENITIES GRID & CONTINUOUS MARQUEE (ULTRA-LUXURY ARCHITECTURAL)
+   ========================================================================== */
+.amenities-quick-specs-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+  margin: -0.75rem auto 2.25rem;
+  max-width: 960px;
+}
+
+.amenity-spec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(175, 125, 9, 0.3);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: all 250ms ease;
+}
+
+.amenity-spec-pill:hover {
+  border-color: #af7d09;
+  background: #FAF8F4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(175, 125, 9, 0.15);
+}
+
 .amenities-marquee-container {
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding: 1.5rem 0 2rem;
-  mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+  padding: 1.5rem 0 2.5rem;
+  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
 }
 
 .amenities-marquee-track {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.6rem;
   width: max-content;
-  animation: amenitiesMarqueeRightToLeft 30s linear infinite;
+  animation: amenitiesMarqueeRightToLeft 32s linear infinite;
   will-change: transform;
 }
 
@@ -1176,10 +1267,10 @@
 }
 
 .amenity-marquee-item {
-  flex: 0 0 calc((min(100vw, 1240px) - 4.5rem) / 4);
-  width: calc((min(100vw, 1240px) - 4.5rem) / 4);
-  min-width: 275px;
-  max-width: 320px;
+  flex: 0 0 calc((min(100vw, 1240px) - 4.8rem) / 4);
+  width: calc((min(100vw, 1240px) - 4.8rem) / 4);
+  min-width: 285px;
+  max-width: 325px;
   display: flex;
 }
 
@@ -1188,7 +1279,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-50% - 0.75rem));
+    transform: translateX(calc(-50% - 0.8rem));
   }
 }
 
@@ -1196,12 +1287,22 @@
   .amenity-marquee-item {
     flex: 0 0 calc((100vw - 5rem) / 2);
     width: calc((100vw - 5rem) / 2);
-    min-width: 260px;
+    min-width: 270px;
     max-width: 400px;
   }
 }
 
 @media (max-width: 640px) {
+  .amenities-quick-specs-row {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .amenity-spec-pill {
+    font-size: 0.72rem;
+    padding: 5px 10px;
+  }
+
   .amenity-marquee-item {
     flex: 0 0 calc(100vw - 3.5rem);
     width: calc(100vw - 3.5rem);
@@ -1211,23 +1312,23 @@
 }
 
 /* ==========================================================================
-   7. AMENITIES UIVERSE CARD STYLE (With Related Online Images & Glow)
+   AMENITIES ULTRA-LUXURY ARCHITECTURAL CARD STYLE
    ========================================================================== */
 .amenity-uiverse-card {
   --card-bg: #FFFFFF;
   --card-accent: #af7d09;
-  --card-text: #1e293b;
-  --card-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.08);
+  --card-text: #0F172A;
+  --card-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.07);
 
   width: 100%;
-  min-height: 330px;
+  min-height: 380px;
   background: var(--card-bg);
-  border-radius: 18px;
+  border-radius: 16px;
   position: relative;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--card-shadow);
-  border: 1.5px solid rgba(175, 125, 9, 0.25);
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
   font-family: inherit;
   display: flex;
   flex-direction: column;
@@ -1238,14 +1339,14 @@
   inset: 0;
   background: linear-gradient(
     120deg,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 0) 60%
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0) 65%
   );
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  z-index: 3;
+  z-index: 6;
 }
 
 .amenity-uiverse-card .card__glow {
@@ -1253,52 +1354,22 @@
   inset: -10px;
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(175, 125, 9, 0.3) 0%,
+    rgba(175, 125, 9, 0.35) 0%,
     rgba(175, 125, 9, 0) 70%
   );
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
   z-index: 1;
 }
 
-.amenity-uiverse-card .card__content {
-  padding: 1.2em;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75em;
-  position: relative;
-  z-index: 2;
-  flex: 1;
-}
-
-.amenity-uiverse-card .card__badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: #af7d09;
-  color: white;
-  padding: 0.25em 0.65em;
-  border-radius: 999px;
-  font-size: 0.7em;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  transform: scale(0.85);
-  opacity: 0;
-  transition: all 0.4s ease 0.1s;
-  box-shadow: 0 4px 10px rgba(175, 125, 9, 0.4);
-  z-index: 5;
-}
-
+/* Card Image Area */
 .amenity-uiverse-card .card__image {
   width: 100%;
-  height: 130px;
-  border-radius: 12px;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 160px;
   position: relative;
   overflow: hidden;
-  background: #15161A;
+  background: #0B0D14;
 }
 
 .amenity-uiverse-card .card__img-el {
@@ -1308,48 +1379,117 @@
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.amenity-uiverse-card .card__image::after {
-  content: "";
+.amenity-uiverse-card .card__img-gradient {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.15) 0%,
-      transparent 35%
-    ),
-    repeating-linear-gradient(
-      45deg,
-      rgba(175, 125, 9, 0.1) 0px,
-      rgba(175, 125, 9, 0.1) 2px,
-      transparent 2px,
-      transparent 4px
-    );
-  opacity: 0.4;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.25) 0%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
   pointer-events: none;
+}
+
+/* Floating Top-Left Luxury Icon */
+.amenity-uiverse-card .card__icon-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 34px;
+  height: 34px;
+  background: rgba(14, 17, 26, 0.88);
+  border: 1.5px solid rgba(175, 125, 9, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffd978;
+  z-index: 4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* Floating Top-Right Spec Badge */
+.amenity-uiverse-card .card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #8a6104 0%, #af7d09 100%);
+  border: 1px solid rgba(255, 217, 120, 0.5);
+  color: #FFFFFF;
+  padding: 0.3em 0.75em;
+  border-radius: 6px;
+  font-size: 0.68em;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  z-index: 4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+/* Card Content Area */
+.amenity-uiverse-card .card__content {
+  padding: 1.25rem 1.25rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.amenity-uiverse-card .card__tag-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.15rem;
+}
+
+.amenity-uiverse-card .card__tag-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8a6104;
+  background: rgba(175, 125, 9, 0.1);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.amenity-uiverse-card .card__spec-code {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #94A3B8;
+  letter-spacing: 0.06em;
+  font-family: monospace;
 }
 
 .amenity-uiverse-card .card__text {
   display: flex;
   flex-direction: column;
-  gap: 0.3em;
+  gap: 0.35rem;
   flex: 1;
 }
 
 .amenity-uiverse-card .card__title {
   color: var(--card-text);
-  font-size: 1.05em;
+  font-size: 1.12rem;
   margin: 0;
   font-weight: 700;
   transition: all 0.3s ease;
   font-family: var(--font-display);
+  line-height: 1.3;
 }
 
 .amenity-uiverse-card .card__description {
-  color: #64748b;
-  font-size: 0.78em;
-  line-height: 1.45;
+  color: #64748B;
+  font-size: 0.82rem;
+  line-height: 1.48;
   margin: 0;
-  opacity: 0.85;
   transition: all 0.3s ease;
 }
 
@@ -1358,89 +1498,132 @@
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
-  padding-top: 0.5em;
-  border-top: 1px solid rgba(175, 125, 9, 0.15);
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(175, 125, 9, 0.16);
 }
 
-.amenity-uiverse-card .card__price {
-  color: #af7d09;
+.amenity-uiverse-card .card__status-dot-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.amenity-uiverse-card .card__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.amenity-uiverse-card .card__status-text {
+  font-size: 0.72rem;
   font-weight: 700;
-  font-size: 0.78em;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  transition: all 0.3s ease;
+  color: #475569;
+  letter-spacing: 0.04em;
 }
 
 .amenity-uiverse-card .card__button {
-  width: 28px;
-  height: 28px;
-  background: var(--card-accent);
+  width: 32px;
+  height: 32px;
+  background: rgba(175, 125, 9, 0.12);
+  border: 1.5px solid rgba(175, 125, 9, 0.45);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #8a6104;
   cursor: pointer;
-  transition: all 0.3s ease;
-  transform: scale(0.9);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Bottom Progress Accent */
+.amenity-uiverse-card .card__bottom-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #af7d09 0%, #ffd978 100%);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
 }
 
 /* Hover Effects */
 .amenity-uiverse-card:hover {
   transform: translateY(-8px);
   box-shadow:
-    0 20px 30px -5px rgba(0, 0, 0, 0.12),
-    0 10px 15px -5px rgba(175, 125, 9, 0.1);
-  border-color: rgba(175, 125, 9, 0.6);
+    0 22px 42px -6px rgba(0, 0, 0, 0.11),
+    0 12px 20px -6px rgba(175, 125, 9, 0.16);
+  border-color: rgba(175, 125, 9, 0.65);
 }
 
 .amenity-uiverse-card:hover .card__shine {
   opacity: 1;
-  animation: shine 3s infinite;
+  animation: shine 2.5s infinite;
 }
 
 .amenity-uiverse-card:hover .card__glow {
   opacity: 1;
 }
 
-.amenity-uiverse-card:hover .card__badge {
-  transform: scale(1);
-  opacity: 1;
-  z-index: 10;
-}
-
-.amenity-uiverse-card:hover .card__image {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
-}
-
 .amenity-uiverse-card:hover .card__img-el {
   transform: scale(1.08);
 }
 
+.amenity-uiverse-card:hover .card__icon-badge {
+  background: #af7d09;
+  border-color: #ffd978;
+  color: #FFFFFF;
+  transform: scale(1.08);
+  box-shadow: 0 0 16px rgba(175, 125, 9, 0.5);
+}
+
 .amenity-uiverse-card:hover .card__title {
-  color: var(--card-accent);
-  transform: translateX(2px);
-}
-
-.amenity-uiverse-card:hover .card__description {
-  opacity: 1;
-  transform: translateX(2px);
-}
-
-.amenity-uiverse-card:hover .card__price {
-  color: #735103;
+  color: #8a6104;
   transform: translateX(2px);
 }
 
 .amenity-uiverse-card:hover .card__button {
-  transform: scale(1);
-  box-shadow: 0 0 0 4px rgba(175, 125, 9, 0.25);
-  background: #735103;
+  background: #af7d09;
+  border-color: #ffd978;
+  color: #FFFFFF;
+  transform: scale(1.12);
+  box-shadow: 0 0 16px rgba(175, 125, 9, 0.45);
 }
 
 .amenity-uiverse-card:hover .card__button svg {
   animation: pulse 1.5s infinite;
+}
+
+.amenity-uiverse-card:hover .card__bottom-accent {
+  width: 100%;
+}
+
+/* Active State */
+.amenity-uiverse-card:active {
+  transform: translateY(-3px) scale(0.98);
+}
+
+@keyframes shine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Active State */
@@ -1608,9 +1791,9 @@
 .parking-icon-wrap {
   width: 52px;
   height: 52px;
-  border-radius: 4px;
-  background: rgba(175, 125, 9, 0.15);
-  border: 1.5px solid var(--gold);
+  border-radius: 6px;
+  background: rgba(175, 125, 9, 0.12);
+  border: 1.5px solid rgba(175, 125, 9, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1621,14 +1804,14 @@
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  color: #8a6104;
 }
 
 .parking-capacity {
   font-family: var(--font-display);
   font-size: 1.7rem;
-  color: #FFFFFF;
+  color: #0F172A;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -1636,7 +1819,7 @@
 .parking-desc {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: #C8C5BF;
+  color: #475569;
   margin-bottom: 1.5rem;
   font-weight: 400;
   flex: 1;
@@ -1654,13 +1837,31 @@
 }
 
 .parking-spec-tag {
-  font-size: 0.75rem;
-  color: #FAF8F4;
-  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.78rem;
+  color: #8a6104;
+  background: rgba(175, 125, 9, 0.08);
   border: 1px solid rgba(175, 125, 9, 0.35);
   padding: 4px 10px;
   border-radius: 4px;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.parking-slab-inner {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(175, 125, 9, 0.3);
+  border-radius: 12px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 300ms ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.parking-slab-inner:hover {
+  border-color: #af7d09;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(175, 125, 9, 0.14);
 }
 
 /* ==========================================================================
@@ -3211,17 +3412,38 @@
   color: #BDBAB0;
 }
 
-.theme-section-dark .parking-slab-inner {
-  background: #15161A;
-  border-color: rgba(175, 125, 9, 0.4);
+.theme-section-dark .parking-slab-inner,
+.parking-uiverse-card .parking-card-content {
+  background: #141724;
+  border-color: rgba(175, 125, 9, 0.35);
 }
 
-.theme-section-dark .parking-capacity {
+.theme-section-dark .parking-icon-wrap,
+.parking-uiverse-card .parking-icon-wrap {
+  background: rgba(175, 125, 9, 0.2);
+  border-color: rgba(175, 125, 9, 0.55);
+}
+
+.theme-section-dark .parking-level-badge,
+.parking-uiverse-card .parking-level-badge {
+  color: #ffd978;
+}
+
+.theme-section-dark .parking-capacity,
+.parking-uiverse-card .parking-capacity {
   color: #FFFFFF;
 }
 
-.theme-section-dark .parking-desc {
-  color: #BDBAB0;
+.theme-section-dark .parking-desc,
+.parking-uiverse-card .parking-desc {
+  color: #CBD5E1;
+}
+
+.theme-section-dark .parking-spec-tag,
+.parking-uiverse-card .parking-spec-tag {
+  color: #ffd978;
+  background: rgba(175, 125, 9, 0.18);
+  border: 1px solid rgba(175, 125, 9, 0.45);
 }
 
 .theme-section-dark .matrix-card {

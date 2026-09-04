@@ -16,7 +16,13 @@ import {
   ShieldCheck,
   Phone,
   X,
-  Maximize2
+  Maximize2,
+  DoorOpen,
+  Building2,
+  MoveUp,
+  Camera,
+  Zap,
+  Sparkles
 } from 'lucide-react';
 import {
   PROJECT_INFO,
@@ -33,6 +39,17 @@ import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import Commercial3DAnimation from '../../components/Commercial3DAnimation/Commercial3DAnimation';
 import './Home.css';
+
+const AMENITY_ICONS_MAP = {
+  DoorOpen,
+  Building2,
+  MoveUp,
+  Car,
+  ShieldCheck,
+  Camera,
+  Zap,
+  Sparkles
+};
 
 export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
   const navigate = useNavigate();
@@ -616,18 +633,40 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             align="center"
             theme="light"
           />
+
+          {/* Luxury Quick Specification Highlights Pill Row */}
+          <div className="amenities-quick-specs-row">
+            <span className="amenity-spec-pill">
+              <Sparkles size={13} className="text-gold" />
+              <span>G+8 High-Rise Standards</span>
+            </span>
+            <span className="amenity-spec-pill">
+              <MoveUp size={13} className="text-gold" />
+              <span>6 High-Speed Vertical Elevators</span>
+            </span>
+            <span className="amenity-spec-pill">
+              <Car size={13} className="text-gold" />
+              <span>Double Basement Structured Parking</span>
+            </span>
+            <span className="amenity-spec-pill">
+              <ShieldCheck size={13} className="text-gold" />
+              <span>24/7 CCTV & Electronic Surveillance</span>
+            </span>
+          </div>
         </div>
 
         {/* Continuous Right-to-Left Moving Marquee Track */}
         <div className="amenities-marquee-container">
           <div className="amenities-marquee-track">
-            {[...AMENITIES_LIST, ...AMENITIES_LIST].map((amenity, idx) => (
-              <div key={`${amenity.title}-${idx}`} className="amenity-marquee-item">
-                <div className="amenity-uiverse-card">
-                  <div className="card__shine" />
-                  <div className="card__glow" />
-                  <div className="card__content">
-                    <div className="card__badge">{amenity.badge || 'PREMIUM'}</div>
+            {[...AMENITIES_LIST, ...AMENITIES_LIST].map((amenity, idx) => {
+              const AmenityIcon = AMENITY_ICONS_MAP[amenity.icon] || Sparkles;
+              return (
+                <div key={`${amenity.title}-${idx}`} className="amenity-marquee-item">
+                  <div className="amenity-uiverse-card">
+                    <div className="card__shine" />
+                    <div className="card__glow" />
+
+                    {/* Top Architectural Media Frame */}
                     <div className="card__image">
                       <img
                         src={amenity.image}
@@ -635,21 +674,46 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                         className="card__img-el"
                         loading="lazy"
                       />
+                      <div className="card__img-gradient" />
+
+                      {/* Floating Top-Left Luxury Icon */}
+                      <div className="card__icon-badge">
+                        <AmenityIcon size={16} />
+                      </div>
+
+                      {/* Floating Top-Right Spec Badge */}
+                      <div className="card__badge">{amenity.badge || 'PREMIUM'}</div>
                     </div>
-                    <div className="card__text">
-                      <h4 className="card__title">{amenity.title}</h4>
-                      <p className="card__description">{amenity.description}</p>
-                    </div>
-                    <div className="card__footer">
-                      <div className="card__price">{amenity.tag || 'Y2R Spec'}</div>
-                      <div className="card__button">
-                        <ArrowUpRight size={14} />
+
+                    {/* Card Content & Details */}
+                    <div className="card__content">
+                      <div className="card__tag-row">
+                        <span className="card__tag-pill">{amenity.tag || 'Infrastructure'}</span>
+                        <span className="card__spec-code">Y2R SPEC</span>
+                      </div>
+
+                      <div className="card__text">
+                        <h4 className="card__title">{amenity.title}</h4>
+                        <p className="card__description">{amenity.description}</p>
+                      </div>
+
+                      <div className="card__footer">
+                        <span className="card__status-dot-wrap">
+                          <span className="card__status-dot" />
+                          <span className="card__status-text">Fully Integrated</span>
+                        </span>
+                        <div className="card__button" aria-label={`Explore ${amenity.title}`}>
+                          <ArrowUpRight size={14} />
+                        </div>
                       </div>
                     </div>
+
+                    {/* Bottom Golden Progress Accent Line */}
+                    <div className="card__bottom-accent" />
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

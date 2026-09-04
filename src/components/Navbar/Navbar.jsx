@@ -5,7 +5,6 @@ import {
   X,
   PhoneCall,
   ArrowUpRight,
-  ChevronDown,
   Download
 } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
@@ -51,8 +50,6 @@ const XTwitterIcon = () => (
 export default function Navbar({ onOpenBrochure }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const [mobileExpanded, setMobileExpanded] = useState({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,30 +72,6 @@ export default function Navbar({ onOpenBrochure }) {
       document.body.style.overflow = 'unset';
     }
   }, [isMobileMenuOpen]);
-
-  const toggleMobileGroup = (group) => {
-    setMobileExpanded((prev) => ({ ...prev, [group]: !prev[group] }));
-  };
-
-  const navGroups = [
-    {
-      name: 'Location',
-      path: '/location',
-      items: [
-        { title: 'Kursi Road Advantage', subtitle: 'Near Sector-J Extension', path: '/location' },
-        { title: 'Catchment Corridors', subtitle: 'Sitapur Rd & Ring Road', path: '/location' }
-      ]
-    },
-    {
-      name: 'Project',
-      path: '/project',
-      items: [
-        { title: 'Project Overview', subtitle: 'Architecture & Vision', path: '/project' },
-        { title: 'Visual Gallery', subtitle: 'High-Res Photo Showcase', path: '/gallery' },
-        { title: 'World-Class Amenities', subtitle: 'Parking, Elevators, Security', path: '/project' }
-      ]
-    }
-  ];
 
   return (
     <header className={`navbar-header ${isScrolled ? 'is-scrolled' : ''}`}>
@@ -178,45 +151,23 @@ export default function Navbar({ onOpenBrochure }) {
               <span className="nav-indicator" />
             </NavLink>
 
-            {/* Location & Project Dropdowns */}
-            {navGroups.map((group) => (
-              <div
-                key={group.name}
-                className={`nav-dropdown-wrapper ${activeDropdown === group.name ? 'is-open' : ''}`}
-                onMouseEnter={() => setActiveDropdown(group.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link
-                  to={group.path}
-                  className="nav-item nav-dropdown-trigger"
-                  onClick={() => setActiveDropdown(null)}
-                >
-                  <span>{group.name}</span>
-                  {group.badge && <span className="nav-hot-badge">{group.badge}</span>}
-                  <ChevronDown size={14} className="dropdown-arrow-icon" />
-                  <span className="nav-indicator" />
-                </Link>
+            {/* Location Direct Link (No Dropdown) */}
+            <NavLink
+              to="/location"
+              className={({ isActive }) => `nav-item ${isActive ? 'nav-item-active' : ''}`}
+            >
+              Location
+              <span className="nav-indicator" />
+            </NavLink>
 
-                {/* Portal-Style Dropdown Flyout */}
-                <div className="nav-dropdown-menu">
-                  <div className="nav-dropdown-grid">
-                    {group.items.map((item) => (
-                      <Link
-                        key={item.title}
-                        to={item.path}
-                        className="dropdown-menu-item"
-                        onClick={() => setActiveDropdown(null)}
-                      >
-                        <div className="menu-item-text">
-                          <span className="menu-item-title">{item.title}</span>
-                          <span className="menu-item-subtitle">{item.subtitle}</span>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+            {/* Project Direct Link (No Dropdown) */}
+            <NavLink
+              to="/project"
+              className={({ isActive }) => `nav-item ${isActive ? 'nav-item-active' : ''}`}
+            >
+              Project
+              <span className="nav-indicator" />
+            </NavLink>
 
             <NavLink
               to="/contact"
@@ -303,40 +254,29 @@ export default function Navbar({ onOpenBrochure }) {
               <ArrowUpRight size={18} className="mobile-link-arrow" />
             </NavLink>
 
-            {/* Location & Project Groups */}
-            {navGroups.map((group) => {
-              const isExpanded = mobileExpanded[group.name];
-              return (
-                <div key={group.name} className="mobile-nav-group">
-                  <div
-                    className="mobile-group-header"
-                    onClick={() => toggleMobileGroup(group.name)}
-                  >
-                    <span className="mobile-link-name">{group.name}</span>
-                    <ChevronDown
-                      size={18}
-                      className={`mobile-chevron ${isExpanded ? 'rotated' : ''}`}
-                    />
-                  </div>
+            {/* Location Direct Link */}
+            <NavLink
+              to="/location"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={({ isActive }) =>
+                `mobile-nav-item ${isActive ? 'mobile-nav-item-active' : ''}`
+              }
+            >
+              <span className="mobile-link-name">Location</span>
+              <ArrowUpRight size={18} className="mobile-link-arrow" />
+            </NavLink>
 
-                  {isExpanded && (
-                    <div className="mobile-group-submenu">
-                      {group.items.map((sub) => (
-                        <Link
-                          key={sub.title}
-                          to={sub.path}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="mobile-submenu-item"
-                        >
-                          <span className="mobile-sub-title">{sub.title}</span>
-                          <span className="mobile-sub-desc">{sub.subtitle}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+            {/* Project Direct Link */}
+            <NavLink
+              to="/project"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={({ isActive }) =>
+                `mobile-nav-item ${isActive ? 'mobile-nav-item-active' : ''}`
+              }
+            >
+              <span className="mobile-link-name">Project</span>
+              <ArrowUpRight size={18} className="mobile-link-arrow" />
+            </NavLink>
 
             <NavLink
               to="/contact"
