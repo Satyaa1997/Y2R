@@ -240,20 +240,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           ========================================================================= */}
       <section className="section-padding theme-section-white brochure-overview-section" id="overview">
         <div className="container-custom">
-          {/* Top Continuous Marquee / Ticker (Right to Left) */}
-          <div className="brochure-ticker-ribbon" aria-label="Key Architectural Highlights">
-            <div className="brochure-ticker-track">
-              {[...BROCHURE_FEATURES, ...BROCHURE_FEATURES, ...BROCHURE_FEATURES, ...BROCHURE_FEATURES].map((item, idx) => (
-                <div key={`brochure-ticker-${idx}`} className="brochure-ticker-item">
-                  <div className="brochure-ticker-icon-box">
-                    {item.icon}
-                  </div>
-                  <span className="brochure-ticker-label">{item.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
           <div className="brochure-overview-grid">
             {/* Left Column: Brochure Content & Branding */}
             <RevealOnScroll animation="fade-right" className="brochure-overview-content-col">
@@ -291,6 +277,20 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                 />
               </div>
             </RevealOnScroll>
+          </div>
+
+          {/* Bottom Continuous Marquee / Ticker (Right to Left) */}
+          <div className="brochure-ticker-ribbon" aria-label="Key Architectural Highlights">
+            <div className="brochure-ticker-track">
+              {[...BROCHURE_FEATURES, ...BROCHURE_FEATURES, ...BROCHURE_FEATURES, ...BROCHURE_FEATURES].map((item, idx) => (
+                <div key={`brochure-ticker-${idx}`} className="brochure-ticker-item">
+                  <div className="brochure-ticker-icon-box">
+                    {item.icon}
+                  </div>
+                  <span className="brochure-ticker-label">{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

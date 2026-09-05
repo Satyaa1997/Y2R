@@ -359,7 +359,8 @@
   overflow: hidden;
   width: 100%;
   padding: 0.85rem 0;
-  margin-bottom: 2.75rem;
+  margin-top: 3.25rem;
+  margin-bottom: 0;
   background: linear-gradient(90deg, rgba(175, 125, 9, 0.04) 0%, rgba(175, 125, 9, 0.09) 50%, rgba(175, 125, 9, 0.04) 100%);
   border-top: 1px solid rgba(175, 125, 9, 0.22);
   border-bottom: 1px solid rgba(175, 125, 9, 0.22);
@@ -508,13 +509,15 @@
   }
 
   .brochure-ticker-ribbon {
-    margin-bottom: 2rem;
+    margin-top: 2.25rem;
+    margin-bottom: 0;
   }
 }
 
 @media (max-width: 640px) {
   .brochure-ticker-ribbon {
-    margin-bottom: 1.5rem;
+    margin-top: 1.75rem;
+    margin-bottom: 0;
     padding: 0.6rem 0;
     border-radius: 8px;
     mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
