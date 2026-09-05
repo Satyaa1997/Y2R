@@ -351,51 +351,96 @@
   margin: 0 0 2rem 0;
 }
 
-/* 7 Architectural Feature Icons Grid */
-.brochure-features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem 1rem;
+/* ==========================================================================
+   2.1 CONTINUOUS SCROLLING ARCHITECTURAL FEATURES TICKER (RIGHT TO LEFT)
+   ========================================================================== */
+.brochure-ticker-ribbon {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  padding-top: 0.5rem;
-  border-top: 1px solid rgba(175, 125, 9, 0.18);
-}
-
-.brochure-feature-item {
+  padding: 0.85rem 0;
+  margin-bottom: 2.75rem;
+  background: linear-gradient(90deg, rgba(175, 125, 9, 0.04) 0%, rgba(175, 125, 9, 0.09) 50%, rgba(175, 125, 9, 0.04) 100%);
+  border-top: 1px solid rgba(175, 125, 9, 0.22);
+  border-bottom: 1px solid rgba(175, 125, 9, 0.22);
+  border-radius: 12px;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 8px;
+  align-items: center;
 }
 
-.brochure-feature-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: rgba(175, 125, 9, 0.08);
-  border: 1.5px solid rgba(175, 125, 9, 0.35);
+.brochure-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: max-content;
+  animation: brochureScrollLeft 32s linear infinite;
+  will-change: transform;
+}
+
+.brochure-ticker-ribbon:hover .brochure-ticker-track,
+.brochure-ticker-ribbon:focus-within .brochure-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes brochureScrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brochure-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 1.2rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(175, 125, 9, 0.25);
+  border-radius: 9999px;
+  box-shadow: 0 3px 10px rgba(175, 125, 9, 0.06);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+  cursor: default;
+}
+
+.brochure-ticker-item:hover {
+  border-color: #af7d09;
+  background: #fffdf7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(175, 125, 9, 0.18);
+}
+
+.brochure-ticker-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(175, 125, 9, 0.1);
+  border: 1px solid rgba(175, 125, 9, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #af7d09;
-  transition: all 250ms ease;
   flex-shrink: 0;
+  transition: all 0.22s ease;
 }
 
-.brochure-feature-item:hover .brochure-feature-icon-box {
+.brochure-ticker-item:hover .brochure-ticker-icon-box {
   background: #af7d09;
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: #af7d09;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(175, 125, 9, 0.28);
 }
 
-.brochure-feature-label {
-  font-size: 0.72rem;
+.brochure-ticker-label {
+  font-size: 0.85rem;
   font-weight: 700;
-  color: #1F2937;
-  line-height: 1.25;
+  color: #111827;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 /* Right Column: Master Elevation Showcase */
@@ -471,12 +516,44 @@
     min-height: unset;
   }
 
-  .brochure-features-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .brochure-ticker-ribbon {
+    margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 640px) {
+  .brochure-ticker-ribbon {
+    margin-bottom: 1.5rem;
+    padding: 0.6rem 0;
+    border-radius: 8px;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  .brochure-ticker-track {
+    gap: 0.85rem;
+    animation-duration: 24s;
+  }
+
+  .brochure-ticker-item {
+    padding: 0.42rem 0.9rem;
+    gap: 0.55rem;
+  }
+
+  .brochure-ticker-icon-box {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brochure-ticker-icon-box svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .brochure-ticker-label {
+    font-size: 0.78rem;
+  }
+
   .brochure-overview-grid {
     gap: 2rem;
   }
@@ -526,11 +603,6 @@
     min-height: unset;
     object-fit: contain;
     filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.2));
-  }
-
-  .brochure-features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.15rem 0.75rem;
   }
 
   .brochure-brand-logo {
