@@ -76,6 +76,18 @@
   --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+@media (max-width: 640px) {
+  :root {
+    --header-height: 92px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --header-height: 84px;
+  }
+}
+
 /* Base Reset & Core Document Rules */
 *, *::before, *::after {
   margin: 0;
