@@ -39,6 +39,7 @@ import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import Commercial3DAnimation from '../../components/Commercial3DAnimation/Commercial3DAnimation';
+import heroPoster from "../../assets/Building.jpg";
 import './Home.css';
 
 const AMENITY_ICONS_MAP = {
@@ -117,14 +118,14 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       >
         {/* Background Architectural Canvas & Video */}
         <div className="hero-portal-bg">
-          <video
+         <video
             ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-            poster="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2000&auto=format&fit=crop"
+            poster={heroPoster}
             className="hero-portal-video"
           >
             <source src={heroVideo} type="video/mp4" />

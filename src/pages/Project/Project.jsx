@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -33,37 +33,51 @@ import './Project.css';
 
 export default function Project({ onOpenEnquiry }) {
   const [activeSpecTab, setActiveSpecTab] = useState('structure');
+  const [heroTextFaded, setHeroTextFaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroTextFaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="project-page-root">
       {/* Page Hero with pro.jpg Background Image */}
-      <section className="page-hero-section project-hero-section theme-section-dark">
+      <section
+        className="page-hero-section project-hero-section theme-section-dark"
+        onClick={() => setHeroTextFaded((prev) => !prev)}
+      >
         <div className="project-hero-bg">
           <img
             src={proImage}
             alt="Y2R Heights Master Project"
             className="project-hero-img"
           />
-          <div className="project-hero-overlay" />
+          <div className={`project-hero-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
         <div className="container-custom page-hero-content project-hero-content">
-          <RevealOnScroll animation="fade-up">
-            <h1 className="page-hero-title">
-              Designed for Business. <br />
-              <span className="project-hero-highlight">Built for Growth.</span>
-            </h1>
-            <p className="page-hero-desc">
-              Y2R Heights brings thoughtfully planned commercial and lifestyle spaces together in one contemporary destination along the Jankipuram Extension–Kursi Road corridor.
-            </p>
-            <div className="page-hero-meta">
-              <span className="meta-item">
-                <MapPin size={16} /> Kursi Road | Jankipuram Extension, Lucknow
-              </span>
-              <span className="meta-sep">•</span>
-              <span className="meta-item">
-                <ShieldCheck size={16} /> RERA: {PROJECT_INFO.reraNumber}
-              </span>
-            </div>
-          </RevealOnScroll>
+          <div className={`project-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
+            <RevealOnScroll animation="fade-up">
+              <h1 className="page-hero-title">
+                Designed for Business. <br />
+                <span className="project-hero-highlight">Built for Growth.</span>
+              </h1>
+              <p className="page-hero-desc">
+                Y2R Heights brings thoughtfully planned commercial and lifestyle spaces together in one contemporary destination along the Jankipuram Extension–Kursi Road corridor.
+              </p>
+              <div className="page-hero-meta">
+                <span className="meta-item">
+                  <MapPin size={16} /> Kursi Road | Jankipuram Extension, Lucknow
+                </span>
+                <span className="meta-sep">•</span>
+                <span className="meta-item">
+                  <ShieldCheck size={16} /> RERA: {PROJECT_INFO.reraNumber}
+                </span>
+              </div>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 

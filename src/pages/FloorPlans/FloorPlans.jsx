@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import floorPlanVideo from '../../assets/FloorPlan.mp4';
 import {
@@ -19,6 +19,14 @@ import './FloorPlans.css';
 export default function FloorPlans({ onOpenEnquiry }) {
   const navigate = useNavigate();
   const [filter, setFilter] = useState('all');
+  const [heroTextFaded, setHeroTextFaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroTextFaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const categories = [
     { id: 'all', label: 'All 7 Levels' },
@@ -40,7 +48,10 @@ export default function FloorPlans({ onOpenEnquiry }) {
   return (
     <div className="floor-plans-page-root">
       {/* 1. HERO SECTION (CLEAR VIBRANT VIDEO BANNER) */}
-      <section className="page-hero-section floor-plans-hero-section theme-section-dark">
+      <section
+        className="page-hero-section floor-plans-hero-section theme-section-dark"
+        onClick={() => setHeroTextFaded((prev) => !prev)}
+      >
         {/* Background Architectural Video & Soft Overlay */}
         <div className="fp-hero-video-bg">
           <video
@@ -53,31 +64,33 @@ export default function FloorPlans({ onOpenEnquiry }) {
           >
             <source src={floorPlanVideo} type="video/mp4" />
           </video>
-          <div className="fp-hero-video-overlay" />
+          <div className={`fp-hero-video-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
 
         <div className="container-custom page-hero-content fp-hero-content">
-          <span className="gold-badge">Architectural Blueprints</span>
-          <h1 className="page-hero-title">
-            A Space for <br />
-            <span className="hero-title-highlight">Every Ambition.</span>
-          </h1>
-          <p className="page-hero-desc">
-            Explore the structured vertical integration of Y2R Heights across 7 dedicated spatial tiers. Click any floor to inspect detailed blueprint schematics.
-          </p>
+          <div className={`fp-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
+            <span className="gold-badge">Architectural Blueprints</span>
+            <h1 className="page-hero-title">
+              A Space for <br />
+              <span className="hero-title-highlight">Every Ambition.</span>
+            </h1>
+            <p className="page-hero-desc">
+              Explore the structured vertical integration of Y2R Heights across 7 dedicated spatial tiers. Click any floor to inspect detailed blueprint schematics.
+            </p>
 
-          <div className="fp-hero-stats-row">
-            <div className="fp-hero-stat">
-              <Layers size={16} className="text-gold" />
-              <span>7 Spatial Tiers</span>
-            </div>
-            <div className="fp-hero-stat">
-              <Car size={16} className="text-gold" />
-              <span>Double Basement Parking</span>
-            </div>
-            <div className="fp-hero-stat">
-              <ShieldCheck size={16} className="text-gold" />
-              <span>UP RERA: {PROJECT_INFO.reraNumber}</span>
+            <div className="fp-hero-stats-row">
+              <div className="fp-hero-stat">
+                <Layers size={16} className="text-gold" />
+                <span>7 Spatial Tiers</span>
+              </div>
+              <div className="fp-hero-stat">
+                <Car size={16} className="text-gold" />
+                <span>Double Basement Parking</span>
+              </div>
+              <div className="fp-hero-stat">
+                <ShieldCheck size={16} className="text-gold" />
+                <span>UP RERA: {PROJECT_INFO.reraNumber}</span>
+              </div>
             </div>
           </div>
         </div>

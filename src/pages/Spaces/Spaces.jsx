@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import spaceVideo from '../../assets/Space.mp4';
@@ -9,10 +10,22 @@ import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import './Spaces.css';
 
 export default function Spaces({ onOpenEnquiry }) {
+  const [heroTextFaded, setHeroTextFaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroTextFaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="spaces-page-root">
       {/* 1. Page Hero (Clear Visible Background Video) */}
-      <section className="page-hero-section spaces-hero-section theme-section-dark">
+      <section
+        className="page-hero-section spaces-hero-section theme-section-dark"
+        onClick={() => setHeroTextFaded((prev) => !prev)}
+      >
         {/* Background Video & Soft Overlay for Clear Visibility */}
         <div className="spaces-hero-video-bg">
           <video
@@ -25,19 +38,21 @@ export default function Spaces({ onOpenEnquiry }) {
           >
             <source src={spaceVideo} type="video/mp4" />
           </video>
-          <div className="spaces-hero-video-overlay" />
+          <div className={`spaces-hero-video-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
 
         <div className="container-custom page-hero-content spaces-hero-content">
-          <RevealOnScroll animation="fade-up">
-            <h1 className="page-hero-title">
-              Spaces Designed <br />
-              Around Possibility.
-            </h1>
-            <p className="page-hero-desc">
-              From high-visibility retail storefronts and self-contained boutique offices to contemporary studio suites and vibrant culinary floors, discover thoughtful spaces tailored for performance.
-            </p>
-          </RevealOnScroll>
+          <div className={`spaces-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
+            <RevealOnScroll animation="fade-up">
+              <h1 className="page-hero-title">
+                Spaces Designed <br />
+                Around Possibility.
+              </h1>
+              <p className="page-hero-desc">
+                From high-visibility retail storefronts and self-contained boutique offices to contemporary studio suites and vibrant culinary floors, discover thoughtful spaces tailored for performance.
+              </p>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 

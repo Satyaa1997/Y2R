@@ -70,6 +70,14 @@ export default function Location({ onOpenEnquiry }) {
   const [isFullscreenMapOpen, setIsFullscreenMapOpen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [rotationAngle, setRotationAngle] = useState(0);
+  const [heroTextFaded, setHeroTextFaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroTextFaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCloseModal = () => {
     setIsFullscreenMapOpen(false);
@@ -131,7 +139,10 @@ export default function Location({ onOpenEnquiry }) {
   return (
     <div className="location-page-root">
       {/* 1. Page Hero (Clear Visible Background Video) */}
-      <section className="page-hero-section location-hero-section theme-section-dark">
+      <section
+        className="page-hero-section location-hero-section theme-section-dark"
+        onClick={() => setHeroTextFaded((prev) => !prev)}
+      >
         {/* Background Video & Soft Overlay for Clear Visibility */}
         <div className="location-hero-video-bg">
           <video
@@ -144,19 +155,21 @@ export default function Location({ onOpenEnquiry }) {
           >
             <source src={locationVideo} type="video/mp4" />
           </video>
-          <div className="location-hero-video-overlay" />
+          <div className={`location-hero-video-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
 
         <div className="container-custom page-hero-content location-hero-content">
-          <RevealOnScroll animation="fade-up">
-            <h1 className="page-hero-title">
-              Strategically Centered. <br />
-              <span className="location-hero-subtext">Seamlessly Connected.</span>
-            </h1>
-            <p className="page-hero-desc">
-              A location that keeps business closer to everything that matters — situated near Sector-J Extension, Jankipuram Extension Scheme, Lucknow.
-            </p>
-          </RevealOnScroll>
+          <div className={`location-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
+            <RevealOnScroll animation="fade-up">
+              <h1 className="page-hero-title">
+                Strategically Centered. <br />
+                <span className="location-hero-subtext">Seamlessly Connected.</span>
+              </h1>
+              <p className="page-hero-desc">
+                A location that keeps business closer to everything that matters — situated near Sector-J Extension, Jankipuram Extension Scheme, Lucknow.
+              </p>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 

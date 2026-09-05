@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Landmark, Globe, Navigation, ExternalLink } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
@@ -9,21 +10,33 @@ import contactBanner from '../../assets/contactbanner.png';
 import './Contact.css';
 
 export default function Contact() {
+  const [heroTextFaded, setHeroTextFaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroTextFaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="contact-page-root">
       {/* Page Hero with contactbanner.png Background Image */}
-      <section className="page-hero-section contact-hero-section theme-section-dark">
+      <section
+        className="page-hero-section contact-hero-section theme-section-dark"
+        onClick={() => setHeroTextFaded((prev) => !prev)}
+      >
         <div className="contact-hero-bg">
           <img
             src={contactBanner}
             alt="Y2R Heights Official Advisory & Contact"
             className="contact-hero-img"
           />
-          <div className="contact-hero-overlay" />
+          <div className={`contact-hero-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
         <ArchitecturalBg variant="contact_hero" />
         <div className="container-custom contact-hero-container">
-          <div className="contact-hero-content">
+          <div className={`contact-hero-content ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
             <RevealOnScroll animation="fade-up">
               <h1 className="page-hero-title contact-title-white">
                 Visit <br />

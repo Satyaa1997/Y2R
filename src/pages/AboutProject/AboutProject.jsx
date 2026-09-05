@@ -33,6 +33,14 @@ import './AboutProject.css';
 export default function AboutProject({ onOpenEnquiry, onOpenBrochure }) {
   const [activeTab, setActiveTab] = useState('all');
   const [isSpecModalOpen, setIsSpecModalOpen] = useState(false);
+  const [heroTextFaded, setHeroTextFaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroTextFaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Keyboard Escape listener & Body scroll lock for fullscreen modal
   useEffect(() => {
@@ -67,42 +75,47 @@ export default function AboutProject({ onOpenEnquiry, onOpenBrochure }) {
   return (
     <div className="about-project-page-root">
       {/* Hero Section */}
-      <section className="about-project-hero-section theme-section-dark">
+      <section
+        className="about-project-hero-section theme-section-dark"
+        onClick={() => setHeroTextFaded((prev) => !prev)}
+      >
         <div className="about-project-hero-bg">
           <img
             src={proImage}
             alt="Y2R Heights Premium Specifications"
             className="about-project-hero-img"
           />
-          <div className="about-project-hero-overlay" />
+          <div className={`about-project-hero-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
         <ArchitecturalBg variant="project_hero" />
 
         <div className="container-custom about-project-hero-content">
-          <RevealOnScroll animation="fade-up">
-            <div className="about-project-hero-badge-wrap">
-              <span className="gold-badge">Y2R HEIGHTS • ARCHITECTURAL STANDARDS</span>
-            </div>
-            <h1 className="about-project-hero-title">
-              PREMIUM SPECIFICATIONS
-            </h1>
-            <p className="about-project-hero-desc">
-             BIS-compliant engineering with Grade-A structural framing, luxury vitrified finishes, premium Grohe/Jaquar/Roca fittings, and future-ready MEP infrastructure.
-            </p>
-            <div className="about-project-hero-meta">
-              <span className="spec-meta-item">
-                <MapPin size={15} className="text-gold" /> Kursi Road | Jankipuram Scheme, Lucknow
-              </span>
-              <span className="spec-meta-sep">•</span>
-              <span className="spec-meta-item">
-                <ShieldCheck size={15} className="text-gold" /> UP RERA: {PROJECT_INFO.reraNumber}
-              </span>
-              <span className="spec-meta-sep">•</span>
-              <span className="spec-meta-item">
-                <FileCheck2 size={15} className="text-gold" /> Canara Bank Approved
-              </span>
-            </div>
-          </RevealOnScroll>
+          <div className={`about-project-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
+            <RevealOnScroll animation="fade-up">
+              <div className="about-project-hero-badge-wrap">
+                <span className="gold-badge">Y2R HEIGHTS • ARCHITECTURAL STANDARDS</span>
+              </div>
+              <h1 className="about-project-hero-title">
+                PREMIUM SPECIFICATIONS
+              </h1>
+              <p className="about-project-hero-desc">
+               BIS-compliant engineering with Grade-A structural framing, luxury vitrified finishes, premium Grohe/Jaquar/Roca fittings, and future-ready MEP infrastructure.
+              </p>
+              <div className="about-project-hero-meta">
+                <span className="spec-meta-item">
+                  <MapPin size={15} className="text-gold" /> Kursi Road | Jankipuram Scheme, Lucknow
+                </span>
+                <span className="spec-meta-sep">•</span>
+                <span className="spec-meta-item">
+                  <ShieldCheck size={15} className="text-gold" /> UP RERA: {PROJECT_INFO.reraNumber}
+                </span>
+                <span className="spec-meta-sep">•</span>
+                <span className="spec-meta-item">
+                  <FileCheck2 size={15} className="text-gold" /> Canara Bank Approved
+                </span>
+              </div>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 

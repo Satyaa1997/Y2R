@@ -1,4 +1,4 @@
-
+import { useState, useEffect } from 'react';
 import {
   ShieldCheck,
   CheckCircle2,
@@ -28,6 +28,14 @@ import foodCourtImage from '../../assets/FoodCourt2.jpg';
 import './AboutUs.css';
 
 export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
+  const [heroTextFaded, setHeroTextFaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroTextFaded(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
   // Project Space Highlights with Image Slots
   const projectSpaces = [
     {
@@ -87,7 +95,10 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
   return (
     <div className="about-us-page-root">
       {/* Hero Section with locationvedio.mp4 */}
-      <section className="page-hero-section about-hero-section theme-section-dark">
+      <section
+        className="page-hero-section about-hero-section theme-section-dark"
+        onClick={() => setHeroTextFaded((prev) => !prev)}
+      >
         <div className="about-hero-bg">
           <video
             autoPlay
@@ -98,27 +109,29 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
           >
             <source src={locationVideo} type="video/mp4" />
           </video>
-          <div className="about-hero-overlay" />
+          <div className={`about-hero-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
         <div className="container-custom page-hero-content about-hero-content">
-          <RevealOnScroll animation="fade-up">
-            <h1 className="page-hero-title">
-              About Y2R Heights. <br />
-              <span className="about-hero-highlight">Where Vision Meets Value.</span>
-            </h1>
-            <p className="page-hero-desc">
-              Lucknow’s landmark G+8 commercial and lifestyle destination on Kursi Road, Jankipuram Scheme — crafted for businesses that demand high visibility, functional excellence, and long-term stature.
-            </p>
-            <div className="page-hero-meta">
-              <span className="meta-item">
-                <MapPin size={16} /> Kursi Road | Jankipuram Scheme, Lucknow
-              </span>
-              <span className="meta-sep">•</span>
-              <span className="meta-item">
-                <ShieldCheck size={16} /> UP RERA: {PROJECT_INFO.reraNumber}
-              </span>
-            </div>
-          </RevealOnScroll>
+          <div className={`about-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
+            <RevealOnScroll animation="fade-up">
+              <h1 className="page-hero-title">
+                About Y2R Heights. <br />
+                <span className="about-hero-highlight">Where Vision Meets Value.</span>
+              </h1>
+              <p className="page-hero-desc">
+                Lucknow’s landmark G+8 commercial and lifestyle destination on Kursi Road, Jankipuram Scheme — crafted for businesses that demand high visibility, functional excellence, and long-term stature.
+              </p>
+              <div className="page-hero-meta">
+                <span className="meta-item">
+                  <MapPin size={16} /> Kursi Road | Jankipuram Scheme, Lucknow
+                </span>
+                <span className="meta-sep">•</span>
+                <span className="meta-item">
+                  <ShieldCheck size={16} /> UP RERA: {PROJECT_INFO.reraNumber}
+                </span>
+              </div>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 
