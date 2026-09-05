@@ -192,6 +192,13 @@
   }
 }
 
+.blueprint-card-col {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .blueprint-tilt-card {
   width: 100%;
   height: 100%;
@@ -570,7 +577,9 @@
 
   .filter-tabs-row {
     gap: 8px;
-    margin-bottom: 1.75rem;
+    margin: 0 auto 1.75rem !important;
+    justify-content: center !important;
+    width: 100% !important;
   }
 
   .filter-btn {
@@ -578,9 +587,44 @@
     font-size: 0.74rem;
   }
 
+  .floor-plans-gallery-section > .container-custom {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
   .blueprint-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    justify-content: center !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+  }
+
+  .blueprint-card-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  .blueprint-tilt-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  .blueprint-dark-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
   }
 }
 
