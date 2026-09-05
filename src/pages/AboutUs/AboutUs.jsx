@@ -113,24 +113,22 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
         </div>
         <div className="container-custom page-hero-content about-hero-content">
           <div className={`about-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <RevealOnScroll animation="fade-up">
-              <h1 className="page-hero-title">
-                About Y2R Heights. <br />
-                <span className="about-hero-highlight">Where Vision Meets Value.</span>
-              </h1>
-              <p className="page-hero-desc">
-                Lucknow’s landmark G+8 commercial and lifestyle destination on Kursi Road, Jankipuram Scheme — crafted for businesses that demand high visibility, functional excellence, and long-term stature.
-              </p>
-              <div className="page-hero-meta">
-                <span className="meta-item">
-                  <MapPin size={16} /> Kursi Road | Jankipuram Scheme, Lucknow
-                </span>
-                <span className="meta-sep">•</span>
-                <span className="meta-item">
-                  <ShieldCheck size={16} /> UP RERA: {PROJECT_INFO.reraNumber}
-                </span>
-              </div>
-            </RevealOnScroll>
+            <h1 className="page-hero-title">
+              About Y2R Heights. <br />
+              <span className="about-hero-highlight">Where Vision Meets Value.</span>
+            </h1>
+            <p className="page-hero-desc">
+              Lucknow’s landmark G+8 commercial and lifestyle destination on Kursi Road, Jankipuram Scheme — crafted for businesses that demand high visibility, functional excellence, and long-term stature.
+            </p>
+            <div className="page-hero-meta">
+              <span className="meta-item">
+                <MapPin size={16} /> Kursi Road | Jankipuram Scheme, Lucknow
+              </span>
+              <span className="meta-sep">•</span>
+              <span className="meta-item">
+                <ShieldCheck size={16} /> UP RERA: {PROJECT_INFO.reraNumber}
+              </span>
+            </div>
           </div>
         </div>
       </section>

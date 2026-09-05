@@ -59,24 +59,22 @@ export default function Project({ onOpenEnquiry }) {
         </div>
         <div className="container-custom page-hero-content project-hero-content">
           <div className={`project-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <RevealOnScroll animation="fade-up">
-              <h1 className="page-hero-title">
-                Designed for Business. <br />
-                <span className="project-hero-highlight">Built for Growth.</span>
-              </h1>
-              <p className="page-hero-desc">
-                Y2R Heights brings thoughtfully planned commercial and lifestyle spaces together in one contemporary destination along the Jankipuram Extension–Kursi Road corridor.
-              </p>
-              <div className="page-hero-meta">
-                <span className="meta-item">
-                  <MapPin size={16} /> Kursi Road | Jankipuram Extension, Lucknow
-                </span>
-                <span className="meta-sep">•</span>
-                <span className="meta-item">
-                  <ShieldCheck size={16} /> RERA: {PROJECT_INFO.reraNumber}
-                </span>
-              </div>
-            </RevealOnScroll>
+            <h1 className="page-hero-title">
+              Designed for Business. <br />
+              <span className="project-hero-highlight">Built for Growth.</span>
+            </h1>
+            <p className="page-hero-desc">
+              Y2R Heights brings thoughtfully planned commercial and lifestyle spaces together in one contemporary destination along the Jankipuram Extension–Kursi Road corridor.
+            </p>
+            <div className="page-hero-meta">
+              <span className="meta-item">
+                <MapPin size={16} /> Kursi Road | Jankipuram Extension, Lucknow
+              </span>
+              <span className="meta-sep">•</span>
+              <span className="meta-item">
+                <ShieldCheck size={16} /> RERA: {PROJECT_INFO.reraNumber}
+              </span>
+            </div>
           </div>
         </div>
       </section>

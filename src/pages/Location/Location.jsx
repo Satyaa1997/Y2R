@@ -160,15 +160,13 @@ export default function Location({ onOpenEnquiry }) {
 
         <div className="container-custom page-hero-content location-hero-content">
           <div className={`location-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <RevealOnScroll animation="fade-up">
-              <h1 className="page-hero-title">
-                Strategically Centered. <br />
-                <span className="location-hero-subtext">Seamlessly Connected.</span>
-              </h1>
-              <p className="page-hero-desc">
-                A location that keeps business closer to everything that matters — situated near Sector-J Extension, Jankipuram Extension Scheme, Lucknow.
-              </p>
-            </RevealOnScroll>
+            <h1 className="page-hero-title">
+              Strategically Centered. <br />
+              <span className="location-hero-subtext">Seamlessly Connected.</span>
+            </h1>
+            <p className="page-hero-desc">
+              A location that keeps business closer to everything that matters — situated near Sector-J Extension, Jankipuram Extension Scheme, Lucknow.
+            </p>
           </div>
         </div>
       </section>

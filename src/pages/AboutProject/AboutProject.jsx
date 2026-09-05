@@ -91,30 +91,28 @@ export default function AboutProject({ onOpenEnquiry, onOpenBrochure }) {
 
         <div className="container-custom about-project-hero-content">
           <div className={`about-project-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <RevealOnScroll animation="fade-up">
-              <div className="about-project-hero-badge-wrap">
-                <span className="gold-badge">Y2R HEIGHTS • ARCHITECTURAL STANDARDS</span>
-              </div>
-              <h1 className="about-project-hero-title">
-                PREMIUM SPECIFICATIONS
-              </h1>
-              <p className="about-project-hero-desc">
-               BIS-compliant engineering with Grade-A structural framing, luxury vitrified finishes, premium Grohe/Jaquar/Roca fittings, and future-ready MEP infrastructure.
-              </p>
-              <div className="about-project-hero-meta">
-                <span className="spec-meta-item">
-                  <MapPin size={15} className="text-gold" /> Kursi Road | Jankipuram Scheme, Lucknow
-                </span>
-                <span className="spec-meta-sep">•</span>
-                <span className="spec-meta-item">
-                  <ShieldCheck size={15} className="text-gold" /> UP RERA: {PROJECT_INFO.reraNumber}
-                </span>
-                <span className="spec-meta-sep">•</span>
-                <span className="spec-meta-item">
-                  <FileCheck2 size={15} className="text-gold" /> Canara Bank Approved
-                </span>
-              </div>
-            </RevealOnScroll>
+            <div className="about-project-hero-badge-wrap">
+              <span className="gold-badge">Y2R HEIGHTS • ARCHITECTURAL STANDARDS</span>
+            </div>
+            <h1 className="about-project-hero-title">
+              PREMIUM SPECIFICATIONS
+            </h1>
+            <p className="about-project-hero-desc">
+             BIS-compliant engineering with Grade-A structural framing, luxury vitrified finishes, premium Grohe/Jaquar/Roca fittings, and future-ready MEP infrastructure.
+            </p>
+            <div className="about-project-hero-meta">
+              <span className="spec-meta-item">
+                <MapPin size={15} className="text-gold" /> Kursi Road | Jankipuram Scheme, Lucknow
+              </span>
+              <span className="spec-meta-sep">•</span>
+              <span className="spec-meta-item">
+                <ShieldCheck size={15} className="text-gold" /> UP RERA: {PROJECT_INFO.reraNumber}
+              </span>
+              <span className="spec-meta-sep">•</span>
+              <span className="spec-meta-item">
+                <FileCheck2 size={15} className="text-gold" /> Canara Bank Approved
+              </span>
+            </div>
           </div>
         </div>
       </section>

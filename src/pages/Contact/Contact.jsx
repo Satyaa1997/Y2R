@@ -37,15 +37,13 @@ export default function Contact() {
         <ArchitecturalBg variant="contact_hero" />
         <div className="container-custom contact-hero-container">
           <div className={`contact-hero-content ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <RevealOnScroll animation="fade-up">
-              <h1 className="page-hero-title contact-title-white">
-                Visit <br />
-                <span>Y2R Heights</span>
-              </h1>
-              <p className="page-hero-desc">
-                Connect directly with our project consultants, arrange on-site inspections, or schedule an in-depth portfolio review.
-              </p>
-            </RevealOnScroll>
+            <h1 className="page-hero-title contact-title-white">
+              Visit <br />
+              <span>Y2R Heights</span>
+            </h1>
+            <p className="page-hero-desc">
+              Connect directly with our project consultants, arrange on-site inspections, or schedule an in-depth portfolio review.
+            </p>
           </div>
         </div>
       </section>

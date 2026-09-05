@@ -43,15 +43,13 @@ export default function Spaces({ onOpenEnquiry }) {
 
         <div className="container-custom page-hero-content spaces-hero-content">
           <div className={`spaces-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <RevealOnScroll animation="fade-up">
-              <h1 className="page-hero-title">
-                Spaces Designed <br />
-                Around Possibility.
-              </h1>
-              <p className="page-hero-desc">
-                From high-visibility retail storefronts and self-contained boutique offices to contemporary studio suites and vibrant culinary floors, discover thoughtful spaces tailored for performance.
-              </p>
-            </RevealOnScroll>
+            <h1 className="page-hero-title">
+              Spaces Designed <br />
+              Around Possibility.
+            </h1>
+            <p className="page-hero-desc">
+              From high-visibility retail storefronts and self-contained boutique offices to contemporary studio suites and vibrant culinary floors, discover thoughtful spaces tailored for performance.
+            </p>
           </div>
         </div>
       </section>

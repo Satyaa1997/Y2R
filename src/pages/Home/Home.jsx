@@ -136,21 +136,19 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
 
         <div className="container-custom hero-portal-container">
           <div className={`hero-portal-content ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <RevealOnScroll animation="fade-up">
-              <div className="hero-location-pill">
-                <MapPin size={15} className="text-gold" />
-                <span>Kursi Road | Jankipuram Extension, Lucknow</span>
-              </div>
+            <div className="hero-location-pill">
+              <MapPin size={15} className="text-gold" />
+              <span>Kursi Road | Jankipuram Extension, Lucknow</span>
+            </div>
 
-              <h1 className="hero-portal-title">
-                Where Vision <br />
-                <span className="hero-title-white">Meets Value.</span>
-              </h1>
+            <h1 className="hero-portal-title">
+              Where Vision <br />
+              <span className="hero-title-white">Meets Value.</span>
+            </h1>
 
-              <p className="hero-portal-desc">
-                Welcome to Y2R Heights - Lucknow's premier destination for high-frontage commercial retail, boutique corporate offices, dedicated dining food courts, and contemporary studio apartments on Kursi Road.
-              </p>
-            </RevealOnScroll>
+            <p className="hero-portal-desc">
+              Welcome to Y2R Heights - Lucknow's premier destination for high-frontage commercial retail, boutique corporate offices, dedicated dining food courts, and contemporary studio apartments on Kursi Road.
+            </p>
           </div>
         </div>
       </section>
