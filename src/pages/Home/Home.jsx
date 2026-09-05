@@ -1241,5 +1241,3 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
     </div>
   );
 }
-
-fl
