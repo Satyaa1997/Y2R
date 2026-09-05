@@ -384,15 +384,6 @@
   animation-play-state: paused;
 }
 
-@keyframes brochureScrollLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 .brochure-ticker-item {
   display: inline-flex;
   align-items: center;
