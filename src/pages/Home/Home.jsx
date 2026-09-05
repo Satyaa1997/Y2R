@@ -39,7 +39,7 @@ import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import Commercial3DAnimation from '../../components/Commercial3DAnimation/Commercial3DAnimation';
-import heroPoster from "../../assets/Building.jpg";
+import heroPoster from '../../assets/Building.JPG';
 import './Home.css';
 
 const AMENITY_ICONS_MAP = {
