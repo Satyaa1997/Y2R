@@ -138,35 +138,33 @@
   .hero-portal-section {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-top: calc(var(--header-height, 60px) + 0.5rem);
-    padding-bottom: clamp(5rem, 12vh, 7.5rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    height: auto;
+    min-height: unset;
+    padding: 0;
+    margin-top: var(--header-height, 60px);
     background: #0A0B0E;
     overflow: hidden;
+    display: block;
+    cursor: pointer;
   }
 
   .hero-portal-bg {
-    position: absolute;
-    inset: 0;
-    top: calc(var(--header-height, 60px) + 0.25rem);
+    position: relative;
+    inset: auto;
+    top: auto;
     width: 100%;
-    height: calc(100% - var(--header-height, 60px));
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    z-index: 1;
+    height: auto;
+    display: block;
+    overflow: hidden;
   }
 
   .hero-portal-video {
     width: 100%;
     height: auto;
-    max-height: 50vh;
-    object-fit: contain;
-    object-position: center top;
+    max-height: 65vh;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center center;
     filter: brightness(1) contrast(1.05);
     display: block;
   }
@@ -176,21 +174,31 @@
     inset: 0;
     background: linear-gradient(
       180deg,
-      rgba(10, 11, 14, 0.1) 0%,
-      rgba(10, 11, 14, 0.0) 22%,
-      rgba(10, 11, 14, 0.25) 42%,
-      rgba(10, 11, 14, 0.88) 64%,
-      rgba(10, 11, 14, 0.98) 100%
+      rgba(10, 11, 14, 0.25) 0%,
+      rgba(10, 11, 14, 0.05) 30%,
+      rgba(10, 11, 14, 0.78) 100%
     );
     pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.8s ease;
+  }
+
+  .hero-portal-overlay.hero-mobile-faded {
+    opacity: 0.15;
   }
 
   .hero-portal-container {
-    position: relative;
-    z-index: 2;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    padding: 0.75rem 1rem;
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    pointer-events: none;
   }
 
   .hero-portal-content {
@@ -198,24 +206,41 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero-portal-content.hero-mobile-faded {
+    opacity: 0 !important;
+    visibility: hidden;
+    transform: translateY(10px);
+    pointer-events: none;
   }
 
   .hero-location-pill {
-    font-size: 0.7rem;
-    padding: 4px 10px;
-    margin-bottom: 0.45rem;
+    font-size: 0.62rem;
+    padding: 2px 7px;
+    margin-bottom: 0.25rem;
+    background: rgba(10, 11, 14, 0.8);
+    border: 1px solid rgba(175, 125, 9, 0.4);
+    backdrop-filter: blur(4px);
   }
 
   .hero-portal-title {
-    font-size: clamp(1.45rem, 5.8vw, 1.85rem);
-    margin-bottom: 0.4rem;
-    line-height: 1.2;
+    font-size: clamp(1.05rem, 4.4vw, 1.35rem);
+    margin-bottom: 0.2rem;
+    line-height: 1.15;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
   }
 
   .hero-portal-desc {
-    font-size: 0.82rem;
-    line-height: 1.45;
+    font-size: 0.68rem;
+    line-height: 1.3;
     max-width: 100%;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 

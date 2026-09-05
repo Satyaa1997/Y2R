@@ -60,6 +60,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
   const [showHighlightsPopup, setShowHighlightsPopup] = useState(false);
   const [activeSpaceIndex, setActiveSpaceIndex] = useState(0);
   const [activeDeckCard, setActiveDeckCard] = useState(null);
+  const [heroTextFaded, setHeroTextFaded] = useState(false);
 
   const handleSpaceScroll = (e) => {
     const scrollLeft = e.target.scrollLeft;
@@ -94,7 +95,14 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       setShowHighlightsPopup(true);
     }, 700);
 
-    return () => clearTimeout(popupTimer);
+    const heroTextTimer = setTimeout(() => {
+      setHeroTextFaded(true);
+    }, 3000);
+
+    return () => {
+      clearTimeout(popupTimer);
+      clearTimeout(heroTextTimer);
+    };
   }, []);
 
   return (
@@ -102,7 +110,11 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       {/* =========================================================================
           1. HERO SECTION (Clean Cinematic Ambient Video Banner)
           ========================================================================= */}
-      <section ref={heroRef} className="hero-portal-section">
+      <section
+        ref={heroRef}
+        className="hero-portal-section"
+        onClick={() => setHeroTextFaded((prev) => !prev)}
+      >
         {/* Background Architectural Canvas & Video */}
         <div className="hero-portal-bg">
           <video
@@ -118,11 +130,11 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             <source src={heroVideo} type="video/mp4" />
             <source src="/hero-bg.mp4" type="video/mp4" />
           </video>
-          <div className="hero-portal-overlay" />
+          <div className={`hero-portal-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
 
         <div className="container-custom hero-portal-container">
-          <div className="hero-portal-content">
+          <div className={`hero-portal-content ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
             <RevealOnScroll animation="fade-up">
               <div className="hero-location-pill">
                 <MapPin size={15} className="text-gold" />
