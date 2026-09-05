@@ -321,14 +321,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                 <div key={space.id} className="highlight-grid-col">
                   <Link to={space.slug} className="hasan-card-link">
                     <article className="hasan-uiverse-card">
-                      <div className="hasan-sub-card category">
-                        <span className="hasan-text-span">{space.badge || 'Commercial'}</span>
-                        <div className="hasan-icon-box">
-                          <span className="hasan-idx-tag">0{idx + 1}</span>
-                          <ArrowUpRight size={14} className="hasan-icon-svg" />
-                        </div>
-                      </div>
-
                       <div className="hasan-card-container">
                         <img
                           src={space.image}
@@ -337,14 +329,38 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                           loading="lazy"
                         />
                         <div className="hasan-img-overlay" />
-                        <div className="hasan-center-info">
+
+                        {/* Top Header Row (Floor Badge + Index Tag) */}
+                        <div className="hasan-card-top-bar">
+                          <span className="hasan-card-badge">{space.badge || 'Commercial'}</span>
+                          <div className="hasan-card-index-box">
+                            <span className="hasan-idx-tag">0{idx + 1}</span>
+                            <ArrowUpRight size={14} className="hasan-icon-svg" />
+                          </div>
+                        </div>
+
+                        {/* Default Info (Visible at bottom on normal state) */}
+                        <div className="hasan-center-info default-view">
                           <h3 className="hasan-center-title">{space.title}</h3>
                           <p className="hasan-center-desc">{space.tagline || space.highlight}</p>
                         </div>
-                      </div>
 
-                      <div className="hasan-sub-card named">
-                        <span className="hasan-text-span">{space.title}</span>
+                        {/* Full-Card Hover Transparent Overlay (Covers 100% width and height) */}
+                        <div className="hasan-hover-overlay">
+                          <div className="hasan-hover-top">
+                            <span className="hasan-hover-badge">{space.badge || 'Commercial'}</span>
+                            <span className="hasan-hover-num">0{idx + 1}</span>
+                          </div>
+                          <div className="hasan-hover-body">
+                            <h3 className="hasan-hover-title">{space.title}</h3>
+                            <p className="hasan-hover-tagline">{space.tagline}</p>
+                            <p className="hasan-hover-highlight">{space.highlight}</p>
+                          </div>
+                          <div className="hasan-hover-cta">
+                            <span>{space.ctaText || 'Explore Space'}</span>
+                            <ArrowUpRight size={14} />
+                          </div>
+                        </div>
                       </div>
                     </article>
                   </Link>
@@ -457,9 +473,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                     alt="Y2R Heights Retail Concourse"
                     className="spotlight-img"
                   />
-                  <div className="spotlight-tag">
-                    <span>RETAIL CONCOURSE • LGF & UGF</span>
-                  </div>
                 </div>
               </TiltCard>
             </RevealOnScroll>
@@ -485,43 +498,36 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           <div className="dual-cards-grid">
             {/* Boutique Offices Card */}
             <RevealOnScroll animation="fade-right" className="dual-card-col">
-              <Link to="/offices" className="sushma-blueprint-card">
-                <span className="sushma-dashed-border" />
+              <Link to="/offices" className="eslam-card">
+                <div className="eslam-bg-layer">
+                  <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
+                    alt="Boutique Offices at Y2R Heights"
+                    className="eslam-bg-img"
+                    loading="lazy"
+                  />
+                  <div className="eslam-bg-overlay" />
+                </div>
 
-                <div className="sushma-card-box">
-                  {/* Full Size Background Image */}
-                  <div className="sushma-img-bg-wrap">
-                    <img
-                      src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
-                      alt="Boutique Offices at Y2R Heights"
-                      className="sushma-card-bg-img"
-                      loading="lazy"
-                    />
-                    <div className="sushma-img-overlay" />
+                {/* Default Front View */}
+                <div className="eslam-card-front">
+                  <span className="eslam-level-badge">1st & 2nd Floors</span>
+                  <h3 className="eslam-card-title">Boutique Offices</h3>
+                  <p className="eslam-card-subtitle">Modern Corporate Workspaces</p>
+                </div>
+
+                {/* Hover Expand View */}
+                <div className="eslam-card-hover-content">
+                  <div>
+                    <span className="eslam-level-badge gold">1st & 2nd Floors</span>
+                    <h3 className="eslam-card-title">Boutique Offices</h3>
+                    <p className="eslam-card-desc">
+                      High-efficiency boutique offices designed for modern founders, consultants & corporate firms with natural light and zero wasted space.
+                    </p>
                   </div>
-
-                  {/* Default State (Visible on load, hides on hover) */}
-                  <div className="sushma-state-default">
-                    <span className="sushma-level-badge">1st & 2nd Floors</span>
-                    <h2 className="sushma-card-heading">Boutique Offices</h2>
-                  </div>
-
-                  {/* Hover State (Reveals on hover) */}
-                  <div className="sushma-state-hover">
-                    <div className="sushma-hover-top">
-                      <span className="sushma-level-badge">1st & 2nd Floors</span>
-                      <h3 className="sushma-card-heading">Boutique Offices</h3>
-                      <p className="sushma-card-desc">
-                        High-efficiency boutique offices designed for modern founders, consultants & corporate firms with natural light and zero wasted space.
-                      </p>
-                    </div>
-
-                    <div className="sushma-hover-bottom">
-                      <span className="sushma-readmore-link">
-                        <span>Explore Office Spaces</span>
-                        <ArrowRight size={16} />
-                      </span>
-                    </div>
+                  <div className="eslam-card-btn">
+                    <span>Explore Office Spaces</span>
+                    <ArrowRight size={16} />
                   </div>
                 </div>
               </Link>
@@ -529,43 +535,36 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
 
             {/* Studio Apartments Card */}
             <RevealOnScroll animation="fade-left" delay={120} className="dual-card-col">
-              <Link to="/studios" className="sushma-blueprint-card">
-                <span className="sushma-dashed-border" />
+              <Link to="/studios" className="eslam-card">
+                <div className="eslam-bg-layer">
+                  <img
+                    src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop"
+                    alt="Studio Apartments at Y2R Heights"
+                    className="eslam-bg-img"
+                    loading="lazy"
+                  />
+                  <div className="eslam-bg-overlay" />
+                </div>
 
-                <div className="sushma-card-box">
-                  {/* Full Size Background Image */}
-                  <div className="sushma-img-bg-wrap">
-                    <img
-                      src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop"
-                      alt="Studio Apartments at Y2R Heights"
-                      className="sushma-card-bg-img"
-                      loading="lazy"
-                    />
-                    <div className="sushma-img-overlay" />
+                {/* Default Front View */}
+                <div className="eslam-card-front">
+                  <span className="eslam-level-badge">3rd–7th Floors</span>
+                  <h3 className="eslam-card-title">Studio Apartments</h3>
+                  <p className="eslam-card-subtitle">Contemporary Living Suites</p>
+                </div>
+
+                {/* Hover Expand View */}
+                <div className="eslam-card-hover-content">
+                  <div>
+                    <span className="eslam-level-badge gold">3rd–7th Floors</span>
+                    <h3 className="eslam-card-title">Studio Apartments</h3>
+                    <p className="eslam-card-desc">
+                      Contemporary studio suites on 3rd–7th floors designed for professionals, corporate stays & long-term rental income in Lucknow.
+                    </p>
                   </div>
-
-                  {/* Default State (Visible on load, hides on hover) */}
-                  <div className="sushma-state-default">
-                    <span className="sushma-level-badge">3rd–7th Floors</span>
-                    <h2 className="sushma-card-heading">Studio Apartments</h2>
-                  </div>
-
-                  {/* Hover State (Reveals on hover) */}
-                  <div className="sushma-state-hover">
-                    <div className="sushma-hover-top">
-                      <span className="sushma-level-badge">3rd–7th Floors</span>
-                      <h3 className="sushma-card-heading">Studio Apartments</h3>
-                      <p className="sushma-card-desc">
-                        Contemporary studio suites on 3rd–7th floors designed for professionals, corporate stays & long-term rental income in Lucknow.
-                      </p>
-                    </div>
-
-                    <div className="sushma-hover-bottom">
-                      <span className="sushma-readmore-link">
-                        <span>Explore Studio Apartments</span>
-                        <ArrowRight size={16} />
-                      </span>
-                    </div>
+                  <div className="eslam-card-btn">
+                    <span>Explore Studio Apartments</span>
+                    <ArrowRight size={16} />
                   </div>
                 </div>
               </Link>
@@ -616,16 +615,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               </RevealOnScroll>
 
               <RevealOnScroll animation="fade-up" delay={300}>
-                <div className="food-categories-pills">
-                  <span className="food-pill">QSR Formats</span>
-                  <span className="food-pill">Café Culture</span>
-                  <span className="food-pill">Dessert Parlours</span>
-                  <span className="food-pill">Regional Cuisine</span>
-                  <span className="food-pill">Dining Concepts</span>
-                </div>
-              </RevealOnScroll>
-
-              <RevealOnScroll animation="fade-up" delay={400}>
                 <div className="spotlight-actions">
                   <Link to="/food-court" className="btn-primary">
                     <span>Explore F&B Spaces</span>
@@ -652,26 +641,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             align="center"
             theme="light"
           />
-
-          {/* Luxury Quick Specification Highlights Pill Row */}
-          <div className="amenities-quick-specs-row">
-            <span className="amenity-spec-pill">
-              <Sparkles size={13} className="text-gold" />
-              <span>G+8 High-Rise Standards</span>
-            </span>
-            <span className="amenity-spec-pill">
-              <MoveUp size={13} className="text-gold" />
-              <span>6 High-Speed Vertical Elevators</span>
-            </span>
-            <span className="amenity-spec-pill">
-              <Car size={13} className="text-gold" />
-              <span>Double Basement Structured Parking</span>
-            </span>
-            <span className="amenity-spec-pill">
-              <ShieldCheck size={13} className="text-gold" />
-              <span>24/7 CCTV & Electronic Surveillance</span>
-            </span>
-          </div>
         </div>
 
         {/* Continuous Right-to-Left Moving Marquee Track */}
@@ -682,9 +651,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               return (
                 <div key={`${amenity.title}-${idx}`} className="amenity-marquee-item">
                   <div className="amenity-uiverse-card">
-                    <div className="card__shine" />
-                    <div className="card__glow" />
-
                     {/* Top Architectural Media Frame */}
                     <div className="card__image">
                       <img
@@ -699,9 +665,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                       <div className="card__icon-badge">
                         <AmenityIcon size={16} />
                       </div>
-
-                      {/* Floating Top-Right Spec Badge */}
-                      <div className="card__badge">{amenity.badge || 'PREMIUM'}</div>
                     </div>
 
                     {/* Card Content & Details */}
@@ -796,109 +759,51 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
         <ArchitecturalBg variant="home_floorplans" />
         <div className="container-custom">
           <div className="schematics-split-container">
-            {/* Left Column: Interactive 3D Stacked Wallet / Pocket Deck */}
+            {/* Left Column: Interactive Grouped Floor Cards (From Uiverse.io by joe-watson-sbf) */}
             <div className="schematics-deck-col">
               <RevealOnScroll animation="fade-right">
-                <div className="arch-wallet-deck-wrapper">
-                  {/* Quick Level Selector Tabs for Instant Grabbing on Desktop & Mobile */}
-                  <div className="arch-deck-quick-tabs">
-                    {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => {
-                      const tabLabels = ['LGF', 'UGF', '1st Flr', '2nd Flr'];
-                      const isSelected = activeDeckCard === idx;
-                      return (
-                        <button
-                          key={`tab-${plan.id}`}
-                          type="button"
-                          className={`arch-deck-tab-pill ${isSelected ? 'active' : ''}`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveDeckCard(activeDeckCard === idx ? null : idx);
-                          }}
-                          aria-label={`Select ${plan.floor}`}
-                        >
-                          {tabLabels[idx]}
-                        </button>
-                      );
-                    })}
-                  </div>
+                <div className="watson-cards-grid">
+                  {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => {
+                    const icons = [Layers, DoorOpen, Building2, Sparkles];
+                    const PlanIcon = icons[idx] || Building2;
 
-                  <div className="arch-wallet">
-                    {/* Wallet Back Foundation */}
-                    <div className="arch-wallet-back" />
-
-                    {/* 4 Stacked Architectural Blueprint Cards */}
-                    {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => {
-                      const cardClassNames = ['arch-card-1', 'arch-card-2', 'arch-card-3', 'arch-card-4'];
-                      const cardClass = cardClassNames[idx] || `arch-card-${idx + 1}`;
-                      const floorCode = idx === 0 ? 'LGF/UGF' : idx === 1 ? '1ST-FLR' : idx === 2 ? '2ND-FLR' : '3RD-7TH';
-                      const isCardActive = activeDeckCard === idx;
-
-                      return (
-                        <div
-                          key={plan.id}
-                          className={`arch-deck-card ${cardClass} ${isCardActive ? 'card-active-pull' : ''}`}
-                          onClick={() => {
-                            if (activeDeckCard === idx) {
-                              navigate(`/floor-plans/${plan.id}`);
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
-                            } else {
-                              setActiveDeckCard(idx);
-                            }
-                          }}
-                          role="button"
-                          tabIndex={0}
-                          aria-label={`Inspect blueprint for ${plan.floor}`}
-                        >
-                          <div className="arch-card-inner">
-                            <div className="arch-card-top">
-                              <span className="arch-card-floor">{plan.floor}</span>
-                              <div className="arch-chip" />
-                            </div>
-
-                            <div className="arch-card-middle">
-                              <h4 className="arch-card-purpose">{plan.purpose}</h4>
-                              <p className="arch-card-desc">{plan.description}</p>
-                            </div>
-
-                            <div className="arch-card-bottom">
-                              <div className="arch-card-spec">
-                                <span className="arch-spec-label">CAD SPEC</span>
-                                <span className="arch-spec-val">SCHEMATIC v2.4</span>
-                              </div>
-                              <div className="arch-card-code-wrap">
-                                <span className="arch-code-hidden">•••• •••• {floorCode}</span>
-                                <span className="arch-inspect-prompt">
-                                  <span>Inspect</span>
-                                  <ArrowUpRight size={13} />
-                                </span>
-                              </div>
-                            </div>
+                    return (
+                      <div
+                        key={`watson-${plan.id}`}
+                        className="watson-card"
+                        onClick={() => {
+                          navigate(`/floor-plans/${plan.id}`);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Inspect blueprint for ${plan.floor}`}
+                      >
+                        <div className="watson-header">
+                          <div className="watson-img-box">
+                            <PlanIcon size={22} />
                           </div>
+                          <span className="watson-title">{plan.floor}</span>
+                          <span className="watson-purpose">{plan.purpose}</span>
                         </div>
-                      );
-                    })}
 
-                    {/* Front Architectural Pocket */}
-                    <div className="arch-pocket">
-                      <div className="arch-pocket-content">
-                        <div className="arch-pocket-emblem">
-                          <Compass size={22} className="arch-pocket-icon" />
-                        </div>
-                        <div className="arch-pocket-title">Y2R ARCHITECTURAL DECK</div>
-                        <div className="arch-pocket-level-badge">
-                          <span className="pocket-hint-stars">4 CORE SPATIAL LEVELS</span>
-                          <span className="pocket-hint-real">CLICK CARD TO INSPECT</span>
+                        <div className="watson-content">
+                          <p>{plan.description}</p>
+                          <span className="watson-btn-link">
+                            <span>Explore Specs</span>
+                            <ArrowRight size={13} />
+                          </span>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </RevealOnScroll>
             </div>
 
             {/* Right Column: Headings, Spatial Level Breakdowns, & Actions */}
             <div className="schematics-content-col">
-              <RevealOnScroll animation="fade-left">
+              <RevealOnScroll animation="fade-left" className="schematics-content-inner">
                 <SectionHeading
                   number="08"
                   badge="Architectural Schematics"
@@ -1090,7 +995,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                       >
                         <div className="flip-front-overlay" />
                         <div className="flip-front-body">
-                          <span className="flip-badge">{item.categoryLabel}</span>
                           <h3 className="flip-front-title">{item.title}</h3>
                           <span className="flip-front-num">0{idx + 1}</span>
                         </div>
@@ -1103,7 +1007,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                       >
                         <div className="flip-back-overlay" />
                         <div className="flip-back-body">
-                          <span className="flip-badge">{item.categoryLabel}</span>
                           <h3 className="flip-back-title">{item.title}</h3>
                           <p className="flip-back-desc">{item.caption}</p>
                           <button
