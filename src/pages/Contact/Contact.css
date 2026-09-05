@@ -503,3 +503,26 @@
   }
 }
 
+@media (max-width: 480px) {
+  .contact-form-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-heading {
+    font-size: 1.7rem;
+  }
+
+  .map-visual-card {
+    padding: 3rem 1rem;
+  }
+
+  .phone-link-main {
+    font-size: 1.05rem;
+  }
+
+  .direct-nums {
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+  }
+}
+

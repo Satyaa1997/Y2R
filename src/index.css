@@ -587,6 +587,62 @@ img, video, canvas, svg, iframe {
 
 table {
   max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Responsive Table Scroller */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 5px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+/* Responsive Fluid Typography Clamps */
+h1 {
+  font-size: clamp(1.85rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  line-height: 1.2;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  line-height: 1.25;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+h4 {
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  line-height: 1.3;
+}
+
+p, li, span, a {
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 /* ==========================================================================

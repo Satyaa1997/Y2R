@@ -320,3 +320,15 @@
     min-height: 440px;
   }
 }
+
+@media (max-width: 400px) {
+  .radar-orbit-system {
+    transform: scale(0.62);
+    height: 250px;
+  }
+
+  .location-radar-canvas {
+    padding: 1.25rem 0.75rem;
+    min-height: 380px;
+  }
+}

@@ -26,6 +26,8 @@ import FloorPlans from './pages/FloorPlans/FloorPlans';
 import FloorPlanDetail from './pages/FloorPlanDetail/FloorPlanDetail';
 import Gallery from './pages/Gallery/Gallery';
 import Investment from './pages/Investment/Investment';
+import AboutUs from './pages/AboutUs/AboutUs';
+import AboutProject from './pages/AboutProject/AboutProject';
 import Contact from './pages/Contact/Contact';
 import NotFound from './pages/NotFound/NotFound';
 
@@ -166,6 +168,24 @@ export default function App() {
             <Route
               path="/investment"
               element={<Investment onOpenEnquiry={handleOpenEnquiry} />}
+            />
+            <Route
+              path="/about-us"
+              element={
+                <AboutUs
+                  onOpenEnquiry={handleOpenEnquiry}
+                  onOpenBrochure={handleOpenBrochure}
+                />
+              }
+            />
+            <Route
+              path="/about-project"
+              element={
+                <AboutProject
+                  onOpenEnquiry={handleOpenEnquiry}
+                  onOpenBrochure={handleOpenBrochure}
+                />
+              }
             />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />

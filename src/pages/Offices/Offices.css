@@ -189,19 +189,15 @@
 }
 
 /* Responsive Media Queries */
-@media (max-width: 992px) {
+@media (max-width: 1024px) and (min-width: 769px) {
   .office-grid {
     grid-template-columns: 1fr;
     gap: 2.25rem;
   }
 
   .office-pillars-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
-  }
-
-  .office-img {
-    height: 260px;
   }
 }
 
@@ -211,7 +207,13 @@
   }
 
   .office-grid {
+    grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .office-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .office-img {

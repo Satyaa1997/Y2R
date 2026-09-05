@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import {
   Menu,
   X,
   PhoneCall,
   ArrowUpRight,
-  Download
+  Download,
+  ChevronDown,
+  Building2,
+  Sparkles
 } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
 import y2rLogo from '../../assets/y2r2.png';
@@ -50,6 +53,11 @@ const XTwitterIcon = () => (
 export default function Navbar({ onOpenBrochure }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
+  const location = useLocation();
+
+  const isAboutActive = location.pathname.startsWith('/about');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +80,12 @@ export default function Navbar({ onOpenBrochure }) {
       document.body.style.overflow = 'unset';
     }
   }, [isMobileMenuOpen]);
+
+  // Close mobile menu on route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }, [location.pathname]);
 
   return (
     <header className={`navbar-header ${isScrolled ? 'is-scrolled' : ''}`}>
@@ -122,7 +136,7 @@ export default function Navbar({ onOpenBrochure }) {
             <img src={y2rLogo} alt="Y2R Heights Logo" className="brand-logo-img" />
           </Link>
 
-          {/* Desktop Navigation Menu with PropertyWala Dropdowns */}
+          {/* Desktop Navigation Menu */}
           <nav className="navbar-menu-desktop" aria-label="Main Navigation">
             <NavLink
               to="/"
@@ -132,17 +146,52 @@ export default function Navbar({ onOpenBrochure }) {
               <span className="nav-indicator" />
             </NavLink>
 
-            {/* Spaces Dropdown */}
-            {/* Spaces Direct Link (No Dropdown) */}
-            <NavLink
-              to="/spaces"
-              className={({ isActive }) => `nav-item ${isActive ? 'nav-item-active' : ''}`}
+            {/* About Dropdown */}
+            <div
+              className={`nav-dropdown-wrapper ${activeDropdown === 'about' ? 'is-open' : ''}`}
+              onMouseEnter={() => setActiveDropdown('about')}
+              onMouseLeave={() => setActiveDropdown(null)}
             >
-              Spaces
-              <span className="nav-indicator" />
-            </NavLink>
+              <span className={`nav-item nav-dropdown-trigger ${isAboutActive ? 'nav-item-active' : ''}`}>
+                About
+                <ChevronDown size={14} className="dropdown-arrow-icon" />
+                <span className="nav-indicator" />
+              </span>
 
-            {/* Floor Plans Direct Link (No Dropdown) */}
+              <div className="nav-dropdown-menu">
+                <div className="nav-dropdown-grid">
+                  <NavLink
+                    to="/about-us"
+                    className={({ isActive }) => `dropdown-menu-item ${isActive ? 'dropdown-menu-item-active' : ''}`}
+                    onClick={() => setActiveDropdown(null)}
+                  >
+                    <div className="menu-item-icon-box">
+                      <Building2 size={16} className="text-gold" />
+                    </div>
+                    <div className="menu-item-text">
+                      <span className="menu-item-title">About Us</span>
+                      <span className="menu-item-subtitle">Developer Profile & Vision</span>
+                    </div>
+                  </NavLink>
+
+                  <NavLink
+                    to="/about-project"
+                    className={({ isActive }) => `dropdown-menu-item ${isActive ? 'dropdown-menu-item-active' : ''}`}
+                    onClick={() => setActiveDropdown(null)}
+                  >
+                    <div className="menu-item-icon-box">
+                      <Sparkles size={16} className="text-gold" />
+                    </div>
+                    <div className="menu-item-text">
+                      <span className="menu-item-title">About Project</span>
+                      <span className="menu-item-subtitle">Y2R Heights Landmark Overview</span>
+                    </div>
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+
+            {/* Floor Plans Direct Link */}
             <NavLink
               to="/floor-plans"
               className={({ isActive }) => `nav-item ${isActive ? 'nav-item-active' : ''}`}
@@ -151,7 +200,7 @@ export default function Navbar({ onOpenBrochure }) {
               <span className="nav-indicator" />
             </NavLink>
 
-            {/* Location Direct Link (No Dropdown) */}
+            {/* Location Direct Link */}
             <NavLink
               to="/location"
               className={({ isActive }) => `nav-item ${isActive ? 'nav-item-active' : ''}`}
@@ -159,8 +208,8 @@ export default function Navbar({ onOpenBrochure }) {
               Location
               <span className="nav-indicator" />
             </NavLink>
-
-            {/* Project Direct Link (No Dropdown) */}
+            
+             {/* Project Direct Link */}
             <NavLink
               to="/project"
               className={({ isActive }) => `nav-item ${isActive ? 'nav-item-active' : ''}`}
@@ -230,15 +279,59 @@ export default function Navbar({ onOpenBrochure }) {
               <ArrowUpRight size={18} className="mobile-link-arrow" />
             </NavLink>
 
-            {/* Spaces Direct Link */}
+            {/* About Mobile Accordion Dropdown */}
+            <div className="mobile-nav-group">
+              <div
+                className={`mobile-group-header ${isAboutActive ? 'mobile-nav-item-active' : ''}`}
+                onClick={() => setIsMobileAboutOpen(!isMobileAboutOpen)}
+              >
+                <span>About</span>
+                <ChevronDown
+                  size={18}
+                  className={`mobile-chevron ${isMobileAboutOpen ? 'rotated' : ''}`}
+                />
+              </div>
+              {isMobileAboutOpen && (
+                <div className="mobile-group-submenu">
+                  <NavLink
+                    to="/about-us"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `mobile-submenu-item ${isActive ? 'mobile-submenu-active' : ''}`
+                    }
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Building2 size={16} className="text-gold" />
+                      <span className="mobile-sub-title">About Us</span>
+                    </div>
+                    <span className="mobile-sub-desc">Developer Profile & Vision</span>
+                  </NavLink>
+                  <NavLink
+                    to="/about-project"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `mobile-submenu-item ${isActive ? 'mobile-submenu-active' : ''}`
+                    }
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Sparkles size={16} className="text-gold" />
+                      <span className="mobile-sub-title">About Project</span>
+                    </div>
+                    <span className="mobile-sub-desc">Y2R Heights Landmark Overview</span>
+                  </NavLink>
+                </div>
+              )}
+            </div>
+
+            {/* Project Direct Link */}
             <NavLink
-              to="/spaces"
+              to="/project"
               onClick={() => setIsMobileMenuOpen(false)}
               className={({ isActive }) =>
                 `mobile-nav-item ${isActive ? 'mobile-nav-item-active' : ''}`
               }
             >
-              <span className="mobile-link-name">Spaces</span>
+              <span className="mobile-link-name">Project</span>
               <ArrowUpRight size={18} className="mobile-link-arrow" />
             </NavLink>
 
@@ -263,18 +356,6 @@ export default function Navbar({ onOpenBrochure }) {
               }
             >
               <span className="mobile-link-name">Location</span>
-              <ArrowUpRight size={18} className="mobile-link-arrow" />
-            </NavLink>
-
-            {/* Project Direct Link */}
-            <NavLink
-              to="/project"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={({ isActive }) =>
-                `mobile-nav-item ${isActive ? 'mobile-nav-item-active' : ''}`
-              }
-            >
-              <span className="mobile-link-name">Project</span>
               <ArrowUpRight size={18} className="mobile-link-arrow" />
             </NavLink>
 

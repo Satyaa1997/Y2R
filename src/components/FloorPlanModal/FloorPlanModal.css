@@ -444,3 +444,39 @@
   }
 }
 
+@media (max-width: 480px) {
+  .floor-modal-backdrop {
+    padding: 0.5rem;
+  }
+
+  .floor-modal-dialog {
+    max-height: 96vh;
+    border-radius: 6px;
+  }
+
+  .floor-modal-header-bar {
+    padding: 0.75rem 1rem;
+    gap: 8px;
+  }
+
+  .modal-level-title {
+    font-size: 1rem;
+  }
+
+  .blueprint-map-frame {
+    min-height: 220px;
+  }
+
+  .floor-visual-col {
+    padding: 0.85rem;
+  }
+
+  .floor-details-col {
+    padding: 1rem 0.85rem;
+  }
+
+  .floor-purpose-heading {
+    font-size: 1.3rem;
+  }
+}
+

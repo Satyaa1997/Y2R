@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import heroVideo from '../../assets/hero-bg.mp4';
+import heroVideo from '../../assets/Herovedio.mp4';
 import qrImage from '../../assets/QR.png';
 import buildingImage from '../../assets/Building.JPG';
 import building1Image from '../../assets/Building1.JPG';

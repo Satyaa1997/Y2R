@@ -212,66 +212,74 @@ export const PROJECT_SPECIFICATIONS = {
   structure: {
     category: "Structure & Foundations",
     items: [
-      { label: "Foundations", value: "RCC raft foundations at a depth of 1.5M with a bearing capacity of 1.381 kg/cm². Pile foundation considered after carrying load test of 12M pile at site." },
-      { label: "Super Structure", value: "RCC column, beam, and shearwall framed structure confirming to BS code for earthquake resistance (G+8 Structure)." }
+      { label: "Foundations", value: "RCC raft foundations at a depth of 1.5M with a bearing capacity of 1.391kg/cm². Pile foundation can be considered after carrying a load test of an 12M pile at the site." },
+      { label: "Structure", value: "RCC column, beam, and shearwall framed structure confirming to BIS code for earthquake resistance." }
     ]
   },
   retail: {
     category: "Retail Floors (Ground & First Floors)",
     items: [
-      { label: "Flooring", value: "Heavy-duty large format vitrified tiles or polished stone flooring suitable for high traffic retail use." },
-      { label: "Walls", value: "Plastered finish, ready for tenant fit-out (Oil Bound Distemper or primer coat)." },
-      { label: "Ceiling", value: "Exposed slab or simple plaster finish, ready for tenant fit-out (Oil Bound Distemper)." },
-      { label: "Wet Points", value: "Provision for water inlet and outlet in designated areas." },
-      { label: "Toilets", value: "Antiskid vitrified tiles on floor, vitrified wall tiles up to false ceiling level. Premium quality sanitaryware." }
+      { label: "Flooring", value: "Heavy-duty large format vitrified tiles or polished stone flooring suitable for high traffic retail use" },
+      { label: "Walls", value: "Plastered finish, ready for tenant fit-out (Oil Bound Distemper or primer coat)" },
+      { label: "Ceiling", value: "Exposed slab or simple plaster finish, ready for tenant fit-out (Oil Bound Distemper)" },
+      { label: "Wet Points", value: "Provision for water inlet and outlet in designated areas" },
+      { label: "Toilets", value: "Antiskid vitrified tiles on the floor, vitrified wall tiles up to false ceiling level. Premium quality sanitaryware" }
     ]
   },
   banquet: {
     category: "Banquet Floor (Second Floor)",
     area: "620.22 SQ.M.",
     items: [
-      { label: "Main Hall Flooring", value: "Superior quality vitrified tiles of minimum 1200x600 size or marble (620.22 SQ.M.)." },
-      { label: "Wall Finishes", value: "Acrylic emulsion on POP punning. Feature walls with textured paint or cladding." },
-      { label: "Ceiling", value: "Decorative gypsum false ceiling with integrated lighting and acoustic treatment." },
-      { label: "Service Areas", value: "Antiskid vitrified tiles. Acrylic emulsion paint on walls." },
-      { label: "Toilets", value: "Granite counter. Premium quality sanitaryware and CP fittings (Grohe / Jaquar / Roca or equivalent). False ceiling with oil bound distemper." }
+      { label: "Main Hall Flooring", value: "Superior quality vitrified tiles of minimum 1200x600 size or marble" },
+      { label: "Wall Finishes", value: "Acrylic emulsion on POP punning; Feature walls with textured paint or cladding" },
+      { label: "Ceiling", value: "Decorative gypsum false ceiling with integrated lighting and acoustic treatment" },
+      { label: "Service Areas", value: "Antiskid vitrified tiles, Acrylic emulsion paint on walls" },
+      { label: "Toilets", value: "Granite counter, Premium quality sanitaryware and CP fittings (Grohe/Jaquar/Roca or equivalent). False ceiling with oil bound distemper" }
     ]
   },
   serviceApartments: {
     category: "Service Apartments (3rd to 7th Floors)",
-    items: [
-      { label: "Living/Dining & Bedrooms Flooring", value: "Vitrified Tile - 1200x600." },
-      { label: "Wall Finishes", value: "Acrylic emulsion on POP punning." },
-      { label: "Ceiling", value: "Oil Bound Distemper." },
-      { label: "Toilet", value: "Antiskid vitrified tiles. Vitrified wall tiles up to false ceiling level. Granite counter. Oil bound distemper with false ceiling." },
-      { label: "Sanitaryware & Fittings", value: "Premium quality range. Grohe / Jaquar / Roca or equivalent single lever fittings in all toilets." }
+    livingDining: [
+      { label: "Flooring / Skirting", value: "Vitrified Tile - 1200x600" },
+      { label: "Wall Finishes", value: "Acrylic emulsion on POP punning" },
+      { label: "Ceiling", value: "Oil Bound Distemper" }
+    ],
+    toilet: [
+      { label: "Toilet Finishes", value: "Antiskid vitrified tiles. Vitrified wall tiles up to false ceiling level. Granite counter, Oil bound distemper with false ceiling" },
+      { label: "Sanitaryware & Fittings", value: "Premium quality range, Grohe/Jaquar/Roca or equivalent single lever fittings in all toilets" }
     ]
   },
-  commonAreas: [
-    { area: "Entrance Lobby (Ground Floor)", flooring: "Granite", wallFinish: "Acrylic emulsion paint and cladding of vitrified tiles", ceiling: "Gypsum false ceiling with acrylic emulsion paint" },
-    { area: "Lift Lobby (Typical Floor)", flooring: "Granite", wallFinish: "Granite cladding", ceiling: "Armstrong false ceiling with acrylic emulsion paint" },
-    { area: "Ramps & Basement", flooring: "Antiskid ceramic tiles, 12mm", wallFinish: "Oil bound distemper over punning", ceiling: "Cement plaster & white dry distemper" },
-    { area: "Staircase (Main)", flooring: "Granite", wallFinish: "Acrylic emulsion paint", ceiling: "Oil bound distemper" },
-    { area: "Staircase (Fire)", flooring: "Granite", wallFinish: "Acrylic emulsion paint", ceiling: "Oil bound distemper" }
-  ],
+  commonAreas: {
+    category: "Common Areas",
+    table: [
+      { area: "Entrance Lobby (Ground Floor)", flooring: "Granite", wallFinish: "Acrylic emulsion paint and cladding of vitrified tiles", ceiling: "Gypsum false ceiling with acrylic emulsion paint" },
+      { area: "Lift Lobby (Typical Floor)", flooring: "Granite", wallFinish: "Granite cladding", ceiling: "Armstrong false ceiling with acrylic emulsion paint" },
+      { area: "Ramps & Basement", flooring: "Antiskid ceramic tiles, 12mm", wallFinish: "Oil bound distemper over punning", ceiling: "Cement plaster & white dry distemper" },
+      { area: "Staircase (Main)", flooring: "Granite", wallFinish: "Acrylic emulsion paint", ceiling: "Oil bound distemper" },
+      { area: "Staircase (Fire)", flooring: "Granite", wallFinish: "Acrylic emulsion paint", ceiling: "Oil bound distemper" }
+    ],
+    railing: "MS Railing (Staircase)",
+    lifts: "Two (2) passengers lifts @ 10 passengers each"
+  },
   doorsWindows: {
     category: "Doors & Windows",
     items: [
-      { label: "Doors", value: "Engineered laminated frame (WPC) with laminated door shutters. 35MM thick commercial board with phenol formaldehyde." },
-      { label: "Hardware", value: "Locks, handles, and knobs (mortise and cylindrical locks) from reputed makes. High quality steel/brass hardware with ball bearing hinges." },
-      { label: "Windows", value: "Powder coated aluminium frame or UPVC frame windows with clear float glass." }
+      { label: "Doors", value: "Engineered laminated frame (WPC) with laminated door shutters, 35MM thick commercial board with phenol formaldehyde" },
+      { label: "Hardware", value: "Locks, handles, and knobs (mortise and cylindrical locks) from reputed makes and brands. High quality steel/brass hardware, Floor springs/hinges with ball bearings" },
+      { label: "Windows", value: "Powder coated aluminium frame or UPVC frame windows with clear float glass" }
     ]
   },
   mep: {
     category: "Electrical & MEP",
     items: [
-      { label: "Fixtures & Fittings", value: "ISI mark switches/sockets, distribution boxes, and circuit breakers from standard standard makes and brands." },
-      { label: "Wiring", value: "ISI mark conduits PVC/Steel with copper wires concealed in RCC slabs." },
-      { label: "Plumbing", value: "ISI mark CPVC water supply pipes with standard valves & C PVC pipes for external sewerage & waste water." },
-      { label: "EV Charging", value: "Provision for Electric Vehicle (EV) fast-charging infrastructure." },
-      { label: "Security System", value: "CCTV and electronic surveillance provided with internal communication & intercom system." }
+      { label: "Fixtures & Fittings", value: "ISI mark switches/sockets, distribution boxes, and circuit breakers from standard makes and brands" },
+      { label: "Wiring", value: "ISI mark conduits PVC/Steel with copper wires concealed in RCC slabs" },
+      { label: "Plumbing", value: "ISI mark CPVC water supply pipes with standard valves and accessories. C PVC pipes for external sewerage & waste water" },
+      { label: "EV Charging", value: "Provision for EV charging" },
+      { label: "Security System", value: "CCTV and electronic surveillance would be provided with internal communication system" }
     ]
-  }
+  },
+  disclaimer: "The above specifications are indicative and may be changed in consultation with the Architect. The company reserves the right to provide equivalent finishes/fittings and fixtures."
 };
 
 export const AMENITIES_LIST = [

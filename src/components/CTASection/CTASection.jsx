@@ -21,11 +21,6 @@ export default function CTASection({
             <div className={`cta-card-inner cta-card-${theme} architectural-grid-gold`}>
               <ArchitecturalBg variant="cta_banner" />
               <div className="cta-content">
-                <div className="cta-badge">
-                  <Sparkles size={14} className={theme === 'gold' ? 'text-white' : 'text-gold'} />
-                  <span>Strategic Lucknow Address</span>
-                </div>
-
                 <h2 className="cta-title">{title}</h2>
                 <p className="cta-subtitle">{subtitle}</p>
                 <p className="cta-description">{description}</p>

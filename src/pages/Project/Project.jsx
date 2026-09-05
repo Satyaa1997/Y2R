@@ -19,7 +19,6 @@ import {
   PROJECT_INFO,
   SPACES_CATEGORIES,
   AMENITIES_LIST,
-  PARKING_LEVELS,
   WHY_Y2R_POINTS,
   PROJECT_SPECIFICATIONS
 } from '../../data/projectData';
@@ -28,7 +27,8 @@ import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
-import proImage from '../../assets/pro.jpg';
+import proImage from '../../assets/contactbanner.png';
+import project from '../../assets/Building.jpg'
 import './Project.css';
 
 export default function Project({ onOpenEnquiry }) {
@@ -45,7 +45,6 @@ export default function Project({ onOpenEnquiry }) {
           />
           <div className="project-hero-overlay" />
         </div>
-        <ArchitecturalBg variant="project_hero" />
         <div className="container-custom page-hero-content project-hero-content">
           <RevealOnScroll animation="fade-up">
             <h1 className="page-hero-title">
@@ -57,11 +56,11 @@ export default function Project({ onOpenEnquiry }) {
             </p>
             <div className="page-hero-meta">
               <span className="meta-item">
-                <MapPin size={15} className="text-gold" /> Kursi Road | Jankipuram Extension, Lucknow
+                <MapPin size={16} /> Kursi Road | Jankipuram Extension, Lucknow
               </span>
               <span className="meta-sep">•</span>
               <span className="meta-item">
-                <ShieldCheck size={15} className="text-gold" /> RERA: {PROJECT_INFO.reraNumber}
+                <ShieldCheck size={16} /> RERA: {PROJECT_INFO.reraNumber}
               </span>
             </div>
           </RevealOnScroll>
@@ -77,12 +76,11 @@ export default function Project({ onOpenEnquiry }) {
               <TiltCard maxTilt={6} scale={1.01} className="vision-tilt">
                 <div className="vision-image-frame">
                   <img
-                    src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1400&auto=format&fit=crop"
+                    src={project}
                     alt="Y2R Heights Master Elevation"
                     className="vision-img"
                   />
                   <div className="vision-image-caption">
-                    <span className="gold-badge">Architectural Landmark</span>
                     <p>Kursi Road • Jankipuram Scheme, Lucknow</p>
                   </div>
                 </div>
@@ -216,50 +214,50 @@ export default function Project({ onOpenEnquiry }) {
         </div>
       </section>
 
-      {/* Parking Section */}
-      <section className="section-padding theme-section-light project-parking-section">
-        <ArchitecturalBg variant="project_parking" />
+      {/* 4. Minimal Parking Section */}
+      <section className="project-parking-minimal-section theme-section-light">
         <div className="container-custom">
-          <SectionHeading
-            number="04"
-            badge="Vehicle Access"
-            title="Designed for Effortless Arrival."
-            subtitle="Two dedicated basement parking levels support convenient access for occupants and visitors."
-            align="center"
-            theme="light"
-          />
+          <div className="parking-minimal-wrapper">
+            <div className="parking-minimal-header">
+              <h3 className="parking-minimal-title">Designed for Effortless Arrival</h3>
+              <p className="parking-minimal-subtitle">Two dedicated basement parking levels support convenient access for occupants and visitors.</p>
+            </div>
 
-          <div className="parking-slabs-grid">
-            {PARKING_LEVELS.map((parking, idx) => (
-              <RevealOnScroll
-                key={parking.level}
-                animation={idx === 0 ? "fade-right" : "fade-left"}
-                delay={idx * 120}
-                className="parking-col"
-              >
-                <TiltCard maxTilt={8} scale={1.02} className="parking-tilt-card">
-                  <div className="parking-slab-inner architectural-grid-gold">
-                    <div className="parking-header">
-                      <div className="parking-icon-wrap">
-                        <Car size={26} className="text-gold" />
-                      </div>
-                      <div>
-                        <span className="parking-level-badge">{parking.level}</span>
-                        <h3 className="parking-capacity">{parking.capacity}</h3>
-                      </div>
-                    </div>
-                    <p className="parking-desc">{parking.description}</p>
-                    <div className="parking-specs-row">
-                      {parking.specs.map((spec, sIdx) => (
-                        <span key={sIdx} className="parking-spec-tag">
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
+            <div className="parking-minimal-cards-grid">
+              <div className="parking-compact-card">
+                <div className="compact-card-top">
+                  <div className="compact-icon-wrap">
+                    <Car size={18} className="text-gold" />
                   </div>
-                </TiltCard>
-              </RevealOnScroll>
-            ))}
+                  <div>
+                    <span className="compact-level-tag">Basement 1</span>
+                    <h4 className="compact-capacity-val">18 Car Parking</h4>
+                  </div>
+                </div>
+                <div className="compact-specs-list">
+                  <span className="compact-spec-pill">18 Dedicated Bays</span>
+                  <span className="compact-spec-pill">Wide Access Aisles</span>
+                  <span className="compact-spec-pill">Direct Elevator Link</span>
+                </div>
+              </div>
+
+              <div className="parking-compact-card">
+                <div className="compact-card-top">
+                  <div className="compact-icon-wrap">
+                    <Car size={18} className="text-gold" />
+                  </div>
+                  <div>
+                    <span className="compact-level-tag">Basement 2</span>
+                    <h4 className="compact-capacity-val">22 Car Parking</h4>
+                  </div>
+                </div>
+                <div className="compact-specs-list">
+                  <span className="compact-spec-pill">22 Dedicated Bays</span>
+                  <span className="compact-spec-pill">Secure Automated Ingress</span>
+                  <span className="compact-spec-pill">Full Fire Safety System</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
