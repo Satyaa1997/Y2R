@@ -217,12 +217,7 @@
   }
 
   .hero-location-pill {
-    font-size: 0.62rem;
-    padding: 2px 7px;
-    margin-bottom: 0.25rem;
-    background: rgba(10, 11, 14, 0.8);
-    border: 1px solid rgba(175, 125, 9, 0.4);
-    backdrop-filter: blur(4px);
+    display: none !important;
   }
 
   .hero-portal-title {
