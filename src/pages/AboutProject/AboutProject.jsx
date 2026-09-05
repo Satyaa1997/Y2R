@@ -25,8 +25,8 @@ import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import proImage from '../../assets/pro.jpg';
 import buildingImage from '../../assets/earthquack.png';
 import premiumDocImg from '../../assets/Premium.JPG';
-import highStreetImg from '../../assets/Stone.JFIF';
-import boutiqueImg from '../../assets/wire.JFIF';
+import highStreetImg from '../../assets/Stone.jfif';
+import boutiqueImg from '../../assets/wire.jfif';
 import foodCourtImg from '../../assets/exaust.jpg';
 import './AboutProject.css';
 

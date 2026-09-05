@@ -28,7 +28,7 @@ import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import proImage from '../../assets/contactbanner.png';
-import project from '../../assets/Building.jpg'
+import project from '../../assets/Building.JPG';
 import './Project.css';
 
 export default function Project({ onOpenEnquiry }) {
