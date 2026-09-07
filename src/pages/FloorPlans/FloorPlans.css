@@ -344,25 +344,22 @@
   .floor-plans-hero-section {
     position: relative !important;
     width: 100% !important;
-    height: 85vw !important;
-    min-height: 340px !important;
-    max-height: 520px !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
     padding: 0 !important;
-    margin-top: var(--header-height) !important;
+    margin-top: var(--header-height, 60px) !important;
     background: #0A0B0E !important;
     overflow: hidden !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
+    display: block !important;
     box-sizing: border-box !important;
   }
 
   .fp-hero-video-bg {
-    position: absolute !important;
-    inset: 0 !important;
+    position: relative !important;
+    inset: auto !important;
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     display: block !important;
     overflow: hidden !important;
     z-index: 1 !important;
@@ -371,10 +368,11 @@
   .fp-hero-video,
   .fp-hero-img {
     width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
     object-position: center center !important;
-    filter: brightness(1) contrast(1.05) !important;
+    filter: brightness(1) contrast(1.02) !important;
     display: block !important;
   }
 
