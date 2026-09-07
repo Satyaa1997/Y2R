@@ -3,16 +3,24 @@ import { createPortal } from 'react-dom';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
-  CheckCircle2,
-  Maximize2,
-  Ruler,
-  Layers,
-  Phone,
-  ShieldCheck,
-  MapPin,
+  ArrowRight,
   ArrowUpRight,
+  Briefcase,
+  Building,
+  Car,
+  CheckCircle2,
   ChevronRight,
-  X
+  DoorOpen,
+  Download,
+  Layers,
+  MapPin,
+  Maximize2,
+  Phone,
+  Ruler,
+  ShieldCheck,
+  Sparkles,
+  X,
+  Zap
 } from 'lucide-react';
 import { FLOOR_PLANS_DATA, PROJECT_INFO } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
@@ -46,15 +54,15 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
   }, [isZoomOpen]);
 
   // Find plan by id, default to first if not found
-  const planIndex = FLOOR_PLANS_DATA.findIndex((p) => p.id === id);
-  const plan = planIndex !== -1 ? FLOOR_PLANS_DATA[planIndex] : FLOOR_PLANS_DATA[0];
+  const planIndex = (FLOOR_PLANS_DATA || []).findIndex((p) => p.id === id);
+  const plan = planIndex !== -1 ? FLOOR_PLANS_DATA[planIndex] : (FLOOR_PLANS_DATA?.[0] || {});
 
   // Adjacent plans
   const prevPlan = planIndex > 0 ? FLOOR_PLANS_DATA[planIndex - 1] : null;
-  const nextPlan = planIndex < FLOOR_PLANS_DATA.length - 1 ? FLOOR_PLANS_DATA[planIndex + 1] : null;
+  const nextPlan = planIndex < (FLOOR_PLANS_DATA?.length - 1) ? FLOOR_PLANS_DATA[planIndex + 1] : null;
 
   // Other plans for bottom grid (excluding current)
-  const otherPlans = FLOOR_PLANS_DATA.filter((p) => p.id !== plan.id);
+  const otherPlans = (FLOOR_PLANS_DATA || []).filter((p) => p.id !== plan.id);
 
   const currentImage = activeView === 'map' && plan.mapImage ? plan.mapImage : plan.blueprintUrl;
 
@@ -81,8 +89,8 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
             </div>
 
             <div className="minimal-meta-group">
-              <span className="minimal-rera-badge">UP RERA: {PROJECT_INFO.reraNumber}</span>
-              <span className="minimal-code-badge">{plan.code || `Y2R-${plan.id.toUpperCase()}`}</span>
+              <span className="minimal-rera-badge">UP RERA: {PROJECT_INFO?.reraNumber}</span>
+              <span className="minimal-code-badge">{plan.code || `Y2R-${plan.id?.toUpperCase()}`}</span>
             </div>
           </div>
 
@@ -98,7 +106,7 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
           {/* Minimal Floor Selector Bar */}
           <div className="minimal-floor-switcher-bar">
             <div className="minimal-switcher-scroll">
-              {FLOOR_PLANS_DATA.map((p) => (
+              {(FLOOR_PLANS_DATA || []).map((p) => (
                 <button
                   key={p.id}
                   onClick={() => {
@@ -117,7 +125,7 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
         </div>
       </section>
 
-      {/* 2. MAIN BLUEPRINT & SPECIFICATION SHOWCASE (LIGHT THEME FOR CRISP MAP VISIBILITY) */}
+      {/* 2. MAIN BLUEPRINT & SPECIFICATION SHOWCASE */}
       <section className="section-padding theme-section-white floor-detail-main-section">
         <ArchitecturalBg variant="floorplans_gallery" />
         <div className="container-custom">
@@ -289,7 +297,7 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
             <div className="detail-checklist-card">
               <h3 className="checklist-heading">Level Inclusions & Layout Highlights</h3>
               <div className="checklist-items">
-                {plan.highlights.map((item, idx) => (
+                {(plan.highlights || []).map((item, idx) => (
                   <div key={idx} className="checklist-item-row">
                     <CheckCircle2 size={18} className="text-gold flex-shrink-0" />
                     <span>{item}</span>
@@ -309,6 +317,7 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
 
               <div className="action-card-buttons-row">
                 <button
+                  type="button"
                   onClick={() => onOpenEnquiry && onOpenEnquiry(`${plan.floor} - ${plan.purpose}`)}
                   className="btn-primary action-btn"
                 >
@@ -317,6 +326,7 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => onOpenBrochure && onOpenBrochure()}
                   className="btn-secondary action-btn"
                 >
@@ -325,17 +335,17 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
                 </button>
 
                 <a
-                  href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`}
+                  href={`tel:${PROJECT_INFO?.tollFree ? PROJECT_INFO.tollFree.replace(/\s+/g, '') : ''}`}
                   className="btn-secondary action-btn"
                 >
                   <Phone size={15} className="text-gold" />
-                  <span>{PROJECT_INFO.tollFree}</span>
+                  <span>{PROJECT_INFO?.tollFree}</span>
                 </a>
               </div>
 
               <div className="action-card-rera">
                 <ShieldCheck size={14} className="text-gold" />
-                <span>UP RERA Sanctioned Commercial Project: {PROJECT_INFO.reraNumber}</span>
+                <span>UP RERA Sanctioned Commercial Project: {PROJECT_INFO?.reraNumber}</span>
               </div>
             </div>
 
@@ -429,13 +439,18 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
       {/* 5. CTA SECTION */}
       <CTASection
         theme="light"
+        badge="Site Visit & Consultation"
         title={`Explore Spaces on ${plan.floor}`}
         subtitle="Direct Commercial Advisory"
         description={`Connect with our advisory team for detailed floor plates, CAD drawings, and unit reservations on ${plan.floor}.`}
+        primaryBtnText="Speak With Advisory Team"
+        primaryBtnAction={() => onOpenEnquiry && onOpenEnquiry(`${plan.floor} - ${plan.purpose}`)}
+        secondaryBtnText="Download Full Brochure"
+        secondaryBtnAction={onOpenBrochure}
         onOpenEnquiry={() => onOpenEnquiry && onOpenEnquiry(`${plan.floor} - ${plan.purpose}`)}
       />
 
-      {/* 6. PURE FULLSCREEN BLUEPRINT LIGHTBOX (PORTAL TO DOCUMENT.BODY, NO SCROLLERS) */}
+      {/* 6. PURE FULLSCREEN BLUEPRINT LIGHTBOX */}
       {isZoomOpen && typeof document !== 'undefined' && createPortal(
         <div
           className="blueprint-pure-fullscreen"
@@ -449,7 +464,7 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
             <div className="fullscreen-pill-badge">
               <span className="gold-dot" />
               <span className="fullscreen-plan-name">{plan.floor} — {plan.purpose}</span>
-              <span className="fullscreen-plan-code">CAD: {plan.code || plan.id.toUpperCase()}</span>
+              <span className="fullscreen-plan-code">CAD: {plan.code || plan.id?.toUpperCase()}</span>
             </div>
 
             <button
@@ -477,7 +492,7 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
           {/* Bottom Floating Info Pill */}
           <div className="fullscreen-floating-bottom" onClick={(e) => e.stopPropagation()}>
             <span className="fullscreen-info-text">
-              Sanctioned Architectural Layout • UP RERA: {PROJECT_INFO.reraNumber}
+              Sanctioned Architectural Layout • UP RERA: {PROJECT_INFO?.reraNumber}
             </span>
           </div>
         </div>,
@@ -486,4 +501,3 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
     </div>
   );
 }
-
