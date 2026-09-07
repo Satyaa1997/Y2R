@@ -32,7 +32,7 @@ import { PROJECT_INFO, VICINITY_LANDMARKS } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import location2Image from '../../assets/location2.jpg';
-import locationVideo from '../../assets/locationvedio.mp4';
+import locationBanner from '../../assets/Location banner.png';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import './Location.css';
@@ -73,14 +73,6 @@ export default function Location({ onOpenEnquiry }) {
   const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [heroTextFaded, setHeroTextFaded] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHeroTextFaded(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleCloseModal = () => {
     setIsFullscreenMapOpen(false);
@@ -210,36 +202,14 @@ export default function Location({ onOpenEnquiry }) {
 
   return (
     <div className="location-page-root">
-      {/* 1. Page Hero (Clear Visible Background Video) */}
-      <section
-        className="page-hero-section location-hero-section theme-section-dark"
-        onClick={() => setHeroTextFaded((prev) => !prev)}
-      >
-        {/* Background Video & Soft Overlay for Clear Visibility */}
-        <div className="location-hero-video-bg">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="location-hero-video"
-          >
-            <source src={locationVideo} type="video/mp4" />
-          </video>
-          <div className={`location-hero-video-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
-        </div>
-
-        <div className="container-custom page-hero-content location-hero-content">
-          <div className={`location-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <h1 className="page-hero-title">
-              Strategically Centered. <br />
-              <span className="location-hero-subtext">Seamlessly Connected.</span>
-            </h1>
-            <p className="page-hero-desc">
-              A location that keeps business closer to everything that matters — situated near Sector-J Extension, Jankipuram Extension Scheme, Lucknow.
-            </p>
-          </div>
+      {/* 1. Page Hero Banner with Location banner.png */}
+      <section className="page-hero-section location-hero-section theme-section-dark">
+        <div className="location-hero-bg">
+          <img
+            src={locationBanner}
+            alt="Y2R Heights Location & Connectivity Banner"
+            className="location-hero-img"
+          />
         </div>
       </section>
 
