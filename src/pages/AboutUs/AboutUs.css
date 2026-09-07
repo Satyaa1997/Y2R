@@ -11,7 +11,7 @@
    ========================================================================== */
 .about-hero-section {
   position: relative;
-  min-height: clamp(580px, 70vh, 720px);
+  min-height: clamp(660px, 80vh, 880px);
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -38,7 +38,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.75) contrast(1.05);
+  filter: brightness(1) contrast(1.02);
   display: block;
 }
 
@@ -665,9 +665,9 @@
   .about-hero-section {
     position: relative !important;
     width: 100% !important;
-    height: 72vw !important;
-    min-height: 290px !important;
-    max-height: 450px !important;
+    height: 85vw !important;
+    min-height: 340px !important;
+    max-height: 520px !important;
     padding: 0 !important;
     margin-top: var(--header-height, 70px) !important;
     background: #0A0B0E !important;
@@ -675,7 +675,6 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    cursor: pointer !important;
     box-sizing: border-box !important;
   }
 

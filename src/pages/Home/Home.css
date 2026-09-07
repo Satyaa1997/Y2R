@@ -9,9 +9,11 @@
 }
 
 .container-custom {
-  max-width: var(--container);
+  width: 100%;
+  max-width: var(--container-wide);
   margin: 0 auto;
   padding: 0 2rem;
+  box-sizing: border-box;
 }
 
 .bg-dark-surface {

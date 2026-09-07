@@ -15,7 +15,7 @@
   padding-right: 0;
   background-color: #0E0F12 !important;
   text-align: left;
-  min-height: clamp(580px, 70vh, 720px);
+  min-height: clamp(660px, 80vh, 880px);
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -31,13 +31,16 @@
   z-index: 1;
 }
 
-.fp-hero-video {
+.fp-hero-video,
+.fp-hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
   filter: brightness(0.82) contrast(1.08) saturate(1.05);
   transform: scale(1.02);
+  filter: brightness(1) contrast(1.02);
+  display: block;
 }
 
 .fp-hero-video-overlay {
@@ -144,9 +147,11 @@
 
 /* ==========================================================================
    2. INTERACTIVE BLUEPRINTS GALLERY (WHITE / LIGHT BACKGROUND)
+/* ==========================================================================
+   2. INTERACTIVE BLUEPRINTS GALLERY (DARK THEME)
    ========================================================================== */
-.floor-plans-gallery-section.theme-section-white {
-  background-color: #FFFFFF;
+.floor-plans-gallery-section.theme-section-dark {
+  background-color: #0b0c0e;
   position: relative;
 }
 
@@ -160,9 +165,9 @@
 }
 
 .filter-btn {
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.04);
   border: 1.5px solid rgba(175, 125, 9, 0.35);
-  color: #111112;
+  color: #E2E8F0;
   font-family: var(--font-body);
   font-size: 0.8rem;
   letter-spacing: 0.06em;
@@ -171,37 +176,39 @@
   border-radius: 999px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   transition: all 250ms ease;
 }
 
 .filter-btn:hover {
-  border-color: #af7d09;
-  color: #af7d09;
-  background: rgba(175, 125, 9, 0.08);
+  border-color: #ffd978;
+  color: #ffd978;
+  background: rgba(175, 125, 9, 0.15);
   transform: translateY(-2px);
 }
 
 .filter-btn.active {
   background: linear-gradient(135deg, #8a6104 0%, #af7d09 100%);
   color: #FFFFFF;
-  border-color: #af7d09;
+  border-color: #ffd978;
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(175, 125, 9, 0.35);
+  box-shadow: 0 4px 15px rgba(175, 125, 9, 0.45);
 }
 
-/* Blueprint Dark Cards Grid */
+/* ==========================================================================
+   2. INTERACTIVE BLUEPRINT CARDS (Uiverse Card Style by akshat-patel28)
+   ========================================================================== */
 .blueprint-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
   align-items: stretch;
 }
 
 @media (min-width: 1200px) {
   .blueprint-cards-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.35rem;
+    gap: 1.75rem;
   }
 }
 
@@ -212,237 +219,108 @@
   justify-content: center;
 }
 
-.blueprint-tilt-card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
-.blueprint-dark-card {
-  background: linear-gradient(165deg, #181A26 0%, #0E1018 100%);
-  border: 1px solid rgba(175, 125, 9, 0.35);
-  border-radius: 8px;
-  padding: 1.15rem 1.1rem;
+/* From Uiverse.io by akshat-patel28 */
+.blueprint-cards-grid .card,
+.floor-plans-page-root .akshat-card {
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 380px;
   height: 100%;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.35);
   overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 14px;
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
 }
 
-.blueprint-dark-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #8a6104, #ffd978, #af7d09, transparent);
-  opacity: 0.7;
+.blueprint-cards-grid .card:hover,
+.floor-plans-page-root .akshat-card:hover {
+  transform: translateY(-8px);
+  border-color: #C8A22C;
+  box-shadow: 0px 18px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(200, 162, 44, 0.2);
 }
 
-.blueprint-tilt-card:hover .blueprint-dark-card {
-  border-color: #ffd978;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 22px rgba(175, 125, 9, 0.3);
-  transform: translateY(-4px);
-  background: linear-gradient(165deg, #1E2130 0%, #121420 100%);
-}
-
-.blueprint-card-header {
+.card-image-container,
+.akshat-card-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background-color: #0b0c10;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 0.85rem;
-}
-
-.bp-floor-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.bp-floor-tag {
-  font-size: 1rem;
-  color: #ffd978;
-  font-weight: 700;
-  font-family: var(--font-display);
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-}
-
-.bp-purpose-sub {
-  font-size: 0.76rem;
-  color: #CBD5E1;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.bp-code-tag {
-  font-family: monospace;
-  font-size: 0.62rem;
-  color: #FAF8F4;
-  background: rgba(175, 125, 9, 0.18);
-  border: 1px solid rgba(175, 125, 9, 0.45);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
-.bp-preview-image-wrap {
-  position: relative;
-  height: 132px;
-  overflow: hidden;
-  border-radius: 6px;
-  margin-bottom: 0.9rem;
-  border: 1px solid rgba(175, 125, 9, 0.3);
-  background: #08090C;
-}
-
-.bp-preview-image-wrap img {
+.akshat-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: contrast(1.06) brightness(0.92);
-  transition: transform 500ms ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.blueprint-tilt-card:hover .bp-preview-image-wrap img {
+.blueprint-cards-grid .card:hover .akshat-card-img {
   transform: scale(1.06);
 }
 
-.bp-click-overlay {
+.akshat-card-badge {
   position: absolute;
-  inset: 0;
-  background: rgba(10, 12, 16, 0.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  backdrop-filter: blur(2px);
-  transition: opacity 250ms ease;
-}
-
-.blueprint-tilt-card:hover .bp-click-overlay {
-  opacity: 1;
-}
-
-.bp-overlay-btn {
-  background: linear-gradient(135deg, #8a6104, #af7d09);
-  color: #FFFFFF;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 6px 14px;
+  top: 8px;
+  right: 8px;
+  background: rgba(10, 11, 13, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(200, 162, 44, 0.45);
+  padding: 3px 8px;
   border-radius: 4px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.bp-cad-indicator-chip {
-  position: absolute;
-  bottom: 6px;
-  left: 6px;
-  background: rgba(14, 16, 24, 0.85);
-  border: 1px solid rgba(175, 125, 9, 0.4);
-  padding: 2px 7px;
-  border-radius: 3px;
-  font-size: 0.62rem;
-  color: #FAF8F4;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  backdrop-filter: blur(4px);
-}
-
-.bp-description {
-  font-size: 0.78rem;
-  line-height: 1.55;
-  color: #CBD5E1 !important;
-  margin-bottom: 0.85rem;
-  font-weight: 400;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  height: 2.45rem;
-}
-
-.bp-specs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.38rem;
-  margin-bottom: 0.95rem;
-}
-
-.bp-spec-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.76rem;
-  color: #FAF8F4 !important;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.bp-spec-item span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.bp-card-footer {
-  margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(175, 125, 9, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.bp-open-cue {
-  font-size: 0.74rem;
-  color: #FAF8F4;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: color 200ms ease;
-}
-
-.blueprint-tilt-card:hover .bp-open-cue {
+  font-size: 0.68rem;
   color: #ffd978;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  z-index: 2;
 }
 
-.bp-arrow-bubble {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(175, 125, 9, 0.18);
-  border: 1px solid rgba(175, 125, 9, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 250ms ease;
+.blueprint-cards-grid .card-title,
+.floor-plans-page-root .akshat-card-title {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-weight: 700;
+  color: #0A0B0D;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+  transition: color 0.2s ease;
 }
 
-.blueprint-tilt-card:hover .bp-arrow-bubble {
-  background: #af7d09;
-  border-color: #ffd978;
-  transform: translateX(2px);
+.blueprint-cards-grid .card:hover .card-title,
+.floor-plans-page-root .akshat-card:hover .akshat-card-title {
+  color: #af7d09;
 }
 
-.blueprint-tilt-card:hover .bp-arrow-bubble svg {
-  color: #FFFFFF !important;
+.blueprint-cards-grid .card-des,
+.floor-plans-page-root .akshat-card-des {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #475569;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  flex: 1;
 }
 
 /* ==========================================================================
@@ -466,9 +344,9 @@
   .floor-plans-hero-section {
     position: relative !important;
     width: 100% !important;
-    height: 72vw !important;
-    min-height: 290px !important;
-    max-height: 450px !important;
+    height: 85vw !important;
+    min-height: 340px !important;
+    max-height: 520px !important;
     padding: 0 !important;
     margin-top: var(--header-height) !important;
     background: #0A0B0E !important;
@@ -490,7 +368,8 @@
     z-index: 1 !important;
   }
 
-  .fp-hero-video {
+  .fp-hero-video,
+  .fp-hero-img {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
@@ -623,20 +502,6 @@
     max-width: 100% !important;
     display: flex !important;
     justify-content: center !important;
-    margin: 0 auto !important;
-  }
-
-  .blueprint-tilt-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    margin: 0 auto !important;
-  }
-
-  .blueprint-dark-card {
-    width: 100% !important;
-    max-width: 100% !important;
     margin: 0 auto !important;
   }
 }

@@ -233,6 +233,7 @@
 @media (min-width: 1440px) {
   .footer-container {
     padding: 3.5rem 2.5rem 2rem;
+    padding: 3.5rem 2rem 2rem;
   }
 
   .footer-main-grid {
@@ -250,6 +251,7 @@
 @media (max-width: 640px) {
   .footer-container {
     padding: 2.25rem 1rem 1.25rem;
+    padding: 2.25rem 0.85rem 1.25rem;
   }
 
   .footer-main-grid {

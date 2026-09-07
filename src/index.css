@@ -53,6 +53,7 @@
 
   /* Architectural Layout Dimensions */
   --container: 1280px;
+  --container: 1440px;
   --container-wide: 1440px;
   --header-height: 110px;
   --section-padding: clamp(2.25rem, 4.5vh, 3.25rem);
@@ -566,6 +567,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 
 /* ==========================================================================
    UNIVERSAL RESPONSIVE CONTAINER ARCHITECTURE
+   (Exactly matches Navbar Logo and Footer Logo alignment across all pages)
    ========================================================================== */
 .container,
 .container-custom {
@@ -578,6 +580,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   box-sizing: border-box;
 }
 
+.container-custom,
 .container-wide {
   width: 100%;
   max-width: var(--container-wide);
@@ -586,6 +589,12 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   padding-left: clamp(1rem, 3vw, 2.5rem);
   padding-right: clamp(1rem, 3vw, 2.5rem);
   box-sizing: border-box;
+  max-width: var(--container-wide) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  box-sizing: border-box !important;
 }
 
 .container-fluid {
@@ -593,6 +602,9 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   padding-left: clamp(1rem, 3vw, 2.5rem);
   padding-right: clamp(1rem, 3vw, 2.5rem);
   box-sizing: border-box;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  box-sizing: border-box !important;
 }
 
 /* ==========================================================================
@@ -662,6 +674,13 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 }
 
 @media (max-width: 640px) {
+  .container,
+  .container-custom,
+  .container-wide,
+  .container-fluid,
+  .navbar-container,
+  .footer-container,
+  .top-strip-container,
   .page-hero-content,
   .about-hero-content,
   .about-project-hero-content,
@@ -679,6 +698,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 @media (min-width: 1920px) {
   :root {
     --container: 1480px;
+    --container: 1640px;
     --container-wide: 1640px;
   }
 }
@@ -687,6 +707,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 @media (min-width: 1440px) and (max-width: 1919px) {
   :root {
     --container: 1320px;
+    --container: 1440px;
     --container-wide: 1440px;
   }
 }
@@ -695,6 +716,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 @media (min-width: 1024px) and (max-width: 1439px) {
   :root {
     --container: 1140px;
+    --container: 1240px;
     --container-wide: 1240px;
   }
 }

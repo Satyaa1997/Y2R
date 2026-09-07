@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
 import {
   ShieldCheck,
   CheckCircle2,
-  MapPin,
   Store,
   Briefcase,
   Home,
@@ -19,25 +17,17 @@ import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 
-// Asset Images & Video
-import locationVideo from '../../assets/locationvedio.mp4';
+// Asset Images
+import aboutHeroImage from '../../assets/About.png';
 import buildingImage from '../../assets/Building.JPG';
 import highStreetImage from '../../assets/High-Street.jpg';
 import boutiqueImage from '../../assets/Boutique.jpg';
-import studioImage from '../../assets/Building.JPG';
+import studioImage from '../../assets/Studio.jpg';
 import foodCourtImage from '../../assets/FoodCourt2.jpg';
 
 import './AboutUs.css';
 
 export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
-  const [heroTextFaded, setHeroTextFaded] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHeroTextFaded(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Project Space Highlights with Image Slots
   const projectSpaces = [
@@ -101,42 +91,14 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
 
   return (
     <div className="about-us-page-root">
-      {/* Hero Section with locationvedio.mp4 */}
-      <section
-        className="page-hero-section about-hero-section theme-section-dark"
-        onClick={() => setHeroTextFaded((prev) => !prev)}
-      >
+      {/* Hero Section with About.png */}
+      <section className="page-hero-section about-hero-section theme-section-dark">
         <div className="about-hero-bg">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="about-hero-video"
-          >
-            <source src={locationVideo} type="video/mp4" />
-          </video>
-          <div className={`about-hero-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
-        </div>
-        <div className="container-custom page-hero-content about-hero-content">
-          <div className={`about-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <h1 className="page-hero-title">
-              About Y2R Heights. <br />
-              <span className="about-hero-highlight">Where Vision Meets Value.</span>
-            </h1>
-            <p className="page-hero-desc">
-              Lucknow’s landmark G+8 commercial and lifestyle destination on Kursi Road, Jankipuram Scheme — crafted for businesses that demand high visibility, functional excellence, and long-term stature.
-            </p>
-            <div className="page-hero-meta">
-              <span className="meta-item">
-                <MapPin size={16} /> Kursi Road | Jankipuram Scheme, Lucknow
-              </span>
-              <span className="meta-sep">•</span>
-              <span className="meta-item">
-                <ShieldCheck size={16} /> UP RERA: {PROJECT_INFO.reraNumber}
-              </span>
-            </div>
-          </div>
+          <img
+            src={aboutHeroImage}
+            alt="About Y2R Heights Banner"
+            className="about-hero-img"
+          />
         </div>
       </section>
 

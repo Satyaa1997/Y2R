@@ -7,6 +7,17 @@ import serviceFloorMap from '../assets/ServiceFlor.png';
 import studioFloorMap from '../assets/3to7.png';
 import terraceFloorMap from '../assets/TericeFlor.png';
 
+// Photographic Assets
+import highStreetImg from '../assets/High-Street.jpg';
+import boutiqueImg from '../assets/Boutique.jpg';
+import commercialHallImg from '../assets/Commercial hall.jpg';
+import banquetHallImg from '../assets/Banwuet hall.jpg';
+import foodCourtImg from '../assets/FoodCourt2.jpg';
+import studioImg from '../assets/Studio.jpg';
+import buildingImg from '../assets/Building.JPG';
+import building1Img from '../assets/Building1.JPG';
+import premiumImg from '../assets/Premium.JPG';
+
 export const PROJECT_INFO = {
   name: "Y2R HEIGHTS",
   tagline: "Where Vision Meets Value.",
@@ -55,7 +66,7 @@ export const SPACES_CATEGORIES = [
       "Dedicated Loading & Service Utility Provisions",
       "Ideal for Flagships, Boutiques, Salons & Dining"
     ],
-    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1600&auto=format&fit=crop",
+    image: highStreetImg,
     badge: "LGF & UGF",
     ctaText: "Explore Retail Spaces",
     floorPlanSlug: "/floor-plans/ugf"
@@ -75,7 +86,7 @@ export const SPACES_CATEGORIES = [
       "Curated Valet Service & 24x7 Multi-Tier Security",
       "Ideal for Founders, Consultants, Clinics & Corporate Firms"
     ],
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop",
+    image: boutiqueImg,
     badge: "1st & Commercial Floors",
     ctaText: "Explore Office Spaces",
     floorPlanSlug: "/floor-plans/1st"
@@ -95,7 +106,7 @@ export const SPACES_CATEGORIES = [
       "Panoramic Views of Jankipuram Extension Skyline",
       "Dedicated High-Speed Resident Elevators & Intercom"
     ],
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop",
+    image: studioImg,
     badge: "3rd to 7th Floors",
     ctaText: "Explore Studio Apartments",
     floorPlanSlug: "/floor-plans/3to7"
@@ -115,7 +126,7 @@ export const SPACES_CATEGORIES = [
       "Direct Visual Link to Retail & Banquet Levels",
       "High-Turnaround Dining Hub for Shoppers & Executives"
     ],
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop",
+    image: foodCourtImg,
     badge: "Service & Dining Floor",
     ctaText: "Explore F&B Spaces",
     floorPlanSlug: "/floor-plans/service"
@@ -135,7 +146,7 @@ export const SPACES_CATEGORIES = [
       "Acoustic Ceiling Treatment & Decorative Gypsum Lighting",
       "VIP Arrival Staging & Dedicated Guest Elevators"
     ],
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1600&auto=format&fit=crop",
+    image: banquetHallImg,
     badge: "2nd Floor (620.22 SQ.M.)",
     ctaText: "Discover Spaces"
   },
@@ -368,7 +379,7 @@ export const FLOOR_PLANS_DATA = [
   {
     id: "lgf",
     floor: "Lower Ground Floor",
-    purpose: "Retail Stores",
+    purpose: "High-Street Retail",
     description: "High-footfall anchor retail shops with direct access from entry concourse and basement connectivity.",
     longDescription: "The Lower Ground Floor at Y2R Heights is engineered for anchor department stores, lifestyle brands, and hypermarket concepts requiring expansive horizontal layouts. Featuring direct stair and lift links from the arrival plaza and subterranean parking, this level guarantees high patron conversion and fluid circulation.",
     highlights: [
@@ -378,7 +389,7 @@ export const FLOOR_PLANS_DATA = [
       "Subterranean Basement Parking Integration (40+ Vehicles)",
       "Dedicated Loading / Unloading Service Entry"
     ],
-    blueprintUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
+    blueprintUrl: highStreetImg,
     mapImage: lowerGroundMap,
     slabHeight: "14 Ft Slab-to-Slab",
     zoning: "Anchor Retail & High-Street Showrooms",
@@ -393,7 +404,7 @@ export const FLOOR_PLANS_DATA = [
   {
     id: "ugf",
     floor: "Upper Ground Floor",
-    purpose: "Retail Stores",
+    purpose: "Boutique Office Suites",
     description: "Prime street-level retail frontage designed for flagship brands, high-visibility boutiques, and lifestyle cafés.",
     longDescription: "Commanding the most prominent visual position along Main Kursi Road, the Upper Ground Floor is Y2R Heights' flagship retail level. Designed with grand double-height structural glazing and immediate street-level ingress, it offers maximum pedestrian footfall and unmatched brand exposure.",
     highlights: [
@@ -403,7 +414,7 @@ export const FLOOR_PLANS_DATA = [
       "Dedicated High-Visibility Brand Signage Zones",
       "Optimized for High-Ticket Retail & Lifestyle Cafés"
     ],
-    blueprintUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop",
+    blueprintUrl: boutiqueImg,
     mapImage: upperGroundMap,
     slabHeight: "14 Ft Slab-to-Slab",
     zoning: "Prime High-Street Retail",
@@ -428,7 +439,7 @@ export const FLOOR_PLANS_DATA = [
       "High-Speed Dual Lift Cores with Executive Reception Lobby",
       "Independent Utility & Modern Washroom Facilities"
     ],
-    blueprintUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
+    blueprintUrl: commercialHallImg,
     mapImage: firstFloorMap,
     slabHeight: "12 Ft Slab-to-Slab",
     zoning: "Corporate Commercial & Workspaces",
@@ -453,7 +464,7 @@ export const FLOOR_PLANS_DATA = [
       "Advanced Acoustic Insulation & Lighting Infrastructure",
       "Exclusive Guest Elevators with VIP Arrival Staging"
     ],
-    blueprintUrl: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop",
+    blueprintUrl: banquetHallImg,
     mapImage: secondFloorMap,
     slabHeight: "14 Ft Clear Height",
     zoning: "Hospitality & Grand Events Concourse",
@@ -478,7 +489,7 @@ export const FLOOR_PLANS_DATA = [
       "High-Volume Footfall Hub Feeding Retail & Corporate Levels",
       "Easy Elevator Access for Dine-In Guests & Delivery Fleets"
     ],
-    blueprintUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop",
+    blueprintUrl: foodCourtImg,
     mapImage: serviceFloorMap,
     slabHeight: "12 Ft Clear Height",
     zoning: "Multi-Cuisine Culinary Concourse",
@@ -503,7 +514,7 @@ export const FLOOR_PLANS_DATA = [
       "Dedicated High-Speed Resident Elevators & Intercom",
       "Turnkey Rental Potential with High Yields for Investors"
     ],
-    blueprintUrl: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop",
+    blueprintUrl: studioImg,
     mapImage: studioFloorMap,
     slabHeight: "11 Ft Ceiling Clearance",
     zoning: "Executive Serviced Studio Living",
@@ -528,7 +539,7 @@ export const FLOOR_PLANS_DATA = [
       "Secure Perimeter Glass Railings & Ambient Night Illumination",
       "Express Elevator Link & Dual Fire Stairwells"
     ],
-    blueprintUrl: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop",
+    blueprintUrl: building1Img,
     mapImage: terraceFloorMap,
     slabHeight: "Open Sky Vantage",
     zoning: "Rooftop Open Lounge & Green Oasis",

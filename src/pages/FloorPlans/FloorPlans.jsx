@@ -1,16 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import floorPlanVideo from '../../assets/FloorPlan.mp4';
-import {
-  ArrowUpRight,
-  CheckCircle2,
-  Layers,
-  Car,
-  ShieldCheck
-} from 'lucide-react';
-import { FLOOR_PLANS_DATA, PROJECT_INFO } from '../../data/projectData';
+import floorPlanImage from '../../assets/FloorPlan.png';
+import { FLOOR_PLANS_DATA } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
-import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
@@ -19,14 +11,6 @@ import './FloorPlans.css';
 export default function FloorPlans({ onOpenEnquiry }) {
   const navigate = useNavigate();
   const [filter, setFilter] = useState('all');
-  const [heroTextFaded, setHeroTextFaded] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHeroTextFaded(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const categories = [
     { id: 'all', label: 'All 7 Levels' },
@@ -47,57 +31,20 @@ export default function FloorPlans({ onOpenEnquiry }) {
 
   return (
     <div className="floor-plans-page-root">
-      {/* 1. HERO SECTION (CLEAR VIBRANT VIDEO BANNER) */}
-      <section
-        className="page-hero-section floor-plans-hero-section theme-section-dark"
-        onClick={() => setHeroTextFaded((prev) => !prev)}
-      >
-        {/* Background Architectural Video & Soft Overlay */}
+      {/* 1. HERO SECTION (CLEAR VIBRANT IMAGE BANNER) */}
+      <section className="page-hero-section floor-plans-hero-section theme-section-dark">
+        {/* Background Architectural Image */}
         <div className="fp-hero-video-bg">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="fp-hero-video"
-          >
-            <source src={floorPlanVideo} type="video/mp4" />
-          </video>
-          <div className={`fp-hero-video-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
-        </div>
-
-        <div className="container-custom page-hero-content fp-hero-content">
-          <div className={`fp-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <span className="gold-badge">Architectural Blueprints</span>
-            <h1 className="page-hero-title">
-              A Space for <br />
-              <span className="hero-title-highlight">Every Ambition.</span>
-            </h1>
-            <p className="page-hero-desc">
-              Explore the structured vertical integration of Y2R Heights across 7 dedicated spatial tiers. Click any floor to inspect detailed blueprint schematics.
-            </p>
-
-            <div className="fp-hero-stats-row">
-              <div className="fp-hero-stat">
-                <Layers size={16} className="text-gold" />
-                <span>7 Spatial Tiers</span>
-              </div>
-              <div className="fp-hero-stat">
-                <Car size={16} className="text-gold" />
-                <span>Double Basement Parking</span>
-              </div>
-              <div className="fp-hero-stat">
-                <ShieldCheck size={16} className="text-gold" />
-                <span>UP RERA: {PROJECT_INFO.reraNumber}</span>
-              </div>
-            </div>
-          </div>
+          <img
+            src={floorPlanImage}
+            alt="Y2R Heights Floor Plans Banner"
+            className="fp-hero-img"
+          />
         </div>
       </section>
 
-      {/* 2. INTERACTIVE BLUEPRINTS GALLERY (WHITE / LIGHT BACKGROUND) */}
-      <section className="section-padding theme-section-white floor-plans-gallery-section">
+      {/* 2. INTERACTIVE BLUEPRINTS GALLERY (DARK BACKGROUND) */}
+      <section className="section-padding theme-section-dark floor-plans-gallery-section">
         <ArchitecturalBg variant="floorplans_gallery" />
         <div className="container-custom">
           <SectionHeading
@@ -106,7 +53,7 @@ export default function FloorPlans({ onOpenEnquiry }) {
             title="Interactive Floor Schematics."
             subtitle="Filter by commercial zone and click any blueprint card to open high-resolution CAD schematics."
             align="center"
-            theme="light"
+            theme="dark"
           />
 
           {/* Filter Tabs on Light Background */}
@@ -131,59 +78,26 @@ export default function FloorPlans({ onOpenEnquiry }) {
                 delay={idx * 60}
                 className="blueprint-card-col"
               >
-                <TiltCard
-                  maxTilt={6}
-                  scale={1.015}
-                  className="blueprint-tilt-card cursor-pointer"
+                <div
+                  className="card akshat-card"
                   onClick={() => {
                     navigate(`/floor-plans/${plan.id}`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                 >
-                  <div className="blueprint-dark-card blueprint-grid">
-                    <div className="blueprint-card-header">
-                      <div className="bp-floor-meta">
-                        <span className="bp-floor-tag">{plan.floor}</span>
-                        <span className="bp-purpose-sub">{plan.purpose}</span>
-                      </div>
-                      <span className="bp-code-tag">{plan.code || `LVL-${plan.id.toUpperCase()}`}</span>
-                    </div>
-
-                    <div className="bp-preview-image-wrap">
-                      <img src={plan.blueprintUrl} alt={plan.purpose} />
-                      <div className="bp-click-overlay">
-                        <span className="bp-overlay-btn">
-                          <span>Inspect CAD Map</span>
-                          <ArrowUpRight size={13} />
-                        </span>
-                      </div>
-                      <div className="bp-cad-indicator-chip">
-                        <Layers size={11} className="text-gold" />
-                        <span>CAD Map Ready</span>
-                      </div>
-                    </div>
-
-                    <p className="bp-description">{plan.description}</p>
-
-                    <div className="bp-specs-list">
-                      {plan.highlights.slice(0, 2).map((h, hIdx) => (
-                        <div key={hIdx} className="bp-spec-item">
-                          <CheckCircle2 size={13} className="text-gold flex-shrink-0" />
-                          <span>{h}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="bp-card-footer">
-                      <span className="bp-open-cue">
-                        View Level Details
-                      </span>
-                      <div className="bp-arrow-bubble">
-                        <ArrowUpRight size={14} className="text-gold" />
-                      </div>
-                    </div>
+                  <div className="card-image-container akshat-card-image-container">
+                    <img
+                      src={plan.blueprintUrl}
+                      alt={`${plan.floor} - ${plan.purpose}`}
+                      className="akshat-card-img"
+                    />
+                    <span className="akshat-card-badge">{plan.floor}</span>
                   </div>
-                </TiltCard>
+                  <p className="card-title akshat-card-title">{plan.purpose}</p>
+                  <p className="card-des akshat-card-des">
+                    {plan.description}
+                  </p>
+                </div>
               </RevealOnScroll>
             ))}
           </div>
