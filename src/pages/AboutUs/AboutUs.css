@@ -244,7 +244,7 @@
   margin-top: 2px;
 }
 
-/* Section 02: Spaces Formats Grid with Image Cards */
+/* Section 02: Spaces Formats Grid (From Uiverse.io by akshat-patel28) */
 .about-spaces-section {
   position: relative;
   background-color: #0E0F12;
@@ -252,125 +252,117 @@
 
 .about-spaces-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   margin-top: 3.5rem;
 }
 
-.space-feature-card {
-  background: #141519;
-  border: 1px solid rgba(175, 125, 9, 0.25);
-  border-radius: 6px;
-  overflow: hidden;
+/* From Uiverse.io by akshat-patel28 */
+.about-spaces-section .card,
+.akshat-card {
   display: flex;
   flex-direction: column;
-  transition: all 300ms ease;
-  position: relative;
-}
-
-.space-feature-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(175, 125, 9, 0.6);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(175, 125, 9, 0.15);
-}
-
-.space-card-image-wrap {
-  position: relative;
   width: 100%;
-  height: 220px;
+  min-height: 375px;
+  height: 375px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.25),
+    -4px -4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  background: #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid rgba(175, 125, 9, 0.2);
 }
 
-.space-card-img {
+.about-spaces-section .card:hover,
+.akshat-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(175, 125, 9, 0.55);
+  box-shadow: 0px 20px 24px rgba(0, 0, 0, 0.3),
+    -4px -4px 12px rgba(175, 125, 9, 0.15);
+}
+
+.about-spaces-section .card-image-container,
+.akshat-card-image-container {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.space-feature-card:hover .space-card-img {
-  transform: scale(1.06);
-}
-
-.space-image-tag {
-  position: absolute;
-  bottom: 10px;
-  left: 12px;
-  background: rgba(14, 15, 18, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(175, 125, 9, 0.35);
-  padding: 4px 10px;
-  border-radius: 3px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.72rem;
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-.space-card-body {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.space-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.85rem;
-}
-
-.space-icon-box {
-  width: 38px;
-  height: 38px;
-  border-radius: 4px;
-  background: rgba(175, 125, 9, 0.12);
-  border: 1px solid rgba(175, 125, 9, 0.35);
+  height: 205px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  background-color: rgb(165, 165, 165);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.space-level-badge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.akshat-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.about-spaces-section .card:hover .akshat-card-img,
+.akshat-card:hover .akshat-card-img {
+  transform: scale(1.06);
+}
+
+.akshat-card-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(10, 11, 13, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(175, 125, 9, 0.4);
   padding: 3px 8px;
-  border-radius: 2px;
-  background: rgba(175, 125, 9, 0.15);
-  color: var(--gold-light);
-  border: 1px solid rgba(175, 125, 9, 0.35);
-}
-
-.space-card-title {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  color: #d5b779;
   font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 2;
 }
 
-.space-points-list {
-  list-style: none;
-  padding: 0;
+.image-icon {
+  font-size: 40px;
+}
+
+.about-spaces-section .card-title,
+.akshat-card-title {
+  margin: 0 0 6px 0;
+  font-size: 17px;
+  font-family: var(--font-display, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif);
+  font-weight: 700;
+  color: #0A0B0D;
+  cursor: default;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.about-spaces-section .card-des,
+.akshat-card-des {
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.space-points-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #B2B0A8;
+  font-size: 13px;
+  line-height: 1.48;
+  font-family: var(--font-sans, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif);
+  color: #475569;
+  cursor: default;
 }
 
 .gold-dot {

@@ -45,6 +45,7 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
       image: highStreetImage,
       imageLabel: 'Retail Promenade & Double-Height Frontage',
       icon: Store,
+      description: 'Massive road-facing frontage with grand arrival promenade, double-height anchor showrooms, and direct escalator connectivity.',
       points: [
         'Massive road-facing frontage with grand arrival promenade',
         'Double-height showrooms ideal for national & international anchor brands',
@@ -58,6 +59,7 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
       image: boutiqueImage,
       imageLabel: 'Corporate Suites & Workspaces',
       icon: Briefcase,
+      description: '100% Vastu-compliant commercial suites with maximum daylight, private washrooms, and double-glazed acoustic façade.',
       points: [
         '100% Vastu-compliant layout with maximum natural daylight',
         'Self-contained units with private washrooms & pantry provisions',
@@ -71,6 +73,7 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
       image: studioImage,
       imageLabel: 'Modern Living Suites & Private Balconies',
       icon: Home,
+      description: 'Smartly designed self-contained suites with open private balconies, modern kitchenette provisions, and high-speed elevators.',
       points: [
         'Smartly designed self-contained suites with open private balconies',
         'Premium sanitary fittings (Grohe/Jaquar/Roca) & modern kitchenette',
@@ -84,6 +87,7 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
       image: foodCourtImage,
       imageLabel: 'Culinary Concourse & Sky Lounge',
       icon: UtensilsCrossed,
+      description: 'Vibrant culinary hub with dedicated kitchen exhausts, grease traps, spacious communal seating, and open-air skyline terrace dining.',
       points: [
         'Vibrant culinary hub with dedicated kitchen exhausts & grease traps',
         'Spacious communal seating with panoramic city skyline views',
@@ -222,43 +226,22 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
 
           <div className="about-spaces-grid">
             {projectSpaces.map((space, idx) => {
-              const IconComp = space.icon;
               return (
                 <RevealOnScroll key={space.id} animation="fade-up" delay={idx * 100}>
-                  <div className="space-feature-card">
-                    {/* Image Slot Container */}
-                    <div className="space-card-image-wrap">
+                  {/* From Uiverse.io by akshat-patel28 */}
+                  <div className="card akshat-card">
+                    <div className="card-image-container akshat-card-image-container">
                       <img
                         src={space.image}
                         alt={space.title}
-                        className="space-card-img"
+                        className="akshat-card-img"
                       />
-                      <div className="space-image-tag">
-                        <ImageIcon size={13} className="text-gold" />
-                        <span>{space.imageLabel}</span>
-                      </div>
+                      <span className="akshat-card-badge">{space.level}</span>
                     </div>
-
-                    {/* Content */}
-                    <div className="space-card-body">
-                      <div className="space-card-header">
-                        <div className="space-icon-box">
-                          <IconComp size={20} className="text-gold" />
-                        </div>
-                        <span className="space-level-badge">{space.level}</span>
-                      </div>
-
-                      <h3 className="space-card-title">{space.title}</h3>
-
-                      <ul className="space-points-list">
-                        {space.points.map((pt, pIdx) => (
-                          <li key={pIdx}>
-                            <span className="gold-dot" />
-                            <span>{pt}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <p className="card-title akshat-card-title">{space.title}</p>
+                    <p className="card-des akshat-card-des">
+                      {space.description}
+                    </p>
                   </div>
                 </RevealOnScroll>
               );

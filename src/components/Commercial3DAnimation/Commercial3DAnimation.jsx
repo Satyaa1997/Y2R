@@ -89,10 +89,10 @@ export default function Commercial3DAnimation() {
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, width, height);
 
-      // 1. Draw 3D Isometric Golden Wave Ground Grid across full width
+      // 1. Draw 3D Isometric Golden Wave Ground Grid across full width (Darker & Richer Contrast)
       const gridSize = 16;
       const gridSpacing = 75;
-      ctx.lineWidth = 0.9;
+      ctx.lineWidth = 1.35;
 
       for (let ix = -gridSize; ix <= gridSize; ix++) {
         ctx.beginPath();
@@ -100,7 +100,7 @@ export default function Commercial3DAnimation() {
         for (let iz = 0; iz <= gridSize * 2; iz++) {
           const gx = ix * gridSpacing;
           const gz = iz * gridSpacing - 220;
-          const wave = Math.sin(time * 1.5 + ix * 0.28 + iz * 0.28) * 8;
+          const wave = Math.sin(time * 1.5 + ix * 0.28 + iz * 0.28) * 9;
           const gy = 210 + wave;
 
           const p = project(gx, gy, gz, currentRotX, currentRotY);
@@ -113,7 +113,7 @@ export default function Commercial3DAnimation() {
             }
           }
         }
-        ctx.strokeStyle = `rgba(175, 125, 9, ${0.16 * Math.max(0, 1 - Math.abs(ix) / gridSize)})`;
+        ctx.strokeStyle = `rgba(125, 84, 5, ${0.44 * Math.max(0, 1 - Math.abs(ix) / gridSize)})`;
         ctx.stroke();
       }
 
@@ -123,7 +123,7 @@ export default function Commercial3DAnimation() {
         for (let ix = -gridSize; ix <= gridSize; ix++) {
           const gx = ix * gridSpacing;
           const gz = iz * gridSpacing - 220;
-          const wave = Math.sin(time * 1.5 + ix * 0.28 + iz * 0.28) * 8;
+          const wave = Math.sin(time * 1.5 + ix * 0.28 + iz * 0.28) * 9;
           const gy = 210 + wave;
 
           const p = project(gx, gy, gz, currentRotX, currentRotY);
@@ -136,11 +136,11 @@ export default function Commercial3DAnimation() {
             }
           }
         }
-        ctx.strokeStyle = `rgba(175, 125, 9, ${0.16 * Math.max(0, 1 - iz / (gridSize * 2))})`;
+        ctx.strokeStyle = `rgba(125, 84, 5, ${0.44 * Math.max(0, 1 - iz / (gridSize * 2))})`;
         ctx.stroke();
       }
 
-      // 2. Draw 3D Floating Gold Dust & Energy Particles
+      // 2. Draw 3D Floating Gold Dust & Energy Particles (Darker & Richer Gold)
       particles.forEach((p) => {
         p.y -= p.speed;
         if (p.y < -380) p.y = 280;
@@ -149,12 +149,12 @@ export default function Commercial3DAnimation() {
         const pt = project(p.x, p.y, p.z, currentRotX, currentRotY);
 
         if (pt) {
-          const alpha = Math.min(1, Math.max(0.15, (1100 - pt.depth) / 800));
+          const alpha = Math.min(1, Math.max(0.25, (1100 - pt.depth) / 800));
           ctx.beginPath();
-          ctx.arc(pt.x, pt.y, Math.max(0.7, pulseSize * pt.scale), 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(175, 125, 9, ${alpha * 0.55})`;
-          ctx.shadowColor = 'rgba(175, 125, 9, 0.25)';
-          ctx.shadowBlur = 3;
+          ctx.arc(pt.x, pt.y, Math.max(0.9, pulseSize * pt.scale), 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(125, 84, 5, ${alpha * 0.85})`;
+          ctx.shadowColor = 'rgba(125, 84, 5, 0.45)';
+          ctx.shadowBlur = 4;
           ctx.fill();
           ctx.shadowBlur = 0;
         }
