@@ -1,4 +1,4 @@
-import { UtensilsCrossed, Coffee, IceCream, Flame, ArrowRight } from 'lucide-react';
+import { UtensilsCrossed, Coffee, IceCream, Flame } from 'lucide-react';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';

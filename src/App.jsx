@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 // Global Data
 import { GALLERY_ITEMS } from './data/galleryData';
@@ -11,7 +11,6 @@ import FloatingEnquire from './components/FloatingEnquire/FloatingEnquire';
 import EnquiryModal from './components/EnquiryModal/EnquiryModal';
 import BrochureModal from './components/BrochureModal/BrochureModal';
 import LightboxModal from './components/LightboxModal/LightboxModal';
-import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 // Pages
 import Home from './pages/Home/Home';
@@ -27,7 +26,6 @@ import FloorPlanDetail from './pages/FloorPlanDetail/FloorPlanDetail';
 import Gallery from './pages/Gallery/Gallery';
 import Investment from './pages/Investment/Investment';
 import AboutUs from './pages/AboutUs/AboutUs';
-import AboutProject from './pages/AboutProject/AboutProject';
 import Contact from './pages/Contact/Contact';
 import NotFound from './pages/NotFound/NotFound';
 
@@ -91,9 +89,6 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      
-      {/* Luxury Loading Screen */}
-      <LoadingScreen />
 
       <div className="app-shell">
         {/* Sticky Luxury Navbar */}
@@ -110,10 +105,6 @@ export default function App() {
                   onSelectGalleryItem={handleOpenGalleryItem}
                 />
               }
-            />
-            <Route
-              path="/project"
-              element={<Project onOpenEnquiry={handleOpenEnquiry} />}
             />
             <Route
               path="/spaces"
@@ -180,8 +171,12 @@ export default function App() {
             />
             <Route
               path="/about-project"
+              element={<Navigate to="/about-us" replace />}
+            />
+            <Route
+              path="/project"
               element={
-                <AboutProject
+                <Project
                   onOpenEnquiry={handleOpenEnquiry}
                   onOpenBrochure={handleOpenBrochure}
                 />

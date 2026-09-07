@@ -47,7 +47,7 @@ export default function Footer({ onOpenEnquiry }) {
             <ul className="footer-links-list">
               <li><Link to="/">Home Overview</Link></li>
               <li><Link to="/about-us">About Us</Link></li>
-              <li><Link to="/about-project">About Project</Link></li>
+              <li><Link to="/project">Project Specs</Link></li>
               <li><Link to="/location">Strategic Location</Link></li>
               <li><Link to="/floor-plans">Floor Plans & Specs</Link></li>
               <li><Link to="/gallery">Visual Gallery</Link></li>

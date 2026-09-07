@@ -1,4 +1,4 @@
-import { Store, Eye, Sparkles, Layers, ArrowRight } from 'lucide-react';
+import { Store, Eye, Sparkles, Layers } from 'lucide-react';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';

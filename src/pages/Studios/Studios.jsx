@@ -1,4 +1,4 @@
-import { Home as HomeIcon, Sparkles, Bed, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Home as HomeIcon, Sparkles, Bed, ShieldCheck } from 'lucide-react';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';

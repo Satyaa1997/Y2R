@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { PROJECT_INFO } from '../../data/projectData';
 import RevealOnScroll from '../RevealOnScroll/RevealOnScroll';
 import TiltCard from '../TiltCard/TiltCard';
-import ArchitecturalBg from '../ArchitecturalBg/ArchitecturalBg';
+import SiteOfficeAnimation from '../SiteOfficeAnimation/SiteOfficeAnimation';
 import './CTASection.css';
 
 export default function CTASection({
+  badge,
   title = "Ready to Explore Y2R Heights?",
   subtitle = "Direct Commercial Consultation",
   description = "Connect with our advisory team for customized floor layouts, pricing structures, and unit availability.",
@@ -19,8 +20,14 @@ export default function CTASection({
         <RevealOnScroll animation="zoom-in" duration={800}>
           <TiltCard maxTilt={6} scale={1.01} className="cta-tilt-card">
             <div className={`cta-card-inner cta-card-${theme} architectural-grid-gold`}>
-              <ArchitecturalBg variant="cta_banner" />
+              <SiteOfficeAnimation />
               <div className="cta-content">
+                {badge && (
+                  <div className="cta-badge">
+                    <Sparkles size={12} className="text-gold" />
+                    <span>{badge}</span>
+                  </div>
+                )}
                 <h2 className="cta-title">{title}</h2>
                 <p className="cta-subtitle">{subtitle}</p>
                 <p className="cta-description">{description}</p>

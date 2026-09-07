@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import spaceVideo from '../../assets/Space.mp4';
 import { SPACES_CATEGORIES } from '../../data/projectData';
 import TiltCard from '../../components/TiltCard/TiltCard';

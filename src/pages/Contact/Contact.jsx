@@ -6,6 +6,7 @@ import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import EnquiryForm from '../../components/EnquiryForm/EnquiryForm';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
+import SiteOfficeAnimation from '../../components/SiteOfficeAnimation/SiteOfficeAnimation';
 import contactBanner from '../../assets/contactbanner.png';
 import './Contact.css';
 
@@ -258,9 +259,12 @@ export default function Contact() {
           />
 
           <div className="map-visual-card architectural-grid-gold">
+            <SiteOfficeAnimation />
             <div className="map-inner-content">
               <div className="map-beacon-symbol">
-                <MapPin size={32} className="text-gold animate-bounce" />
+                <div className="map-beacon-sonar-ring ring-1" />
+                <div className="map-beacon-sonar-ring ring-2" />
+                <MapPin size={34} className="text-gold beacon-pin-icon" />
               </div>
               <h3 className="map-location-title">Y2R HEIGHTS SITE OFFICE</h3>
               <p className="map-address-text">{PROJECT_INFO.siteOffice}</p>

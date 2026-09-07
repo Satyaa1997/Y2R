@@ -663,7 +663,7 @@
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 1.35rem;
   box-sizing: border-box;
 }
@@ -808,7 +808,8 @@
   padding: 1.35rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 0.85rem;
   align-items: flex-start;
   text-align: left;
   opacity: 0;

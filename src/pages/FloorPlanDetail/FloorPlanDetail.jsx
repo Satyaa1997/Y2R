@@ -7,19 +7,11 @@ import {
   Maximize2,
   Ruler,
   Layers,
-  DoorOpen,
-  Building,
   Phone,
   ShieldCheck,
   MapPin,
-  Sparkles,
-  Zap,
-  Car,
-  Download,
-  ArrowRight,
   ArrowUpRight,
   ChevronRight,
-  Briefcase,
   X
 } from 'lucide-react';
 import { FLOOR_PLANS_DATA, PROJECT_INFO } from '../../data/projectData';

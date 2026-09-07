@@ -8,9 +8,11 @@ import {
   Home,
   UtensilsCrossed,
   ArrowRight,
-  Image as ImageIcon
+  Compass,
+  Layers,
+  Sparkles
 } from 'lucide-react';
-import { PROJECT_INFO } from '../../data/projectData';
+import { PROJECT_INFO, WHY_Y2R_POINTS } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
@@ -22,7 +24,7 @@ import locationVideo from '../../assets/locationvedio.mp4';
 import buildingImage from '../../assets/Building.JPG';
 import highStreetImage from '../../assets/High-Street.jpg';
 import boutiqueImage from '../../assets/Boutique.jpg';
-import studioImage from '../../assets/Building1.JPG';
+import studioImage from '../../assets/Building.JPG';
 import foodCourtImage from '../../assets/FoodCourt2.jpg';
 
 import './AboutUs.css';
@@ -36,6 +38,7 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
+
   // Project Space Highlights with Image Slots
   const projectSpaces = [
     {
@@ -141,7 +144,6 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
       <section className="section-padding theme-section-light about-overview-section">
         <div className="container-custom">
           <div className="about-overview-grid">
-            {/* Main Project Elevation Image Slot */}
             <RevealOnScroll animation="fade-right" className="about-media-col">
               <TiltCard maxTilt={5} scale={1.01} className="about-tilt">
                 <div className="about-image-frame">
@@ -158,7 +160,6 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
               </TiltCard>
             </RevealOnScroll>
 
-            {/* Concise Overview Text */}
             <div className="about-text-col">
               <RevealOnScroll animation="fade-left">
                 <SectionHeading
@@ -225,27 +226,24 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
           />
 
           <div className="about-spaces-grid">
-            {projectSpaces.map((space, idx) => {
-              return (
-                <RevealOnScroll key={space.id} animation="fade-up" delay={idx * 100}>
-                  {/* From Uiverse.io by akshat-patel28 */}
-                  <div className="card akshat-card">
-                    <div className="card-image-container akshat-card-image-container">
-                      <img
-                        src={space.image}
-                        alt={space.title}
-                        className="akshat-card-img"
-                      />
-                      <span className="akshat-card-badge">{space.level}</span>
-                    </div>
-                    <p className="card-title akshat-card-title">{space.title}</p>
-                    <p className="card-des akshat-card-des">
-                      {space.description}
-                    </p>
+            {projectSpaces.map((space, idx) => (
+              <RevealOnScroll key={space.id} animation="fade-up" delay={idx * 100}>
+                <div className="card akshat-card">
+                  <div className="card-image-container akshat-card-image-container">
+                    <img
+                      src={space.image}
+                      alt={space.title}
+                      className="akshat-card-img"
+                    />
+                    <span className="akshat-card-badge">{space.level}</span>
                   </div>
-                </RevealOnScroll>
-              );
-            })}
+                  <p className="card-title akshat-card-title">{space.title}</p>
+                  <p className="card-des akshat-card-des">
+                    {space.description}
+                  </p>
+                </div>
+              </RevealOnScroll>
+            ))}
           </div>
         </div>
       </section>
@@ -310,14 +308,58 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
         </div>
       </section>
 
+      {/* Section 05: Core Advantages / Why Y2R Heights */}
+      <section className="section-padding theme-section-dark why-section">
+        <ArchitecturalBg variant="project_why" />
+        <div className="container-custom">
+          <SectionHeading
+            number="05"
+            badge="Core Advantages"
+            title="A Location to Grow. A Presence to Remember."
+            subtitle="Strategic Location • Versatile Spaces • Premium Planning • Business Visibility"
+            align="center"
+            theme="dark"
+          />
+
+          <div className="why-grid">
+            {WHY_Y2R_POINTS.map((pt, idx) => {
+              const whyIcons = [Compass, Layers, ShieldCheck, Sparkles];
+              const IconComp = whyIcons[idx] || Sparkles;
+              return (
+                <RevealOnScroll
+                  key={pt.id}
+                  animation="fade-up"
+                  delay={idx * 80}
+                  className="why-col"
+                >
+                  <div className="jubayer-card" role="article" aria-label={`${pt.title} - ${pt.description}`}>
+                    <div className="jubayer-badge-circle">
+                      <p className="jubayer-badge-num">{pt.id}</p>
+                    </div>
+
+                    <div className="jubayer-icon-box">
+                      <IconComp size={38} className="jubayer-icon-svg" />
+                    </div>
+
+                    <h3 className="jubayer-title">{pt.title}</h3>
+                    <p className="jubayer-desc">{pt.description}</p>
+                  </div>
+                </RevealOnScroll>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Global CTA Section */}
       <CTASection
-        badge="Connect With Us"
-        title="Looking for the Ideal Commercial Space?"
-        subtitle="Speak directly with our project advisory and leasing desk for floor allocations, customized layouts, and walkthroughs."
-        primaryBtnText="Enquire Now"
-        primaryBtnAction={() => onOpenEnquiry && onOpenEnquiry('General')}
-        secondaryBtnText="Download Brochure"
+        badge="Site Visit & Consultation"
+        title="Schedule a Personalized Project Walkthrough"
+        subtitle="Where Vision Meets Value."
+        description="Connect with our site advisory team to review floor plans, spatial zoning, and availability at Y2R Heights."
+        primaryBtnText="Connect With Advisory Team"
+        primaryBtnAction={() => onOpenEnquiry && onOpenEnquiry("About Us Walkthrough")}
+        secondaryBtnText="Download Full Brochure"
         secondaryBtnAction={onOpenBrochure}
       />
     </div>

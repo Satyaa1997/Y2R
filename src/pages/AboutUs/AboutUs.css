@@ -1,12 +1,14 @@
 .about-us-page-root {
   width: 100%;
   position: relative;
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
+  background-color: var(--bg-dark, #0b0c0e);
+  color: var(--text-primary, #ffffff);
   overflow-x: hidden;
 }
 
-/* Hero Section */
+/* ==========================================================================
+   Hero Section (Clean Desktop & Mobile Fluid Aspect)
+   ========================================================================== */
 .about-hero-section {
   position: relative;
   min-height: 540px;
@@ -47,6 +49,7 @@
     rgba(11, 12, 14, 0.75) 100%
   );
   pointer-events: none;
+  transition: opacity 0.8s ease;
 }
 
 .about-hero-content {
@@ -63,15 +66,17 @@
   align-items: flex-start;
 }
 
-.about-hero-content .reveal-item {
+.about-hero-text-wrap {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.about-hero-content .page-hero-title {
+.page-hero-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
   font-size: clamp(1.65rem, 2.75vw, 2.35rem);
   font-weight: 700;
   line-height: 1.25;
@@ -84,26 +89,25 @@
 .about-hero-highlight {
   font-size: 0.95em;
   font-weight: 600;
-  color: #af7d09 !important;
+  color: #C8A22C !important;
   background: none !important;
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: #af7d09 !important;
+  -webkit-text-fill-color: #C8A22C !important;
   display: inline-block;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
 }
 
-.about-hero-content .page-hero-desc {
+.page-hero-desc {
   font-size: 1.05rem;
   line-height: 1.65;
   color: #FFFFFF !important;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 1.5rem;
   max-width: 780px;
   text-align: left;
   text-shadow: 0 3px 15px rgba(0, 0, 0, 0.95), 0 1px 6px rgba(0, 0, 0, 0.9);
 }
 
-.about-hero-content .page-hero-meta {
+.page-hero-meta {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -115,24 +119,26 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
 }
 
-.about-hero-content .meta-item {
+.meta-item {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: #FFFFFF !important;
 }
 
-.about-hero-content .meta-item svg {
-  color: #FFFFFF !important;
+.meta-item svg {
+  color: #C8A22C !important;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
 }
 
-.about-hero-content .meta-sep {
+.meta-sep {
   color: #FFFFFF !important;
-  opacity: 0.85;
+  opacity: 0.7;
 }
 
-/* Section 01: Overview Section */
+/* ==========================================================================
+   Section 01: Overview Section
+   ========================================================================== */
 .about-overview-section {
   background-color: #FAF8F5;
   color: #111112;
@@ -156,9 +162,9 @@
 
 .about-image-frame {
   position: relative;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(175, 125, 9, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), 0 0 0 1.5px rgba(175, 125, 9, 0.25);
 }
 
 .about-img {
@@ -166,11 +172,11 @@
   height: 480px;
   object-fit: cover;
   display: block;
-  transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .about-image-frame:hover .about-img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .about-image-badge {
@@ -185,8 +191,8 @@
 }
 
 .about-badge-title {
-  color: var(--gold-light);
-  font-family: var(--font-display);
+  color: #ffd978;
+  font-family: var(--font-display, "Montserrat", sans-serif);
   font-size: 1.1rem;
   font-weight: 700;
 }
@@ -244,7 +250,9 @@
   margin-top: 2px;
 }
 
-/* Section 02: Spaces Formats Grid (From Uiverse.io by akshat-patel28) */
+/* ==========================================================================
+   Section 02: Spaces Formats Grid (Cards Styling)
+   ========================================================================== */
 .about-spaces-section {
   position: relative;
   background-color: #0E0F12;
@@ -255,45 +263,39 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   margin-top: 3.5rem;
+  align-items: stretch;
 }
 
-/* From Uiverse.io by akshat-patel28 */
-.about-spaces-section .card,
 .akshat-card {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 375px;
-  height: 375px;
+  min-height: 380px;
+  height: 100%;
   background-color: #FFFFFF;
   border-radius: 12px;
-  box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.25),
-    -4px -4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   box-sizing: border-box;
-  padding: 12px;
-  border: 1px solid rgba(175, 125, 9, 0.2);
+  padding: 14px;
+  border: 1.5px solid rgba(175, 125, 9, 0.28);
 }
 
-.about-spaces-section .card:hover,
 .akshat-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(175, 125, 9, 0.55);
-  box-shadow: 0px 20px 24px rgba(0, 0, 0, 0.3),
-    -4px -4px 12px rgba(175, 125, 9, 0.15);
+  transform: translateY(-8px);
+  border-color: #C8A22C;
+  box-shadow: 0px 18px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(200, 162, 44, 0.2);
 }
 
-.about-spaces-section .card-image-container,
 .akshat-card-image-container {
   position: relative;
   width: 100%;
-  height: 205px;
-  border-radius: 10px;
+  height: 200px;
+  border-radius: 8px;
   margin-bottom: 14px;
   overflow: hidden;
-  background-color: rgb(165, 165, 165);
+  background-color: #17181c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -304,10 +306,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.about-spaces-section .card:hover .akshat-card-img,
 .akshat-card:hover .akshat-card-img {
   transform: scale(1.06);
 }
@@ -316,65 +317,47 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  background: rgba(10, 11, 13, 0.85);
+  background: rgba(10, 11, 13, 0.88);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(175, 125, 9, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(200, 162, 44, 0.45);
   padding: 3px 8px;
   border-radius: 4px;
-  font-size: 0.65rem;
-  color: #d5b779;
+  font-size: 0.68rem;
+  color: #ffd978;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   z-index: 2;
 }
 
-.image-icon {
-  font-size: 40px;
-}
-
-.about-spaces-section .card-title,
 .akshat-card-title {
   margin: 0 0 6px 0;
-  font-size: 17px;
-  font-family: var(--font-display, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif);
+  font-size: 1.05rem;
+  font-family: var(--font-display, "Montserrat", sans-serif);
   font-weight: 700;
   color: #0A0B0D;
-  cursor: default;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   display: -webkit-box;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  line-clamp: 1;
-}
-
-.about-spaces-section .card-des,
-.akshat-card-des {
-  -webkit-box-orient: vertical;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
+}
+
+.akshat-card-des {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.48;
-  font-family: var(--font-sans, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif);
+  font-size: 0.82rem;
+  line-height: 1.5;
   color: #475569;
-  cursor: default;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  flex: 1;
 }
 
-.gold-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-  margin-top: 6px;
-}
-
-/* Section 03: Connectivity Section */
+/* ==========================================================================
+   Section 03: Connectivity Section
+   ========================================================================== */
 .about-connectivity-section {
   background-color: #FAF8F5;
 }
@@ -388,25 +371,26 @@
 
 .fast-stat-box {
   background: #FFFFFF;
-  border: 1px solid rgba(175, 125, 9, 0.25);
-  border-radius: 6px;
+  border: 1.5px solid rgba(175, 125, 9, 0.25);
+  border-radius: 8px;
   padding: 1.75rem 1.25rem;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  transition: transform 250ms ease, border-color 250ms ease;
+  transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
 }
 
 .fast-stat-box:hover {
   transform: translateY(-4px);
-  border-color: var(--gold);
+  border-color: #af7d09;
+  box-shadow: 0 8px 25px rgba(175, 125, 9, 0.15);
 }
 
 .fast-stat-val {
   display: block;
-  font-family: var(--font-display);
+  font-family: var(--font-display, "Montserrat", sans-serif);
   font-size: 2rem;
   font-weight: 800;
-  color: var(--gold-dark);
+  color: #8a6104;
   margin-bottom: 0.35rem;
 }
 
@@ -418,7 +402,9 @@
   letter-spacing: 0.05em;
 }
 
-/* Section 04: Credentials Card */
+/* ==========================================================================
+   Section 04: Credentials Card
+   ========================================================================== */
 .about-credentials-section {
   background-color: #FAF8F5;
   padding-bottom: 5rem;
@@ -427,7 +413,7 @@
 .about-credentials-card {
   background: #FFFFFF;
   border: 1.5px solid rgba(175, 125, 9, 0.35);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 2.25rem 2.5rem;
   display: flex;
   align-items: center;
@@ -439,9 +425,9 @@
 .credentials-icon-col {
   width: 60px;
   height: 60px;
-  border-radius: 6px;
+  border-radius: 8px;
   background: rgba(175, 125, 9, 0.1);
-  border: 1px solid rgba(175, 125, 9, 0.3);
+  border: 1.5px solid rgba(175, 125, 9, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -457,13 +443,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--gold-dark);
+  color: #8a6104;
   display: block;
   margin-bottom: 0.25rem;
 }
 
 .credentials-title {
-  font-family: var(--font-display);
+  font-family: var(--font-display, "Montserrat", sans-serif);
   font-size: 1.25rem;
   font-weight: 700;
   color: #111112;
@@ -483,16 +469,160 @@
 .credentials-desc code {
   background: #F2EFE9;
   padding: 2px 6px;
-  border-radius: 3px;
+  border-radius: 4px;
   font-weight: 600;
   color: #111112;
+  border: 1px solid rgba(175, 125, 9, 0.2);
 }
 
 .credentials-action-col {
   flex-shrink: 0;
 }
 
-/* Responsive Styles */
+.credentials-action-col .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   Section 05: Why Y2R Section (Jubayer-10 Design)
+   ========================================================================== */
+.why-section {
+  position: relative;
+  background-color: #0E0F12;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: stretch;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.why-col {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+}
+
+.jubayer-card {
+  width: 100%;
+  max-width: 290px;
+  min-height: 290px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.28);
+  border: 1.5px solid rgba(175, 125, 9, 0.3);
+  padding: 2.25rem 1.65rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.jubayer-card:hover {
+  transform: translateY(-8px);
+  border-color: #af7d09;
+  box-shadow: 0 18px 45px rgba(175, 125, 9, 0.35), 0 0 25px rgba(175, 125, 9, 0.15);
+}
+
+.jubayer-badge-circle {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #c99318 0%, #af7d09 60%, #8a6104 100%);
+  border-radius: 50%;
+  position: absolute;
+  right: -20px;
+  top: -24px;
+  box-shadow: 0 4px 15px rgba(175, 125, 9, 0.4);
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jubayer-card:hover .jubayer-badge-circle {
+  transform: scale(1.1);
+}
+
+.jubayer-badge-num {
+  position: absolute;
+  bottom: 18px;
+  left: 24px;
+  color: #FFFFFF;
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.jubayer-icon-box {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1.25rem;
+  color: #af7d09;
+  transition: transform 350ms ease, color 350ms ease;
+}
+
+.jubayer-card:hover .jubayer-icon-box {
+  transform: scale(1.1) translateX(2px);
+  color: #8a6104;
+}
+
+.jubayer-icon-svg {
+  color: #af7d09;
+  stroke-width: 1.8;
+}
+
+.jubayer-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #0F172A;
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+  transition: color 300ms ease;
+}
+
+.jubayer-card:hover .jubayer-title {
+  color: #8a6104;
+}
+
+.jubayer-desc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.65;
+  font-weight: 400;
+  margin: 0;
+  flex: 1;
+}
+
+/* ==========================================================================
+   Responsive Overrides
+   ========================================================================== */
+@media (max-width: 1200px) and (min-width: 769px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .jubayer-card {
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 1024px) {
   .about-overview-grid {
     grid-template-columns: 1fr;
@@ -536,7 +666,7 @@
     min-height: 220px !important;
     max-height: 380px !important;
     padding: 0 !important;
-    margin-top: var(--header-height) !important;
+    margin-top: var(--header-height, 70px) !important;
     background: #0A0B0E !important;
     overflow: hidden !important;
     display: flex !important;
@@ -609,14 +739,10 @@
     align-items: flex-start !important;
     text-align: left !important;
     background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
     border: none !important;
-    border-radius: 0 !important;
     padding: 0 !important;
     box-shadow: none !important;
     box-sizing: border-box !important;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
   .about-hero-text-wrap.hero-mobile-faded {
@@ -655,6 +781,7 @@
 
   .about-spaces-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .about-img {
@@ -664,6 +791,16 @@
   .connectivity-fast-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .jubayer-card {
+    max-width: 100%;
+    min-height: auto;
   }
 }
 

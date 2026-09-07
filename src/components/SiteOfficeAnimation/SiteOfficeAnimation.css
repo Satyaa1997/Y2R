@@ -1,0 +1,97 @@
+/* ==========================================================================
+   SITE OFFICE LUXURY GPS RADAR & COORDINATE ANIMATION
+   ========================================================================== */
+.site-office-anim-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 50%, #FFFFFF 0%, #FAF8F4 85%);
+  border-radius: 4px;
+}
+
+.site-office-anim-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Telemetry Badges (Corner High-Tech GPS Data) */
+.site-anim-telemetry-badge {
+  position: absolute;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(138, 97, 4, 0.7);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+  border: 1px solid rgba(175, 125, 9, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  z-index: 2;
+  user-select: none;
+}
+
+.site-anim-telemetry-badge.top-left {
+  top: 14px;
+  left: 16px;
+}
+
+.site-anim-telemetry-badge.top-right {
+  top: 14px;
+  right: 16px;
+}
+
+.site-anim-telemetry-badge.bottom-left {
+  bottom: 14px;
+  left: 16px;
+}
+
+.site-anim-telemetry-badge.bottom-right {
+  bottom: 14px;
+  right: 16px;
+}
+
+.site-telemetry-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #af7d09;
+  box-shadow: 0 0 6px #af7d09;
+  animation: telemetryBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes telemetryBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 640px) {
+  .site-anim-telemetry-badge.top-right,
+  .site-anim-telemetry-badge.bottom-left {
+    display: none;
+  }
+  .site-anim-telemetry-badge {
+    font-size: 0.62rem;
+    padding: 0.15rem 0.45rem;
+  }
+}
+

@@ -3,27 +3,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import heroVideo from '../../assets/Herovedio.mp4';
 import qrImage from '../../assets/QR.png';
 import buildingImage from '../../assets/Building.JPG';
-import building1Image from '../../assets/Building1.JPG';
+import building1Image from '../../assets/Building.JPG';
 
 import {
   ArrowRight,
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
-  Compass,
   MapPin,
   Car,
   ShieldCheck,
   Phone,
   X,
-  Maximize2,
+  Sparkles,
+  Layers,
   DoorOpen,
   Building2,
-  MoveUp,
-  Camera,
-  Zap,
-  Sparkles,
-  Layers
+  Compass,
+  Maximize2
 } from 'lucide-react';
 import {
   PROJECT_INFO,
@@ -42,15 +39,14 @@ import Commercial3DAnimation from '../../components/Commercial3DAnimation/Commer
 import heroPoster from '../../assets/Building.JPG';
 import './Home.css';
 
+// Fallback Icon Mapping for Amenities
 const AMENITY_ICONS_MAP = {
+  Sparkles,
+  Layers,
   DoorOpen,
   Building2,
-  MoveUp,
   Car,
-  ShieldCheck,
-  Camera,
-  Zap,
-  Sparkles
+  ShieldCheck
 };
 
 const BROCHURE_FEATURES = [
@@ -142,7 +138,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
   const spacesSliderRef = useRef(null);
   const [showHighlightsPopup, setShowHighlightsPopup] = useState(false);
   const [activeSpaceIndex, setActiveSpaceIndex] = useState(0);
-  const [activeDeckCard, setActiveDeckCard] = useState(null);
   const [heroTextFaded, setHeroTextFaded] = useState(false);
 
   const handleSpaceScroll = (e) => {
@@ -191,16 +186,15 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
   return (
     <div className="home-page-root">
       {/* =========================================================================
-          1. HERO SECTION (Clean Cinematic Ambient Video Banner)
+          1. HERO SECTION
           ========================================================================= */}
       <section
         ref={heroRef}
         className="hero-portal-section"
         onClick={() => setHeroTextFaded((prev) => !prev)}
       >
-        {/* Background Architectural Canvas & Video */}
         <div className="hero-portal-bg">
-         <video
+          <video
             ref={videoRef}
             autoPlay
             muted
@@ -236,40 +230,31 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          2. PRECISION PLANNING MEETS PREMIUM DESIGN (Brochure Poster Showcase)
+          2. PRECISION PLANNING MEETS PREMIUM DESIGN
           ========================================================================= */}
       <section className="section-padding theme-section-white brochure-overview-section" id="overview">
         <div className="container-custom">
           <div className="brochure-overview-grid">
-            {/* Left Column: Brochure Content & Branding */}
             <RevealOnScroll animation="fade-right" className="brochure-overview-content-col">
               <div className="brochure-content-wrapper">
-          
-                {/* Main Titles */}
                 <div className="brochure-titles-block">
                   <h2 className="brochure-title-primary">PRECISION PLANNING</h2>
                   <h3 className="brochure-title-secondary">MEETS PREMIUM DESIGN</h3>
                 </div>
 
-                {/* Uppercase Lead Narrative */}
                 <p className="brochure-lead-statement">
                   Y2R HEIGHTS OFFERS A SEAMLESS COMMERCIAL EXPERIENCE THROUGH ITS G+8 STRUCTURE, BACKED BY SMART INFRASTRUCTURE AND REFINED PLANNING.
                 </p>
 
-                {/* Descriptive Body Paragraph */}
                 <p className="brochure-body-text">
                   With a grand entrance lobby, dedicated Ground and Basement parking levels, and six high-speed elevators, the development ensures seamless mobility and secure access for occupants and visitors alike. Crowned with a contemporary glass façade, the project blends modern aesthetics with smart design, creating an impressive business destination that perfectly balances elegance and functionality.
                 </p>
               </div>
             </RevealOnScroll>
 
-            {/* Right Column: Master Building Elevation Showcase */}
             <RevealOnScroll animation="fade-left" className="brochure-overview-media-col">
               <div className="brochure-elevation-card">
-                {/* Decorative Blue Sky Accent Backdrop behind building */}
                 <div className="brochure-sky-backdrop" />
-                
-                {/* Daytime Uncropped Building Image */}
                 <img
                   src={building1Image}
                   alt="Y2R Heights Master Architectural Elevation - Precision Planning Meets Premium Design"
@@ -279,7 +264,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             </RevealOnScroll>
           </div>
 
-          {/* Bottom Continuous Marquee / Ticker (Right to Left) */}
           <div className="brochure-ticker-ribbon" aria-label="Key Architectural Highlights">
             <div className="brochure-ticker-track">
               {[...BROCHURE_FEATURES, ...BROCHURE_FEATURES, ...BROCHURE_FEATURES, ...BROCHURE_FEATURES].map((item, idx) => (
@@ -296,7 +280,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          3. QUICK PROJECT HIGHLIGHTS (3D TILT CARDS)
+          3. QUICK PROJECT HIGHLIGHTS
           ========================================================================= */}
       <section className="section-padding theme-section-dark highlights-section">
         <ArchitecturalBg variant="home_highlights" />
@@ -310,14 +294,13 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             theme="dark"
           />
 
-          {/* Desktop 3x2 Grid & Mobile Touch-Swipeable Slider Container */}
           <div className="highlights-slider-wrapper">
             <div
               className="highlights-grid"
               ref={spacesSliderRef}
               onScroll={handleSpaceScroll}
             >
-              {SPACES_CATEGORIES.map((space, idx) => (
+              {SPACES_CATEGORIES.map((space) => (
                 <div key={space.id} className="highlight-grid-col">
                   <Link to={space.slug} className="hasan-card-link">
                     <article className="hasan-uiverse-card">
@@ -330,27 +313,12 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                         />
                         <div className="hasan-img-overlay" />
 
-                        {/* Top Header Row (Floor Badge + Index Tag) */}
-                        <div className="hasan-card-top-bar">
-                          <span className="hasan-card-badge">{space.badge || 'Commercial'}</span>
-                          <div className="hasan-card-index-box">
-                            <span className="hasan-idx-tag">0{idx + 1}</span>
-                            <ArrowUpRight size={14} className="hasan-icon-svg" />
-                          </div>
-                        </div>
-
-                        {/* Default Info (Visible at bottom on normal state) */}
                         <div className="hasan-center-info default-view">
                           <h3 className="hasan-center-title">{space.title}</h3>
                           <p className="hasan-center-desc">{space.tagline || space.highlight}</p>
                         </div>
 
-                        {/* Full-Card Hover Transparent Overlay (Covers 100% width and height) */}
                         <div className="hasan-hover-overlay">
-                          <div className="hasan-hover-top">
-                            <span className="hasan-hover-badge">{space.badge || 'Commercial'}</span>
-                            <span className="hasan-hover-num">0{idx + 1}</span>
-                          </div>
                           <div className="hasan-hover-body">
                             <h3 className="hasan-hover-title">{space.title}</h3>
                             <p className="hasan-hover-tagline">{space.tagline}</p>
@@ -368,7 +336,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               ))}
             </div>
 
-            {/* Mobile Swipe Navigation Controls (Prev / Next & Slide Dots) */}
             <div className="highlights-mobile-nav">
               <button
                 type="button"
@@ -481,7 +448,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          5. OFFICE & STUDIO APARTMENTS SPOTLIGHT (DUAL 3D PRESENTATION)
+          5. OFFICE & STUDIO APARTMENTS SPOTLIGHT
           ========================================================================= */}
       <section className="section-padding theme-section-dark dual-spotlight-section">
         <ArchitecturalBg variant="home_dual_spotlight" />
@@ -496,7 +463,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           />
 
           <div className="dual-cards-grid">
-            {/* Boutique Offices Card */}
             <RevealOnScroll animation="fade-right" className="dual-card-col">
               <Link to="/offices" className="eslam-card">
                 <div className="eslam-bg-layer">
@@ -509,14 +475,12 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                   <div className="eslam-bg-overlay" />
                 </div>
 
-                {/* Default Front View */}
                 <div className="eslam-card-front">
                   <span className="eslam-level-badge">1st & 2nd Floors</span>
                   <h3 className="eslam-card-title">Boutique Offices</h3>
                   <p className="eslam-card-subtitle">Modern Corporate Workspaces</p>
                 </div>
 
-                {/* Hover Expand View */}
                 <div className="eslam-card-hover-content">
                   <div>
                     <span className="eslam-level-badge gold">1st & 2nd Floors</span>
@@ -533,7 +497,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               </Link>
             </RevealOnScroll>
 
-            {/* Studio Apartments Card */}
             <RevealOnScroll animation="fade-left" delay={120} className="dual-card-col">
               <Link to="/studios" className="eslam-card">
                 <div className="eslam-bg-layer">
@@ -546,14 +509,12 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                   <div className="eslam-bg-overlay" />
                 </div>
 
-                {/* Default Front View */}
                 <div className="eslam-card-front">
                   <span className="eslam-level-badge">3rd–7th Floors</span>
                   <h3 className="eslam-card-title">Studio Apartments</h3>
                   <p className="eslam-card-subtitle">Contemporary Living Suites</p>
                 </div>
 
-                {/* Hover Expand View */}
                 <div className="eslam-card-hover-content">
                   <div>
                     <span className="eslam-level-badge gold">3rd–7th Floors</span>
@@ -628,7 +589,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          7. AMENITIES MOVING CAROUSEL (Right to Left: 4 on Desktop, 1 on Mobile)
+          7. AMENITIES MOVING CAROUSEL
           ========================================================================= */}
       <section className="section-padding theme-section-white amenities-section">
         <ArchitecturalBg variant="home_amenities" />
@@ -643,7 +604,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           />
         </div>
 
-        {/* Continuous Right-to-Left Moving Marquee Track */}
         <div className="amenities-marquee-container">
           <div className="amenities-marquee-track">
             {[...AMENITIES_LIST, ...AMENITIES_LIST].map((amenity, idx) => {
@@ -651,7 +611,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               return (
                 <div key={`${amenity.title}-${idx}`} className="amenity-marquee-item">
                   <div className="amenity-uiverse-card">
-                    {/* Top Architectural Media Frame */}
                     <div className="card__image">
                       <img
                         src={amenity.image}
@@ -660,14 +619,11 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                         loading="lazy"
                       />
                       <div className="card__img-gradient" />
-
-                      {/* Floating Top-Left Luxury Icon */}
                       <div className="card__icon-badge">
                         <AmenityIcon size={16} />
                       </div>
                     </div>
 
-                    {/* Card Content & Details */}
                     <div className="card__content">
                       <div className="card__tag-row">
                         <span className="card__tag-pill">{amenity.tag || 'Infrastructure'}</span>
@@ -690,7 +646,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                       </div>
                     </div>
 
-                    {/* Bottom Golden Progress Accent Line */}
                     <div className="card__bottom-accent" />
                   </div>
                 </div>
@@ -753,13 +708,12 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          9. ARCHITECTURAL SCHEMATICS (3D STACKED BLUEPRINT DECK & SPLIT HEADINGS)
+          9. ARCHITECTURAL SCHEMATICS
           ========================================================================= */}
       <section className="section-padding theme-section-light floor-plans-preview-section">
         <ArchitecturalBg variant="home_floorplans" />
         <div className="container-custom">
           <div className="schematics-split-container">
-            {/* Left Column: Interactive Grouped Floor Cards (From Uiverse.io by joe-watson-sbf) */}
             <div className="schematics-deck-col">
               <RevealOnScroll animation="fade-right">
                 <div className="watson-cards-grid">
@@ -801,7 +755,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               </RevealOnScroll>
             </div>
 
-            {/* Right Column: Headings, Spatial Level Breakdowns, & Actions */}
             <div className="schematics-content-col">
               <RevealOnScroll animation="fade-left" className="schematics-content-inner">
                 <SectionHeading
@@ -897,20 +850,15 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                   className="why-col"
                 >
                   <div className="jubayer-card" role="article" aria-label={`${pt.title} - ${pt.description}`}>
-                    {/* Top-Right Circular Badge with Index Number */}
                     <div className="jubayer-badge-circle">
                       <p className="jubayer-badge-num">{pt.id}</p>
                     </div>
 
-                    {/* Top Icon */}
                     <div className="jubayer-icon-box">
                       <IconComp size={38} className="jubayer-icon-svg" />
                     </div>
 
-                    {/* Title */}
                     <h3 className="jubayer-title">{pt.title}</h3>
-
-                    {/* Description */}
                     <p className="jubayer-desc">{pt.description}</p>
                   </div>
                 </RevealOnScroll>
@@ -921,10 +869,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          11. COMMERCIAL REAL ESTATE / INVESTMENT TEASER (3D ANIMATED BACKGROUND)
-          ========================================================================= */}
-      {/* =========================================================================
-          11. COMMERCIAL REAL ESTATE / INVESTMENT TEASER (3D ANIMATED BACKGROUND - TRANSPARENT)
+          11. COMMERCIAL REAL ESTATE / INVESTMENT TEASER
           ========================================================================= */}
       <section className="section-padding theme-section-white investment-teaser-section" id="commercial-real-estate">
         <Commercial3DAnimation />
@@ -961,7 +906,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          12. GALLERY PREVIEW (3D FLIP CARDS GRID - UIVERSE DAVID-MOHSENI)
+          12. GALLERY PREVIEW
           ========================================================================= */}
       <section className="section-padding theme-section-dark gallery-preview-section">
         <ArchitecturalBg variant="home_gallery" />
@@ -988,7 +933,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                 >
                   <div className="flip">
                     <div className="content">
-                      {/* Front Face (From Uiverse.io by david-mohseni) */}
                       <div
                         className="front"
                         style={{ backgroundImage: `url(${item.image})` }}
@@ -1000,7 +944,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                         </div>
                       </div>
 
-                      {/* Back Face (From Uiverse.io by david-mohseni) */}
                       <div
                         className="back"
                         style={{ backgroundImage: `url(${item.image})` }}
@@ -1039,7 +982,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          11. DIRECT CONSULTATION (PROFESSIONAL 50/50 CARD ON WHITE BACKGROUND)
+          13. DIRECT CONSULTATION
           ========================================================================= */}
       <section className="section-padding theme-section-white enquiry-section" id="enquiry">
         <ArchitecturalBg variant="home_enquiry" />
@@ -1047,7 +990,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           <RevealOnScroll animation="fade-up">
             <div className="consultation-pro-card architectural-grid-gold">
               <div className="consultation-pro-grid">
-                {/* Left 50%: Direct Consultation & Advisory Details */}
                 <div className="consultation-pro-content">
                   <h2 className="consultation-pro-title">
                     Your Next Space Starts Here.
@@ -1057,7 +999,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                     Connect directly with our project advisory team to explore prime retail showrooms, boutique corporate offices, and serviced studio apartments with bespoke space configurations at Y2R Heights.
                   </p>
 
-                  {/* 4 Professional Metric Chips */}
                   <div className="consultation-pro-matrix-grid">
                     <div className="consultation-pro-matrix-item">
                       <span className="pro-matrix-val">G+8 Structure</span>
@@ -1077,7 +1018,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
                   <div className="consultation-pro-actions">
                     <Link to="/contact" className="btn-primary">
                       <span>Connect With Advisory</span>
@@ -1092,7 +1032,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                     </a>
                   </div>
 
-                  {/* Bottom Verification Strip */}
                   <div className="consultation-pro-footer-tags">
                     <div className="consultation-pro-tag">
                       <ShieldCheck size={16} className="text-gold " />
@@ -1105,7 +1044,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                   </div>
                 </div>
 
-                {/* Right 50%: Building Image in Professional Architectural Frame */}
                 <div className="consultation-pro-media">
                   <div className="consultation-pro-image-frame">
                     <img
@@ -1122,7 +1060,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          RIGHT-SIDE ANIMATED QR POPUP (Auto Opens on Website Load)
+          RIGHT-SIDE ANIMATED QR POPUP
           ========================================================================= */}
       <div
         className={`project-highlights-popup qr-transparent-popup ${showHighlightsPopup ? 'visible' : ''}`}

@@ -25,12 +25,18 @@
 
 .cta-card-inner {
   position: relative;
-  background: #FFFFFF;
-  border: 1.5px solid rgba(175, 125, 9, 0.35);
+  background: radial-gradient(circle at 50% 50%, #FFFFFF 0%, #FAF8F4 85%);
+  border: 1.5px solid rgba(175, 125, 9, 0.4);
   border-radius: 8px;
-  padding: clamp(2.25rem, 3vw, 2.85rem) 2.5rem;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(175, 125, 9, 0.05);
+  padding: clamp(2.5rem, 3.5vw, 3.25rem) 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05), 0 0 30px rgba(175, 125, 9, 0.08);
   overflow: hidden;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cta-card-inner:hover {
+  border-color: rgba(175, 125, 9, 0.65);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08), 0 0 45px rgba(175, 125, 9, 0.14);
 }
 
 /* Gold Theme Inner Box (Rich Luxury Gold Background with High-Contrast Typography) */
@@ -186,13 +192,15 @@
 
 .cta-content {
   position: relative;
-  z-index: 2;
-  max-width: 760px;
+  z-index: 5;
+  max-width: 780px;
   margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
 }
 
 .cta-badge {

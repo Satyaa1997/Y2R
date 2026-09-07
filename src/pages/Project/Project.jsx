@@ -1,38 +1,37 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import {
-  ArrowRight,
-  CheckCircle2,
-  Building,
-  ShieldCheck,
-  Car,
-  MapPin,
-  Landmark,
+  Building2,
   Layers,
+  Store,
   Sparkles,
+  Home,
+  DoorClosed,
   Zap,
-  DoorOpen,
-  Ruler,
-  Compass
+  ShieldCheck,
+  MapPin,
+  Download,
+  Eye,
+  X,
+  FileCheck2,
+  FileText
 } from 'lucide-react';
-import {
-  PROJECT_INFO,
-  SPACES_CATEGORIES,
-  AMENITIES_LIST,
-  WHY_Y2R_POINTS,
-  PROJECT_SPECIFICATIONS
-} from '../../data/projectData';
+import { PROJECT_INFO, PROJECT_SPECIFICATIONS } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
-import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
-import proImage from '../../assets/contactbanner.png';
-import project from '../../assets/Building.JPG';
+import proImage from '../../assets/pro.jpg';
+import buildingImage from '../../assets/earthquack.png';
+import premiumDocImg from '../../assets/Premium.JPG';
+import highStreetImg from '../../assets/Stone.jfif';
+import boutiqueImg from '../../assets/wire.jfif';
+import foodCourtImg from '../../assets/exaust.jpg';
 import './Project.css';
 
-export default function Project({ onOpenEnquiry }) {
-  const [activeSpecTab, setActiveSpecTab] = useState('structure');
+export default function Project({ onOpenEnquiry, onOpenBrochure }) {
+  const [activeTab, setActiveTab] = useState('all');
+  const [isSpecModalOpen, setIsSpecModalOpen] = useState(false);
   const [heroTextFaded, setHeroTextFaded] = useState(false);
 
   useEffect(() => {
@@ -42,98 +41,192 @@ export default function Project({ onOpenEnquiry }) {
     return () => clearTimeout(timer);
   }, []);
 
+  // Keyboard Escape listener for Modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isSpecModalOpen) {
+        setIsSpecModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isSpecModalOpen]);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isSpecModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isSpecModalOpen]);
+
+  // Structural & Engineering Highlights
+  const coreEngineeringSpecs = [
+    {
+      id: 'structure',
+      title: 'Earthquake-Resistant RCC Frame',
+      desc: 'Engineered as per Zone-III BIS norms with high-grade Fe-550 TMT steel and M30 concrete for maximum structural integrity.',
+      icon: Building2,
+      stat: 'Zone-III'
+    },
+    {
+      id: 'elevators',
+      title: '6 High-Speed Passenger & Service Lifts',
+      desc: 'Automatic passenger and dedicated service elevators (Otis / Schindler / Kone) with ARD emergency lowering systems.',
+      icon: Zap,
+      stat: '6 Lifts'
+    },
+    {
+      id: 'power',
+      title: '100% DG Power Backup',
+      desc: 'Silent dual-fuel diesel generator sets providing uninterrupted round-the-clock emergency power for all critical common utilities.',
+      icon: Sparkles,
+      stat: '100% DG'
+    },
+    {
+      id: 'fire',
+      title: 'Multi-Tier Fire Suppression System',
+      desc: 'Hydrant rings, automatic ceiling sprinklers, addressable smoke detectors, and dual fire exits per floor meeting NBC norms.',
+      icon: ShieldCheck,
+      stat: 'NBC Rated'
+    }
+  ];
+
+  // Visual highlights for common area finishes
+  const commonFinishes = [
+    {
+      title: 'Natural Stone Cladding',
+      location: 'Ground Floor & Façade',
+      desc: 'Double-height entrance lobby finished with imported Italian marble, polished granite accents, and high-impact toughened glass curtain walls.',
+      image: highStreetImg
+    },
+    {
+      title: 'Heavy-Duty Wiring & Safety',
+      location: 'All Distribution Lines',
+      desc: 'FR/FRLS copper wiring throughout the project (Havells / Polycab / RR Kabel) with dedicated MCBs and earth-leakage breakers per unit.',
+      image: boutiqueImg
+    },
+    {
+      title: 'Dedicated Kitchen Exhaust Ducts',
+      location: '8th Floor & Terrace',
+      desc: 'Commercial-grade kitchen ventilation risers, heavy grease-trapping conduits, and high-volume air handlers for the food concourse.',
+      image: foodCourtImg
+    }
+  ];
+
+  // Convert to Array safely even if PROJECT_SPECIFICATIONS is an Object or null
+  const normalizedSpecs = useMemo(() => {
+    if (!PROJECT_SPECIFICATIONS) return [];
+    if (Array.isArray(PROJECT_SPECIFICATIONS)) return PROJECT_SPECIFICATIONS;
+    if (typeof PROJECT_SPECIFICATIONS === 'object') {
+      return Object.entries(PROJECT_SPECIFICATIONS).map(([key, val]) => ({
+        id: val.id || key,
+        ...val
+      }));
+    }
+    return [];
+  }, []);
+
+  // Filter safely without crashing
+  const floorSpecs = useMemo(() => {
+    if (activeTab === 'all') return normalizedSpecs;
+    return normalizedSpecs.filter((s) => s.id === activeTab);
+  }, [normalizedSpecs, activeTab]);
+
   return (
-    <div className="project-page-root">
-      {/* Page Hero with pro.jpg Background Image */}
+    <div className="about-project-page-root">
+      {/* HERO SECTION */}
       <section
-        className="page-hero-section project-hero-section theme-section-dark"
+        className="page-hero-section about-project-hero-section theme-section-dark"
         onClick={() => setHeroTextFaded((prev) => !prev)}
       >
-        <div className="project-hero-bg">
+        <div className="about-project-hero-bg">
           <img
             src={proImage}
-            alt="Y2R Heights Master Project"
-            className="project-hero-img"
+            alt="Y2R Heights Project Master View"
+            className="about-project-hero-img"
           />
-          <div className={`project-hero-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
+          <div className={`about-project-hero-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
-        <div className="container-custom page-hero-content project-hero-content">
-          <div className={`project-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <h1 className="page-hero-title">
-              Designed for Business. <br />
-              <span className="project-hero-highlight">Built for Growth.</span>
+
+        <div className="container-custom page-hero-content about-project-hero-content">
+          <div className={`about-project-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
+            <h1 className="about-project-hero-title">
+              Engineering & Space Specifications. <br />
+              <span className="about-project-hero-highlight">Architectural Perfection at Y2R Heights.</span>
             </h1>
-            <p className="page-hero-desc">
-              Y2R Heights brings thoughtfully planned commercial and lifestyle spaces together in one contemporary destination along the Jankipuram Extension–Kursi Road corridor.
+            <p className="about-project-hero-desc">
+              A comprehensive technical overview of structural engineering, building envelope, MEP systems, and material specifications governing all 11 levels of Y2R Heights, Jankipuram Scheme, Lucknow.
             </p>
-            <div className="page-hero-meta">
+            <div className="page-hero-meta about-project-hero-meta">
               <span className="meta-item">
-                <MapPin size={16} /> Kursi Road | Jankipuram Extension, Lucknow
+                <MapPin size={16} /> Kursi Road, Jankipuram Scheme
               </span>
               <span className="meta-sep">•</span>
               <span className="meta-item">
-                <ShieldCheck size={16} /> RERA: {PROJECT_INFO.reraNumber}
+                <ShieldCheck size={16} /> G+8 Structure + Double Basement
+              </span>
+              <span className="meta-sep">•</span>
+              <span className="meta-item">
+                <FileCheck2 size={16} /> UP RERA: {PROJECT_INFO?.reraNumber}
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Deep Vision Section */}
-      <section className="section-padding theme-section-dark project-vision-section">
-        <ArchitecturalBg variant="project_vision" />
+      {/* SECTION 01: Core Civil & Structural Engineering */}
+      <section className="section-padding theme-section-light civil-eng-section">
         <div className="container-custom">
-          <div className="vision-grid">
-            <RevealOnScroll animation="fade-right" className="vision-media-col">
-              <TiltCard maxTilt={6} scale={1.01} className="vision-tilt">
-                <div className="vision-image-frame">
-                  <img
-                    src={project}
-                    alt="Y2R Heights Master Elevation"
-                    className="vision-img"
-                  />
-                  <div className="vision-image-caption">
-                    <p>Kursi Road • Jankipuram Scheme, Lucknow</p>
-                  </div>
-                </div>
-              </TiltCard>
-            </RevealOnScroll>
-
-            <div className="vision-text-col">
+          <div className="civil-eng-layout">
+            <div className="civil-eng-text">
               <SectionHeading
                 number="01"
-                badge="Master Vision"
-                title="Elevating Northern Lucknow's Business Landscape"
-                subtitle="High-Frontage Commerce • Boutique Offices • Modern Studios"
+                badge="Civil Engineering"
+                title="Built for Longevity & Seismic Resilience"
+                subtitle="Structural integrity meets contemporary engineering standards."
                 align="left"
-                theme="dark"
+                theme="light"
               />
+              <p className="civil-eng-lead">
+                Every square foot of <strong>Y2R Heights</strong> has been engineered to surpass NBC (National Building Code) guidelines. The structure employs a cast-in-place reinforced concrete moment-resisting frame founded on deep piling to withstand seismic tremors and high wind loads.
+              </p>
 
-              <RevealOnScroll animation="fade-up" delay={150}>
-                <p className="vision-p">
-                  Strategically situated on Kursi Road in close proximity to Sector-J Extension, Jankipuram Scheme, Sitapur Road, and Outer Ring Road, Y2R Heights is planned to address the growing demand for modern commercial infrastructure and urban residences.
-                </p>
-              </RevealOnScroll>
+              <div className="civil-eng-specs-grid">
+                {coreEngineeringSpecs.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.id} className="civil-spec-card">
+                      <div className="civil-spec-header">
+                        <div className="civil-spec-icon-box">
+                          <Icon size={20} />
+                        </div>
+                        <span className="civil-spec-badge">{item.stat}</span>
+                      </div>
+                      <h4 className="civil-spec-title">{item.title}</h4>
+                      <p className="civil-spec-desc">{item.desc}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
 
-              <RevealOnScroll animation="fade-up" delay={250}>
-                <p className="vision-p">
-                  Envisioned as more than another commercial building, it offers a multi-faceted ecosystem uniting high-frontage retail, boutique executive offices, modern studio apartments, culinary food courts, banquet facilities, and dual-level basement parking.
-                </p>
-              </RevealOnScroll>
-
-              <RevealOnScroll animation="fade-up" delay={350}>
-                <div className="vision-key-points">
-                  <div className="v-point">
-                    <CheckCircle2 size={18} className="text-gold flex-shrink-0" />
-                    <span>Thoughtfully planned commercial and lifestyle formats</span>
-                  </div>
-                  <div className="v-point">
-                    <CheckCircle2 size={18} className="text-gold flex-shrink-0" />
-                    <span>Immediate frontage along Kursi Road arterial network</span>
-                  </div>
-                  <div className="v-point">
-                    <CheckCircle2 size={18} className="text-gold flex-shrink-0" />
-                    <span>Engineered for efficiency, footfall and brand prestige</span>
+            <div className="civil-eng-media">
+              <RevealOnScroll animation="fade-left">
+                <div className="civil-media-frame">
+                  <img
+                    src={buildingImage}
+                    alt="Y2R Heights Engineering Detail"
+                    className="civil-media-img"
+                  />
+                  <div className="civil-media-overlay">
+                    <span className="civil-media-tag">Engineering Blueprints</span>
+                    <h4 className="civil-media-title">M30 Grade Concrete & Fe-550 TMT Steel</h4>
+                    <p className="civil-media-caption">Strict on-site third-party quality testing at every pour stage.</p>
                   </div>
                 </div>
               </RevealOnScroll>
@@ -142,428 +235,318 @@ export default function Project({ onOpenEnquiry }) {
         </div>
       </section>
 
-      {/* Spatial Categories */}
-      <section className="section-padding theme-section-white project-spaces-section">
-        <ArchitecturalBg variant="project_spaces" />
+      {/* SECTION 02: Official Premium Specifications Document Teaser */}
+      <section className="section-padding theme-section-dark spec-document-section">
+        <ArchitecturalBg variant="project_vision" />
         <div className="container-custom">
           <SectionHeading
             number="02"
-            badge="Zoning & Formats"
-            title="Everything Your Business Needs."
-            subtitle="Explore each meticulously planned spatial tier."
+            badge="Official Document"
+            title="Premium Specifications Sheet"
+            subtitle="Verified architectural specifications directly from the Y2R Heights master planning docket."
             align="center"
-            theme="light"
+            theme="dark"
           />
 
-          <div className="spaces-catalog-grid">
-            {SPACES_CATEGORIES.map((space, idx) => (
-              <RevealOnScroll
-                key={space.id}
-                animation="fade-up"
-                delay={idx * 100}
-                className="space-catalog-col"
+          <div className="spec-doc-banner">
+            <div className="spec-doc-preview-col">
+              <div
+                className="spec-doc-thumbnail-wrap"
+                onClick={() => setIsSpecModalOpen(true)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && setIsSpecModalOpen(true)}
+                aria-label="Click to enlarge Specifications Document"
               >
-                <TiltCard maxTilt={8} scale={1.02} className="space-catalog-card">
-                  <div className="space-catalog-inner">
-                    <div className="space-img-box">
-                      <img src={space.image} alt={space.title} />
-                      <span className="space-badge-tag">{space.badge}</span>
-                    </div>
+                <img
+                  src={premiumDocImg}
+                  alt="Y2R Heights Premium Specifications Sheet Preview"
+                  className="spec-doc-thumbnail"
+                />
+                <div className="spec-doc-hover-overlay">
+                  <Eye size={28} className="text-gold" />
+                  <span className="spec-hover-text">Click to View Full Document</span>
+                </div>
+                <div className="spec-doc-badge-pill">
+                  <FileCheck2 size={14} /> Official Master Sheet
+                </div>
+              </div>
+            </div>
 
-                    <div className="space-body-box">
-                      <h3 className="space-title">{space.title}</h3>
-                      <p className="space-desc">{space.description}</p>
-                      <p className="space-highlight-line">{space.highlight}</p>
+            <div className="spec-doc-info-col">
+              <div className="spec-doc-meta-badge">Verified RERA Documentation</div>
+              <h3 className="spec-doc-heading">Comprehensive Specification Breakdown</h3>
+              <p className="spec-doc-paragraph">
+                The official document details flooring compositions, electrical fittings, plumbing provisions, exterior glazing, lift shafts, and fire safety systems specified for every zone across the 11 floors.
+              </p>
 
-                      <div className="space-footer-link">
-                        <Link to={space.slug} className="btn-link">
-                          <span>{space.ctaText}</span>
-                          <ArrowRight size={15} />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </TiltCard>
-              </RevealOnScroll>
-            ))}
+              <div className="spec-doc-points-list">
+                <div className="spec-point-row">
+                  <div className="point-dot" />
+                  <span><strong>Structure:</strong> Earthquake-resistant RCC frame structure with brick infill walls.</span>
+                </div>
+                <div className="spec-point-row">
+                  <div className="point-dot" />
+                  <span><strong>Flooring:</strong> Double-charged vitrified tiles in suites, antiskid tiles in wet areas, granite in lobbies.</span>
+                </div>
+                <div className="spec-point-row">
+                  <div className="point-dot" />
+                  <span><strong>Electricals:</strong> Modular switches (Anchor / Havells), copper wiring, pre-installed AC conduits.</span>
+                </div>
+                <div className="spec-point-row">
+                  <div className="point-dot" />
+                  <span><strong>Plumbing:</strong> CPVC/UPVC pipelines with premium CP fittings (Jaquar / Grohe / Roca or equivalent).</span>
+                </div>
+              </div>
+
+              <div className="spec-doc-cta-group">
+                <button
+                  type="button"
+                  onClick={() => setIsSpecModalOpen(true)}
+                  className="btn-primary"
+                >
+                  <Eye size={16} />
+                  <span>View Full-Size Document</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={onOpenBrochure}
+                  className="btn-secondary"
+                >
+                  <Download size={16} />
+                  <span>Download Project Dossier</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Amenities Grid */}
-      <section className="section-padding theme-section-dark project-amenities-section">
-        <ArchitecturalBg variant="project_amenities" />
+      {/* SECTION 03: Common Area Finishes */}
+      <section className="section-padding theme-section-light finishes-section">
         <div className="container-custom">
           <SectionHeading
             number="03"
-            badge="Infrastructure"
-            title="Thoughtfully Planned. Effortlessly Functional."
-            subtitle="Engineered for seamless daily operations."
+            badge="Material Grade"
+            title="Premium Finishes & Utility Infrastructure"
+            subtitle="Curated materials hand-picked for durability, aesthetics, and low ongoing maintenance."
             align="center"
-            theme="dark"
+            theme="light"
           />
 
-          <div className="amenities-grid">
-            {AMENITIES_LIST.map((amenity, idx) => (
-              <RevealOnScroll
-                key={amenity.title}
-                animation="fade-up"
-                delay={idx * 60}
-                className="amenity-col"
-              >
-                <TiltCard maxTilt={8} scale={1.02} className="amenity-tilt-card">
-                  <div className="amenity-card-inner">
-                    <div className="amenity-icon-box">
-                      <Building size={24} className="text-gold" />
-                    </div>
-                    <h3 className="amenity-title">{amenity.title}</h3>
-                    <p className="amenity-desc">{amenity.description}</p>
-                  </div>
-                </TiltCard>
-              </RevealOnScroll>
+          <div className="finishes-cards-grid">
+            {commonFinishes.map((item) => (
+              <div key={item.title} className="finish-showcase-card">
+                <div className="finish-card-media">
+                  <img src={item.image} alt={item.title} className="finish-card-img" />
+                  <span className="finish-card-tag">{item.location}</span>
+                </div>
+                <div className="finish-card-body">
+                  <h4 className="finish-card-title">{item.title}</h4>
+                  <p className="finish-card-desc">{item.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Minimal Parking Section */}
-      <section className="project-parking-minimal-section theme-section-light">
-        <div className="container-custom">
-          <div className="parking-minimal-wrapper">
-            <div className="parking-minimal-header">
-              <h3 className="parking-minimal-title">Designed for Effortless Arrival</h3>
-              <p className="parking-minimal-subtitle">Two dedicated basement parking levels support convenient access for occupants and visitors.</p>
-            </div>
-
-            <div className="parking-minimal-cards-grid">
-              <div className="parking-compact-card">
-                <div className="compact-card-top">
-                  <div className="compact-icon-wrap">
-                    <Car size={18} className="text-gold" />
-                  </div>
-                  <div>
-                    <span className="compact-level-tag">Basement 1</span>
-                    <h4 className="compact-capacity-val">18 Car Parking</h4>
-                  </div>
-                </div>
-                <div className="compact-specs-list">
-                  <span className="compact-spec-pill">18 Dedicated Bays</span>
-                  <span className="compact-spec-pill">Wide Access Aisles</span>
-                  <span className="compact-spec-pill">Direct Elevator Link</span>
-                </div>
-              </div>
-
-              <div className="parking-compact-card">
-                <div className="compact-card-top">
-                  <div className="compact-icon-wrap">
-                    <Car size={18} className="text-gold" />
-                  </div>
-                  <div>
-                    <span className="compact-level-tag">Basement 2</span>
-                    <h4 className="compact-capacity-val">22 Car Parking</h4>
-                  </div>
-                </div>
-                <div className="compact-specs-list">
-                  <span className="compact-spec-pill">22 Dedicated Bays</span>
-                  <span className="compact-spec-pill">Secure Automated Ingress</span>
-                  <span className="compact-spec-pill">Full Fire Safety System</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Official Engineering & Technical Specifications Section */}
-      <section className="section-padding theme-section-white project-specs-section">
-        <ArchitecturalBg variant="project_specs" />
-        <div className="container-custom">
-          <SectionHeading
-            number="05"
-            badge="Engineering Matrix"
-            title="Precision Planning. Premium Specifications."
-            subtitle="Explore comprehensive architectural standards, structural engineering, and branded fittings at Y2R Heights."
-            align="center"
-            theme="light"
-          />
-
-          {/* Specification Navigation Tabs */}
-          <div className="project-specs-tabs-row">
-            <button
-              onClick={() => setActiveSpecTab('structure')}
-              className={`spec-tab-btn ${activeSpecTab === 'structure' ? 'active' : ''}`}
-            >
-              <Building size={16} />
-              <span>Structure & Foundation</span>
-            </button>
-
-            <button
-              onClick={() => setActiveSpecTab('retail')}
-              className={`spec-tab-btn ${activeSpecTab === 'retail' ? 'active' : ''}`}
-            >
-              <Layers size={16} />
-              <span>Retail (LGF/UGF)</span>
-            </button>
-
-            <button
-              onClick={() => setActiveSpecTab('banquet')}
-              className={`spec-tab-btn ${activeSpecTab === 'banquet' ? 'active' : ''}`}
-            >
-              <Sparkles size={16} />
-              <span>Banquet (620.22 SQ.M.)</span>
-            </button>
-
-            <button
-              onClick={() => setActiveSpecTab('apartments')}
-              className={`spec-tab-btn ${activeSpecTab === 'apartments' ? 'active' : ''}`}
-            >
-              <DoorOpen size={16} />
-              <span>Service Apartments</span>
-            </button>
-
-            <button
-              onClick={() => setActiveSpecTab('common')}
-              className={`spec-tab-btn ${activeSpecTab === 'common' ? 'active' : ''}`}
-            >
-              <Ruler size={16} />
-              <span>Common Areas Table</span>
-            </button>
-
-            <button
-              onClick={() => setActiveSpecTab('doors')}
-              className={`spec-tab-btn ${activeSpecTab === 'doors' ? 'active' : ''}`}
-            >
-              <ShieldCheck size={16} />
-              <span>Doors & Windows</span>
-            </button>
-
-            <button
-              onClick={() => setActiveSpecTab('mep')}
-              className={`spec-tab-btn ${activeSpecTab === 'mep' ? 'active' : ''}`}
-            >
-              <Zap size={16} />
-              <span>Electrical, MEP & EV</span>
-            </button>
-          </div>
-
-          {/* Tab Content Display */}
-          <div className="spec-tab-content-box">
-            {activeSpecTab === 'structure' && (
-              <div className="spec-items-grid">
-                {PROJECT_SPECIFICATIONS.structure.items.map((item, idx) => (
-                  <div key={idx} className="spec-feature-card">
-                    <div className="spec-card-top">
-                      <span className="spec-label-tag">{item.label}</span>
-                      <CheckCircle2 size={18} className="text-gold" />
-                    </div>
-                    <p className="spec-detail-val">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {activeSpecTab === 'retail' && (
-              <div className="spec-items-grid">
-                {PROJECT_SPECIFICATIONS.retail.items.map((item, idx) => (
-                  <div key={idx} className="spec-feature-card">
-                    <div className="spec-card-top">
-                      <span className="spec-label-tag">{item.label}</span>
-                      <CheckCircle2 size={18} className="text-gold" />
-                    </div>
-                    <p className="spec-detail-val">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {activeSpecTab === 'banquet' && (
-              <div>
-                <div className="spec-banner-note">
-                  <span className="gold-badge">Dedicated Second Floor Format</span>
-                  <span className="banner-area-highlight">Total Floor Area: {PROJECT_SPECIFICATIONS.banquet.area}</span>
-                </div>
-                <div className="spec-items-grid">
-                  {PROJECT_SPECIFICATIONS.banquet.items.map((item, idx) => (
-                    <div key={idx} className="spec-feature-card">
-                      <div className="spec-card-top">
-                        <span className="spec-label-tag">{item.label}</span>
-                        <CheckCircle2 size={18} className="text-gold" />
-                      </div>
-                      <p className="spec-detail-val">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeSpecTab === 'apartments' && (
-              <div className="spec-items-grid">
-                {PROJECT_SPECIFICATIONS.serviceApartments.items.map((item, idx) => (
-                  <div key={idx} className="spec-feature-card">
-                    <div className="spec-card-top">
-                      <span className="spec-label-tag">{item.label}</span>
-                      <CheckCircle2 size={18} className="text-gold" />
-                    </div>
-                    <p className="spec-detail-val">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {activeSpecTab === 'common' && (
-              <div className="common-areas-table-wrapper">
-                <table className="common-areas-table">
-                  <thead>
-                    <tr>
-                      <th>Area</th>
-                      <th>Flooring</th>
-                      <th>Wall Finish</th>
-                      <th>Ceiling</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {PROJECT_SPECIFICATIONS.commonAreas.map((row, idx) => (
-                      <tr key={idx}>
-                        <td className="area-col-cell">{row.area}</td>
-                        <td>{row.flooring}</td>
-                        <td>{row.wallFinish}</td>
-                        <td>{row.ceiling}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-
-            {activeSpecTab === 'doors' && (
-              <div className="spec-items-grid">
-                {PROJECT_SPECIFICATIONS.doorsWindows.items.map((item, idx) => (
-                  <div key={idx} className="spec-feature-card">
-                    <div className="spec-card-top">
-                      <span className="spec-label-tag">{item.label}</span>
-                      <CheckCircle2 size={18} className="text-gold" />
-                    </div>
-                    <p className="spec-detail-val">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {activeSpecTab === 'mep' && (
-              <div className="spec-items-grid">
-                {PROJECT_SPECIFICATIONS.mep.items.map((item, idx) => (
-                  <div key={idx} className="spec-feature-card">
-                    <div className="spec-card-top">
-                      <span className="spec-label-tag">{item.label}</span>
-                      <CheckCircle2 size={18} className="text-gold" />
-                    </div>
-                    <p className="spec-detail-val">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Banking Approval & Financial Assurance Card */}
-          <div className="banking-assurance-card">
-            <div className="bank-card-left">
-              <div className="bank-logo-emblem">
-                <Landmark size={28} className="text-gold" />
-              </div>
-              <div>
-                <h4 className="bank-card-title">Official Financial & Collection Details</h4>
-                <p className="bank-card-desc">
-                  {PROJECT_INFO.bankAccount.note}
-                </p>
-              </div>
-            </div>
-
-            <div className="bank-details-grid">
-              <div className="bank-detail-item">
-                <span className="b-label">Account Name</span>
-                <span className="b-val">{PROJECT_INFO.bankAccount.name}</span>
-              </div>
-              <div className="bank-detail-item">
-                <span className="b-label">Account Number</span>
-                <span className="b-val font-mono">{PROJECT_INFO.bankAccount.accountNumber}</span>
-              </div>
-              <div className="bank-detail-item">
-                <span className="b-label">Bank & Branch</span>
-                <span className="b-val">{PROJECT_INFO.bankAccount.bank}, {PROJECT_INFO.bankAccount.branch}</span>
-              </div>
-              <div className="bank-detail-item">
-                <span className="b-label">IFSC Code</span>
-                <span className="b-val font-mono">{PROJECT_INFO.bankAccount.ifsc}</span>
-              </div>
-              <div className="bank-detail-item">
-                <span className="b-label">Official Launch Date</span>
-                <span className="b-val">{PROJECT_INFO.launchDate}</span>
-              </div>
-              <div className="bank-detail-item">
-                <span className="b-label">RERA Registration</span>
-                <span className="b-val font-mono">{PROJECT_INFO.reraNumber}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Y2R Heights */}
-      <section className="section-padding theme-section-dark why-section">
+      {/* SECTION 04: Floor-wise Granular Specifications */}
+      <section className="section-padding theme-section-dark floor-specs-section">
         <ArchitecturalBg variant="project_why" />
         <div className="container-custom">
           <SectionHeading
-            number="06"
-            badge="Core Advantages"
-            title="A Location to Grow. A Presence to Remember."
-            subtitle="Strategic Location • Versatile Spaces • Premium Planning • Business Visibility"
+            number="04"
+            badge="Granular Matrix"
+            title="Floor-Wise Specification Matrix"
+            subtitle="Browse detailed technical inclusions classified by each operational segment."
             align="center"
             theme="dark"
           />
 
-          <div className="why-grid">
-            {WHY_Y2R_POINTS.map((pt, idx) => {
-              const whyIcons = [Compass, Layers, ShieldCheck, Sparkles];
-              const IconComp = whyIcons[idx] || Sparkles;
-              return (
-                <RevealOnScroll
-                  key={pt.id}
-                  animation="fade-up"
-                  delay={idx * 80}
-                  className="why-col"
-                >
-                  <div className="jubayer-card" role="article" aria-label={`${pt.title} - ${pt.description}`}>
-                    {/* Top-Right Circular Badge with Index Number */}
-                    <div className="jubayer-badge-circle">
-                      <p className="jubayer-badge-num">{pt.id}</p>
+          {/* Interactive Filter Pills */}
+          <div className="spec-tabs-bar" role="tablist" aria-label="Specification Categories">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'all'}
+              className={`spec-tab-pill ${activeTab === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveTab('all')}
+            >
+              <Layers size={14} />
+              <span>All Levels</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'retail'}
+              className={`spec-tab-pill ${activeTab === 'retail' ? 'active' : ''}`}
+              onClick={() => setActiveTab('retail')}
+            >
+              <Store size={14} />
+              <span>Retail (LG & UG)</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'offices'}
+              className={`spec-tab-pill ${activeTab === 'offices' ? 'active' : ''}`}
+              onClick={() => setActiveTab('offices')}
+            >
+              <DoorClosed size={14} />
+              <span>Corporate (1st & 2nd)</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'studios'}
+              className={`spec-tab-pill ${activeTab === 'studios' ? 'active' : ''}`}
+              onClick={() => setActiveTab('studios')}
+            >
+              <Home size={14} />
+              <span>Studios (3rd to 7th)</span>
+            </button>
+          </div>
+
+          {/* Detailed Cards List */}
+          <div className="spec-blocks-container">
+            {floorSpecs && floorSpecs.length > 0 ? (
+              floorSpecs.map((spec, index) => {
+                const FloorIcon = spec.icon || FileText;
+                return (
+                  <div key={spec.id || index} className="spec-block-card">
+                    <div className="spec-block-header">
+                      <div className="spec-block-title-wrap">
+                        <div className="spec-block-icon">
+                          <FloorIcon size={22} />
+                        </div>
+                        <div>
+                          <span className="spec-block-level">{spec.level}</span>
+                          <h3 className="spec-block-title">{spec.category || spec.title}</h3>
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Top Icon */}
-                    <div className="jubayer-icon-box">
-                      <IconComp size={38} className="jubayer-icon-svg" />
-                    </div>
+                    {/* Highlights Grid */}
+                    {spec.details && (
+                      <div className={`spec-detail-grid ${spec.details?.length > 2 ? 'three-cols' : 'two-cols'}`}>
+                        {spec.details.map((detail, dIdx) => (
+                          <div key={detail.label || dIdx} className="spec-detail-item">
+                            <span className="detail-item-label">{detail.label}</span>
+                            <span className="detail-item-value">{detail.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
-                    {/* Title */}
-                    <h3 className="jubayer-title">{pt.title}</h3>
-
-                    {/* Description */}
-                    <p className="jubayer-desc">{pt.description}</p>
+                    {/* Comprehensive Item Breakdown Table */}
+                    {spec.items && spec.items.length > 0 && (
+                      <div className="spec-table-wrap">
+                        <table className="spec-common-table">
+                          <thead>
+                            <tr>
+                              <th style={{ width: '28%' }}>Component</th>
+                              <th style={{ width: '42%' }}>Technical Specification</th>
+                              <th style={{ width: '30%' }}>Approved Brand / Grade</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {spec.items.map((it, itIdx) => (
+                              <tr key={it.feature || itIdx}>
+                                <td className="spec-feature-name">
+                                  <strong>{it.feature}</strong>
+                                </td>
+                                <td className="spec-feature-desc">{it.spec}</td>
+                                <td className="spec-feature-brand">
+                                  <span className="brand-tag">{it.brand || 'ISI Standard / Premium'}</span>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
                   </div>
-                </RevealOnScroll>
-              );
-            })}
+                );
+              })
+            ) : (
+              <div style={{ textAlign: 'center', padding: '2rem', color: '#94A3B8' }}>
+                No specifications found for this category.
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* GLOBAL CTA SECTION */}
       <CTASection
-        title="Schedule a Personalized Project Walkthrough"
+        badge="Verify & Validate"
+        title="Request Official Technical Dossier"
         subtitle="Where Vision Meets Value."
-        description="Connect with our site advisory team to review floor plans, spatial zoning, and availability at Y2R Heights."
-        onOpenEnquiry={() => onOpenEnquiry("Project")}
+        description="Our civil engineering and planning team is available to assist you with detailed structural blueprints, floor MEP drawings, and material compliance certificates."
+        primaryBtnText="Speak With Project Engineers"
+        primaryBtnAction={() => onOpenEnquiry && onOpenEnquiry('Project Specifications Inquiry')}
+        secondaryBtnText="Download Master Brochure"
+        secondaryBtnAction={onOpenBrochure}
       />
+
+      {/* FULLSCREEN PURE IMAGE PREVIEW MODAL */}
+      {isSpecModalOpen &&
+        createPortal(
+          <div
+            className="spec-fullscreen-overlay"
+            onClick={() => setIsSpecModalOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Fullscreen Document View"
+          >
+            <button
+              type="button"
+              className="spec-fullscreen-close-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsSpecModalOpen(false);
+              }}
+              aria-label="Close Fullscreen View"
+              title="Close (Esc)"
+            >
+              <X size={28} />
+            </button>
+
+            <div
+              className="spec-floating-pill"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className="spec-pill-title">Y2R Heights • Premium Specifications Sheet</span>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (onOpenBrochure) onOpenBrochure();
+                }}
+                className="spec-pill-download-btn"
+              >
+                <Download size={14} />
+                <span>Download PDF</span>
+              </button>
+            </div>
+
+            <div
+              className="spec-fullscreen-img-wrap"
+              onClick={() => setIsSpecModalOpen(false)}
+            >
+              <img
+                src={premiumDocImg}
+                alt="Y2R Heights Official Premium Specifications Sheet - Full Screen View"
+                className="spec-pure-fullscreen-img"
+                onClick={(e) => e.stopPropagation()}
+                title="Y2R Heights Specifications"
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }
-

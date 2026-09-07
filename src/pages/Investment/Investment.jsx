@@ -1,4 +1,4 @@
-import { ShieldCheck, TrendingUp, Building2, MapPin, ArrowRight } from 'lucide-react';
+import { ShieldCheck, TrendingUp, Building2, MapPin } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';

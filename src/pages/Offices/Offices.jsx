@@ -1,4 +1,4 @@
-import { Briefcase, Sun, LayoutGrid, ArrowRight } from 'lucide-react';
+import { Briefcase, Sun, LayoutGrid } from 'lucide-react';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';

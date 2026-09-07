@@ -23,9 +23,6 @@ import {
   Maximize2,
   ZoomIn,
   ZoomOut,
-  RotateCw,
-  RotateCcw,
-  RefreshCw,
   X
 } from 'lucide-react';
 import { PROJECT_INFO, VICINITY_LANDMARKS } from '../../data/projectData';
