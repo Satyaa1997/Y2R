@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import heroVideo from '../../assets/Herovedio.mp4';
 import qrImage from '../../assets/QR.png';
 import buildingImage from '../../assets/Building.JPG';
-import building1Image from '../../assets/Building.JPG';
+import building1Image from '../../assets/contactbanner.png';
 
 import {
   ArrowRight,
@@ -254,7 +254,6 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
 
             <RevealOnScroll animation="fade-left" className="brochure-overview-media-col">
               <div className="brochure-elevation-card">
-                <div className="brochure-sky-backdrop" />
                 <img
                   src={building1Image}
                   alt="Y2R Heights Master Architectural Elevation - Precision Planning Meets Premium Design"

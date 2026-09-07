@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Building2,
@@ -14,7 +14,11 @@ import {
   Eye,
   X,
   FileCheck2,
-  FileText
+  UtensilsCrossed,
+  CheckCircle2,
+  Wrench,
+  Grid,
+  Maximize2
 } from 'lucide-react';
 import { PROJECT_INFO, PROJECT_SPECIFICATIONS } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
@@ -22,7 +26,6 @@ import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import proImage from '../../assets/pro.jpg';
-import buildingImage from '../../assets/earthquack.png';
 import premiumDocImg from '../../assets/Premium.JPG';
 import highStreetImg from '../../assets/Stone.jfif';
 import boutiqueImg from '../../assets/wire.jfif';
@@ -64,82 +67,57 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
     };
   }, [isSpecModalOpen]);
 
-  // Structural & Engineering Highlights
-  const coreEngineeringSpecs = [
-    {
-      id: 'structure',
-      title: 'Earthquake-Resistant RCC Frame',
-      desc: 'Engineered as per Zone-III BIS norms with high-grade Fe-550 TMT steel and M30 concrete for maximum structural integrity.',
-      icon: Building2,
-      stat: 'Zone-III'
-    },
-    {
-      id: 'elevators',
-      title: '6 High-Speed Passenger & Service Lifts',
-      desc: 'Automatic passenger and dedicated service elevators (Otis / Schindler / Kone) with ARD emergency lowering systems.',
-      icon: Zap,
-      stat: '6 Lifts'
-    },
-    {
-      id: 'power',
-      title: '100% DG Power Backup',
-      desc: 'Silent dual-fuel diesel generator sets providing uninterrupted round-the-clock emergency power for all critical common utilities.',
-      icon: Sparkles,
-      stat: '100% DG'
-    },
-    {
-      id: 'fire',
-      title: 'Multi-Tier Fire Suppression System',
-      desc: 'Hydrant rings, automatic ceiling sprinklers, addressable smoke detectors, and dual fire exits per floor meeting NBC norms.',
-      icon: ShieldCheck,
-      stat: 'NBC Rated'
-    }
+  // Tabs for interactive filtering
+  const specTabs = [
+    { id: 'all', label: 'All Specifications', icon: Layers },
+    { id: 'structure', label: 'Structure & Foundations', icon: Building2 },
+    { id: 'common', label: 'Common Areas (Table)', icon: Grid },
+    { id: 'retail', label: 'Retail (GF & 1st)', icon: Store },
+    { id: 'banquet', label: 'Banquet (2nd Fl.)', icon: UtensilsCrossed },
+    { id: 'apartments', label: 'Service Apartments (3-7th)', icon: Home },
+    { id: 'doors', label: 'Doors & Windows', icon: DoorClosed },
+    { id: 'mep', label: 'Electrical & MEP', icon: Zap }
   ];
 
-  // Visual highlights for common area finishes
-  const commonFinishes = [
+  // Common Areas Table Data from Official Brochure
+  const commonAreasTable = [
     {
-      title: 'Natural Stone Cladding',
-      location: 'Ground Floor & Façade',
-      desc: 'Double-height entrance lobby finished with imported Italian marble, polished granite accents, and high-impact toughened glass curtain walls.',
-      image: highStreetImg
+      area: 'Entrance Lobby (Ground Floor)',
+      flooring: 'Granite',
+      wallFinish: 'Acrylic emulsion paint and cladding of vitrified tiles',
+      ceiling: 'Gypsum false ceiling with acrylic emulsion paint'
     },
     {
-      title: 'Heavy-Duty Wiring & Safety',
-      location: 'All Distribution Lines',
-      desc: 'FR/FRLS copper wiring throughout the project (Havells / Polycab / RR Kabel) with dedicated MCBs and earth-leakage breakers per unit.',
-      image: boutiqueImg
+      area: 'Lift Lobby (Typical Floor)',
+      flooring: 'Granite',
+      wallFinish: 'Granite cladding',
+      ceiling: 'Armstrong false ceiling with acrylic emulsion paint'
     },
     {
-      title: 'Dedicated Kitchen Exhaust Ducts',
-      location: '8th Floor & Terrace',
-      desc: 'Commercial-grade kitchen ventilation risers, heavy grease-trapping conduits, and high-volume air handlers for the food concourse.',
-      image: foodCourtImg
+      area: 'Ramps & Basement',
+      flooring: 'Antiskid ceramic tiles, 12mm',
+      wallFinish: 'Oil bound distemper over punning',
+      ceiling: 'Cement plaster & white dry distemper'
+    },
+    {
+      area: 'Staircase (Main)',
+      flooring: 'Granite',
+      wallFinish: 'Acrylic emulsion paint',
+      ceiling: 'Oil bound distemper'
+    },
+    {
+      area: 'Staircase (Fire)',
+      flooring: 'Granite',
+      wallFinish: 'Acrylic emulsion paint',
+      ceiling: 'Oil bound distemper'
     }
   ];
-
-  // Convert to Array safely even if PROJECT_SPECIFICATIONS is an Object or null
-  const normalizedSpecs = useMemo(() => {
-    if (!PROJECT_SPECIFICATIONS) return [];
-    if (Array.isArray(PROJECT_SPECIFICATIONS)) return PROJECT_SPECIFICATIONS;
-    if (typeof PROJECT_SPECIFICATIONS === 'object') {
-      return Object.entries(PROJECT_SPECIFICATIONS).map(([key, val]) => ({
-        id: val.id || key,
-        ...val
-      }));
-    }
-    return [];
-  }, []);
-
-  // Filter safely without crashing
-  const floorSpecs = useMemo(() => {
-    if (activeTab === 'all') return normalizedSpecs;
-    return normalizedSpecs.filter((s) => s.id === activeTab);
-  }, [normalizedSpecs, activeTab]);
 
   return (
     <div className="about-project-page-root">
-      {/* HERO SECTION */}
+      {/* =========================================================================
+          1. HERO SECTION (Luxury Cinematic Header)
+          ========================================================================= */}
       <section
         className="page-hero-section about-project-hero-section theme-section-dark"
         onClick={() => setHeroTextFaded((prev) => !prev)}
@@ -147,7 +125,7 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
         <div className="about-project-hero-bg">
           <img
             src={proImage}
-            alt="Y2R Heights Project Master View"
+            alt="Y2R Heights Project Master Elevation"
             className="about-project-hero-img"
           />
           <div className={`about-project-hero-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
@@ -156,94 +134,408 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
         <div className="container-custom page-hero-content about-project-hero-content">
           <div className={`about-project-hero-text-wrap ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
             <h1 className="about-project-hero-title">
-              Engineering & Space Specifications. <br />
-              <span className="about-project-hero-highlight">Architectural Perfection at Y2R Heights.</span>
+              PREMIUM SPECIFICATIONS
             </h1>
             <p className="about-project-hero-desc">
-              A comprehensive technical overview of structural engineering, building envelope, MEP systems, and material specifications governing all 11 levels of Y2R Heights, Jankipuram Scheme, Lucknow.
+              BIS-compliant engineering with Grade-A structural framing, luxury vitrified finishes, premium Grohe/Jaquar/Roca fittings, and future-ready MEP infrastructure.
             </p>
             <div className="page-hero-meta about-project-hero-meta">
               <span className="meta-item">
-                <MapPin size={16} /> Kursi Road, Jankipuram Scheme
+                <MapPin size={16} /> Kursi Road | Jankipuram Scheme, Lucknow
               </span>
               <span className="meta-sep">•</span>
               <span className="meta-item">
-                <ShieldCheck size={16} /> G+8 Structure + Double Basement
+                <ShieldCheck size={16} /> UP RERA: {PROJECT_INFO?.reraNumber}
               </span>
               <span className="meta-sep">•</span>
               <span className="meta-item">
-                <FileCheck2 size={16} /> UP RERA: {PROJECT_INFO?.reraNumber}
+                <FileCheck2 size={16} /> Canara Bank Approved
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 01: Core Civil & Structural Engineering */}
-      <section className="section-padding theme-section-light civil-eng-section">
+      {/* =========================================================================
+          2. SPECIFICATION NAVIGATION TABS BAR
+          ========================================================================= */}
+      <section className="spec-sticky-nav-section">
         <div className="container-custom">
-          <div className="civil-eng-layout">
-            <div className="civil-eng-text">
-              <SectionHeading
-                number="01"
-                badge="Civil Engineering"
-                title="Built for Longevity & Seismic Resilience"
-                subtitle="Structural integrity meets contemporary engineering standards."
-                align="left"
-                theme="light"
-              />
-              <p className="civil-eng-lead">
-                Every square foot of <strong>Y2R Heights</strong> has been engineered to surpass NBC (National Building Code) guidelines. The structure employs a cast-in-place reinforced concrete moment-resisting frame founded on deep piling to withstand seismic tremors and high wind loads.
-              </p>
-
-              <div className="civil-eng-specs-grid">
-                {coreEngineeringSpecs.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.id} className="civil-spec-card">
-                      <div className="civil-spec-header">
-                        <div className="civil-spec-icon-box">
-                          <Icon size={20} />
-                        </div>
-                        <span className="civil-spec-badge">{item.stat}</span>
-                      </div>
-                      <h4 className="civil-spec-title">{item.title}</h4>
-                      <p className="civil-spec-desc">{item.desc}</p>
-                    </div>
-                  );
-                })}
-              </div>
+          <div className="spec-nav-wrapper">
+            <div className="spec-tabs-scroll-row" role="tablist" aria-label="Specification Categories">
+              {specTabs.map((tab) => {
+                const TabIcon = tab.icon;
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`spec-nav-tab-btn ${isActive ? 'active' : ''}`}
+                    onClick={() => setActiveTab(tab.id)}
+                  >
+                    <TabIcon size={16} />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="civil-eng-media">
-              <RevealOnScroll animation="fade-left">
-                <div className="civil-media-frame">
-                  <img
-                    src={buildingImage}
-                    alt="Y2R Heights Engineering Detail"
-                    className="civil-media-img"
-                  />
-                  <div className="civil-media-overlay">
-                    <span className="civil-media-tag">Engineering Blueprints</span>
-                    <h4 className="civil-media-title">M30 Grade Concrete & Fe-550 TMT Steel</h4>
-                    <p className="civil-media-caption">Strict on-site third-party quality testing at every pour stage.</p>
+      {/* =========================================================================
+          3. MASTER SPECIFICATIONS DOSSIER (Complete Brochure Breakdown)
+          ========================================================================= */}
+      <section className="section-padding theme-section-light specs-main-dossier-section">
+        <div className="container-custom">
+
+          {/* -------------------------------------------------------------
+              CATEGORY 1: STRUCTURE & FOUNDATIONS
+              ------------------------------------------------------------- */}
+          {(activeTab === 'all' || activeTab === 'structure') && (
+            <RevealOnScroll animation="fade-up">
+              <div className="spec-category-card" id="spec-structure">
+                <div className="spec-category-header">
+                  <div className="spec-cat-icon-box">
+                    <Building2 size={24} />
+                  </div>
+                  <div>
+                    <span className="spec-cat-tag">Civil Engineering</span>
+                    <h2 className="spec-cat-title">Structure & Foundations</h2>
                   </div>
                 </div>
-              </RevealOnScroll>
-            </div>
+
+                <div className="spec-structure-grid">
+                  <div className="spec-structure-col">
+                    <div className="spec-sub-header">
+                      <Wrench size={18} className="text-gold" />
+                      <h4>Foundations</h4>
+                    </div>
+                    <p className="spec-text-content">
+                      RCC raft foundations at a depth of <strong>1.5M</strong> with a bearing capacity of <strong>1.391 kg/cm²</strong>. Pile foundation can be considered after carrying a load test of an 12M pile at the site.
+                    </p>
+                    <div className="spec-stat-pills">
+                      <span className="stat-pill">Raft Depth: 1.5M</span>
+                      <span className="stat-pill">Capacity: 1.391 kg/cm²</span>
+                      <span className="stat-pill">12M Pile Option</span>
+                    </div>
+                  </div>
+
+                  <div className="spec-structure-col">
+                    <div className="spec-sub-header">
+                      <ShieldCheck size={18} className="text-gold" />
+                      <h4>Structure</h4>
+                    </div>
+                    <p className="spec-text-content">
+                      RCC column, beam, and shearwall framed structure confirming to <strong>BIS code</strong> for earthquake resistance.
+                    </p>
+                    <div className="spec-stat-pills">
+                      <span className="stat-pill">BIS Earthquake Norms</span>
+                      <span className="stat-pill">RCC Frame & Shearwall</span>
+                      <span className="stat-pill">Zone-III Seismic Safe</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          )}
+
+          {/* -------------------------------------------------------------
+              CATEGORY 2: COMMON AREAS (OFFICIAL BROCHURE TABLE)
+              ------------------------------------------------------------- */}
+          {(activeTab === 'all' || activeTab === 'common') && (
+            <RevealOnScroll animation="fade-up">
+              <div className="spec-category-card" id="spec-common-areas">
+                <div className="spec-category-header">
+                  <div className="spec-cat-icon-box">
+                    <Grid size={24} />
+                  </div>
+                  <div>
+                    <span className="spec-cat-tag">Public & Circulation Areas</span>
+                    <h2 className="spec-cat-title">Common Areas Finish Matrix</h2>
+                  </div>
+                </div>
+
+                {/* Comprehensive Official Table */}
+                <div className="spec-table-responsive-wrapper">
+                  <table className="brochure-spec-table">
+                    <thead>
+                      <tr>
+                        <th className="col-area">AREA</th>
+                        <th className="col-flooring">FLOORING</th>
+                        <th className="col-wall">WALL FINISH</th>
+                        <th className="col-ceiling">CEILING</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {commonAreasTable.map((row, idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? 'row-even' : 'row-odd'}>
+                          <td className="td-area">
+                            <strong>{row.area}</strong>
+                          </td>
+                          <td className="td-flooring">
+                            <span className="mat-badge">{row.flooring}</span>
+                          </td>
+                          <td className="td-wall">{row.wallFinish}</td>
+                          <td className="td-ceiling">{row.ceiling}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Railing & Lifts Bottom Highlights Bar */}
+                <div className="common-area-footer-highlights">
+                  <div className="common-highlight-box">
+                    <span className="ch-label">Railing Specification:</span>
+                    <span className="ch-value">MS Railing (Staircase)</span>
+                  </div>
+                  <div className="common-highlight-box">
+                    <span className="ch-label">Vertical Transport:</span>
+                    <span className="ch-value">Two (2) passenger lifts @ 10 passengers each</span>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          )}
+
+          {/* -------------------------------------------------------------
+              CATEGORY 3: RETAIL FLOORS (GROUND & FIRST FLOORS)
+              ------------------------------------------------------------- */}
+          {(activeTab === 'all' || activeTab === 'retail') && (
+            <RevealOnScroll animation="fade-up">
+              <div className="spec-category-card" id="spec-retail">
+                <div className="spec-category-header">
+                  <div className="spec-cat-icon-box">
+                    <Store size={24} />
+                  </div>
+                  <div>
+                    <span className="spec-cat-tag">Commercial Frontage</span>
+                    <h2 className="spec-cat-title">Retail Floors (Ground & First Floors)</h2>
+                  </div>
+                </div>
+
+                <div className="spec-detail-keyval-grid">
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Flooring</span>
+                    <span className="kv-value">Heavy-duty large format vitrified tiles or polished stone flooring suitable for high traffic retail use.</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Walls</span>
+                    <span className="kv-value">Plastered finish, ready for tenant fit-out (Oil Bound Distemper or primer coat).</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Ceiling</span>
+                    <span className="kv-value">Exposed slab or simple plaster finish, ready for tenant fit-out (Oil Bound Distemper).</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Wet Points</span>
+                    <span className="kv-value">Provision for water inlet and outlet in designated areas.</span>
+                  </div>
+                  <div className="spec-kv-item full-width">
+                    <span className="kv-label">Toilets</span>
+                    <span className="kv-value">Antiskid vitrified tiles on the floor, vitrified wall tiles up to false ceiling level. Premium quality sanitaryware.</span>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          )}
+
+          {/* -------------------------------------------------------------
+              CATEGORY 4: BANQUET FLOOR (SECOND FLOOR)
+              ------------------------------------------------------------- */}
+          {(activeTab === 'all' || activeTab === 'banquet') && (
+            <RevealOnScroll animation="fade-up">
+              <div className="spec-category-card" id="spec-banquet">
+                <div className="spec-category-header">
+                  <div className="spec-cat-icon-box">
+                    <UtensilsCrossed size={24} />
+                  </div>
+                  <div>
+                    <span className="spec-cat-tag">Hospitality & Celebrations</span>
+                    <h2 className="spec-cat-title">Banquet Floor (Second Floor)</h2>
+                  </div>
+                </div>
+
+                <div className="spec-detail-keyval-grid">
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Main Hall Flooring</span>
+                    <span className="kv-value">Superior quality vitrified tiles of minimum 1200x600 size or marble.</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Wall Finishes</span>
+                    <span className="kv-value">Acrylic emulsion on POP punning. Feature walls with textured paint or cladding.</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Ceiling</span>
+                    <span className="kv-value">Decorative gypsum false ceiling with integrated lighting and acoustic treatment.</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Service Areas</span>
+                    <span className="kv-value">Antiskid vitrified tiles. Acrylic emulsion paint on walls.</span>
+                  </div>
+                  <div className="spec-kv-item full-width">
+                    <span className="kv-label">Toilets</span>
+                    <span className="kv-value">Granite counter. Premium quality sanitaryware and CP fittings (Grohe/Jaquar/Roca or equivalent). False ceiling with oil bound distemper.</span>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          )}
+
+          {/* -------------------------------------------------------------
+              CATEGORY 5: SERVICE APARTMENTS (3RD TO 7TH FLOORS)
+              ------------------------------------------------------------- */}
+          {(activeTab === 'all' || activeTab === 'apartments') && (
+            <RevealOnScroll animation="fade-up">
+              <div className="spec-category-card" id="spec-apartments">
+                <div className="spec-category-header">
+                  <div className="spec-cat-icon-box">
+                    <Home size={24} />
+                  </div>
+                  <div>
+                    <span className="spec-cat-tag">Contemporary Urban Living</span>
+                    <h2 className="spec-cat-title">Service Apartments (3rd to 7th Floors)</h2>
+                  </div>
+                </div>
+
+                <div className="spec-subgroup-wrap">
+                  <h3 className="spec-subgroup-title">Living / Dining & Bedroom</h3>
+                  <div className="spec-detail-keyval-grid">
+                    <div className="spec-kv-item">
+                      <span className="kv-label">Flooring / Skirting</span>
+                      <span className="kv-value">Vitrified Tile - <strong>1200x600</strong></span>
+                    </div>
+                    <div className="spec-kv-item">
+                      <span className="kv-label">Wall Finishes</span>
+                      <span className="kv-value">Acrylic emulsion on POP punning</span>
+                    </div>
+                    <div className="spec-kv-item">
+                      <span className="kv-label">Ceiling</span>
+                      <span className="kv-value">Oil Bound Distemper</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="spec-subgroup-wrap">
+                  <h3 className="spec-subgroup-title">Bathroom & Sanitary Specifications</h3>
+                  <div className="spec-detail-keyval-grid">
+                    <div className="spec-kv-item">
+                      <span className="kv-label">Toilet Finishes</span>
+                      <span className="kv-value">Antiskid vitrified tiles. Vitrified wall tiles up to false ceiling level. Granite counter. Oil bound distemper with false ceiling.</span>
+                    </div>
+                    <div className="spec-kv-item">
+                      <span className="kv-label">Sanitaryware & Fittings</span>
+                      <span className="kv-value">Premium quality range. <strong>Grohe / Jaquar / Roca</strong> or equivalent single lever fittings in all toilets.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          )}
+
+          {/* -------------------------------------------------------------
+              CATEGORY 6: DOORS & WINDOWS
+              ------------------------------------------------------------- */}
+          {(activeTab === 'all' || activeTab === 'doors') && (
+            <RevealOnScroll animation="fade-up">
+              <div className="spec-category-card" id="spec-doors-windows">
+                <div className="spec-category-header">
+                  <div className="spec-cat-icon-box">
+                    <DoorClosed size={24} />
+                  </div>
+                  <div>
+                    <span className="spec-cat-tag">Fenestration & Joinery</span>
+                    <h2 className="spec-cat-title">Doors & Windows</h2>
+                  </div>
+                </div>
+
+                <div className="spec-detail-keyval-grid">
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Doors</span>
+                    <span className="kv-value">Engineered laminated frame (WPC) with laminated door shutters, 35MM thick commercial board with phenol formaldehyde.</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Hardware</span>
+                    <span className="kv-value">Locks, handles, and knobs (mortise and cylindrical locks) from reputed makes and brands. High quality steel/brass hardware. Floor springs/hinges with ball bearings.</span>
+                  </div>
+                  <div className="spec-kv-item full-width">
+                    <span className="kv-label">Windows</span>
+                    <span className="kv-value">Powder coated aluminium frame or UPVC frame windows with clear float glass.</span>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          )}
+
+          {/* -------------------------------------------------------------
+              CATEGORY 7: ELECTRICAL & MEP
+              ------------------------------------------------------------- */}
+          {(activeTab === 'all' || activeTab === 'mep') && (
+            <RevealOnScroll animation="fade-up">
+              <div className="spec-category-card" id="spec-mep">
+                <div className="spec-category-header">
+                  <div className="spec-cat-icon-box">
+                    <Zap size={24} />
+                  </div>
+                  <div>
+                    <span className="spec-cat-tag">Building Utilities & Safety</span>
+                    <h2 className="spec-cat-title">Electrical & MEP Infrastructure</h2>
+                  </div>
+                </div>
+
+                <div className="spec-detail-keyval-grid">
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Fixtures & Fittings</span>
+                    <span className="kv-value">ISI mark switches/sockets, distribution boxes, and circuit breakers from standard makes and brands.</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Wiring</span>
+                    <span className="kv-value">ISI mark conduits PVC/Steel with copper wires concealed in RCC slabs.</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">Plumbing</span>
+                    <span className="kv-value">ISI mark CPVC water supply pipes with standard valves and accessories. C-PVC pipes for external sewerage & waste water.</span>
+                  </div>
+                  <div className="spec-kv-item">
+                    <span className="kv-label">EV Charging</span>
+                    <span className="kv-value">Provision for EV charging stations to support modern mobility.</span>
+                  </div>
+                  <div className="spec-kv-item full-width">
+                    <span className="kv-label">Security System</span>
+                    <span className="kv-value">CCTV and electronic surveillance would be provided with internal communication system.</span>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          )}
+
+          {/* -------------------------------------------------------------
+              OFFICIAL DISCLAIMER BANNER
+              ------------------------------------------------------------- */}
+          <div className="spec-disclaimer-banner">
+            <span className="disclaimer-badge">Official Architectural Note</span>
+            <p className="disclaimer-text">
+              <strong>Disclaimer:</strong> The above specifications are indicative and may be changed in consultation with the Architect. The company reserves the right to provide equivalent finishes/fixtures and features.
+            </p>
           </div>
+
         </div>
       </section>
 
-      {/* SECTION 02: Official Premium Specifications Document Teaser */}
+      {/* =========================================================================
+          4. OFFICIAL BROCHURE SHEET VISUAL PREVIEW & LIGHTBOX
+          ========================================================================= */}
       <section className="section-padding theme-section-dark spec-document-section">
         <ArchitecturalBg variant="project_vision" />
         <div className="container-custom">
           <SectionHeading
             number="02"
-            badge="Official Document"
-            title="Premium Specifications Sheet"
-            subtitle="Verified architectural specifications directly from the Y2R Heights master planning docket."
+            badge="Certified Dossier"
+            title="Comprehensive Technical Specifications"
+            subtitle="Complete verified civil, architectural, and MEP specifications as certified for Y2R Heights."
             align="center"
             theme="dark"
           />
@@ -265,37 +557,37 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
                 />
                 <div className="spec-doc-hover-overlay">
                   <Eye size={28} className="text-gold" />
-                  <span className="spec-hover-text">Click to View Full Document</span>
+                  <span className="spec-hover-text">Click to View Official Sheet</span>
                 </div>
                 <div className="spec-doc-badge-pill">
-                  <FileCheck2 size={14} /> Official Master Sheet
+                  <FileCheck2 size={14} /> Official Master Dossier
                 </div>
               </div>
             </div>
 
             <div className="spec-doc-info-col">
-              <div className="spec-doc-meta-badge">Verified RERA Documentation</div>
-              <h3 className="spec-doc-heading">Comprehensive Specification Breakdown</h3>
+              <div className="spec-doc-meta-badge">Verified RERA & Engineering Standards</div>
+              <h3 className="spec-doc-heading">Certified Engineering Standards</h3>
               <p className="spec-doc-paragraph">
-                The official document details flooring compositions, electrical fittings, plumbing provisions, exterior glazing, lift shafts, and fire safety systems specified for every zone across the 11 floors.
+                Explore the complete verified specification sheet including structural foundation tolerances, lobby finishes, sanitary fittings, high-voltage electrical conduits, and fire suppression systems.
               </p>
 
               <div className="spec-doc-points-list">
                 <div className="spec-point-row">
                   <div className="point-dot" />
-                  <span><strong>Structure:</strong> Earthquake-resistant RCC frame structure with brick infill walls.</span>
+                  <span><strong>Structural Foundation:</strong> RCC Raft foundation with BIS code earthquake resistance framing.</span>
                 </div>
                 <div className="spec-point-row">
                   <div className="point-dot" />
-                  <span><strong>Flooring:</strong> Double-charged vitrified tiles in suites, antiskid tiles in wet areas, granite in lobbies.</span>
+                  <span><strong>Luxury Finishes:</strong> Granite entrance lobbies, Armstrong false ceilings, and 1200x600 vitrified suites.</span>
                 </div>
                 <div className="spec-point-row">
                   <div className="point-dot" />
-                  <span><strong>Electricals:</strong> Modular switches (Anchor / Havells), copper wiring, pre-installed AC conduits.</span>
+                  <span><strong>Sanitary & Plumbing:</strong> Grohe / Jaquar / Roca single-lever CP fittings with CPVC pipelines.</span>
                 </div>
                 <div className="spec-point-row">
                   <div className="point-dot" />
-                  <span><strong>Plumbing:</strong> CPVC/UPVC pipelines with premium CP fittings (Jaquar / Grohe / Roca or equivalent).</span>
+                  <span><strong>Future-Ready Utilities:</strong> Dedicated EV charging infrastructure, dual-fuel DG backup, and CCTV matrix.</span>
                 </div>
               </div>
 
@@ -306,7 +598,7 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
                   className="btn-primary"
                 >
                   <Eye size={16} />
-                  <span>View Full-Size Document</span>
+                  <span>View Official Brochure Sheet</span>
                 </button>
                 <button
                   type="button"
@@ -314,7 +606,7 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
                   className="btn-secondary"
                 >
                   <Download size={16} />
-                  <span>Download Project Dossier</span>
+                  <span>Download Brochure</span>
                 </button>
               </div>
             </div>
@@ -322,175 +614,79 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
         </div>
       </section>
 
-      {/* SECTION 03: Common Area Finishes */}
+      {/* =========================================================================
+          5. MATERIAL EXCELLENCE SHOWCASE (Common Area Materials)
+          ========================================================================= */}
       <section className="section-padding theme-section-light finishes-section">
         <div className="container-custom">
           <SectionHeading
             number="03"
-            badge="Material Grade"
-            title="Premium Finishes & Utility Infrastructure"
+            badge="Material Excellence"
+            title="Premium Finishes & Materials"
             subtitle="Curated materials hand-picked for durability, aesthetics, and low ongoing maintenance."
             align="center"
             theme="light"
           />
 
           <div className="finishes-cards-grid">
-            {commonFinishes.map((item) => (
-              <div key={item.title} className="finish-showcase-card">
-                <div className="finish-card-media">
-                  <img src={item.image} alt={item.title} className="finish-card-img" />
-                  <span className="finish-card-tag">{item.location}</span>
-                </div>
-                <div className="finish-card-body">
-                  <h4 className="finish-card-title">{item.title}</h4>
-                  <p className="finish-card-desc">{item.desc}</p>
-                </div>
+            <div className="finish-showcase-card">
+              <div className="finish-card-media">
+                <img src={highStreetImg} alt="Natural Granite & Vitrified Finishes" className="finish-card-img" />
+                <span className="finish-card-tag">Lobbies & Circulation</span>
               </div>
-            ))}
+              <div className="finish-card-body">
+                <h4 className="finish-card-title">Granite & Vitrified Flooring</h4>
+                <p className="finish-card-desc">
+                  Entrance lobbies and lift foyers finished with polished granite and vitrified tile cladding with gypsum false ceilings.
+                </p>
+              </div>
+            </div>
+
+            <div className="finish-showcase-card">
+              <div className="finish-card-media">
+                <img src={boutiqueImg} alt="ISI Conduit & Copper Wiring" className="finish-card-img" />
+                <span className="finish-card-tag">Electrical & Safety</span>
+              </div>
+              <div className="finish-card-body">
+                <h4 className="finish-card-title">ISI Concealed Conduits & Copper Wiring</h4>
+                <p className="finish-card-desc">
+                  ISI mark steel/PVC conduits with copper wiring concealed in RCC slabs, distribution boxes, and circuit breakers.
+                </p>
+              </div>
+            </div>
+
+            <div className="finish-showcase-card">
+              <div className="finish-card-media">
+                <img src={foodCourtImg} alt="Banquet & Food Concourse Ventilation" className="finish-card-img" />
+                <span className="finish-card-tag">F&B & Banquets</span>
+              </div>
+              <div className="finish-card-body">
+                <h4 className="finish-card-title">Acoustic Ceilings & Heavy MEP</h4>
+                <p className="finish-card-desc">
+                  Decorative gypsum false ceiling with acoustic dampening on the banquet level and grease-trap plumbing risers.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 04: Floor-wise Granular Specifications */}
-      <section className="section-padding theme-section-dark floor-specs-section">
-        <ArchitecturalBg variant="project_why" />
-        <div className="container-custom">
-          <SectionHeading
-            number="04"
-            badge="Granular Matrix"
-            title="Floor-Wise Specification Matrix"
-            subtitle="Browse detailed technical inclusions classified by each operational segment."
-            align="center"
-            theme="dark"
-          />
-
-          {/* Interactive Filter Pills */}
-          <div className="spec-tabs-bar" role="tablist" aria-label="Specification Categories">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeTab === 'all'}
-              className={`spec-tab-pill ${activeTab === 'all' ? 'active' : ''}`}
-              onClick={() => setActiveTab('all')}
-            >
-              <Layers size={14} />
-              <span>All Levels</span>
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeTab === 'retail'}
-              className={`spec-tab-pill ${activeTab === 'retail' ? 'active' : ''}`}
-              onClick={() => setActiveTab('retail')}
-            >
-              <Store size={14} />
-              <span>Retail (LG & UG)</span>
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeTab === 'offices'}
-              className={`spec-tab-pill ${activeTab === 'offices' ? 'active' : ''}`}
-              onClick={() => setActiveTab('offices')}
-            >
-              <DoorClosed size={14} />
-              <span>Corporate (1st & 2nd)</span>
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeTab === 'studios'}
-              className={`spec-tab-pill ${activeTab === 'studios' ? 'active' : ''}`}
-              onClick={() => setActiveTab('studios')}
-            >
-              <Home size={14} />
-              <span>Studios (3rd to 7th)</span>
-            </button>
-          </div>
-
-          {/* Detailed Cards List */}
-          <div className="spec-blocks-container">
-            {floorSpecs && floorSpecs.length > 0 ? (
-              floorSpecs.map((spec, index) => {
-                const FloorIcon = spec.icon || FileText;
-                return (
-                  <div key={spec.id || index} className="spec-block-card">
-                    <div className="spec-block-header">
-                      <div className="spec-block-title-wrap">
-                        <div className="spec-block-icon">
-                          <FloorIcon size={22} />
-                        </div>
-                        <div>
-                          <span className="spec-block-level">{spec.level}</span>
-                          <h3 className="spec-block-title">{spec.category || spec.title}</h3>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Highlights Grid */}
-                    {spec.details && (
-                      <div className={`spec-detail-grid ${spec.details?.length > 2 ? 'three-cols' : 'two-cols'}`}>
-                        {spec.details.map((detail, dIdx) => (
-                          <div key={detail.label || dIdx} className="spec-detail-item">
-                            <span className="detail-item-label">{detail.label}</span>
-                            <span className="detail-item-value">{detail.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Comprehensive Item Breakdown Table */}
-                    {spec.items && spec.items.length > 0 && (
-                      <div className="spec-table-wrap">
-                        <table className="spec-common-table">
-                          <thead>
-                            <tr>
-                              <th style={{ width: '28%' }}>Component</th>
-                              <th style={{ width: '42%' }}>Technical Specification</th>
-                              <th style={{ width: '30%' }}>Approved Brand / Grade</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {spec.items.map((it, itIdx) => (
-                              <tr key={it.feature || itIdx}>
-                                <td className="spec-feature-name">
-                                  <strong>{it.feature}</strong>
-                                </td>
-                                <td className="spec-feature-desc">{it.spec}</td>
-                                <td className="spec-feature-brand">
-                                  <span className="brand-tag">{it.brand || 'ISI Standard / Premium'}</span>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    )}
-                  </div>
-                );
-              })
-            ) : (
-              <div style={{ textAlign: 'center', padding: '2rem', color: '#94A3B8' }}>
-                No specifications found for this category.
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* GLOBAL CTA SECTION */}
+      {/* =========================================================================
+          6. GLOBAL TECHNICAL CTA
+          ========================================================================= */}
       <CTASection
         badge="Verify & Validate"
-        title="Request Official Technical Dossier"
-        subtitle="Where Vision Meets Value."
-        description="Our civil engineering and planning team is available to assist you with detailed structural blueprints, floor MEP drawings, and material compliance certificates."
-        primaryBtnText="Speak With Project Engineers"
+        title="Need Detailed Technical Drawings or Floor Plans?"
+        subtitle="Our engineering and commercial advisory team is available to assist you with floor loading capacities, electrical loads, and fit-out guidelines."
+        description="Connect with our advisory team for customized floor layouts, pricing structures, and unit availability."
+        primaryBtnText="Connect With Advisory Team"
         primaryBtnAction={() => onOpenEnquiry && onOpenEnquiry('Project Specifications Inquiry')}
-        secondaryBtnText="Download Master Brochure"
-        secondaryBtnAction={onOpenBrochure}
+        secondaryBtnText="Call 1800 890 8351"
       />
 
-      {/* FULLSCREEN PURE IMAGE PREVIEW MODAL */}
+      {/* =========================================================================
+          7. FULLSCREEN PURE IMAGE PREVIEW MODAL
+          ========================================================================= */}
       {isSpecModalOpen &&
         createPortal(
           <div

@@ -171,21 +171,28 @@
 /* Modal Top Bar */
 .map-modal-top-bar {
   position: absolute;
-  top: 1rem;
+  top: 1.25rem;
   left: 1.5rem;
   right: 1.5rem;
-  z-index: 100;
+  z-index: 120;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   pointer-events: auto;
+  background: rgba(14, 17, 26, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(175, 125, 9, 0.35);
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .map-modal-title-wrap {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 12px;
 }
 
 .map-modal-badge {
@@ -200,23 +207,26 @@
   padding: 3px 10px;
   border-radius: 20px;
   width: fit-content;
+  white-space: nowrap;
 }
 
 .map-modal-heading {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  font-weight: 800;
+  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+  font-weight: 700;
   color: #FAF8F4;
   margin: 0;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .map-modal-close-btn {
   background: rgba(20, 24, 34, 0.85);
   border: 1.5px solid rgba(175, 125, 9, 0.55);
   color: #FAF8F4;
-  padding: 8px 16px;
+  padding: 6px 14px;
   border-radius: 30px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -230,27 +240,27 @@
   background: #af7d09;
   color: #FFFFFF;
   border-color: #ffd978;
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(175, 125, 9, 0.6);
+  transform: scale(1.04);
 }
 
 /* Modal Floating Toolbar */
 .map-modal-toolbar {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1.75rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
-  background: rgba(14, 17, 26, 0.92);
+  z-index: 120;
+  background: rgba(14, 17, 26, 0.94);
   border: 1.5px solid rgba(175, 125, 9, 0.5);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 40px;
   display: flex;
   align-items: center;
   gap: 6px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(175, 125, 9, 0.25);
+  pointer-events: auto;
 }
 
 .toolbar-btn {
@@ -266,6 +276,7 @@
   gap: 6px;
   cursor: pointer;
   transition: all 200ms ease;
+  white-space: nowrap;
 }
 
 .toolbar-btn:hover {
@@ -305,7 +316,6 @@
 
 /* Map Modal Viewport */
 .map-modal-viewport {
-  flex: 1;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -313,29 +323,39 @@
   justify-content: center;
   overflow: hidden;
   position: relative;
-  padding: 5rem 2rem 6rem;
+  padding: 0;
   box-sizing: border-box;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+
+.map-modal-viewport.is-dragging {
+  cursor: grabbing !important;
 }
 
 .map-modal-transform-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 90vw;
-  max-height: 80vh;
+  will-change: transform;
   user-select: none;
+  pointer-events: auto;
 }
 
 .map-modal-image {
-  max-width: 100%;
-  max-height: 75vh;
+  max-width: 94vw;
+  max-height: 84vh;
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(175, 125, 9, 0.2);
-  border: 1px solid rgba(175, 125, 9, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 40px rgba(175, 125, 9, 0.25);
+  border: 1.5px solid rgba(175, 125, 9, 0.45);
   background: #FAF8F4;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 @media (max-width: 640px) {
@@ -343,7 +363,8 @@
     bottom: 1rem;
     padding: 4px 8px;
     gap: 3px;
-    width: 94%;
+    width: 95%;
+    max-width: 95%;
     justify-content: space-around;
   }
 
@@ -357,12 +378,18 @@
 
   .map-modal-top-bar {
     top: 0.75rem;
-    left: 1rem;
-    right: 1rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    padding: 0.45rem 0.85rem;
   }
 
   .map-modal-heading {
-    font-size: 0.95rem;
+    display: none;
+  }
+
+  .map-modal-image {
+    max-width: 98vw;
+    max-height: 80vh;
   }
 }
 

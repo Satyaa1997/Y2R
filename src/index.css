@@ -70,10 +70,10 @@
   --shadow-subtle: 0 6px 20px rgba(0, 0, 0, 0.04);
 
   /* Typography Stacks */
-  --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-editorial: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+  --font-editorial: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+  --font-sans: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 640px) {
@@ -95,7 +95,7 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 html {
@@ -103,11 +103,11 @@ html {
   font-size: 16px;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
@@ -116,7 +116,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Selection */

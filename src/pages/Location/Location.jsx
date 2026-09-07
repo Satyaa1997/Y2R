@@ -23,6 +23,9 @@ import {
   Maximize2,
   ZoomIn,
   ZoomOut,
+  RotateCw,
+  RotateCcw,
+  RefreshCw,
   X
 } from 'lucide-react';
 import { PROJECT_INFO, VICINITY_LANDMARKS } from '../../data/projectData';
@@ -67,6 +70,9 @@ export default function Location({ onOpenEnquiry }) {
   const [isFullscreenMapOpen, setIsFullscreenMapOpen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [rotationAngle, setRotationAngle] = useState(0);
+  const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [heroTextFaded, setHeroTextFaded] = useState(false);
 
   useEffect(() => {
@@ -80,11 +86,14 @@ export default function Location({ onOpenEnquiry }) {
     setIsFullscreenMapOpen(false);
     setZoomLevel(1);
     setRotationAngle(0);
+    setPanPosition({ x: 0, y: 0 });
+    setIsDragging(false);
   };
 
   const handleOpenModal = () => {
     setZoomLevel(1);
     setRotationAngle(0);
+    setPanPosition({ x: 0, y: 0 });
     setIsFullscreenMapOpen(true);
   };
 
@@ -109,28 +118,94 @@ export default function Location({ onOpenEnquiry }) {
 
   const handleZoomIn = (e) => {
     e?.stopPropagation();
-    setZoomLevel(prev => Math.min(Number((prev + 0.25).toFixed(2)), 3.5));
+    setZoomLevel((prev) => Math.min(Number((prev + 0.3).toFixed(2)), 4.5));
   };
 
   const handleZoomOut = (e) => {
     e?.stopPropagation();
-    setZoomLevel(prev => Math.max(Number((prev - 0.25).toFixed(2)), 0.5));
+    setZoomLevel((prev) => {
+      const next = Math.max(Number((prev - 0.3).toFixed(2)), 0.6);
+      if (next <= 1) setPanPosition({ x: 0, y: 0 });
+      return next;
+    });
   };
 
   const handleRotateCw = (e) => {
     e?.stopPropagation();
-    setRotationAngle(prev => (prev + 90) % 360);
+    setRotationAngle((prev) => (prev + 90) % 360);
   };
 
   const handleRotateCcw = (e) => {
     e?.stopPropagation();
-    setRotationAngle(prev => (prev - 90 + 360) % 360);
+    setRotationAngle((prev) => (prev - 90 + 360) % 360);
   };
 
   const handleReset = (e) => {
     e?.stopPropagation();
     setZoomLevel(1);
     setRotationAngle(0);
+    setPanPosition({ x: 0, y: 0 });
+  };
+
+  const handleWheel = (e) => {
+    e.stopPropagation();
+    if (e.deltaY < 0) {
+      handleZoomIn(e);
+    } else {
+      handleZoomOut(e);
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - panPosition.x, y: e.clientY - panPosition.y });
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    setPanPosition({
+      x: e.clientX - dragStart.x,
+      y: e.clientY - dragStart.y
+    });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchStart = (e) => {
+    if (e.touches.length === 1) {
+      setIsDragging(true);
+      setDragStart({
+        x: e.touches[0].clientX - panPosition.x,
+        y: e.touches[0].clientY - panPosition.y
+      });
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || e.touches.length !== 1) return;
+    setPanPosition({
+      x: e.touches[0].clientX - dragStart.x,
+      y: e.touches[0].clientY - dragStart.y
+    });
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleDoubleClick = (e) => {
+    e.stopPropagation();
+    if (zoomLevel > 1.2) {
+      setZoomLevel(1);
+      setPanPosition({ x: 0, y: 0 });
+    } else {
+      setZoomLevel(2);
+    }
   };
 
   return (
@@ -297,15 +372,25 @@ export default function Location({ onOpenEnquiry }) {
 
           {/* Interactive Map Viewport */}
           <div 
-            className="map-modal-viewport"
+            className={`map-modal-viewport ${isDragging ? 'is-dragging' : ''}`}
             onClick={(e) => e.stopPropagation()}
+            onWheel={handleWheel}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onDoubleClick={handleDoubleClick}
           >
             <div 
               className="map-modal-transform-container"
               style={{
-                transform: `rotate(${rotationAngle}deg) scale(${zoomLevel})`,
+                transform: `translate3d(${panPosition.x}px, ${panPosition.y}px, 0px) rotate(${rotationAngle}deg) scale(${zoomLevel})`,
                 transformOrigin: 'center center',
-                transition: 'transform 280ms cubic-bezier(0.16, 1, 0.3, 1)'
+                transition: isDragging ? 'none' : 'transform 260ms cubic-bezier(0.16, 1, 0.3, 1)',
+                cursor: isDragging ? 'grabbing' : zoomLevel > 1 ? 'grab' : 'zoom-in'
               }}
             >
               <img

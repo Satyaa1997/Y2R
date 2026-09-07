@@ -10,15 +10,15 @@
 }
 
 /* ==========================================================================
-   Hero Section
+   1. HERO SECTION (Luxury Cinematic Header)
    ========================================================================== */
 .about-project-hero-section {
   position: relative;
-  min-height: 520px;
+  min-height: 480px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: calc(var(--header-height, 80px) + 2.5rem) 1.5rem 4rem;
+  padding: calc(var(--header-height, 80px) + 2.5rem) 1.5rem 3.5rem;
   background-color: #0b0c0e;
   overflow: hidden;
 }
@@ -46,8 +46,8 @@
   background: linear-gradient(
     180deg,
     rgba(11, 12, 14, 0.45) 0%,
-    rgba(11, 12, 14, 0.20) 45%,
-    rgba(11, 12, 14, 0.85) 100%
+    rgba(11, 12, 14, 0.25) 45%,
+    rgba(11, 12, 14, 0.95) 100%
   );
   pointer-events: none;
   transition: opacity 0.8s ease;
@@ -57,7 +57,7 @@
   position: relative;
   z-index: 2;
   text-align: left;
-  max-width: 900px;
+  max-width: 960px;
   margin-left: 0;
   margin-right: auto;
   margin-top: auto;
@@ -78,30 +78,23 @@
 
 .about-project-hero-title {
   font-family: var(--font-display, "Montserrat", sans-serif);
-  font-size: clamp(1.65rem, 2.8vw, 2.35rem);
-  font-weight: 700;
-  line-height: 1.25;
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
   color: #FFFFFF !important;
   margin-bottom: 0.85rem;
   text-align: left;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
-.about-project-hero-highlight {
-  font-size: 0.95em;
-  font-weight: 600;
-  color: #C8A22C !important;
-  display: inline-block;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
-}
-
 .about-project-hero-desc {
   font-size: 1.05rem;
   line-height: 1.65;
-  color: #FFFFFF !important;
+  color: #E2E8F0 !important;
   font-weight: 400;
-  margin-bottom: 1.5rem;
-  max-width: 820px;
+  margin-bottom: 1.35rem;
+  max-width: 840px;
   text-align: left;
   text-shadow: 0 3px 15px rgba(0, 0, 0, 0.95), 0 1px 6px rgba(0, 0, 0, 0.9);
 }
@@ -110,153 +103,449 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 0.9rem;
-  color: #FFFFFF !important;
+  font-size: 0.88rem;
+  color: #C8A22C !important;
   flex-wrap: wrap;
   justify-content: flex-start;
   font-weight: 600;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
 }
 
+.about-project-hero-meta .meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffd978;
+}
+
+.about-project-hero-meta .meta-sep {
+  color: rgba(255, 255, 255, 0.4);
+}
+
 /* ==========================================================================
-   Section 01: Civil Engineering
+   2. STICKY SPECIFICATION NAVIGATION BAR
    ========================================================================== */
-.civil-eng-section {
-  background-color: #FAF8F5;
-  color: #111112;
+.spec-sticky-nav-section {
+  position: sticky;
+  top: var(--header-height, 70px);
+  z-index: 40;
+  background: rgba(14, 15, 18, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(200, 162, 44, 0.2);
+  border-bottom: 1px solid rgba(200, 162, 44, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  padding: 0.65rem 0;
 }
 
-.civil-eng-layout {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-.civil-eng-lead {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #2D2E33;
-  margin: 1.25rem 0 2rem;
-}
-
-.civil-eng-specs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-
-.civil-spec-card {
-  background: #FFFFFF;
-  border: 1.5px solid rgba(175, 125, 9, 0.22);
-  border-radius: 8px;
-  padding: 1.25rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  transition: transform 250ms ease, border-color 250ms ease;
-}
-
-.civil-spec-card:hover {
-  transform: translateY(-3px);
-  border-color: #C8A22C;
-}
-
-.civil-spec-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-.civil-spec-icon-box {
-  width: 38px;
-  height: 38px;
-  border-radius: 6px;
-  background: rgba(175, 125, 9, 0.1);
-  color: #af7d09;
+.spec-nav-wrapper {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.civil-spec-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #8a6104;
-  background: #f7eed7;
-  padding: 2px 8px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+.spec-tabs-scroll-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0.25rem 0.5rem;
+  max-width: 100%;
 }
 
-.civil-spec-title {
-  font-family: var(--font-display, "Montserrat", sans-serif);
-  font-size: 1rem;
-  font-weight: 700;
-  color: #111112;
-  margin-bottom: 0.35rem;
+.spec-tabs-scroll-row::-webkit-scrollbar {
+  display: none;
 }
 
-.civil-spec-desc {
-  font-size: 0.82rem;
-  color: #55555E;
-  line-height: 1.55;
-  margin: 0;
-}
-
-.civil-media-frame {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12), 0 0 0 1.5px rgba(175, 125, 9, 0.25);
-}
-
-.civil-media-img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  display: block;
-}
-
-.civil-media-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1.5rem;
-  background: linear-gradient(180deg, rgba(14, 15, 18, 0) 0%, rgba(14, 15, 18, 0.95) 100%);
-}
-
-.civil-media-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #ffd978;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.civil-media-title {
-  color: #FFFFFF;
-  font-family: var(--font-display, "Montserrat", sans-serif);
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-
-.civil-media-caption {
+.spec-nav-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.55rem 1.15rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #C2BFB6;
-  font-size: 0.82rem;
-  margin: 0;
+  border-radius: 50px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 220ms ease;
+  font-family: inherit;
+}
+
+.spec-nav-tab-btn:hover {
+  background: rgba(200, 162, 44, 0.12);
+  border-color: rgba(200, 162, 44, 0.5);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.spec-nav-tab-btn.active {
+  background: #C8A22C;
+  border-color: #C8A22C;
+  color: #0A0B0E;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(200, 162, 44, 0.35);
 }
 
 /* ==========================================================================
-   Section 02: Official Premium Document Banner
+   3. MASTER SPECIFICATIONS DOSSIER (Content Cards)
+   ========================================================================== */
+.specs-main-dossier-section {
+  background-color: #FAF8F5;
+  color: #111112;
+  padding-top: 3.5rem;
+  padding-bottom: 4rem;
+}
+
+.spec-category-card {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(175, 125, 9, 0.24);
+  border-radius: 12px;
+  padding: 2.25rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.spec-category-card:hover {
+  border-color: #C8A22C;
+  box-shadow: 0 12px 35px rgba(175, 125, 9, 0.12);
+}
+
+.spec-category-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(175, 125, 9, 0.15);
+}
+
+.spec-cat-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(175, 125, 9, 0.1);
+  color: #af7d09;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(175, 125, 9, 0.12);
+}
+
+.spec-cat-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #8a6104;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.spec-cat-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #111112;
+  margin: 0;
+}
+
+/* Category 1: Structure & Foundations */
+.spec-structure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.spec-structure-col {
+  background: #FDFBF8;
+  border: 1px solid rgba(175, 125, 9, 0.18);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-sub-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.spec-sub-header h4 {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111112;
+  margin: 0;
+}
+
+.spec-text-content {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #333339;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.spec-stat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.stat-pill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #8a6104;
+  background: #f7eed7;
+  border: 1px solid rgba(175, 125, 9, 0.3);
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Category 2: Common Areas Table */
+.spec-table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1.5px solid rgba(175, 125, 9, 0.25);
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.brochure-spec-table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.brochure-spec-table th {
+  background: #181A20;
+  color: #ffd978;
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1rem 1.25rem;
+  border-bottom: 2px solid #C8A22C;
+}
+
+.brochure-spec-table th.col-area {
+  width: 25%;
+}
+
+.brochure-spec-table th.col-flooring {
+  width: 22%;
+}
+
+.brochure-spec-table th.col-wall {
+  width: 28%;
+}
+
+.brochure-spec-table th.col-ceiling {
+  width: 25%;
+}
+
+.brochure-spec-table td {
+  padding: 1.05rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: #333339;
+  line-height: 1.55;
+  vertical-align: middle;
+}
+
+.brochure-spec-table tbody tr.row-even {
+  background: #FFFFFF;
+}
+
+.brochure-spec-table tbody tr.row-odd {
+  background: #FAF8F5;
+}
+
+.brochure-spec-table tbody tr:hover {
+  background: #F4EFE6;
+}
+
+.td-area strong {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  color: #111112;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.mat-badge {
+  display: inline-block;
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.3);
+  color: #8a6104;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+
+.common-area-footer-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.common-highlight-box {
+  background: #FDFBF8;
+  border: 1px solid rgba(175, 125, 9, 0.2);
+  border-left: 4px solid #C8A22C;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ch-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8a6104;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ch-value {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #111112;
+}
+
+/* Floor-wise & Room Key-Value Grids */
+.spec-detail-keyval-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.spec-kv-item {
+  background: #FDFBF8;
+  border: 1px solid rgba(175, 125, 9, 0.16);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.spec-kv-item:hover {
+  border-color: #C8A22C;
+  background: #FAF6EE;
+}
+
+.spec-kv-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.kv-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #8a6104;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.kv-value {
+  font-size: 0.92rem;
+  color: #2D2E33;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.kv-value strong {
+  color: #111112;
+  font-weight: 700;
+}
+
+.spec-subgroup-wrap {
+  margin-bottom: 1.75rem;
+}
+
+.spec-subgroup-wrap:last-child {
+  margin-bottom: 0;
+}
+
+.spec-subgroup-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111112;
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec-subgroup-title::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #C8A22C;
+  border-radius: 50%;
+}
+
+/* Official Disclaimer Banner */
+.spec-disclaimer-banner {
+  background: #FFFFFF;
+  border: 1px dashed rgba(175, 125, 9, 0.4);
+  border-left: 4px solid #C8A22C;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.disclaimer-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #8a6104;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.disclaimer-text {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #55555E;
+  margin: 0;
+}
+
+.disclaimer-text strong {
+  color: #111112;
+}
+
+/* ==========================================================================
+   4. OFFICIAL BROCHURE SHEET VISUAL PREVIEW & LIGHTBOX
    ========================================================================== */
 .spec-document-section {
   position: relative;
   background-color: #0E0F12;
+  color: #FFFFFF;
 }
 
 .spec-doc-banner {
@@ -266,10 +555,10 @@
   border-radius: 12px;
   padding: 2.5rem;
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 360px 1fr;
   gap: 3rem;
   align-items: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
 .spec-doc-thumbnail-wrap {
@@ -290,7 +579,7 @@
 
 .spec-doc-thumbnail {
   width: 100%;
-  height: 420px;
+  height: 440px;
   object-fit: cover;
   object-position: top center;
   display: block;
@@ -329,7 +618,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(10, 11, 13, 0.85);
+  background: rgba(10, 11, 13, 0.88);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(200, 162, 44, 0.4);
@@ -414,7 +703,7 @@
 }
 
 /* ==========================================================================
-   Section 03: Common Area Finishes
+   5. MATERIAL EXCELLENCE SHOWCASE
    ========================================================================== */
 .finishes-section {
   background-color: #FAF8F5;
@@ -431,10 +720,10 @@
 .finish-showcase-card {
   background: #FFFFFF;
   border: 1.5px solid rgba(175, 125, 9, 0.25);
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 300ms ease, border-color 300ms ease;
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
   display: flex;
   flex-direction: column;
 }
@@ -442,6 +731,7 @@
 .finish-showcase-card:hover {
   transform: translateY(-6px);
   border-color: #C8A22C;
+  box-shadow: 0 12px 30px rgba(175, 125, 9, 0.15);
 }
 
 .finish-card-media {
@@ -460,7 +750,7 @@
 }
 
 .finish-showcase-card:hover .finish-card-img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .finish-card-tag {
@@ -487,7 +777,7 @@
 
 .finish-card-title {
   font-family: var(--font-display, "Montserrat", sans-serif);
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 700;
   color: #111112;
   margin-bottom: 0.5rem;
@@ -501,211 +791,15 @@
 }
 
 /* ==========================================================================
-   Section 04: Floor-wise Specification Matrix
-   ========================================================================== */
-.floor-specs-section {
-  position: relative;
-  background-color: #0E0F12;
-}
-
-.spec-tabs-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin: 2.5rem 0 3rem;
-  flex-wrap: wrap;
-}
-
-.spec-tab-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0.65rem 1.25rem;
-  background: #171920;
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
-  color: #C2BFB6;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 250ms ease;
-}
-
-.spec-tab-pill:hover {
-  border-color: rgba(200, 162, 44, 0.5);
-  color: #FFFFFF;
-}
-
-.spec-tab-pill.active {
-  background: #C8A22C;
-  border-color: #C8A22C;
-  color: #0A0B0E;
-  font-weight: 700;
-  box-shadow: 0 4px 15px rgba(200, 162, 44, 0.35);
-}
-
-.spec-blocks-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.spec-block-card {
-  background: #14161B;
-  border: 1.5px solid rgba(175, 125, 9, 0.28);
-  border-radius: 10px;
-  padding: 2rem 2.25rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.spec-block-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.spec-block-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.spec-block-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: rgba(175, 125, 9, 0.15);
-  color: #ffd978;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spec-block-level {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #ffd978;
-  letter-spacing: 0.1em;
-  display: block;
-  margin-bottom: 2px;
-}
-
-.spec-block-title {
-  font-family: var(--font-display, "Montserrat", sans-serif);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.spec-detail-grid {
-  display: grid;
-  gap: 1rem;
-  margin-bottom: 1.75rem;
-}
-
-.spec-detail-grid.two-cols {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.spec-detail-grid.three-cols {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.spec-detail-item {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
-  padding: 0.85rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.detail-item-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #94A3B8;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.detail-item-value {
-  font-size: 0.88rem;
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-.spec-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-}
-
-.spec-common-table {
-  width: 100%;
-  min-width: 620px;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-  text-align: left;
-}
-
-.spec-common-table th {
-  background: #1c1e26;
-  color: #ffd978;
-  font-family: var(--font-display, "Montserrat", sans-serif);
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.85rem 1rem;
-  border-bottom: 1px solid rgba(175, 125, 9, 0.3);
-}
-
-.spec-common-table td {
-  padding: 0.85rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: #C2BFB6;
-  vertical-align: middle;
-}
-
-.spec-common-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.spec-feature-name strong {
-  color: #FFFFFF;
-}
-
-.brand-tag {
-  background: rgba(200, 162, 44, 0.12);
-  border: 1px solid rgba(200, 162, 44, 0.35);
-  color: #ffd978;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-/* ==========================================================================
-   Fullscreen Document Modal
+   6. FULLSCREEN DOCUMENT MODAL
    ========================================================================== */
 .spec-fullscreen-overlay {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background-color: rgba(5, 6, 8, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(5, 6, 8, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -793,8 +887,8 @@
 
 .spec-fullscreen-img-wrap {
   position: relative;
-  max-width: 90vw;
-  max-height: 85vh;
+  max-width: 92vw;
+  max-height: 86vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -804,23 +898,19 @@
 
 .spec-pure-fullscreen-img {
   max-width: 100%;
-  max-height: 82vh;
+  max-height: 84vh;
   object-fit: contain;
   border-radius: 6px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1.5px rgba(200, 162, 44, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 0 1.5px rgba(200, 162, 44, 0.35);
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   7. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 @media (max-width: 1024px) {
-  .civil-eng-layout {
+  .spec-structure-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .civil-media-img {
-    height: 360px;
+    gap: 1.5rem;
   }
 
   .spec-doc-banner {
@@ -830,12 +920,16 @@
   }
 
   .spec-doc-thumbnail {
-    height: 320px;
+    height: 340px;
   }
 
   .finishes-cards-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .common-area-footer-highlights {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -959,17 +1053,33 @@
     overflow: hidden !important;
   }
 
-  .civil-eng-specs-grid {
-    grid-template-columns: 1fr;
+  .spec-sticky-nav-section {
+    top: var(--header-height, 60px);
+    padding: 0.45rem 0;
   }
 
-  .spec-detail-grid.two-cols,
-  .spec-detail-grid.three-cols {
-    grid-template-columns: 1fr;
+  .spec-category-card {
+    padding: 1.35rem 1rem;
+    margin-bottom: 1.75rem;
   }
 
-  .spec-block-card {
-    padding: 1.5rem 1rem;
+  .spec-category-header {
+    gap: 12px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+  }
+
+  .spec-cat-icon-box {
+    width: 40px;
+    height: 40px;
+  }
+
+  .spec-cat-title {
+    font-size: 1.2rem;
+  }
+
+  .spec-detail-keyval-grid {
+    grid-template-columns: 1fr;
   }
 
   .spec-floating-pill {
@@ -997,12 +1107,8 @@
 }
 
 @media (max-width: 480px) {
-  .civil-media-img {
-    height: 240px;
-  }
-
   .spec-doc-thumbnail {
-    height: 250px;
+    height: 260px;
   }
 
   .spec-doc-cta-group {
