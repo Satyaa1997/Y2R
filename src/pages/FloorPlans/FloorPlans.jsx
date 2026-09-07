@@ -52,7 +52,7 @@ export default function FloorPlans({ onOpenEnquiry }) {
             badge="CAD Schematics"
             title="Interactive Floor Schematics."
             subtitle="Filter by commercial zone and click any blueprint card to open high-resolution CAD schematics."
-            align="center"
+            align="left"
             theme="dark"
           />
 

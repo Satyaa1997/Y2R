@@ -289,7 +289,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Versatile Infrastructure"
             title="Everything Your Business Needs."
             subtitle="Engineered for efficiency, customer engagement and lasting prestige."
-            align="center"
+            align="left"
             theme="dark"
           />
 
@@ -457,7 +457,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Productivity & Living"
             title="Workspaces & Contemporary Living"
             subtitle="Customisable Offices • Studio Apartments on 3rd–7th Floors"
-            align="center"
+            align="left"
             theme="dark"
           />
 
@@ -598,7 +598,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="World-Class Standards"
             title="Thoughtfully Planned. Effortlessly Functional."
             subtitle="Engineered infrastructure supporting seamless daily operations."
-            align="center"
+            align="left"
             theme="light"
           />
         </div>
@@ -665,7 +665,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Dual Basement Tiers"
             title="Designed for Effortless Arrival."
             subtitle="Two dedicated basement parking levels support convenient access for occupants and visitors."
-            align="center"
+            align="left"
             theme="dark"
           />
 
@@ -833,7 +833,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Value Proposition"
             title="A Location to Grow. A Presence to Remember."
             subtitle="Strategic Location • Versatile Spaces • Premium Planning • Business Visibility"
-            align="center"
+            align="left"
             theme="dark"
           />
 
@@ -915,7 +915,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Visual Gallery"
             title="See The Vision Take Shape."
             subtitle="Exterior • Retail • Offices • Studios • Food Court • Floor Plans"
-            align="center"
+            align="left"
             theme="dark"
           />
 

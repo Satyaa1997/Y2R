@@ -580,15 +580,11 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
   box-sizing: border-box;
 }
 
+.container,
 .container-custom,
-.container-wide {
+.container-wide,
+.cta-container {
   width: 100%;
-  max-width: var(--container-wide);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: clamp(1rem, 3vw, 2.5rem);
-  padding-right: clamp(1rem, 3vw, 2.5rem);
-  box-sizing: border-box;
   max-width: var(--container-wide) !important;
   margin-left: auto !important;
   margin-right: auto !important;

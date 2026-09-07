@@ -183,7 +183,7 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
             badge="Spatial Formats"
             title="Intelligently Stacked Floors & Amenities"
             subtitle="Explore the core segments of Y2R Heights across all 11 levels."
-            align="center"
+            align="left"
             theme="dark"
           />
 
@@ -218,7 +218,7 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
             badge="Strategic Advantage"
             title="Prime Location & Seamless City Connectivity"
             subtitle="Positioned right at the center of Northern Lucknow's high-growth corridor."
-            align="center"
+            align="left"
             theme="light"
           />
 
@@ -279,7 +279,7 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
             badge="Core Advantages"
             title="A Location to Grow. A Presence to Remember."
             subtitle="Strategic Location • Versatile Spaces • Premium Planning • Business Visibility"
-            align="center"
+            align="left"
             theme="dark"
           />
 

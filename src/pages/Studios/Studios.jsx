@@ -119,7 +119,7 @@ export default function Studios({ onOpenEnquiry }) {
             badge="Living Highlights"
             title="Engineered for Urban Comfort"
             subtitle="Smart design choices that elevate everyday lifestyle."
-            align="center"
+            align="left"
             theme="dark"
           />
 

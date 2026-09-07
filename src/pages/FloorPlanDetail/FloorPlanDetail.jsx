@@ -394,7 +394,7 @@ export default function FloorPlanDetail({ onOpenEnquiry, onOpenBrochure }) {
             badge="Vertical Architecture"
             title="Explore Other Integrated Levels."
             subtitle="Discover how Y2R Heights integrates retail, commercial halls, banquets, and residential suites."
-            align="center"
+            align="left"
             theme="dark"
           />
 

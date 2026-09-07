@@ -119,7 +119,7 @@ export default function Offices({ onOpenEnquiry }) {
             badge="Workspace Pillars"
             title="Engineered Around Modern Business"
             subtitle="The three core foundations of Y2R Heights commercial suites."
-            align="center"
+            align="left"
             theme="dark"
           />
 

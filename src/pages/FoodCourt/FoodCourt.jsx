@@ -123,7 +123,7 @@ export default function FoodCourt({ onOpenEnquiry }) {
             badge="Culinary Formats"
             title="Diverse Dining Opportunities"
             subtitle="Explore available spatial concepts for visionary food entrepreneurs."
-            align="center"
+            align="left"
             theme="dark"
           />
 

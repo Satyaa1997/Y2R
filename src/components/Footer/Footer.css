@@ -34,6 +34,7 @@
 .footer-brand {
   display: flex;
   align-items: center;
+  margin-left: -20px;
 }
 
 .footer-brand-logo-img {
@@ -252,6 +253,10 @@
   .footer-container {
     padding: 2.25rem 1rem 1.25rem;
     padding: 2.25rem 0.85rem 1.25rem;
+  }
+
+  .footer-brand {
+    margin-left: 0;
   }
 
   .footer-main-grid {

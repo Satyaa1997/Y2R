@@ -252,7 +252,7 @@ export default function Location({ onOpenEnquiry }) {
             badge="Location & Connectivity"
             title="Strategic Arterial Routing Map"
             subtitle="Clear connectivity map showcasing Y2R Heights on Kursi Road with direct access to major Lucknow commercial nodes."
-            align="center"
+            align="left"
             theme="light"
           />
 
@@ -414,7 +414,7 @@ export default function Location({ onOpenEnquiry }) {
             badge="Catchment Corridors"
             title="Strategically Centered. Seamlessly Connected."
             subtitle="Situating your enterprise within minutes of Northern Lucknow’s key educational, healthcare, and arterial nodes."
-            align="center"
+            align="left"
             theme="dark"
           />
 

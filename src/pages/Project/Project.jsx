@@ -536,7 +536,7 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
             badge="Certified Dossier"
             title="Comprehensive Technical Specifications"
             subtitle="Complete verified civil, architectural, and MEP specifications as certified for Y2R Heights."
-            align="center"
+            align="left"
             theme="dark"
           />
 
@@ -624,7 +624,7 @@ export default function Project({ onOpenEnquiry, onOpenBrochure }) {
             badge="Material Excellence"
             title="Premium Finishes & Materials"
             subtitle="Curated materials hand-picked for durability, aesthetics, and low ongoing maintenance."
-            align="center"
+            align="left"
             theme="light"
           />
 

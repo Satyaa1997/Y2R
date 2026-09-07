@@ -158,7 +158,7 @@
 .filter-tabs-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 2.5rem;
@@ -469,8 +469,8 @@
 
   .filter-tabs-row {
     gap: 8px;
-    margin: 0 auto 1.75rem !important;
-    justify-content: center !important;
+    margin: 0 0 1.75rem 0 !important;
+    justify-content: flex-start !important;
     width: 100% !important;
   }
 
@@ -482,27 +482,27 @@
   .floor-plans-gallery-section > .container-custom {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     width: 100% !important;
   }
 
   .blueprint-cards-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    justify-content: center !important;
+    justify-items: stretch !important;
+    justify-content: flex-start !important;
     gap: 1.25rem !important;
     width: 100% !important;
-    max-width: 440px !important;
-    margin: 0 auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
   }
 
   .blueprint-card-col {
     width: 100% !important;
     max-width: 100% !important;
     display: flex !important;
-    justify-content: center !important;
-    margin: 0 auto !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
   }
 }
 

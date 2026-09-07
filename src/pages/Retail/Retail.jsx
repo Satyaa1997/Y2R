@@ -119,7 +119,7 @@ export default function Retail({ onOpenEnquiry }) {
             badge="Retail Specifications"
             title="Strategic Advantages for Retailers"
             subtitle="Meticulously planned infrastructure to support modern commercial ventures."
-            align="center"
+            align="left"
             theme="dark"
           />
 

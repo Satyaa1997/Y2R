@@ -121,7 +121,7 @@ export default function Investment({ onOpenEnquiry }) {
             badge="Strategic Fundamentals"
             title="Key Drivers of Value"
             subtitle="Built on tangible architectural and locational merits."
-            align="center"
+            align="left"
             theme="light"
           />
 
