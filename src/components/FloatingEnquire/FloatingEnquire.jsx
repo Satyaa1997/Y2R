@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MessageSquareText, Phone } from 'lucide-react';
-import { PROJECT_INFO } from '../../data/projectData';
+import { MessageSquareText } from 'lucide-react';
 import './FloatingEnquire.css';
 
 export default function FloatingEnquire({ onOpenEnquiry }) {
@@ -21,16 +20,6 @@ export default function FloatingEnquire({ onOpenEnquiry }) {
 
   return (
     <div className={`floating-enquire-wrap ${isVisible ? 'is-visible' : ''}`}>
-      {/* Direct Call Quick Bubble */}
-      <a
-        href={`tel:${PROJECT_INFO.tollFree.replace(/\s+/g, '')}`}
-        className="floating-call-btn"
-        aria-label="Call Toll Free"
-        title="Call Toll Free: 1800 890 8351"
-      >
-        <Phone size={18} />
-      </a>
-
       {/* Main Enquiry Trigger */}
       <button
         onClick={onOpenEnquiry}
