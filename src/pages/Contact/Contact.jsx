@@ -38,9 +38,9 @@ export default function Contact() {
         <ArchitecturalBg variant="contact_hero" />
         <div className="container-custom contact-hero-container">
           <div className={`contact-hero-content ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
-            <h1 className="page-hero-title contact-title-white">
+            <h1 className="page-hero-title">
               Visit <br />
-              <span>Y2R Heights</span>
+              <span className="contact-hero-highlight">Y2R Heights</span>
             </h1>
             <p className="page-hero-desc">
               Connect directly with our project consultants, arrange on-site inspections, or schedule an in-depth portfolio review.

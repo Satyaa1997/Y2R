@@ -10,11 +10,14 @@
 .spaces-hero-section {
   position: relative;
   overflow: hidden;
-  min-height: 480px;
+  min-height: clamp(580px, 70vh, 720px);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(5rem, 9vw, 7.5rem) 0;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-top: calc(var(--header-height, 80px) + 4rem);
+  padding-bottom: 2rem;
+  padding-left: 0;
+  padding-right: 0;
   background: #0A0B0E;
 }
 

@@ -210,7 +210,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           <div className={`hero-portal-overlay ${heroTextFaded ? 'hero-mobile-faded' : ''}`} />
         </div>
 
-        <div className="container-custom hero-portal-container">
+        <div className="hero-portal-container">
           <div className={`hero-portal-content ${heroTextFaded ? 'hero-mobile-faded' : ''}`}>
             <div className="hero-location-pill">
               <MapPin size={15} className="text-gold" />
@@ -219,7 +219,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
 
             <h1 className="hero-portal-title">
               Where Vision <br />
-              <span className="hero-title-white">Meets Value.</span>
+              <span className="hero-title-gold">Meets Value.</span>
             </h1>
 
             <p className="hero-portal-desc">

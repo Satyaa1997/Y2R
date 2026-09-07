@@ -6,7 +6,9 @@
 
 .offices-page-root .page-hero-section.theme-section-dark {
   background: radial-gradient(circle at 50% 30%, #151821 0%, #0A0B0E 100%) !important;
-  padding: calc(var(--header-height, 80px) + 2.5rem) 1.5rem 3.75rem;
+  padding: calc(var(--header-height, 80px) + 4rem) 0 2rem;
+  min-height: clamp(580px, 70vh, 720px);
+  justify-content: flex-end;
   border-bottom: 1px solid rgba(175, 125, 9, 0.3);
 }
 
