@@ -374,12 +374,12 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .floor-plans-hero-section {
     position: relative !important;
     width: 100% !important;
-    height: 400px !important;
-    min-height: 400px !important;
+    height: 420px !important;
+    min-height: 420px !important;
     max-height: none !important;
     padding: 0 !important;
     margin-top: 0 !important;
@@ -410,6 +410,36 @@
     object-position: center center !important;
     filter: brightness(1) contrast(1.02) !important;
     display: block !important;
+  }
+
+  .fp-hero-overlay {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 1.5rem 1rem !important;
+    padding-top: calc(var(--header-height, 92px) + 25px) !important;
+    box-sizing: border-box !important;
+  }
+
+  .fp-hero-overlay-title {
+    font-size: clamp(1.3rem, 5.8vw, 2rem) !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+    max-width: 92% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .fp-hero-overlay-title .fp-gold-text {
+    display: block !important;
+    margin-top: 0.4rem !important;
+    text-align: center !important;
+    font-size: 1.05em !important;
   }
 
   .fp-hero-video-overlay {

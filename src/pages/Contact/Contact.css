@@ -477,7 +477,7 @@
   font-weight: 600;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .contact-hero-section {
     position: relative !important;
     width: 100% !important;
@@ -485,7 +485,7 @@
     min-height: auto !important;
     max-height: none !important;
     padding: 0 !important;
-    margin-top: 0 !important;
+    margin-top: var(--header-height, 92px) !important;
     background: #0A0B0E !important;
     overflow: hidden !important;
     display: block !important;
