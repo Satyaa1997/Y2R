@@ -99,6 +99,15 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
             alt="About Y2R Heights Banner"
             className="about-hero-img"
           />
+          <div className="about-hero-overlay">
+            <h1 className="about-hero-overlay-title">
+              WHERE VISION <span className="about-gold-text">MEETS VALUE</span>
+            </h1>
+            <p className="about-hero-overlay-subtext">
+              <span>Secure Your Future in Lucknow's Emerging Commercial Hub</span>
+              <span className="about-hero-bank-tag">Approved by Canara Bank</span>
+            </p>
+          </div>
         </div>
       </section>
 

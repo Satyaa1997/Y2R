@@ -47,12 +47,72 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(11, 12, 14, 0.45) 0%,
-    rgba(11, 12, 14, 0.20) 45%,
-    rgba(11, 12, 14, 0.75) 100%
+    rgba(8, 10, 14, 0.70) 0%,
+    rgba(8, 10, 14, 0.50) 50%,
+    rgba(8, 10, 14, 0.80) 100%
   );
-  pointer-events: none;
-  transition: opacity 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  gap: clamp(0.5rem, 1.2vw, 0.9rem);
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.about-hero-overlay-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.95), 0 0 35px rgba(175, 125, 9, 0.4);
+  margin: 0;
+  max-width: 950px;
+  line-height: 1.25;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-hero-overlay-title .about-gold-text {
+  color: #af7d09;
+  background: linear-gradient(135deg, #c7921a 0%, #af7d09 50%, #735103 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  margin-top: 0.35rem;
+  text-shadow: 0 0 20px rgba(175, 125, 9, 0.4);
+}
+
+.about-hero-overlay-subtext {
+  font-size: clamp(0.85rem, 1.35vw, 1.15rem);
+  font-weight: 500;
+  color: #E2E8F0;
+  letter-spacing: 0.03em;
+  margin: 0;
+  max-width: 850px;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.about-hero-bank-tag {
+  font-size: 0.94em;
+  font-weight: 600;
+  color: #ffd978;
+  letter-spacing: 0.04em;
+  display: inline-block;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
 }
 
 .about-hero-content {
@@ -729,21 +789,64 @@
   }
 
   .about-hero-overlay {
-    position: absolute;
-    inset: 0;
+    position: absolute !important;
+    inset: 0 !important;
     background: linear-gradient(
       180deg,
-      rgba(11, 12, 14, 0.15) 0%,
-      rgba(11, 12, 14, 0.0) 35%,
-      rgba(11, 12, 14, 0.88) 100%
-    );
-    pointer-events: none;
-    z-index: 2;
-    transition: opacity 0.8s ease;
+      rgba(8, 10, 14, 0.70) 0%,
+      rgba(8, 10, 14, 0.50) 50%,
+      rgba(8, 10, 14, 0.80) 100%
+    ) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 1rem 0.75rem !important;
+    z-index: 2 !important;
+    box-sizing: border-box !important;
   }
 
-  .about-hero-overlay.hero-mobile-faded {
-    opacity: 0.15;
+  .about-hero-overlay-title {
+    font-size: clamp(1.25rem, 5.8vw, 2rem) !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.05em !important;
+    text-align: center !important;
+    max-width: 95% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .about-hero-overlay-title .about-gold-text {
+    display: block !important;
+    margin-top: 0.35rem !important;
+    text-align: center !important;
+    font-size: 1.05em !important;
+  }
+
+  .about-hero-overlay-subtext {
+    font-size: clamp(0.68rem, 3vw, 0.84rem) !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    max-width: 92% !important;
+    color: #E2E8F0 !important;
+    text-align: center !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+  }
+
+  .about-hero-bank-tag {
+    font-size: 0.95em !important;
+    font-weight: 600 !important;
+    color: #ffd978 !important;
+    display: block !important;
+    text-align: center !important;
   }
 
   .about-hero-content {
