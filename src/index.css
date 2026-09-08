@@ -177,11 +177,12 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label {
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #af7d09 0%, #af7d09 60%, #6E4F18 100%);
+  background: linear-gradient(135deg, #c7921a 0%, #af7d09 50%, #8a6104 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   font-weight: 700;
+  text-shadow: 0 0 20px rgba(175, 125, 9, 0.35);
 }
 
 .gold-shimmer-text {

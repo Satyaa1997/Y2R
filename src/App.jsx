@@ -20,6 +20,7 @@ import Retail from './pages/Retail/Retail';
 import Offices from './pages/Offices/Offices';
 import Studios from './pages/Studios/Studios';
 import FoodCourt from './pages/FoodCourt/FoodCourt';
+import Banquet from './pages/Banquet/Banquet';
 import Location from './pages/Location/Location';
 import FloorPlans from './pages/FloorPlans/FloorPlans';
 import FloorPlanDetail from './pages/FloorPlanDetail/FloorPlanDetail';
@@ -125,6 +126,10 @@ export default function App() {
             <Route
               path="/food-court"
               element={<FoodCourt onOpenEnquiry={handleOpenEnquiry} />}
+            />
+            <Route
+              path="/banquet"
+              element={<Banquet onOpenEnquiry={handleOpenEnquiry} />}
             />
             <Route
               path="/location"

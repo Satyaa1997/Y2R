@@ -1,4 +1,4 @@
-import { Briefcase, Sun, LayoutGrid } from 'lucide-react';
+import { Briefcase, Sun, LayoutGrid, ArrowRight } from 'lucide-react';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
@@ -31,7 +31,7 @@ export default function Offices({ onOpenEnquiry }) {
       <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="offices_hero" />
         <div className="container-custom page-hero-content">
-          <RevealOnScroll animation="fade-up">
+          <RevealOnScroll animation="fade-up" className="hero-center-wrapper">
             <span className="gold-badge">Commercial Workspaces</span>
             <h1 className="page-hero-title">
               More Than an Office. <br />

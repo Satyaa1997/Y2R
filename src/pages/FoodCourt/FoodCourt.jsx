@@ -1,4 +1,4 @@
-import { UtensilsCrossed, Coffee, IceCream, Flame } from 'lucide-react';
+import { UtensilsCrossed, Coffee, IceCream, Flame, ArrowRight } from 'lucide-react';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
@@ -36,7 +36,7 @@ export default function FoodCourt({ onOpenEnquiry }) {
       <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="foodcourt_hero" />
         <div className="container-custom page-hero-content">
-          <RevealOnScroll animation="fade-up">
+          <RevealOnScroll animation="fade-up" className="hero-center-wrapper">
             <span className="gold-badge">F&B & Dining Hub</span>
             <h1 className="page-hero-title">
               Where Every Craving <br />

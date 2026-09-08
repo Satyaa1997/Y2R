@@ -133,7 +133,7 @@ export const SPACES_CATEGORIES = [
   },
   {
     id: "banquet",
-    slug: "/spaces",
+    slug: "/banquet",
     title: "Banquet & Commercial Spaces",
     shortTitle: "Banquet & Commercial",
     tagline: "Expansive Formats for Grand Milestones.",
@@ -148,7 +148,8 @@ export const SPACES_CATEGORIES = [
     ],
     image: banquetHallImg,
     badge: "2nd Floor (620.22 SQ.M.)",
-    ctaText: "Discover Spaces"
+    ctaText: "Explore Banquet Spaces",
+    floorPlanSlug: "/floor-plans/2nd"
   },
   {
     id: "parking",

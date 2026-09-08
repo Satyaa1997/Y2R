@@ -797,6 +797,27 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
+.hasan-mobile-tap-hint {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hasan-mobile-tap-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0.65rem;
+    padding: 0.35rem 0.85rem;
+    background: linear-gradient(135deg, #8a6104 0%, #af7d09 60%, #c7921a 100%);
+    border: 1px solid #ffd978;
+    border-radius: 9999px;
+    color: #FFFFFF;
+    font-size: 0.72rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  }
+}
+
 .hasan-uiverse-card:hover .hasan-center-info.default-view {
   opacity: 0;
   transform: translateY(8px);

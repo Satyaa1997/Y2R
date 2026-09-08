@@ -316,6 +316,10 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                         <div className="hasan-center-info default-view">
                           <h3 className="hasan-center-title">{space.title}</h3>
                           <p className="hasan-center-desc">{space.tagline || space.highlight}</p>
+                          <div className="hasan-mobile-tap-hint">
+                            <span>{space.ctaText || 'Explore Space'}</span>
+                            <ArrowUpRight size={13} />
+                          </div>
                         </div>
 
                         <div className="hasan-hover-overlay">

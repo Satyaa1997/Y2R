@@ -1,4 +1,4 @@
-import { Home as HomeIcon, Sparkles, Bed, ShieldCheck } from 'lucide-react';
+import { Home as HomeIcon, Sparkles, Bed, ShieldCheck, ArrowRight } from 'lucide-react';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
@@ -36,7 +36,7 @@ export default function Studios({ onOpenEnquiry }) {
       <section className="page-hero-section theme-section-dark architectural-grid">
         <ArchitecturalBg variant="studios_hero" />
         <div className="container-custom page-hero-content">
-          <RevealOnScroll animation="fade-up">
+          <RevealOnScroll animation="fade-up" className="hero-center-wrapper">
             <span className="gold-badge">Contemporary Living (3rd–7th Floors)</span>
             <h1 className="page-hero-title">
               Smart Spaces for <br />
