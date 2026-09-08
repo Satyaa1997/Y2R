@@ -228,7 +228,7 @@ export default function Contact() {
             badge="Site Coordinates"
             title="Kursi Road • Jankipuram Scheme"
             subtitle="Strategically connected to Lucknow’s Northern commercial and residential sectors."
-            align="left"
+            align="center"
             theme="light"
           />
 
