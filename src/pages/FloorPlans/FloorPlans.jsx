@@ -31,7 +31,7 @@ export default function FloorPlans({ onOpenEnquiry }) {
 
   return (
     <div className="floor-plans-page-root">
-      {/* 1. HERO SECTION (CLEAR VIBRANT IMAGE BANNER) */}
+      {/* 1. HERO SECTION (CLEAR VIBRANT IMAGE BANNER WITH OVERLAY) */}
       <section className="page-hero-section floor-plans-hero-section theme-section-dark">
         {/* Background Architectural Image */}
         <div className="fp-hero-video-bg">
@@ -40,6 +40,11 @@ export default function FloorPlans({ onOpenEnquiry }) {
             alt="Y2R Heights Floor Plans Banner"
             className="fp-hero-img"
           />
+          <div className="fp-hero-overlay">
+            <h1 className="fp-hero-overlay-title">
+              DISCOVER YOUR OPTIMAL <span className="fp-gold-text">FLOOR_PLAN</span>
+            </h1>
+          </div>
         </div>
       </section>
 

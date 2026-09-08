@@ -7,33 +7,32 @@
 /* Contact Hero with Contact.png */
 .contact-hero-section {
   position: relative;
-  overflow: hidden;
-  min-height: clamp(660px, 80vh, 880px);
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding-top: calc(var(--header-height, 80px) + 5rem);
-  padding-bottom: 1.5rem;
-  padding-left: 0;
-  padding-right: 0;
+  width: 100%;
+  height: auto;
+  min-height: auto;
+  padding: 0 !important;
+  margin-top: 0 !important;
   background: #0A0B0E;
-  border-bottom: 1px solid rgba(175, 125, 9, 0.3);
+  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
 }
 
 .contact-hero-bg {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   overflow: hidden;
   z-index: 1;
 }
 
 .contact-hero-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center top;
   display: block;
   filter: contrast(1.02) brightness(1);
 }
@@ -486,7 +485,7 @@
     min-height: auto !important;
     max-height: none !important;
     padding: 0 !important;
-    margin-top: var(--header-height, 60px) !important;
+    margin-top: 0 !important;
     background: #0A0B0E !important;
     overflow: hidden !important;
     display: block !important;

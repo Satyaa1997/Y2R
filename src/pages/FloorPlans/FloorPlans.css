@@ -9,16 +9,13 @@
 .floor-plans-hero-section {
   position: relative;
   overflow: hidden;
-  padding-top: calc(var(--header-height, 80px) + 4rem);
-  padding-bottom: 2rem;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
   background-color: #0E0F12 !important;
-  text-align: left;
-  min-height: clamp(660px, 80vh, 880px);
+  text-align: center;
+  min-height: clamp(650px, 82vh, 920px);
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .fp-hero-video-bg {
@@ -37,10 +34,47 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  filter: brightness(0.82) contrast(1.08) saturate(1.05);
-  transform: scale(1.02);
-  filter: brightness(1) contrast(1.02);
   display: block;
+}
+
+.fp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 10, 14, 0.75) 0%,
+    rgba(8, 10, 14, 0.65) 50%,
+    rgba(8, 10, 14, 0.85) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  z-index: 2;
+}
+
+.fp-hero-overlay-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: clamp(1.5rem, 4.2vw, 3.2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.95), 0 0 35px rgba(175, 125, 9, 0.4);
+  margin: 0;
+  max-width: 950px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.fp-hero-overlay-title .fp-gold-text {
+  color: #af7d09;
+  background: linear-gradient(135deg, #c7921a 0%, #af7d09 50%, #735103 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-shadow: 0 0 20px rgba(175, 125, 9, 0.4);
 }
 
 .fp-hero-video-overlay {
@@ -344,22 +378,24 @@
   .floor-plans-hero-section {
     position: relative !important;
     width: 100% !important;
-    height: auto !important;
-    min-height: auto !important;
+    height: 400px !important;
+    min-height: 400px !important;
     max-height: none !important;
     padding: 0 !important;
-    margin-top: var(--header-height, 60px) !important;
+    margin-top: 0 !important;
     background: #0A0B0E !important;
     overflow: hidden !important;
-    display: block !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     box-sizing: border-box !important;
   }
 
   .fp-hero-video-bg {
-    position: relative !important;
-    inset: auto !important;
+    position: absolute !important;
+    inset: 0 !important;
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
     display: block !important;
     overflow: hidden !important;
     z-index: 1 !important;
@@ -368,9 +404,9 @@
   .fp-hero-video,
   .fp-hero-img {
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
     max-height: none !important;
-    object-fit: contain !important;
+    object-fit: cover !important;
     object-position: center center !important;
     filter: brightness(1) contrast(1.02) !important;
     display: block !important;

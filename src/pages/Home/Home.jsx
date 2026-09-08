@@ -4,6 +4,7 @@ import heroVideo from '../../assets/Herovedio.mp4';
 import qrImage from '../../assets/QR.png';
 import buildingImage from '../../assets/Building.JPG';
 import building1Image from '../../assets/contactbanner.png';
+import floorPlanImage from '../../assets/FloorPlan.png';
 
 import {
   ArrowRight,
@@ -289,7 +290,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Versatile Infrastructure"
             title="Everything Your Business Needs."
             subtitle="Engineered for efficiency, customer engagement and lasting prestige."
-            align="left"
+            align="center"
             theme="dark"
           />
 
@@ -457,7 +458,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Productivity & Living"
             title="Workspaces & Contemporary Living"
             subtitle="Customisable Offices • Studio Apartments on 3rd–7th Floors"
-            align="left"
+            align="center"
             theme="dark"
           />
 
@@ -598,7 +599,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="World-Class Standards"
             title="Thoughtfully Planned. Effortlessly Functional."
             subtitle="Engineered infrastructure supporting seamless daily operations."
-            align="left"
+            align="center"
             theme="light"
           />
         </div>
@@ -665,7 +666,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Dual Basement Tiers"
             title="Designed for Effortless Arrival."
             subtitle="Two dedicated basement parking levels support convenient access for occupants and visitors."
-            align="left"
+            align="center"
             theme="dark"
           />
 
@@ -714,16 +715,35 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
         <div className="container-custom">
           <div className="schematics-split-container">
             <div className="schematics-deck-col">
-              <RevealOnScroll animation="fade-right">
-                <div className="watson-cards-grid">
+              <RevealOnScroll animation="fade-right" className="schematics-left-wrapper">
+                {/* Top: Architectural Blueprint / Image Banner */}
+                <div
+                  className="schematics-featured-image-box"
+                  onClick={() => {
+                    navigate('/floor-plans');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="View Master Architectural Floor Plans"
+                >
+                  <img
+                    src={floorPlanImage}
+                    alt="Y2R Heights Master Architectural Plan"
+                    className="schematics-featured-img"
+                  />
+                </div>
+
+                {/* Bottom: 4 Spatial Level Cards */}
+                <div className="schematics-quad-cards-grid">
                   {FLOOR_PLANS_DATA.slice(0, 4).map((plan, idx) => {
                     const icons = [Layers, DoorOpen, Building2, Sparkles];
                     const PlanIcon = icons[idx] || Building2;
 
                     return (
                       <div
-                        key={`watson-${plan.id}`}
-                        className="watson-card"
+                        key={`schematic-card-${plan.id}`}
+                        className="schematic-quad-card"
                         onClick={() => {
                           navigate(`/floor-plans/${plan.id}`);
                           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -732,19 +752,21 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                         tabIndex={0}
                         aria-label={`Inspect blueprint for ${plan.floor}`}
                       >
-                        <div className="watson-header">
-                          <div className="watson-img-box">
-                            <PlanIcon size={22} />
+                        <div className="quad-card-header">
+                          <div className="quad-card-icon-box">
+                            <PlanIcon size={15} />
                           </div>
-                          <span className="watson-title">{plan.floor}</span>
-                          <span className="watson-purpose">{plan.purpose}</span>
+                          <div className="quad-card-title-wrap">
+                            <span className="quad-card-floor">{plan.floor}</span>
+                            <span className="quad-card-purpose">{plan.purpose}</span>
+                          </div>
                         </div>
 
-                        <div className="watson-content">
+                        <div className="quad-card-body">
                           <p>{plan.description}</p>
-                          <span className="watson-btn-link">
+                          <span className="quad-card-btn-link">
                             <span>Explore Specs</span>
-                            <ArrowRight size={13} />
+                            <ArrowRight size={11} />
                           </span>
                         </div>
                       </div>
@@ -833,7 +855,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Value Proposition"
             title="A Location to Grow. A Presence to Remember."
             subtitle="Strategic Location • Versatile Spaces • Premium Planning • Business Visibility"
-            align="left"
+            align="center"
             theme="dark"
           />
 
@@ -915,7 +937,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
             badge="Visual Gallery"
             title="See The Vision Take Shape."
             subtitle="Exterior • Retail • Offices • Studios • Food Court • Floor Plans"
-            align="left"
+            align="center"
             theme="dark"
           />
 
