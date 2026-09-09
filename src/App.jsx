@@ -217,6 +217,7 @@ export default function App() {
           onClose={handleCloseLightbox}
           onPrev={handlePrevLightbox}
           onNext={handleNextLightbox}
+          onSelectIndex={setLightboxIndex}
         />
       </div>
     </Router>

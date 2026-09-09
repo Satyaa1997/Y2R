@@ -1,3 +1,4 @@
+import masterSiteZoning from "../assets/FloorPlan.png";
 // Gallery Data for Y2R HEIGHTS
 export const GALLERY_CATEGORIES = [
   { id: "all", label: "All Spaces" },
@@ -16,7 +17,7 @@ export const GALLERY_ITEMS = [
     category: "exterior",
     categoryLabel: "Exterior",
     aspect: "tall",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1600&auto=format&fit=crop",
+    image: "https://images.adsttc.com/media/images/63ff/639c/3552/d24e/95ae/0e60/newsletter/designing-a-grand-glass-entrance-in-residential-design_1.jpg?1677681570",
     caption: "Modern glass façade with architectural lighting and commanding street presence on Kursi Road.",
     tagline: "Main Elevation • Kursi Road",
     link: "/project",
@@ -96,7 +97,7 @@ export const GALLERY_ITEMS = [
     category: "floor-plans",
     categoryLabel: "Floor Plans",
     aspect: "square",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop",
+    image: masterSiteZoning,
     caption: "Structured vertical integration connecting basement parking, retail, commercial and residential tiers.",
     tagline: "Master Plan • Approved Zoning",
     link: "/floor-plans",
@@ -112,7 +113,7 @@ export const GALLERY_ITEMS = [
     category: "exterior",
     categoryLabel: "Exterior",
     aspect: "wide",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop",
+    image: "https://www.lightingindia.in/wp-content/uploads/2026/04/lighting-design.jpg",
     caption: "Night-time elevation highlighting the iconic geometric silhouette.",
     tagline: "Façade Illuminations • Night",
     link: "/project",
@@ -152,6 +153,22 @@ export const GALLERY_ITEMS = [
       { label: "Facility", value: "Boardroom Ready", icon: "building" },
       { label: "Comfort", value: "Central Air", icon: "sparkles" },
       { label: "Connectivity", value: "High-Speed Fiber", icon: "shield" }
+    ]
+  },
+  {
+    id: 10,
+    title: "Y2R Landmark Panoramic Horizon",
+    category: "exterior",
+    categoryLabel: "Exterior",
+    aspect: "square",
+    image: "https://i.redd.it/55fjn0eg4v6a1.png",
+    caption: "The crowning visual landmark of Kursi Road, establishing a new commercial and residential benchmark.",
+    tagline: "Signature Landmark • Center Spotlight",
+    link: "/project",
+    specs: [
+      { label: "Landmark", value: "Central Icon", icon: "sparkles" },
+      { label: "Elevation", value: "Flagship View", icon: "building" },
+      { label: "Status", value: "Under Construction", icon: "shield" }
     ]
   }
 ];
