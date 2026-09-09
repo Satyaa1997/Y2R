@@ -9,14 +9,11 @@ import terraceFloorMap from '../assets/TericeFlor.png';
 
 // Photographic Assets
 import highStreetImg from '../assets/height Street retail.png';
-import boutiqueImg from '../assets/Boutique.png';
+import boutiqueImg from '../assets/Boutique1.jpg';
 import commercialHallImg from '../assets/Commercial hall.jpg';
 import banquetHallImg from '../assets/Banwuet hall.png';
 import foodCourtImg from '../assets/Food&bal.png';
 import studioImg from '../assets/Studio.jpg';
-import buildingImg from '../assets/Building.JPG';
-import building1Img from '../assets/Building1.JPG';
-import premiumImg from '../assets/Premium.JPG';
 import parkingImg from '../assets/Parking.png';
 import car18Img from '../assets/18Car.png';
 import car22Img from '../assets/22Car.png';

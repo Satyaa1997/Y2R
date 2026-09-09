@@ -1,5 +1,5 @@
 import masterSiteZoning from "../assets/FloorPlan.png";
-import boutiqueImg from "../assets/Boutique.png";
+import boutiqueImg from "../assets/Boutique1.jpg";
 import retailImg from "../assets/height Street retail.png";
 // Gallery Data for Y2R HEIGHTS
 export const GALLERY_CATEGORIES = [

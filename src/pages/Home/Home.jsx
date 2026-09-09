@@ -5,7 +5,7 @@ import qrImage from '../../assets/QR.png';
 import buildingImage from '../../assets/Building.JPG';
 import building1Image from '../../assets/contactbanner.png';
 import floorPlanImage from '../../assets/FloorPlan.png';
-import boutiqueImg from '../../assets/Boutique.png';
+import boutiqueImg from '../../assets/Boutique1.jpg';
 
 import {
   ArrowRight,

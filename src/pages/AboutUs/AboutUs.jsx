@@ -22,7 +22,7 @@ import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import aboutHeroImage from '../../assets/contactbanner.png';
 import buildingImage from '../../assets/Building.JPG';
 import highStreetImage from '../../assets/height Street retail.png';
-import boutiqueImage from '../../assets/Boutique.png';
+import boutiqueImage from '../../assets/Boutique1.jpg';
 import foodCourtImage from '../../assets/Food&bal.png';
 import parkingImage from '../../assets/Parking.png';
 

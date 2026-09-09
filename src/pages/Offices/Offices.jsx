@@ -4,7 +4,7 @@ import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
-import boutiqueImg from '../../assets/Boutique.png';
+import boutiqueImg from '../../assets/Boutique1.jpg';
 import './Offices.css';
 
 export default function Offices({ onOpenEnquiry }) {
