@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
 import y2rLogo from '../../assets/y2r2.png';
 import './Footer.css';
@@ -64,17 +64,9 @@ export default function Footer({ onOpenEnquiry }) {
               <li><Link to="/offices">Boutique Office Suites</Link></li>
               <li><Link to="/studios">Contemporary Studios (3rd–7th Fl.)</Link></li>
               <li><Link to="/food-court">Food Court & Culinary Zones</Link></li>
-              <li><Link to="/spaces">Banquet & Event Halls</Link></li>
+              <li><Link to="/banquet">Banquet & Event Halls</Link></li>
               <li><Link to="/floor-plans">Basement 1 & 2 Parking</Link></li>
             </ul>
-
-            <div className="footer-enquiry-box">
-              <p className="enquiry-prompt">Explore spaces tailored for your brand.</p>
-              <button onClick={onOpenEnquiry} className="btn-secondary footer-enquire-btn">
-                <span>Request Details</span>
-                <ArrowUpRight size={14} />
-              </button>
-            </div>
           </div>
 
           {/* Column 4: Contact & Office Details */}

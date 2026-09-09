@@ -2715,235 +2715,222 @@
 }
 
 /* ==========================================================================
-   12. GALLERY 3D FLIP CARDS GRID (UIVERSE.IO BY DAVID-MOHSENI - FLICKER-FREE & SMOOTH)
+   12. GALLERY PROPERTY CARDS GRID (HYPERUI LUXURY REAL ESTATE STYLE - WHITE THEME)
    ========================================================================== */
-.gallery-flip-grid {
+.vision-property-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
+  gap: 1.5rem;
   width: 100%;
   margin-top: 2rem;
 }
 
-/* Static Outer Container (Solid Anchor: Never drops hover or blinks mid-rotation) */
-.flip-card-item {
-  position: relative;
-  width: 100%;
-  height: 330px;
-  perspective: 1200px;
+/* Luxury Property Card Item - White Card */
+.vision-property-card {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid rgba(175, 125, 9, 0.22);
+  border-radius: 12px;
+  padding: 0.85rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  border-radius: 8px;
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Rotating 3D Card (Smooth & Slow Rotation - 1.3s with Custom Cubic-Bezier) */
-.flip {
+.vision-property-card:hover,
+.vision-property-card:focus-visible {
+  transform: translateY(-5px);
+  border-color: #af7d09;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 18px rgba(175, 125, 9, 0.25);
+}
+
+/* Image Container - Compact Height */
+.vision-property-image-box {
   position: relative;
   width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 1.3s cubic-bezier(0.35, 0.1, 0.15, 1), box-shadow 0.35s ease;
-  border-radius: 8px;
-  will-change: transform;
-}
-
-/* Solid Hover Trigger from Static Wrapper */
-.flip-card-item:hover .flip {
-  transform: rotateY(180deg);
-}
-
-/* Content Container */
-.flip .content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-/* Front & Back Faces with Anti-Flicker Hardware Acceleration */
-.flip .front,
-.flip .back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  height: 165px;
   border-radius: 8px;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1.5px solid rgba(175, 125, 9, 0.35);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  background: #0f172a;
 }
 
-.flip-card-item:hover .front,
-.flip-card-item:hover .back {
-  border-color: #af7d09;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(175, 125, 9, 0.35);
+.vision-property-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Front Face */
-.flip .front {
-  transform: rotateY(0deg) translateZ(1px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.65rem;
+.vision-property-card:hover .vision-property-image {
+  transform: scale(1.06);
 }
 
-.flip-front-overlay {
+/* Floating Category Badge */
+.vision-property-badge {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10, 11, 14, 0.95) 0%,
-    rgba(10, 11, 14, 0.45) 50%,
-    rgba(10, 11, 14, 0.15) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
-.flip-front-body {
-  position: relative;
+  top: 10px;
+  left: 10px;
   z-index: 2;
-  transform: translateZ(30px);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  pointer-events: none;
-}
-
-.flip-badge {
-  align-self: flex-start;
-  background: rgba(175, 125, 9, 0.28);
-  border: 1px solid #af7d09;
-  color: #d5b779;
-  padding: 3px 9px;
-  border-radius: 4px;
-  font-size: 0.68rem;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(175, 125, 9, 0.45);
+  color: #ffd978;
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  margin-bottom: 2px;
-}
-
-.flip-front-title {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: #FFFFFF;
-  font-weight: 700;
-  line-height: 1.25;
-  margin: 0;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
-}
-
-.flip-front-num {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  color: #d5b779;
-  font-weight: 700;
   letter-spacing: 0.1em;
-  margin-top: 2px;
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 
-/* Back Face */
-.flip .back {
-  transform: rotateY(180deg) translateZ(1px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem 1.75rem;
-}
-
-.flip-back-overlay {
+/* Floating Zoom Button */
+.vision-property-zoom-btn {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 11, 14, 0.96) 0%,
-    rgba(25, 20, 10, 0.94) 50%,
-    rgba(10, 11, 14, 0.97) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(175, 125, 9, 0.4);
+  color: #ffd978;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: all 0.2s ease;
 }
 
-.flip-back-body {
-  position: relative;
-  z-index: 2;
-  transform: translateZ(30px);
+.vision-property-zoom-btn:hover {
+  background: #af7d09;
+  border-color: #ffd978;
+  color: #FFFFFF;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Card Content / Body */
+.vision-property-body {
+  margin-top: 0.75rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  flex: 1;
+  justify-content: space-between;
 }
 
-.flip-back-title {
+/* Title on White Card */
+.vision-property-title {
+  margin: 0;
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: #FFFFFF;
+  font-size: 0.98rem;
   font-weight: 700;
-  line-height: 1.25;
-  margin: 0;
+  color: #0f172a;
+  line-height: 1.35;
+  min-height: 2.6rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.flip-back-desc {
-  font-size: 0.86rem;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-  max-width: 280px;
+/* Bottom Specs 3-Column Row on White Card */
+.vision-property-specs {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  align-items: center;
 }
 
-.flip-fullscreen-btn {
-  margin-top: 6px;
+.vision-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.vision-spec-icon-wrap {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  background: #af7d09;
-  border: 1px solid #af7d09;
-  color: #FFFFFF;
-  padding: 7px 16px;
-  border-radius: 5px;
-  font-size: 0.78rem;
-  font-weight: 600;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #af7d09;
+  transition: color 0.25s ease;
+}
+
+.vision-property-card:hover .vision-spec-icon-wrap {
+  color: #8a6104;
+}
+
+.vision-spec-text {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.vision-spec-label {
+  margin: 0;
+  font-size: 0.62rem;
+  color: #64748b;
+  line-height: 1.1;
+  text-transform: uppercase;
   letter-spacing: 0.04em;
-  cursor: pointer;
-  transition: all 250ms ease;
-  pointer-events: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.flip-fullscreen-btn:hover {
-  background: #8a6104;
-  border-color: #8a6104;
-  color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(175, 125, 9, 0.5);
+.vision-spec-value {
+  margin: 0;
+  margin-top: 2px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Responsive grid adjustments */
-@media (max-width: 992px) {
-  .gallery-flip-grid {
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .vision-property-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 }
 
 @media (max-width: 640px) {
-  .gallery-flip-grid {
+  .vision-property-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
-  .flip-card-item {
-    height: 290px;
+  .vision-property-image-box {
+    height: 155px;
+  }
+
+  .vision-property-title {
+    min-height: auto;
+  }
+
+  .vision-property-specs {
+    gap: 0.35rem;
   }
 }
 

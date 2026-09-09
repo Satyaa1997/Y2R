@@ -50,6 +50,26 @@ const AMENITY_ICONS_MAP = {
   ShieldCheck
 };
 
+const renderGallerySpecIcon = (iconName) => {
+  switch (iconName) {
+    case 'building':
+      return <Building2 size={15} />;
+    case 'car':
+      return <Car size={15} />;
+    case 'shield':
+      return <ShieldCheck size={15} />;
+    case 'layers':
+      return <Layers size={15} />;
+    case 'door':
+      return <DoorOpen size={15} />;
+    case 'map':
+      return <MapPin size={15} />;
+    case 'sparkles':
+    default:
+      return <Sparkles size={15} />;
+  }
+};
+
 const BROCHURE_FEATURES = [
   {
     id: 'studio-apt',
@@ -946,53 +966,54 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
           />
 
           <RevealOnScroll animation="fade-up">
-            <div className="gallery-flip-grid">
+            <div className="vision-property-grid">
               {GALLERY_ITEMS.slice(0, 6).map((item, idx) => (
-                <div
+                <Link
                   key={item.id}
-                  className="flip-card-item"
-                  onClick={() => onSelectGalleryItem(idx)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${item.title} - Click to view fullscreen`}
+                  to={item.link || '/gallery'}
+                  className="vision-property-card group"
+                  aria-label={`${item.title} - View details`}
                 >
-                  <div className="flip">
-                    <div className="content">
-                      <div
-                        className="front"
-                        style={{ backgroundImage: `url(${item.image})` }}
-                      >
-                        <div className="flip-front-overlay" />
-                        <div className="flip-front-body">
-                          <h3 className="flip-front-title">{item.title}</h3>
-                          <span className="flip-front-num">0{idx + 1}</span>
-                        </div>
-                      </div>
+                  <div className="vision-property-image-box">
+                    <img
+                      alt={item.title}
+                      src={item.image}
+                      className="vision-property-image"
+                      loading="lazy"
+                    />
+                    <span className="vision-property-badge">{item.categoryLabel}</span>
+                    <button
+                      type="button"
+                      className="vision-property-zoom-btn"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        onSelectGalleryItem(idx);
+                      }}
+                      aria-label="View Fullscreen Lightbox"
+                    >
+                      <Maximize2 size={14} />
+                    </button>
+                  </div>
 
-                      <div
-                        className="back"
-                        style={{ backgroundImage: `url(${item.image})` }}
-                      >
-                        <div className="flip-back-overlay" />
-                        <div className="flip-back-body">
-                          <h3 className="flip-back-title">{item.title}</h3>
-                          <p className="flip-back-desc">{item.caption}</p>
-                          <button
-                            type="button"
-                            className="flip-fullscreen-btn"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onSelectGalleryItem(idx);
-                            }}
-                          >
-                            <Maximize2 size={14} />
-                            <span>View Fullscreen</span>
-                          </button>
+                  <div className="vision-property-body">
+                    <h3 className="vision-property-title">{item.title}</h3>
+
+                    <div className="vision-property-specs">
+                      {item.specs?.map((spec, sIdx) => (
+                        <div key={sIdx} className="vision-spec-item">
+                          <span className="vision-spec-icon-wrap">
+                            {renderGallerySpecIcon(spec.icon)}
+                          </span>
+                          <div className="vision-spec-text">
+                            <p className="vision-spec-label">{spec.label}</p>
+                            <p className="vision-spec-value">{spec.value}</p>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </RevealOnScroll>

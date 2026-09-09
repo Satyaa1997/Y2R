@@ -17,7 +17,14 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Exterior",
     aspect: "tall",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1600&auto=format&fit=crop",
-    caption: "Modern glass façade with architectural lighting and commanding street presence on Kursi Road."
+    caption: "Modern glass façade with architectural lighting and commanding street presence on Kursi Road.",
+    tagline: "Main Elevation • Kursi Road",
+    link: "/project",
+    specs: [
+      { label: "Elevation", value: "G + 7 Floors", icon: "building" },
+      { label: "Glazing", value: "Acoustic Glass", icon: "sparkles" },
+      { label: "Frontage", value: "100+ Ft Road", icon: "car" }
+    ]
   },
   {
     id: 2,
@@ -26,7 +33,14 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Retail",
     aspect: "wide",
     image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1600&auto=format&fit=crop",
-    caption: "High frontage showcase stores engineered for maximum footfall engagement and brand impact."
+    caption: "High frontage showcase stores engineered for maximum footfall engagement and brand impact.",
+    tagline: "Ground & 1st Floor • High Footfall",
+    link: "/retail",
+    specs: [
+      { label: "Ceiling", value: "14 Ft Height", icon: "layers" },
+      { label: "Visibility", value: "All-Glass Front", icon: "sparkles" },
+      { label: "Access", value: "Direct Walk-In", icon: "door" }
+    ]
   },
   {
     id: 3,
@@ -35,7 +49,14 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Offices",
     aspect: "square",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop",
-    caption: "Light-filled modern office suites designed for founders, consultants and high-performance teams."
+    caption: "Light-filled modern office suites designed for founders, consultants and high-performance teams.",
+    tagline: "2nd Floor • Corporate Grade",
+    link: "/offices",
+    specs: [
+      { label: "Floor Level", value: "Level 2 Suites", icon: "building" },
+      { label: "Layout", value: "Modular Office", icon: "layers" },
+      { label: "Power", value: "100% DG Backup", icon: "shield" }
+    ]
   },
   {
     id: 4,
@@ -44,7 +65,14 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Studios",
     aspect: "wide",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1600&auto=format&fit=crop",
-    caption: "Contemporary residential studios located on the 3rd to 7th floors offering smart ergonomic layouts."
+    caption: "Contemporary residential studios located on the 3rd to 7th floors offering smart ergonomic layouts.",
+    tagline: "3rd to 7th Floors • Studio Living",
+    link: "/studios",
+    specs: [
+      { label: "Typology", value: "Studio Living", icon: "building" },
+      { label: "Finish", value: "Premium Fitted", icon: "sparkles" },
+      { label: "Security", value: "Smart Keycard", icon: "shield" }
+    ]
   },
   {
     id: 5,
@@ -53,7 +81,14 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Food Court",
     aspect: "tall",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop",
-    caption: "Vibrant dining destination with planned service circulation and communal seating."
+    caption: "Vibrant dining destination with planned service circulation and communal seating.",
+    tagline: "1st Floor • Dining & Leisure",
+    link: "/food-court",
+    specs: [
+      { label: "Dining Zone", value: "Level 1 Concourse", icon: "building" },
+      { label: "Capacity", value: "150+ Seating", icon: "layers" },
+      { label: "Ventilation", value: "Commercial Duct", icon: "sparkles" }
+    ]
   },
   {
     id: 6,
@@ -62,7 +97,14 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Floor Plans",
     aspect: "square",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop",
-    caption: "Structured vertical integration connecting basement parking, retail, commercial and residential tiers."
+    caption: "Structured vertical integration connecting basement parking, retail, commercial and residential tiers.",
+    tagline: "Master Plan • Approved Zoning",
+    link: "/floor-plans",
+    specs: [
+      { label: "Zoning", value: "Mixed Commercial", icon: "building" },
+      { label: "Parking", value: "Double Basement", icon: "car" },
+      { label: "Approvals", value: "Bank & RERA", icon: "shield" }
+    ]
   },
   {
     id: 7,
@@ -71,7 +113,14 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Exterior",
     aspect: "wide",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop",
-    caption: "Night-time elevation highlighting the iconic geometric silhouette."
+    caption: "Night-time elevation highlighting the iconic geometric silhouette.",
+    tagline: "Façade Illuminations • Night",
+    link: "/project",
+    specs: [
+      { label: "Lighting", value: "Facade LED", icon: "sparkles" },
+      { label: "Structure", value: "G+7 Building", icon: "building" },
+      { label: "Frontage", value: "Prime Visibility", icon: "map" }
+    ]
   },
   {
     id: 8,
@@ -80,7 +129,14 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Retail",
     aspect: "tall",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1600&auto=format&fit=crop",
-    caption: "High-visibility retail formats suitable for luxury fashion, lifestyle and café concepts."
+    caption: "High-visibility retail formats suitable for luxury fashion, lifestyle and café concepts.",
+    tagline: "Ground Level • Flagship Units",
+    link: "/retail",
+    specs: [
+      { label: "Frontage", value: "Clear Glass", icon: "sparkles" },
+      { label: "Floor", value: "Ground Floor", icon: "building" },
+      { label: "Footfall", value: "Direct Lobby", icon: "door" }
+    ]
   },
   {
     id: 9,
@@ -89,7 +145,13 @@ export const GALLERY_ITEMS = [
     categoryLabel: "Offices",
     aspect: "wide",
     image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1600&auto=format&fit=crop",
-    caption: "Smart executive zones with natural light and minimal-wastage floor configurations."
+    caption: "Smart executive zones with natural light and minimal-wastage floor configurations.",
+    tagline: "Level 2 • High-Speed Tech Ready",
+    link: "/offices",
+    specs: [
+      { label: "Facility", value: "Boardroom Ready", icon: "building" },
+      { label: "Comfort", value: "Central Air", icon: "sparkles" },
+      { label: "Connectivity", value: "High-Speed Fiber", icon: "shield" }
+    ]
   }
 ];
-
