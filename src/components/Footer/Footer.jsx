@@ -4,7 +4,7 @@ import { PROJECT_INFO } from '../../data/projectData';
 import y2rLogo from '../../assets/y2r2.png';
 import './Footer.css';
 
-export default function Footer({ onOpenEnquiry }) {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (

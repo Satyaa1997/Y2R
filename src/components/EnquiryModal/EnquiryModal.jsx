@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, Sparkles } from 'lucide-react';
 import EnquiryForm from '../EnquiryForm/EnquiryForm';
 import './EnquiryModal.css';
 

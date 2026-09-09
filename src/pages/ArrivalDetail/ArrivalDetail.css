@@ -1,0 +1,807 @@
+/* ==========================================================================
+   ARRIVAL DETAIL PAGE STYLES (Y2R HEIGHTS LUXURY DARK GOLD THEME)
+   ========================================================================== */
+
+.arrival-detail-page-root {
+  width: 100%;
+  position: relative;
+  background-color: var(--bg-dark, #0b0c0e);
+  color: var(--text-primary, #ffffff);
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   1. HERO & MINIMAL BREADCRUMB SECTION
+   ========================================================================== */
+.arrival-detail-hero-section {
+  position: relative;
+  background: #080A0E;
+  padding-top: calc(var(--header-height, 80px) + 1.25rem);
+  padding-bottom: 2.75rem;
+  border-bottom: 1px solid rgba(175, 125, 9, 0.25);
+  overflow: hidden;
+}
+
+.arrival-detail-hero-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.minimal-hero-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.minimal-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.minimal-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(175, 125, 9, 0.35);
+  color: #ffd978;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 250ms ease;
+}
+
+.minimal-back-btn:hover {
+  background: rgba(175, 125, 9, 0.2);
+  border-color: #ffd978;
+  color: #ffffff;
+  transform: translateX(-3px);
+}
+
+.breadcrumb-trail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.breadcrumb-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.breadcrumb-link:hover {
+  color: #ffd978;
+}
+
+.breadcrumb-separator {
+  color: #64748b;
+}
+
+.breadcrumb-category {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.breadcrumb-current {
+  color: #ffd978;
+  font-weight: 600;
+}
+
+.minimal-rera-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(175, 125, 9, 0.12);
+  border: 1px solid rgba(175, 125, 9, 0.4);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  color: #e2e8f0;
+}
+
+.minimal-rera-badge strong {
+  color: #ffd978;
+}
+
+.arrival-detail-hero-title-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-width: 900px;
+}
+
+.arrival-detail-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gold-pill-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #c7921a 0%, #af7d09 50%, #735103 100%);
+  color: #0A0B0E;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(175, 125, 9, 0.3);
+}
+
+.arrival-structure-pill {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.arrival-detail-page-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.arrival-detail-page-tagline {
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   2. MAIN DETAIL SHOWCASE (SPLIT GRID)
+   ========================================================================== */
+.arrival-detail-main-section {
+  background-color: #FFFFFF;
+  color: #0A0B0D;
+  position: relative;
+}
+
+.arrival-detail-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Left Column: Image Box & Direct Actions */
+.arrival-detail-media-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.arrival-media-tilt {
+  width: 100%;
+}
+
+.arrival-detail-image-box {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #080A0E;
+  border: 2px solid rgba(175, 125, 9, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18), 0 0 25px rgba(175, 125, 9, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrival-detail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arrival-detail-image-box:hover .arrival-detail-img {
+  transform: scale(1.03);
+}
+
+.arrival-image-corner-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 11, 14, 0.88);
+  border: 1px solid rgba(200, 162, 44, 0.55);
+  color: #ffd978;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+.arrival-zoom-trigger-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 11, 14, 0.88);
+  border: 1px solid rgba(175, 125, 9, 0.55);
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 250ms ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+.arrival-zoom-trigger-btn:hover {
+  background: linear-gradient(135deg, #af7d09 0%, #735103 100%);
+  border-color: #ffd978;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Action Panel Card */
+.arrival-actions-panel {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.arrival-actions-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions-panel-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+
+.arrival-actions-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.arrival-action-btn {
+  width: 100%;
+  justify-content: center;
+  height: 46px;
+  font-size: 0.86rem;
+}
+
+.arrival-contact-quick-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #475569;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.arrival-contact-quick-link a {
+  color: #8a6104;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.arrival-contact-quick-link a:hover {
+  text-decoration: underline;
+}
+
+/* Right Column: Narrative, Highlights & Technical Matrix */
+.arrival-detail-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.arrival-narrative-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.arrival-section-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #8a6104;
+}
+
+.arrival-content-heading {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.arrival-long-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0;
+}
+
+.arrival-highlights-card,
+.arrival-specs-card {
+  background: #FAF8F4;
+  border: 1px solid rgba(175, 125, 9, 0.25);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+}
+
+.arrival-subheading {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.arrival-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.arrival-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.arrival-highlight-item span {
+  flex: 1;
+}
+
+/* Technical Matrix Table */
+.arrival-specs-table-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.arrival-spec-cell {
+  background: #FFFFFF;
+  border: 1px solid rgba(175, 125, 9, 0.2);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: all 200ms ease;
+}
+
+.arrival-spec-cell:hover {
+  border-color: #af7d09;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(175, 125, 9, 0.1);
+}
+
+.arrival-spec-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8a6104;
+}
+
+.arrival-spec-value {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #0F172A;
+}
+
+/* ==========================================================================
+   3. ADJACENT NAVIGATION STRIP
+   ========================================================================== */
+.adjacent-navigation-section {
+  background: #0B0D12;
+  border-top: 1px solid rgba(175, 125, 9, 0.25);
+  border-bottom: 1px solid rgba(175, 125, 9, 0.25);
+  padding: 1.5rem 0;
+}
+
+.adjacent-nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.adjacent-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 0.65rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(175, 125, 9, 0.35);
+  border-radius: 8px;
+  transition: all 250ms ease;
+  min-width: 220px;
+}
+
+.adjacent-nav-link:hover {
+  background: rgba(175, 125, 9, 0.18);
+  border-color: #ffd978;
+  transform: translateY(-2px);
+}
+
+.adjacent-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.adjacent-dir-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.adjacent-plan-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.adjacent-nav-center {
+  color: #ffd978;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px dashed rgba(175, 125, 9, 0.4);
+  transition: all 200ms ease;
+}
+
+.adjacent-nav-center:hover {
+  background: rgba(175, 125, 9, 0.15);
+  border-style: solid;
+  color: #ffffff;
+}
+
+.adjacent-nav-placeholder {
+  min-width: 220px;
+}
+
+/* ==========================================================================
+   4. OTHER ARRIVAL FEATURES SECTION
+   ========================================================================== */
+.other-features-section {
+  background: #080A0E;
+  padding: 4.5rem 0;
+}
+
+.other-features-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.other-features-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.other-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.other-feature-card {
+  background: #141724;
+  border: 1.5px solid rgba(175, 125, 9, 0.35);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.other-feature-card:hover {
+  transform: translateY(-6px);
+  border-color: #ffd978;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(200, 162, 44, 0.3);
+}
+
+.other-feature-media {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background: #080A0E;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(175, 125, 9, 0.3);
+}
+
+.other-feature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  transition: transform 500ms ease;
+}
+
+.other-feature-card:hover .other-feature-img {
+  transform: scale(1.05);
+}
+
+.other-feature-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(10, 12, 16, 0.85);
+  border: 1px solid rgba(200, 162, 44, 0.5);
+  color: #ffd978;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.other-feature-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.other-feature-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.other-feature-subtitle {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffd978;
+}
+
+.other-feature-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.other-feature-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   5. FULLSCREEN HIGH-RES ZOOM MODAL
+   ========================================================================== */
+.arrival-zoom-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 6, 8, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.arrival-zoom-modal-content {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  max-height: 90vh;
+  background: #0E1017;
+  border: 2px solid rgba(175, 125, 9, 0.5);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(175, 125, 9, 0.35);
+}
+
+.arrival-zoom-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(10, 11, 14, 0.85);
+  border: 1px solid rgba(175, 125, 9, 0.5);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 200ms ease;
+}
+
+.arrival-zoom-close-btn:hover {
+  background: #af7d09;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.arrival-zoom-media-frame {
+  width: 100%;
+  height: calc(85vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #080A0E;
+}
+
+.arrival-zoom-full-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.arrival-zoom-caption-bar {
+  padding: 1rem 1.5rem;
+  background: #121520;
+  border-top: 1px solid rgba(175, 125, 9, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.arrival-zoom-caption-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zoom-caption-title {
+  font-family: var(--font-display, "Montserrat", sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.zoom-caption-sub {
+  font-size: 0.75rem;
+  color: #ffd978;
+}
+
+.zoom-caption-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADAPTATIONS
+   ========================================================================== */
+@media (max-width: 992px) {
+  .arrival-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .arrival-detail-image-box {
+    height: 340px;
+  }
+
+  .other-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .minimal-hero-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .arrival-detail-image-box {
+    height: 280px;
+  }
+
+  .arrival-specs-table-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .other-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .adjacent-nav-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .adjacent-nav-link {
+    min-width: 100%;
+  }
+
+  .adjacent-nav-center {
+    text-align: center;
+  }
+}
+

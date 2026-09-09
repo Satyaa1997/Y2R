@@ -50,11 +50,14 @@ const XTwitterIcon = () => (
 export default function Navbar({ onOpenBrochure }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const location = useLocation();
 
-  const isAboutActive = location.pathname.startsWith('/about');
+  // Close mobile menu on route changes
+  const [prevPath, setPrevPath] = useState(location.pathname);
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname);
+    setIsMobileMenuOpen(false);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,12 +80,6 @@ export default function Navbar({ onOpenBrochure }) {
       document.body.style.overflow = 'unset';
     }
   }, [isMobileMenuOpen]);
-
-  // Close mobile menu on route changes
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-    setActiveDropdown(null);
-  }, [location.pathname]);
 
   return (
     <header className={`navbar-header ${isScrolled ? 'is-scrolled' : ''}`}>

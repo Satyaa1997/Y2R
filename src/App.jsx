@@ -28,6 +28,7 @@ import Gallery from './pages/Gallery/Gallery';
 import Investment from './pages/Investment/Investment';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/Contact/Contact';
+import ArrivalDetail from './pages/ArrivalDetail/ArrivalDetail';
 import NotFound from './pages/NotFound/NotFound';
 
 import './App.css';
@@ -182,6 +183,15 @@ export default function App() {
               path="/project"
               element={
                 <Project
+                  onOpenEnquiry={handleOpenEnquiry}
+                  onOpenBrochure={handleOpenBrochure}
+                />
+              }
+            />
+            <Route
+              path="/arrival/:id"
+              element={
+                <ArrivalDetail
                   onOpenEnquiry={handleOpenEnquiry}
                   onOpenBrochure={handleOpenBrochure}
                 />

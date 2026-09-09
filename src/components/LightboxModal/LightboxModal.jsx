@@ -31,11 +31,12 @@ export default function LightboxModal({
   const activeThumbRef = useRef(null);
   const touchStartRef = useRef(null);
 
-  // Reset zoom & pan when image changes
-  useEffect(() => {
+  const [prevIndex, setPrevIndex] = useState(currentIndex);
+  if (prevIndex !== currentIndex) {
+    setPrevIndex(currentIndex);
     setScale(1);
     setPosition({ x: 0, y: 0 });
-  }, [currentIndex]);
+  }
 
   // Scroll active thumbnail into center view
   useEffect(() => {

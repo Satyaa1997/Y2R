@@ -14,6 +14,7 @@ import commercialHallImg from '../assets/Commercial hall.jpg';
 import banquetHallImg from '../assets/Banwuet hall.png';
 import foodCourtImg from '../assets/Food&bal.png';
 import studioImg from '../assets/Studio.jpg';
+import buildingImg from '../assets/Building.JPG';
 import parkingImg from '../assets/Parking.png';
 import car18Img from '../assets/18Car.png';
 import car22Img from '../assets/22Car.png';
@@ -362,26 +363,126 @@ export const AMENITIES_LIST = [
   }
 ];
 
-export const PARKING_LEVELS = [
+export const ARRIVAL_FEATURES = [
   {
-    level: "Basement 1",
-    capacity: "18 Car Parking",
-    description: "Dedicated lower basement parking with wide entry ramps, clear bay markings and driver clearance.",
-    specs: ["18 Dedicated Bays", "Wide Access Aisles", "Direct Elevator Lobby Link"],
-    image: car18Img,
-    planImage: car18Img,
-    slug: "/floor-plans/b1"
+    id: "parking",
+    level: "Convenient Parking",
+    capacity: "Dual Basements (40+ Bays)",
+    badge: "Basement 1 & 2",
+    description: "Dedicated dual subterranean tiers with 40+ marked bays, EV charging docks, and automated boom barriers.",
+    specs: ["40+ Marked Bays", "Dual Basements", "EV Ready"],
+    image: parkingImg,
+    icon: "car",
+    slug: "/arrival/parking",
+    tagline: "Effortless Subterranean Parking with 40+ Marked Bays & EV Infrastructure.",
+    longDescription: "Engineered specifically to eliminate parking congestion along the bustling Kursi Road commercial corridor, Y2R Heights offers two full levels of secure, well-illuminated subterranean parking. With generous entry ramp gradients, dedicated marked bays for 40+ vehicles, and direct high-speed lift lobby connectivity, parking is swift and hassle-free for visitors and occupants alike.",
+    highlights: [
+      "Dedicated 40+ Marked Four-Wheeler Parking Bays Across 2 Levels",
+      "Basement 1 (18 Bays) & Basement 2 (22 Bays) with Wide Aisle Clearance",
+      "Dedicated EV Fast-Charging Stations for Modern Electric Vehicles",
+      "24/7 Automated Boom Barriers & High-Definition CCTV Surveillance",
+      "Direct High-Speed Elevator Lobby Connectivity to All Commercial Levels"
+    ],
+    techSpecs: [
+      { label: "Total Capacity", value: "40+ Four-Wheeler Bays" },
+      { label: "Parking Levels", value: "Basement 1 & Basement 2" },
+      { label: "Ramp Ingress", value: "Two-Way Anti-Skid Slopes" },
+      { label: "EV Infrastructure", value: "Dedicated Charging Points" },
+      { label: "Security", value: "Automated Barrier & 24x7 CCTV" },
+      { label: "Vertical Transit", value: "Direct Elevator Core Access" }
+    ],
+    floorPlanLink: "/floor-plans/b1"
   },
   {
-    level: "Basement 2",
-    capacity: "22 Car Parking",
-    description: "Spacious secondary basement tier engineered for optimal vehicle turnaround and long-stay occupancy.",
-    specs: ["22 Dedicated Bays", "Secure Automated Ingress", "Full Fire Safety System"],
+    id: "pedestrian",
+    level: "Easy Pedestrian Access",
+    capacity: "Wide Walkway Promenade",
+    badge: "Street Promenade",
+    description: "Wide pedestrian-friendly boulevards connecting 60M and 18M main road frontages directly into the retail promenade.",
+    specs: ["60M & 18M Frontage", "Barrier-Free", "Wide Boulevards"],
+    image: highStreetImg,
+    icon: "footprints",
+    slug: "/arrival/pedestrian",
+    tagline: "Barrier-Free Promenades Connecting 60M & 18M Arterial Road Frontages.",
+    longDescription: "Pedestrian circulation at Y2R Heights has been designed to maximize safety, footfall flow, and brand visibility. With wide, architecturally landscaped boulevards opening directly to Main Kursi Road and the 18M sector crossover, visitors enjoy zero-step, barrier-free walk-in access into double-height anchor showrooms, retail promenades, and the main arrival core.",
+    highlights: [
+      "Massive 3-Sides Open Corner Frontage on 60M & 18M Arterial Roads",
+      "Wide Pedestrian Arrival Boulevards with Premium Architectural Paving",
+      "Direct Barrier-Free Walk-In Access into Lower & Upper Ground Retail",
+      "Dedicated Escalators & High-Capacity Elevators from Ground Level",
+      "High-Visibility Streetfront Lighting & Illuminated Brand Signage"
+    ],
+    techSpecs: [
+      { label: "Corner Orientation", value: "3-Sides Open Landmark Corner" },
+      { label: "Road Widths", value: "60-Metre & 18-Metre Arterial Roads" },
+      { label: "Walkway Format", value: "All-Weather Landscaped Concourse" },
+      { label: "Retail Ingress", value: "Direct Double-Height Storefronts" },
+      { label: "Accessibility", value: "100% Barrier-Free Ramps & Lifts" },
+      { label: "Transit Links", value: "0 Min Kursi Rd | 8 Min Metro" }
+    ],
+    floorPlanLink: "/retail"
+  },
+  {
+    id: "lobby",
+    level: "Proper Lobby / Entrance",
+    capacity: "6 High-Speed Elevators",
+    badge: "Central Atrium",
+    description: "Double-height welcome atrium featuring six high-speed elevators, 24/7 security reception, and smart access.",
+    specs: ["6 High-Speed Lifts", "Grand Foyer", "Access Control"],
+    image: buildingImg,
+    icon: "building",
+    slug: "/arrival/lobby",
+    tagline: "Stately Double-Height Atrium Powered by Six High-Speed Elevators.",
+    longDescription: "The central arrival lobby at Y2R Heights sets an immediate tone of executive elegance and stature. Featuring a dramatic double-height ceiling, bespoke Italian marble flooring, and six dedicated high-speed elevators, vertical transit across all 11 floors is virtually instant, eliminating wait times during peak morning and evening commercial rush hours.",
+    highlights: [
+      "Grand Double-Height Welcome Foyer with Luxury Stone & Brass Finishes",
+      "Six (6) Dedicated High-Speed Passenger & Service Elevators",
+      "Dedicated Corporate Reception Desk & Concierge Visitor Management",
+      "Smart Turnstile & Biometric Access Control for Commercial Suites",
+      "Acoustically Insulated Double-Glazed Glass Façade for Quiet Ambience"
+    ],
+    techSpecs: [
+      { label: "Elevator Fleet", value: "6 High-Speed Transit Lifts" },
+      { label: "Atrium Ceiling", value: "Double-Height Grand Foyer" },
+      { label: "Access Security", value: "Biometric & Visitor Management" },
+      { label: "Finishes", value: "Italian Marble & Gold Accents" },
+      { label: "Structure", value: "G+8 Commercial (11 Levels)" },
+      { label: "Power Redundancy", value: "100% Full Heavy-Load DG Backup" }
+    ],
+    floorPlanLink: "/floor-plans"
+  },
+  {
+    id: "circulation",
+    level: "Well-Planned Driveway",
+    capacity: "2-Way Smooth Ramps",
+    badge: "Smooth Ingress",
+    description: "Engineered dual-ramp vehicular driveway with generous turning radii, dedicated drop-off zone, and anti-skid slopes.",
+    specs: ["Dual Ramps", "Dedicated Drop-Off", "Anti-Skid Slopes"],
     image: car22Img,
-    planImage: car22Img,
-    slug: "/floor-plans/b2"
+    icon: "route",
+    slug: "/arrival/circulation",
+    tagline: "Dual Two-Way Ramps Engineered for Zero-Bottleneck Vehicular Flow.",
+    longDescription: "Traffic engineering at Y2R Heights ensures that vehicular arrival, valet drop-off, and subterranean parking operate with absolute efficiency. Wide turning radii, high ceiling clearances, and an isolated curbside drop-off porch allow executive cars, visitor cabs, and supply fleets to move seamlessly without interfering with pedestrian promenades.",
+    highlights: [
+      "Dual Ingress & Egress Ramps Engineered for Two-Way Vehicular Flow",
+      "Dedicated VIP & Valet Curbside Drop-Off Porch at Main Frontage",
+      "Graduated Anti-Skid Ramp Slopes with Generous Turning Geometry",
+      "Direct Service Bay Access for Commercial Supply Fleets & Logistics",
+      "Smart Digital Ingress Indicators & Parking Occupancy Guidance"
+    ],
+    techSpecs: [
+      { label: "Vehicular Ingress", value: "Two-Way Dual Subterranean Ramps" },
+      { label: "Turning Radii", value: "Engineered High-Clearance Curves" },
+      { label: "Ramp Surface", value: "Heavy-Duty Grooved Anti-Skid" },
+      { label: "Drop-Off Zone", value: "Dedicated Executive Covered Porch" },
+      { label: "Supply Logistics", value: "Separate Loading/Unloading Bay" },
+      { label: "Surveillance", value: "Multi-Angle Ingress/Egress CCTV" }
+    ],
+    floorPlanLink: "/floor-plans/b2"
   }
 ];
+
+export const PARKING_LEVELS = ARRIVAL_FEATURES;
 
 export const FLOOR_PLANS_DATA = [
   {

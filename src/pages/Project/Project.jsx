@@ -17,7 +17,7 @@ import {
   Wrench,
   Grid
 } from 'lucide-react';
-import { PROJECT_INFO, PROJECT_SPECIFICATIONS } from '../../data/projectData';
+import { PROJECT_INFO } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';

@@ -62,7 +62,7 @@ export default function Gallery({ onSelectGalleryItem, onOpenEnquiry }) {
 
           {/* Mosaic Artistic Grid */}
           <div className={`gallery-mosaic-grid ${activeCategory !== 'all' ? 'gallery-filtered-grid' : ''}`}>
-            {filteredItems.map((item, idx) => {
+            {filteredItems.map((item) => {
               const globalIdx = GALLERY_ITEMS.findIndex((g) => g.id === item.id);
 
               return (

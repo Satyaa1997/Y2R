@@ -14,6 +14,8 @@ import {
   ChevronRight,
   MapPin,
   Car,
+  Footprints,
+  Route,
   ShieldCheck,
   Phone,
   X,
@@ -681,67 +683,76 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
       </section>
 
       {/* =========================================================================
-          8. PARKING SLABS 3D SECTION
+          8. ARRIVAL & CIRCULATION 4-CARD SECTION
           ========================================================================= */}
       <section className="section-padding theme-section-dark parking-section">
         <ArchitecturalBg variant="home_parking" />
         <div className="container-custom">
           <SectionHeading
             number="07"
-            badge="Dual Basement Tiers"
+            badge="Arrival & Transit Experience"
             title="Designed for Effortless Arrival."
-            subtitle="Two dedicated basement parking levels support convenient access for occupants and visitors."
+            subtitle="Four integrated arrival layers ensuring seamless vehicular access, pedestrian flow, and rapid transit."
             align="center"
             theme="dark"
           />
 
-          <div className="parking-slabs-grid">
-            {PARKING_LEVELS.map((parking, idx) => (
+          <div className="parking-slabs-grid arrival-features-grid">
+            {PARKING_LEVELS.map((item, idx) => (
               <RevealOnScroll
-                key={parking.level}
-                animation={idx === 0 ? "fade-right" : "fade-left"}
-                delay={idx * 150}
+                key={item.id || idx}
+                animation="fade-up"
+                delay={idx * 100}
                 className="parking-col"
               >
                 <div
                   className="parking-uiverse-card"
                   onClick={() => {
-                    navigate('/floor-plans');
+                    navigate(item.slug || '/floor-plans');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   role="button"
                   tabIndex={0}
-                  aria-label={`${parking.level} - ${parking.capacity}`}
+                  aria-label={`${item.level} - ${item.capacity}`}
                 >
                   <div className="parking-card-content architectural-grid-gold">
-                    {parking.image && (
+                    {item.image && (
                       <div className="parking-card-media">
                         <img
-                          src={parking.image}
-                          alt={`${parking.level} - ${parking.capacity}`}
+                          src={item.image}
+                          alt={`${item.level} - ${item.capacity}`}
                           className="parking-card-img"
                           loading="lazy"
                         />
+                        <span className="parking-card-media-badge">{item.badge || item.level}</span>
                         <div className="parking-card-overlay">
-                          <span className="parking-card-zoom-badge">View Layout Plan</span>
+                          <span className="parking-card-zoom-badge">Explore Details</span>
                         </div>
                       </div>
                     )}
 
                     <div className="parking-header">
                       <div className="parking-icon-wrap">
-                        <Car size={26} className="text-gold" />
+                        {item.icon === 'footprints' ? (
+                          <Footprints size={18} className="text-gold" />
+                        ) : item.icon === 'building' ? (
+                          <Building2 size={18} className="text-gold" />
+                        ) : item.icon === 'route' ? (
+                          <Route size={18} className="text-gold" />
+                        ) : (
+                          <Car size={18} className="text-gold" />
+                        )}
                       </div>
-                      <div>
-                        <span className="parking-level-badge">{parking.level}</span>
-                        <h3 className="parking-capacity">{parking.capacity}</h3>
+                      <div className="parking-header-text">
+                        <h3 className="parking-capacity">{item.level}</h3>
+                        <span className="parking-level-badge">{item.capacity}</span>
                       </div>
                     </div>
 
-                    <p className="parking-desc">{parking.description}</p>
+                    <p className="parking-desc">{item.description}</p>
 
                     <div className="parking-specs-row">
-                      {parking.specs.map((spec, sIdx) => (
+                      {item.specs.map((spec, sIdx) => (
                         <span key={sIdx} className="parking-spec-tag">
                           {spec}
                         </span>
