@@ -13,7 +13,8 @@ export default function FloorPlans({ onOpenEnquiry }) {
   const [filter, setFilter] = useState('all');
 
   const categories = [
-    { id: 'all', label: 'All 7 Levels' },
+    { id: 'all', label: 'All Levels' },
+    { id: 'parking', label: 'Basement Parking' },
     { id: 'retail', label: 'Retail (LGF/UGF)' },
     { id: 'commercial', label: 'Commercial & Banquet' },
     { id: 'fnb', label: 'Food Court' },
@@ -22,6 +23,7 @@ export default function FloorPlans({ onOpenEnquiry }) {
 
   const filteredPlans = FLOOR_PLANS_DATA.filter((plan) => {
     if (filter === 'all') return true;
+    if (filter === 'parking') return plan.id === 'b1' || plan.id === 'b2';
     if (filter === 'retail') return plan.id === 'lgf' || plan.id === 'ugf';
     if (filter === 'commercial') return plan.id === '1st' || plan.id === '2nd';
     if (filter === 'fnb') return plan.id === 'service';

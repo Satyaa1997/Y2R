@@ -4,6 +4,7 @@ import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
+import boutiqueImg from '../../assets/Boutique.png';
 import './Offices.css';
 
 export default function Offices({ onOpenEnquiry }) {
@@ -95,7 +96,7 @@ export default function Offices({ onOpenEnquiry }) {
               <TiltCard maxTilt={8} scale={1.02} className="office-tilt">
                 <div className="office-img-frame">
                   <img
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1400&auto=format&fit=crop"
+                    src={boutiqueImg}
                     alt="Boutique Offices at Y2R Heights"
                     className="office-img"
                   />

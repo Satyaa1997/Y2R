@@ -8,15 +8,19 @@ import studioFloorMap from '../assets/3to7.png';
 import terraceFloorMap from '../assets/TericeFlor.png';
 
 // Photographic Assets
-import highStreetImg from '../assets/High-Street.jpg';
-import boutiqueImg from '../assets/Boutique.jpg';
+import highStreetImg from '../assets/height Street retail.png';
+import boutiqueImg from '../assets/Boutique.png';
 import commercialHallImg from '../assets/Commercial hall.jpg';
-import banquetHallImg from '../assets/Banwuet hall.jpg';
-import foodCourtImg from '../assets/FoodCourt2.jpg';
+import banquetHallImg from '../assets/Banwuet hall.png';
+import foodCourtImg from '../assets/Food&bal.png';
 import studioImg from '../assets/Studio.jpg';
 import buildingImg from '../assets/Building.JPG';
 import building1Img from '../assets/Building1.JPG';
 import premiumImg from '../assets/Premium.JPG';
+import parkingImg from '../assets/Parking.png';
+import car18Img from '../assets/18Car.png';
+import car22Img from '../assets/22Car.png';
+import rooftopSpaceImg from '../assets/Rooftof Space.png';
 
 export const PROJECT_INFO = {
   name: "Y2R HEIGHTS",
@@ -166,7 +170,7 @@ export const SPACES_CATEGORIES = [
       "24/7 CCTV Surveillance & Boom Barrier Ingress",
       "Direct High-Speed Elevator Lobby Access"
     ],
-    image: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=1600&auto=format&fit=crop",
+    image: parkingImg,
     badge: "B1 (18 Cars) & B2 (22 Cars)",
     ctaText: "Explore Parking Plan"
   }
@@ -366,17 +370,73 @@ export const PARKING_LEVELS = [
     level: "Basement 1",
     capacity: "18 Car Parking",
     description: "Dedicated lower basement parking with wide entry ramps, clear bay markings and driver clearance.",
-    specs: ["18 Dedicated Bays", "Wide Access Aisles", "Direct Elevator Lobby Link"]
+    specs: ["18 Dedicated Bays", "Wide Access Aisles", "Direct Elevator Lobby Link"],
+    image: car18Img,
+    planImage: car18Img,
+    slug: "/floor-plans/b1"
   },
   {
     level: "Basement 2",
     capacity: "22 Car Parking",
     description: "Spacious secondary basement tier engineered for optimal vehicle turnaround and long-stay occupancy.",
-    specs: ["22 Dedicated Bays", "Secure Automated Ingress", "Full Fire Safety System"]
+    specs: ["22 Dedicated Bays", "Secure Automated Ingress", "Full Fire Safety System"],
+    image: car22Img,
+    planImage: car22Img,
+    slug: "/floor-plans/b2"
   }
 ];
 
 export const FLOOR_PLANS_DATA = [
+  {
+    id: "b1",
+    floor: "Basement 1",
+    purpose: "18 Car Parking",
+    description: "Dedicated lower basement parking with wide entry ramps, 18 vehicle bays, and direct elevator connectivity.",
+    longDescription: "Basement Level 1 at Y2R Heights is engineered for seamless vehicular access with generous ramp gradients, 18 dedicated four-wheeler bays, clear turning radii, EV charging docks, and direct access to the central high-speed lift lobby.",
+    highlights: [
+      "18 Dedicated Marked Four-Wheeler Parking Bays",
+      "Direct High-Speed Elevator Lobby & Staircase Connectivity",
+      "Smooth Two-Way Ingress/Egress Ramp Circulation",
+      "Dedicated EV Charging Stations & Infrastructure",
+      "24/7 Automated Boom Barriers & CCTV Security"
+    ],
+    blueprintUrl: car18Img,
+    mapImage: car18Img,
+    slabHeight: "12 Ft Subterranean Clearance",
+    zoning: "Subterranean Vehicle Parking (B1)",
+    ingress: "Wide Ingress Ramp from Main Kursi Road Boulevard",
+    unitType: "Dedicated Parking Bays & EV Stations",
+    frontage: "Ramp Ingress with Automated Boom Barrier",
+    parkingInfo: "18 Dedicated Parking Bays in B1 Tier",
+    powerBackup: "100% DG Redundancy for Lighting & Lifts",
+    idealOccupants: "Building Occupants, Office Executives & Verified Retail Visitors",
+    code: "Y2R-B1-PARK"
+  },
+  {
+    id: "b2",
+    floor: "Basement 2",
+    purpose: "22 Car Parking",
+    description: "Secondary subterranean tier accommodating 22 vehicle bays with optimal turnaround and fire safety systems.",
+    longDescription: "Basement Level 2 delivers 22 additional secure four-wheeler parking bays, designed with anti-skid ramp finishes, automated ventilation exhaust systems, full sprinkler fire suppression, and dual high-speed elevator access to all retail and commercial upper floors.",
+    highlights: [
+      "22 Dedicated Marked Four-Wheeler Parking Bays",
+      "Automated Mechanical Ventilation & Smoke Exhaust",
+      "Direct Elevator Access to All Upper Floors (G+8)",
+      "Anti-Skid Flooring & Heavy-Duty Ramp Gradients",
+      "Integrated Fire Sprinklers & Hydrant Systems"
+    ],
+    blueprintUrl: car22Img,
+    mapImage: car22Img,
+    slabHeight: "12 Ft Subterranean Clearance",
+    zoning: "Subterranean Vehicle Parking (B2)",
+    ingress: "Two-Way Ramp Link from Basement 1",
+    unitType: "Dedicated Parking Bays & Long-Stay Slots",
+    frontage: "Internal Circulation Ramp Network",
+    parkingInfo: "22 Dedicated Parking Bays in B2 Tier",
+    powerBackup: "100% DG Redundancy for Emergency Systems",
+    idealOccupants: "Studio Residents, Long-Stay Commercial Staff & Corporate Tenants",
+    code: "Y2R-B2-PARK"
+  },
   {
     id: "lgf",
     floor: "Lower Ground Floor",
@@ -540,7 +600,7 @@ export const FLOOR_PLANS_DATA = [
       "Secure Perimeter Glass Railings & Ambient Night Illumination",
       "Express Elevator Link & Dual Fire Stairwells"
     ],
-    blueprintUrl: building1Img,
+    blueprintUrl: rooftopSpaceImg,
     mapImage: terraceFloorMap,
     slabHeight: "Open Sky Vantage",
     zoning: "Rooftop Open Lounge & Green Oasis",

@@ -5,6 +5,7 @@ import qrImage from '../../assets/QR.png';
 import buildingImage from '../../assets/Building.JPG';
 import building1Image from '../../assets/contactbanner.png';
 import floorPlanImage from '../../assets/FloorPlan.png';
+import boutiqueImg from '../../assets/Boutique.png';
 
 import {
   ArrowRight,
@@ -491,7 +492,7 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
               <Link to="/offices" className="eslam-card">
                 <div className="eslam-bg-layer">
                   <img
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
+                    src={boutiqueImg}
                     alt="Boutique Offices at Y2R Heights"
                     className="eslam-bg-img"
                     loading="lazy"
@@ -702,8 +703,31 @@ export default function Home({ onOpenEnquiry, onSelectGalleryItem }) {
                 delay={idx * 150}
                 className="parking-col"
               >
-                <div className="parking-uiverse-card">
+                <div
+                  className="parking-uiverse-card"
+                  onClick={() => {
+                    navigate('/floor-plans');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${parking.level} - ${parking.capacity}`}
+                >
                   <div className="parking-card-content architectural-grid-gold">
+                    {parking.image && (
+                      <div className="parking-card-media">
+                        <img
+                          src={parking.image}
+                          alt={`${parking.level} - ${parking.capacity}`}
+                          className="parking-card-img"
+                          loading="lazy"
+                        />
+                        <div className="parking-card-overlay">
+                          <span className="parking-card-zoom-badge">View Layout Plan</span>
+                        </div>
+                      </div>
+                    )}
+
                     <div className="parking-header">
                       <div className="parking-icon-wrap">
                         <Car size={26} className="text-gold" />

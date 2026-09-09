@@ -51,7 +51,6 @@ export default function Footer({ onOpenEnquiry }) {
               <li><Link to="/location">Strategic Location</Link></li>
               <li><Link to="/floor-plans">Floor Plans & Specs</Link></li>
               <li><Link to="/gallery">Visual Gallery</Link></li>
-              <li><Link to="/investment">Investment Overview</Link></li>
               <li><Link to="/contact">Contact & Site Visit</Link></li>
             </ul>
           </div>

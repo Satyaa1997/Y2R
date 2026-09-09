@@ -1,4 +1,6 @@
 import masterSiteZoning from "../assets/FloorPlan.png";
+import boutiqueImg from "../assets/Boutique.png";
+import retailImg from "../assets/height Street retail.png";
 // Gallery Data for Y2R HEIGHTS
 export const GALLERY_CATEGORIES = [
   { id: "all", label: "All Spaces" },
@@ -33,7 +35,7 @@ export const GALLERY_ITEMS = [
     category: "retail",
     categoryLabel: "Retail",
     aspect: "wide",
-    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1600&auto=format&fit=crop",
+    image: retailImg,
     caption: "High frontage showcase stores engineered for maximum footfall engagement and brand impact.",
     tagline: "Ground & 1st Floor • High Footfall",
     link: "/retail",
@@ -49,7 +51,7 @@ export const GALLERY_ITEMS = [
     category: "offices",
     categoryLabel: "Offices",
     aspect: "square",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop",
+    image: boutiqueImg,
     caption: "Light-filled modern office suites designed for founders, consultants and high-performance teams.",
     tagline: "2nd Floor • Corporate Grade",
     link: "/offices",

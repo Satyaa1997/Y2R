@@ -4,6 +4,7 @@ import TiltCard from '../../components/TiltCard/TiltCard';
 import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
+import retailImg from '../../assets/height Street retail.png';
 import './Retail.css';
 
 export default function Retail({ onOpenEnquiry }) {
@@ -101,6 +102,7 @@ export default function Retail({ onOpenEnquiry }) {
                 <div className="retail-image-box">
                   <img
                     src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1400&auto=format&fit=crop"
+                    src={retailImg}
                     alt="Y2R Heights Retail Frontage"
                     className="retail-img"
                   />

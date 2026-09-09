@@ -1,14 +1,15 @@
+import { Link } from 'react-router-dom';
 import {
   ShieldCheck,
   CheckCircle2,
   Store,
   Briefcase,
-  Home,
   UtensilsCrossed,
   ArrowRight,
   Compass,
   Layers,
-  Sparkles
+  Sparkles,
+  Car
 } from 'lucide-react';
 import { PROJECT_INFO, WHY_Y2R_POINTS } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
@@ -18,12 +19,12 @@ import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 
 // Asset Images
-import aboutHeroImage from '../../assets/About.png';
+import aboutHeroImage from '../../assets/contactbanner.png';
 import buildingImage from '../../assets/Building.JPG';
-import highStreetImage from '../../assets/High-Street.jpg';
-import boutiqueImage from '../../assets/Boutique.jpg';
-import studioImage from '../../assets/Studio.jpg';
-import foodCourtImage from '../../assets/FoodCourt2.jpg';
+import highStreetImage from '../../assets/height Street retail.png';
+import boutiqueImage from '../../assets/Boutique.png';
+import foodCourtImage from '../../assets/Food&bal.png';
+import parkingImage from '../../assets/Parking.png';
 
 import './AboutUs.css';
 
@@ -60,20 +61,6 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
       ]
     },
     {
-      id: 'studios',
-      title: 'Contemporary Studio Suites',
-      level: '3rd to 7th Floor',
-      image: studioImage,
-      imageLabel: 'Modern Living Suites & Private Balconies',
-      icon: Home,
-      description: 'Smartly designed self-contained suites with open private balconies, modern kitchenette provisions, and high-speed elevators.',
-      points: [
-        'Smartly designed self-contained suites with open private balconies',
-        'Premium sanitary fittings (Grohe/Jaquar/Roca) & modern kitchenette',
-        'Dedicated residential high-speed elevators & intercom security'
-      ]
-    },
-    {
       id: 'food-court',
       title: 'Food Court & Rooftop Terrace',
       level: '8th Floor & Open Terrace',
@@ -85,6 +72,20 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
         'Vibrant culinary hub with dedicated kitchen exhausts & grease traps',
         'Spacious communal seating with panoramic city skyline views',
         'Open-air rooftop terrace suitable for premium casual dining concepts'
+      ]
+    },
+    {
+      id: 'parking',
+      title: 'Double Basement Parking',
+      level: 'Basement 1 & Basement 2',
+      image: parkingImage,
+      imageLabel: '40+ Vehicle Bays & Subterranean Ramps',
+      icon: Car,
+      description: 'Two dedicated levels of secure subterranean parking with automated boom barriers, CCTV surveillance, EV charging provisions, and direct high-speed lift lobbies.',
+      points: [
+        'Dedicated 40+ marked vehicle bays across Basement 1 & Basement 2',
+        'Smooth two-way ingress/egress ramps with anti-skid surfaces',
+        'EV charging stations, 24/7 CCTV surveillance & automated boom barriers'
       ]
     }
   ];
@@ -216,6 +217,15 @@ export default function AboutUs({ onOpenEnquiry, onOpenBrochure }) {
               </RevealOnScroll>
             ))}
           </div>
+
+          <RevealOnScroll animation="fade-up" delay={200}>
+            <div className="about-spaces-cta-wrap">
+              <Link to="/floor-plans" className="btn-primary">
+                <span>Explore All Floor Plans</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 

@@ -441,6 +441,13 @@
   flex: 1;
 }
 
+.about-spaces-cta-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3.5rem;
+}
+
 /* ==========================================================================
    Section 03: Connectivity Section
    ========================================================================== */
