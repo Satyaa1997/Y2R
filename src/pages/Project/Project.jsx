@@ -4,7 +4,6 @@ import {
   Building2,
   Layers,
   Store,
-  Sparkles,
   Home,
   DoorClosed,
   Zap,
@@ -15,10 +14,8 @@ import {
   X,
   FileCheck2,
   UtensilsCrossed,
-  CheckCircle2,
   Wrench,
-  Grid,
-  Maximize2
+  Grid
 } from 'lucide-react';
 import { PROJECT_INFO, PROJECT_SPECIFICATIONS } from '../../data/projectData';
 import SectionHeading from '../../components/SectionHeading/SectionHeading';
