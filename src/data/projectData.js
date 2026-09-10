@@ -14,7 +14,6 @@ import commercialHallImg from '../assets/Commercial hall.jpg';
 import banquetHallImg from '../assets/Banwuet hall.png';
 import foodCourtImg from '../assets/Food&bal.png';
 import studioImg from '../assets/Studio.jpg';
-import buildingImg from '../assets/Building.JPG';
 import parkingImg from '../assets/Parking.png';
 import car18Img from '../assets/18Car.png';
 import car22Img from '../assets/22Car.png';
@@ -400,7 +399,7 @@ export const ARRIVAL_FEATURES = [
     badge: "Street Promenade",
     description: "Wide pedestrian-friendly boulevards connecting 60M and 18M main road frontages directly into the retail promenade.",
     specs: ["60M & 18M Frontage", "Barrier-Free", "Wide Boulevards"],
-    image: highStreetImg,
+    image: foodCourtImg,
     icon: "footprints",
     slug: "/arrival/pedestrian",
     tagline: "Barrier-Free Promenades Connecting 60M & 18M Arterial Road Frontages.",
@@ -429,7 +428,7 @@ export const ARRIVAL_FEATURES = [
     badge: "Central Atrium",
     description: "Double-height welcome atrium featuring six high-speed elevators, 24/7 security reception, and smart access.",
     specs: ["6 High-Speed Lifts", "Grand Foyer", "Access Control"],
-    image: buildingImg,
+    image: rooftopSpaceImg,
     icon: "building",
     slug: "/arrival/lobby",
     tagline: "Stately Double-Height Atrium Powered by Six High-Speed Elevators.",

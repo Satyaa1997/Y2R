@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Download, FileText, CheckCircle2, Loader2, Phone, Mail, User } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
+import y2rBrochurePdf from '../../assets/Y2R.pdf';
 import './BrochureModal.css';
 
 export default function BrochureModal({ isOpen, onClose }) {
@@ -66,7 +67,7 @@ export default function BrochureModal({ isOpen, onClose }) {
 
   const triggerDownload = () => {
     const link = document.createElement('a');
-    link.href = '/brochure.pdf';
+    link.href = y2rBrochurePdf || '/brochure.pdf';
     link.download = 'Y2R-Heights-Official-Brochure.pdf';
     document.body.appendChild(link);
     link.click();
