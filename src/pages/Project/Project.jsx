@@ -23,7 +23,7 @@ import RevealOnScroll from '../../components/RevealOnScroll/RevealOnScroll';
 import CTASection from '../../components/CTASection/CTASection';
 import ArchitecturalBg from '../../components/ArchitecturalBg/ArchitecturalBg';
 import proImage from '../../assets/pro.jpg';
-import premiumDocImg from '../../assets/Premium.JPEG';
+import premiumDocImg from '../../assets/Premium.jpeg';
 import highStreetImg from '../../assets/Stone.jfif';
 import boutiqueImg from '../../assets/wire.jfif';
 import foodCourtImg from '../../assets/exaust.jpg';
